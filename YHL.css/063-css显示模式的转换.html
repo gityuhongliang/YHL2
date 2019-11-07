@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	062-css显示模式的转换</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;	
+		}
+		.kuaizhuang1{
+			background-color:red;
+			width: 200px;
+			height: 200px;
+			display: inline-block; 转换块状元素为行内块状元素 
+		}
+		.hangnei1{
+			background-color:red;
+			width: 100px;
+			height: 100px;
+		    display: block;转换行内元素为块状元素
+		}
+		.hangneikuaizhuang{
+			background-color:red;
+			width: 100px;
+			height: 100px;
+			display: inline; 转换行内块状元素为行内元素
+		}
+	</style>
+</head>
+<body>
+	<p class="kuaizhuang1">	块状元素 p div header nav section article footer h ul ol dl li dt dd</p>
+	<span class="hangnei1">行内元素 span a b u i s stong em ins del</span>
+	<img src="../test/5.jpeg" alt="" class="hangneikuaizhuang">
+</body>
+</html>

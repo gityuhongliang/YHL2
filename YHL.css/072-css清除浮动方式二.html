@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>072-css清除浮动方式二.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father1{
+			background-color: red;
+		
+		margin-bottom: 100px;
+		}
+		.father2{
+			background-color:pink;
+		
+			clear: both;    方式二,通过给第二个盒子添加clear属性来清除前面元素浮动带来的影响
+			margin-top: 100px; 通过clear属性清除浮动会导致第一个盒子的margin-bottom和第二个盒子的margin-top失效,第二个盒子的margin-top失效是因为margin的值传递
+		}
+		.father1 p{
+			background-color: yellow;
+			width: 100px;
+			float: left;
+		}
+		.father2 p{
+			background-color: green;
+			width: 100px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="father1">
+		<p class="son1">1</p>
+		<p class="son2">2</p>
+		<p class="son3">3</p>
+	</div>
+	<div class="father2">
+		<p class="son4">/1</p>
+		<p class="son5">/2</p>
+		<p class="son6">/3</p>
+	</div>
+</body>
+</html>

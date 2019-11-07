@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>110-css动画的其他属性二.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 200px;
+			height: 200px;
+			background-color:red;
+			transition: all 3s;
+		}
+		.box1:hover{
+			width: 500px;
+		}
+		.box2{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			animation-name: dh;
+			animation-duration: 3s;
+			animation-iteration-count: infinite; /*无限循环执行次数 默认是一次*/
+			animation-direction: alternate; /*执行往返动画 默认不执行往返动画*/
+			animation-play-state:running;  /*默认状态动画执行*/
+		}
+		.box2:hover{
+			animation-play-state:paused;  /*动画暂停*/
+		}
+		@keyframes dh{
+			form {
+				width: 200px;
+				
+
+			}
+			to {
+				width: 500px;
+				
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>102-css2D转换-复合样式.html</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<style>
+		.box{
+			width: 600px;
+			height: 600px;	
+			border: 1px solid;
+		}
+		ul li{
+			width: 100px;
+			height: 100px;	
+			background-color: blue;
+			margin-top: 30px;
+			color: white;
+			margin:30px auto;
+		}
+		li:nth-child(1){
+			transform: rotate(45deg);
+		}
+		li:nth-child(2){
+			transform: translate(100px,100px);
+		}
+		li:nth-child(3){
+			transform: scale(1.5,1.5);
+		}
+		li:nth-child(4){
+			transform:rotate(45deg) translate(100px,100px) scale(1.5,1.5); 
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li>旋转</li>
+			<li>平移</li>
+			<li>缩放</li>
+			<li>复合</li>
+
+		</ul>
+	</div>
+</body>
+</html>

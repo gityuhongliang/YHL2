@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>左右布局</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;	
+		}
+		.father{
+			width: 500px;
+			height: 500px;	
+			border:1px solid;
+		}
+		.son1{
+			width: 100px;
+			height: 100px;	
+			background-color: red;
+			display: inline-block;
+		}
+		.son2{
+			width: 100px;
+			height: 100px;	
+			background-color: pink;
+			display: inline-block;
+			margin-left: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1"></div><div class="son2"></div>
+	</div>
+</body>
+</html>

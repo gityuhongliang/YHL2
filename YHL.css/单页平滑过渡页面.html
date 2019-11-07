@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>单页平滑过渡页面</title>
+	<link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<style>
+		.nav{
+			width: 100%;
+			height: 35px;
+			position: fixed;
+		}
+		.nav input:checked+a{
+			color: red;
+		}
+		.nav input,.nav a{
+			width: 20%;
+			height: 35px;
+			position: fixed;
+			top: 0px;
+			font-size: 25px;
+		}
+		.nav input{
+			z-index: 999;
+			opacity: 0;
+			cursor: pointer;
+		}
+		.nav a{
+			text-decoration: none;
+			text-align: center;
+			line-height: 35px;
+			background-color:#2f2f2f;
+			color: white;
+			z-index: 988;
+		}
+		.nav input:hover+a{
+			background-color: #2f2f2f;
+			opacity: 0.5;
+		}
+		i{
+			margin-right: 10px;
+		}
+		#ctr1,#ctr1+a{
+			left: 0%;
+		}
+		#ctr2,#ctr2+a{
+			left: 20%;
+		}
+		#ctr3,#ctr3+a{
+			left: 40%;
+		}
+		#ctr4,#ctr4+a{
+			left: 60%;
+		}
+		#ctr5,#ctr5+a{
+			left: 80%;
+		}
+		html{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			width: 100%;
+			height: 100%;
+		}
+		.nav{
+			width: 100%;
+			height: 100%;
+		}
+		.section{
+			width: 100%;
+			height: 100%;
+			margin-top: 35px;
+			transition: all 1s;	
+		}
+		.son1{
+			background-repeat: no-repeat;
+			/*width: 100%;*/
+			height: 100%;
+			background-size: cover;
+		}
+		
+		#ctr1:checked ~ .section{
+			transform:translateY(0%);
+		}
+		#ctr2:checked ~ .section{
+			transform:translateY(-100%);
+		}
+		#ctr3:checked ~ .section{
+			transform:translateY(-200%);
+		}
+		#ctr4:checked ~ .section{
+			transform:translateY(-300%);
+		}
+		#ctr5:checked ~ .section{
+			transform:translateY(-400%);
+		}
+		#ctr1:checked ~ .section #sectionid1{
+			animation:sport 2s;
+		}
+		#ctr2:checked ~ .section #sectionid2{
+			animation:sport 2s;
+		}
+		#ctr3:checked ~ .section #sectionid3{
+			animation:sport 2s;
+		}
+		#ctr4:checked ~ .section #sectionid4{
+			animation:sport 2s;
+		}
+		#ctr5:checked ~ .section #sectionid5{
+			animation:sport 2s;
+		}
+
+		@keyframes sport{
+			from{
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+		#sectionid1{
+			background-image: url(../test/img/home.png);
+		}
+		#sectionid2{
+			background-image: url(../test/img/service.png);
+		}
+		#sectionid3{
+			background-image: url(../test/img/about.png);
+		}
+		#sectionid4{
+			background-image: url(../test/img/team.png);
+		}
+		#sectionid5{
+			background-image: url(../test/img/contact.png);
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<input type="radio" name="radio-son" id="ctr1" checked>
+		<a href="#"><i class="fa fa-home"></i>Home</a>
+		<input type="radio" name="radio-son" id="ctr2">
+		<a href="#"><i class="fa fa-coffee"></i>Service</a>
+		<input type="radio" name="radio-son" id="ctr3">
+		<a href="#"><i class="fa fa-server"></i>About</a>
+		<input type="radio" name="radio-son" id="ctr4">
+		<a href="#"><i class="fa fa-users"></i>Team</a>
+		<input type="radio" name="radio-son" id="ctr5">
+		<a href="#"><i class="fa fa-phone"></i>Contact</a>
+		<div class="section">
+			<div class="son1" id="sectionid1" ></div>
+			<div class="son1" id="sectionid2" ></div>
+			<div class="son1" id="sectionid3" ></div>
+			<div class="son1" id="sectionid4" ></div>
+			<div class="son1" id="sectionid5" ></div>
+		</div>
+	</div>
+</body>
+</html>

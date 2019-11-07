@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>106-css2D转换-照片墙</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<style>
+		.box{
+			width:100%;
+			height: 400px;
+			background-color: skyblue;
+			margin-top: 100px;
+			text-align: center;
+		}
+		ul li{
+			list-style: none;
+			display: inline-block;
+			float: left;
+			width: 200px;
+			height: 250px;
+			background-color: red;
+			margin-left: 20px;
+			border: 10px solid #fff;
+			margin-top: 75px;
+			margin-left: 50px;
+			box-sizing: border-box;
+			transition: all 2s;
+			/*z-index: 999;*/
+			/*position: relative;*/
+		}
+		ul li img{
+			width: 100%;
+			height: 100%;
+			
+		}
+		ul li:nth-child(1){
+			transform: rotate(20deg);
+		}
+		ul li:nth-child(2){
+			transform: rotate(-25deg);
+		}
+		ul li:nth-child(3){
+			transform: rotate(25deg);
+		}
+		ul li:nth-child(4){
+			transform: rotate(-25deg);
+		}	
+		ul:hover li{
+			opacity: 0.5
+		}
+		ul li:hover{
+			opacity: 1;
+			transform:rotate(0deg) scale(1.2); 
+		}
+
+	</style>
+</head>
+<body>
+	<ul class="box">
+		<li><img src="../test/img/p1.jpg" alt=""></li>
+		<li><img src="../test/img/p2.jpg" alt=""></li>
+		<li><img src="../test/img/p3.jpg" alt=""></li>
+		<li><img src="../test/img/p4.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

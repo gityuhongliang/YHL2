@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>103-css2D转换-修改旋转基点</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<style>
+		.box{
+			width: 200px;
+			height: 200px;	
+			border: 1px solid;
+			position: relative;
+			margin: 100px auto;
+		}
+		ul li{
+			width: 200px;
+			height: 200px;	
+			color: white;
+			position: absolute;
+			transform-origin: 200px 100px;
+		}
+		li:nth-child(1){
+			top: 0px;
+			background-color: yellow;
+			transform: rotate(10deg);
+		}
+		li:nth-child(2){
+			top: 0px;
+			background-color: green;
+			transform: rotate(20deg);
+		}
+		li:nth-child(3){
+			top: 0px;
+			background-color: blue;
+			transform: rotate(40deg);
+		}
+		li:nth-child(4){
+			top: 0px;
+			background-color: red;
+			transform: rotate(60deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+
+		</ul>
+	</div>
+</body>
+</html>

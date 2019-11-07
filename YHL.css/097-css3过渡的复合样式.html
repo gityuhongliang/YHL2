@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3过渡的复合样式.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			margin: 100px auto;
+			background-color: pink;
+			/*transition: width 2s linear 10s ; /*需要过渡的属性 执行过渡的时间 执行过渡的速度 延迟时间*/
+			/*transition: width 2s ease 10s,height 2s ease 10s;  /*多种属性用逗号隔开；*/
+			transition: all 3s;  /*把多个属性简写为all*/
+		}
+		.box:hover{
+			width: 500px;
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>109-css动画的其他属性</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			animation-name: dh;
+			animation-duration: 3s;
+		}	
+		@keyframes dh{
+			form {
+				width: 200px;
+			}
+			to {
+				width: 500px;
+			}
+		}
+		.box2{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			animation-name: dhh;
+			animation-duration: 3s;
+			animation-delay: 2s; /*延迟时间*/
+			animation-timing-function: linear;  /*速度*/
+			animation-iteration-count: 4;  /*往返次数 infinite(无限循环); 执行*/
+			animation-direction: alternate;   /*normal默认状态不执行往返动画*/
+		}
+		@keyframes dhh{
+			form {
+				width: 200px;				
+			}
+			to {
+				width: 500px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+</html>

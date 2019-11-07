@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>118-css3D转换全正面正方体.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid;
+			margin: 100px auto;
+			position: relative;
+			transform-style: preserve-3d;
+			transform: rotateX(10deg) rotateY(20deg);
+			perspective: 500px;
+		}
+		li{
+			list-style: none;
+			text-align: center;
+			line-height: 100px;
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			font-size: 50px;
+			top: 0px;
+			left: 0px;
+		}
+		li:nth-child(1){
+			background-color: red;
+			transform: translateY(-50px) rotateX(90deg);
+		}
+		li:nth-child(2){
+			background-color: yellow;
+			transform: rotateX(180deg) translateZ(50px);
+		}
+		li:nth-child(3){
+			background-color: blue;
+			transform: rotateX(270deg) translateZ(50px);
+		}
+		li:nth-child(4){
+			background-color: green;
+			transform: translateZ(50px);
+		}
+		li:nth-child(5){
+			background-color: skyblue;
+			transform: rotateY(-90deg) translateZ(50px);
+		}
+		li:nth-child(6){
+			background-color: pink;
+			transform:rotateY(90deg) translateZ(50px);
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>1</li>
+			<li>3</li>
+			<li>2</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</div>
+</body>
+</html>

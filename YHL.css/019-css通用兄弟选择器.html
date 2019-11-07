@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通用兄弟选择器</title>
+	<style>
+		.text1~p{
+			color: red;/* (向下且是同级兄弟元素且符合选择器条件（全部）生效) */
+		}
+	</style>
+</head>
+<body>
+	<p class="text1">kkkkk111kkkkk</p>
+	<p>kkkk222kkkkkk</p>
+	<span>ttttttt</span>
+	<p>kkkkk333kkkkk</p>
+	<p>kkkkk444kkkkk</p>
+</body>
+</html>

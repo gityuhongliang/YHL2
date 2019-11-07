@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>083-css绝对定位-注意一.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			/*left: 100px;  左右同时设置只有left生效，*/
+			/*right: 100px;*/
+			top: 100px;
+			bottom: 100px;
+		}
+		.box2{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+</html>

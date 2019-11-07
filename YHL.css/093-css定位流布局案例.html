@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>定位流布局案例</title>
+</head>
+<body>
+	
+</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位流案例练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 3000px;
+		};
+		.nav{
+			
+			width: 1920px;
+			height: 50px;
+			position: relative;
+
+
+		}
+		.nav2{
+			width: 1600px;
+			height: 50px;
+			background-color: gray;
+			position: fixed;
+			margin-top: 20px;
+			left:50%;
+			margin-left: -800px;
+			cursor: pointer;	
+			z-index: 1;
+
+		}
+		.son1{
+			width: 320px;
+			height: 50px;
+			position: absolute;
+			left: 0px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.son2{
+			width: 320px;
+			height: 50px;
+			position: absolute;
+			left: 20%;
+			text-align: center;
+			line-height: 50px;
+		}
+		.son3{
+			width: 320px;
+			height: 50px;
+			position: absolute;
+			left: 40%;
+			text-align: center;
+			line-height: 50px;
+			background: red;
+		}
+		.son3 img{
+			width: 100px;
+			height: 20px;
+			position: absolute;
+			top: -21px;
+			left:120px;
+		}
+		.son4{
+			width: 320px;
+			height: 50px;
+			position: absolute;
+			left: 60%;
+			text-align: center;
+			line-height: 50px;
+		}
+		.son5{
+			width: 320px;
+			height: 50px;
+			position: absolute;
+			left: 80%;
+			text-align: center;
+			line-height: 50px;
+
+		}
+		.sonall:hover{
+			background-color: white;
+			opacity: 0.5;
+		}
+		.section{
+			width: 1200px;
+			height: 600px;
+			background-color: red;
+			margin: 0 auto;
+			position: relative;	
+			top: 150px;	
+		}
+		.section-img{
+			width: 1200px;
+			height: 600px;
+			overflow: hidden;
+		}
+		.section-button{
+			position: absolute;
+			right: 0px;
+			bottom: 0px;	
+		}
+		.section-button .bt1{
+			width: 30px;
+			height: 30px;
+			background-color: gray;
+			border-radius: 50%;
+		}
+		.section-left{
+			width: 50px;
+			height: 100px;
+			background-color: gray;
+			position: absolute;
+			top: 50%;
+			margin-top:-50px;
+			font-size: 35px;
+			text-align: center;
+			line-height: 100px;
+			color: white;
+			opacity: 0.8;
+			cursor: pointer;
+		}
+		.section-left:hover{
+			opacity: 0.5;
+			
+		}
+		.section-right:hover{
+			opacity: 0.5;
+			cursor: pointer;
+		}
+		.section-right{
+			width: 50px;
+			height: 100px;
+			background-color: gray;
+			position: absolute;
+			right: 0px;
+			top: 50%;
+			margin-top:-50px;
+			font-size: 35px;
+			text-align: center;
+			line-height: 100px;
+			color: white;
+			opacity: 0.8;
+		}
+		.article{
+			width: 1600px;
+			height: 2000px;
+			background-color: blue;
+			position: relative;
+			top:300px;
+			left:50%;
+			margin-left: -800px;
+		}
+		.aside{
+			width: 150px;
+			height: 350px;
+			background-color: pink;
+			position: fixed;
+			left: 0px;
+			top: 50%;
+			margin-top: -175px;
+		}
+		.aside2{
+			width: 150px;
+			height: 350px;
+			background-color: pink;
+			position: fixed;
+			right: 0px;
+			top: 50%;
+			margin-top: -175px;
+		}
+		.footer{
+			width: 100px;
+			height: 100px;
+			background-color: gray;
+			position: fixed;
+			right: 0px;
+			bottom: 0px;
+		}
+		.footer a{
+			font-size: 20px;
+			text-decoration: none;
+			color:black;
+			line-height: 100px;
+			margin-left: auto;
+		}
+		</style>
+</head>
+<body>
+	<div class="nav">
+		
+		<div class="nav2">
+			<div class="son1 sonall">
+			天猫会员
+			</div>
+			<div class="son2 sonall">
+			品牌街
+			</div>
+			<div class="son3 sonall">
+			<img src="../test/tm/tm.jpg" alt="">电器城
+
+			</div>
+			<div class="son4 sonall">
+			营业厅
+			</div>
+			<div class="son5 sonall">
+			魅力惠
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="section-img">
+			<img src="../test/tm/tm2.jpg" alt=""> 
+			<div class="section-button">
+			<input type="button" value="1" class="bt1 sonall">
+			<input type="button" value="2" class="bt1 sonall">
+			<input type="button" value="3" class="bt1 sonall">
+			<input type="button" value="4" class="bt1 sonall">
+			<input type="button" value="5" class="bt1 sonall">
+			</div>
+		</div>
+		<div class="section-left">&lt;</div> 
+		<div class="section-right">&gt;</div>
+	</div>
+	<div class="article"></div>
+	<div class="aside"></div>
+	<div class="aside2"></div>
+	<div class="footer">
+		<a href="#">返回顶部</a>
+	</div>
+</body>
+</html>

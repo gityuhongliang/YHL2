@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>092-css定位了显示顺序从父原则.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 500px;
+			height: 500px;
+			background-color: red;
+			position: relative;    
+		}
+		.son1{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			position: absolute;
+			right: -20px;
+			bottom: -10px;   /*这里父元素没有设置z-index值 son1的z-index值大于son2所以覆盖*/
+			z-index: 3
+
+		}
+		.box2{
+			width: 500px;
+			height: 500px;
+			background-color: yellow;
+			position: relative;						
+		}
+		.son2{
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			position: absolute;
+			right: -20px;
+			z-index: 0
+		}
+		
+
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<div class="son1"></div>
+	</div>
+	<div class="box2">
+		<div class="son2"></div>
+	</div>
+	
+</body>
+</html>

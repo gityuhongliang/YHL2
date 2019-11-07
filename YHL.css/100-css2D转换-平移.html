@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>100-css2D转换-平移</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<style>
+		.box{
+			width: 500px;
+			height: 500px;
+			border: 1px solid;
+		}
+		ul li{
+			width: 200px;
+			height: 100px;
+			background-color: pink;
+			margin-top: 50px;
+		}
+		.box li:nth-child(2){
+			transform: translate(200px,100px);
+		}		
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+</body>
+</html>

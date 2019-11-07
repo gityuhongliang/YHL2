@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>075-css清除浮动方式五</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father1{
+			background-color: red;
+			
+			
+ 
+		}
+		.father2{
+			background-color:pink;
+			
+			
+			
+		}
+		.father1 p{
+			background-color: yellow;
+			width: 100px;
+			float: left;
+		}
+		.father2 p{
+			background-color: green;
+			width: 100px;
+			float: left;
+		}
+		.clearfix:after{
+			content: "";
+			clear: both;
+			display: block;
+			height: 0px;
+			visibility: hidden;
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="father1 clearfix">
+		<p class="son1">1</p>
+		<p class="son2">2</p>
+		<p class="son3">3</p>
+	</div>
+	<div class="father2">
+		<p class="son4">/1</p>
+		<p class="son5">/2</p>
+		<p class="son6">/3</p>
+	</div>
+</body>
+</html>

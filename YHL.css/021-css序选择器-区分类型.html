@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>序选择器区分类型</title>
+	<style>
+		
+		p:first-of-type{
+			color: red; (根据选择器元素所在位置按顺序修改样式，注意和不区分区分类型相比不会被区分类型（选择位置不是选择器元素会没有效果）影响，任意顺序位置只要是选择器元素就能生效)
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<span>kk</span>
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		<p>4</p>
+		<p>5</p>
+		<p>6</p>
+	</div>
+</body>
+</html>

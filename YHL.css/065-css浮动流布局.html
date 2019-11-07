@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>左右布局</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;	
+		}
+		.father{
+			width: 500px;
+			height: 500px;	
+			border:1px solid;
+		}
+		.son1{
+			width: 100px;
+			height: 100px;	
+			background-color: red;
+			display: inline-block;
+		}
+		.son2{
+			width: 100px;
+			height: 100px;	
+			background-color: pink;
+			display: inline-block;
+			/* margin-left: 300px; */
+			float: right;   添加浮动  注意点float的取值只有左(left)对齐和右(right)对齐，没有中间对齐
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1"></div><div class="son2"></div>
+	</div>
+</body>
+</html>

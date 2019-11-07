@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>shuxinxuanzeqi</title>
+	<style>
+		/* [class]{
+			color: red;直接通过属性名称,找到所有具有属性名称的元素
+
+		}
+		[class=baidu]{
+			color: green;属性＝值的方式,找到所有具有属性名称并且值为属性值的元素,如果属性的值有.的话，需要添加引号
+		}*/
+		[class|=baidu]{
+			color: yellow;属性的值以什么开始,找到只用“-”分隔的和独立的元素
+		}
+		/*[class^=baidu]{
+			color: black;
+		}
+		[class$=com]{
+			color: rgb(255,111,05);
+		} */
+		/*[class~=baidu]{
+			color: rgb(100,05,100);
+		}
+		/* [class*=baidu]{ 
+			color: rgb(210,05,0100);
+		} */
+	</style>
+</head>
+<body>
+	<p class="baidu">baidu</p>
+	<p class="baidu.com">baidu.com</p>
+	<p class="www.baidu.com">www.baidu.com</p>
+	<p class="baidu com">baidu com</p>
+	<p class="baidu-com">baidu-com</p>
+	<p class="httsp://www.baidu.com">httsp://www.baidu.com</p>
+</body>
+</html>

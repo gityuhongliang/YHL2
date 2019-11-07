@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>125-css单页平滑页面.html</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.css">
+	<style>
+		div{
+			width: 100%;
+			height: 40px;
+			
+			/*position: relative;*/
+			
+		}
+		.nav input,input+a{
+			width: 20%;
+			height: 40px;
+			font-size: 35px;
+			position: fixed;
+			
+		}
+		.nav input:checked +a{
+			color: red;
+		}
+		.nav a{
+			text-decoration: none;
+			line-height: 40px;
+			text-align: center;
+			background-color: #2f2f2f;
+			color: white;
+			z-index: 998;
+		}
+		.nav input{
+			z-index: 999;
+			opacity: 0;
+		}
+		.nav input:hover+a{
+			background-color: #2f2f2f;
+			opacity: 0.5;
+		}
+		i{
+			margin-right:10px;
+		}
+		.nav .radios1,.radios1+a{
+			top: 0%;
+			left: 0%;
+		}
+		.nav .radios2,.radios2+a{
+			top: 0%;
+			left: 20%;
+		}
+		.nav .radios3,.radios3+a{
+			top: 0%;
+			left: 40%;
+		}
+		.nav .radios4,.radios4+a{
+			top: 0%;
+			left: 60%;
+		}
+		.nav .radios5,.radios5+a{
+			top: 0%;
+			left: 80%;
+		}
+		html,body,.nav,.section{
+			height: 100%;
+		}
+		.section{
+			margin-top: 40px;
+			transition: all 1s;
+			animation: sport 2s;
+		}
+		@keyframes sport{
+			from{
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+		.section .son1{
+			height: 100%;
+			background-color: red;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+		.radios1:checked ~ .section{
+			transform: translateY(0%);
+		}
+		.radios2:checked ~ .section{
+			transform: translateY(-100%);
+		}
+		.radios3:checked ~ .section{
+			transform: translateY(-200%);
+		}
+		.radios4:checked ~ .section{
+			transform: translateY(-300%);
+		}
+		.radios5:checked ~ .section{
+			transform: translateY(-400%);
+		}
+		.article1{
+			background-image: url(../test/img/home.png);
+		}
+		.article2{
+			background-image: url(../test/img/service.png);
+		}
+		.article3{
+			background-image: url(../test/img/about.png);
+		}
+		.article4{
+			background-image: url(../test/img/team.png);
+		}
+		.article5{
+			background-image: url(../test/img/contact.png);
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<input type="radio" name="radio-t" class="radios1" checked>
+		<a href="#"><i class="fa fa-home"></i>home</a>
+		<input type="radio" name="radio-t" class="radios2">
+		<a href="#"><i class="fa fa-home"></i>team</a>
+		<input type="radio" name="radio-t" class="radios3">
+		<a href="#"><i class="fa fa-home"></i>service</a>
+		<input type="radio" name="radio-t" class="radios4">
+		<a href="#"><i class="fa fa-users"></i>about</a>
+		<input type="radio" name="radio-t" class="radios5">
+		<a href="#"><i class="fa fa-phone"></i>contact</a>
+		<div class="section">
+			<div class="son1 article1">1</div>
+			<div class="son1 article2">2</div>
+			<div class="son1 article3">3</div>
+			<div class="son1 article4">4</div>
+			<div class="son1 article5">5</div>
+		</div>
+	</div>
+</body>
+</html>

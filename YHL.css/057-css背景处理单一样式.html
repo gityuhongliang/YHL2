@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背景处理单一样式</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.father{
+			background-color: red;
+			width: 500px;
+			height: 2000px;
+			border:1px solid black;
+			margin:0 auto;
+			background-image: url(../test/5.jpeg);
+			background-repeat:repeat-x; 只在水平方向上平铺
+			background-repeat:repeat-y;	只在垂直方向上平铺
+			background-repeat:no-repeat; 都不平铺 
+			background-attachment:scroll; 随着滚动条滚动而滚动 
+			background-attachment:fixed;背景图片固定在某个位置,不随滚动条的滚动而滚动
+			background-position: center; 背景图片的位置定位 水平移动距离 垂直移动距离;方向单词,水平:right center left 垂直:top center bottom 
+			background-size: 50px 50px;背景图片的大小 
+			background-origin: padding-box; 背景景图片开始显示区域 （默认）从内边距开始显示
+			background-origin:border-box;从边框开始显示
+			background-origin:content-box;从内容区域开始显示 
+			background-clip: padding-box;背景颜色开始显示区域 从内边距开始显示
+			background-clip: border-box; (默认)从边框开始显示
+			background-clip: content-box;从内容区域开始显示 
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<p></p>
+	</div>
+</body>
+</html>

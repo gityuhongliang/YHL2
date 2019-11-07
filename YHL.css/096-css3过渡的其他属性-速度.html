@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过渡的其他属性-速度</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 800px;
+			height: 600px;
+			border: 1px solid;
+		}
+		.box1 li{
+			width: 100px;
+			height: 50px;
+			background-color: gray;
+			border: 1px solid;
+			margin-top: 20px;
+			list-style: none;
+			transition-property: margin-left;  /*变化的值是 margin-left；*/
+			transition-duration: 3s;  /*过渡变化的所有时间是3s；*/
+			transition-delay: 2s;   /*过渡变化延迟时间是2s；*/
+		}
+		.box1:hover li{
+			margin-left:700px;    /*必需条件是hover；*/
+		}
+		}
+		ul li:nth-child(2){
+			transition-timing-function: linear;
+		}
+		ul li:nth-child(3){
+			transition-timing-function:ease-in;
+		}
+		ul li:nth-child(4){
+			transition-timing-function:ease-out;
+		}
+		ul li:nth-child(5){
+			transition-timing-function:ease-in-out;
+		}
+		ul li:nth-child(6){
+			transition-timing-function:cubic-bezier();
+		}
+
+	</style>
+</head>
+<body>
+	<ul class="box1">
+		<li>ease默认</li>
+		<li>linear</li>
+		<li>ease-in</li>
+		<li>ease-out</li>
+		<li>ease-in-out</li>
+		<li>cubic-bezier</li>
+	</ul>	
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>086-css相对定位和绝对定位配合使用的方法</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 500px;
+			height: 500px;
+			background-color: red;
+			margin:100px auto; /*相对定位不脱标 auto可以用*/
+			position: relative; 
+		}
+		.son1{
+			width: 300px;
+			height: 300px;
+			background-color: yellow;
+			margin:0px auto;  /*绝对定位脱标 auto不可用*/
+			position: absolute; 
+			left: 50%;
+			margin-left:-150px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1"></div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>111-css动画的复合样式.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			animation:sport 2s linear alternate infinite; 
+		}/*动画的名称 动画的执行时间 动画的速度 延迟时间 动画的执行次数 是否执行往返动画*/
+		@keyframes sport{
+			form{
+				width: 200px;
+			}
+			to{
+				width: 500px;
+			}		
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

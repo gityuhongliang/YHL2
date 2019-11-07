@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过渡的其他属性</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+			transition-property: width,height.background;
+			transition-duration: 3s;
+			transition-delay: 5s;
+		}
+		.box1:hover{
+			width: 500px;
+			height: 500px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+</body>
+</html>

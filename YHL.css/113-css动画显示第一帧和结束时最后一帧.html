@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>113-css动画显示第一帧和结束时最后一帧</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			animation: sport 1s;
+			margin: 100px auto;
+			animation-timing-function: backwards;
+			transform: rotate(30deg);
+		}
+		@keyframes sport{
+			0%{
+				transform: rotate(0deg);
+			}
+			25%{
+				transform: rotate(90deg);
+			}
+			50%{
+				transform: rotate(180deg);
+			}
+			75%{
+				transform: rotate(270deg);
+			}
+			100%{
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
