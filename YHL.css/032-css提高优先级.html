@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>直接选中-单一选中</title>
+	<title>css提高优先级</title>
 	<style>
 		p{
-			color: red;
-		}
+			color: red !important;  /* !important只能提高某个属性的优先级,不能提高该选择器中其他属性的优先级
+				由于!important会改变选择器的优先规则,所以在实际项目中谨慎使用
+					} */
 		.text{
 			color: blue;
 		}

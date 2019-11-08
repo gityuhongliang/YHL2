@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>固定定位</title>
+	<title>css固定定位注意点一</title>
 	<style>
 		*{
 			margin: 0;
 			padding: 0;
 		}
 		body{
-			height: 3000px;
+			height: 3000px; /*固定定位的元素不会随着滚动条的移动而移动*/
 		}
 		.fixed{
 			width: 500px;
 			height: 500px;
 			background-color: red;
-			position: fixed;  固定定位参考body发生位置的移动
-			top: 200px;
+			position: fixed;  /*会脱离标准流*/  
+			top: 200px;  /* 固定定位永远参考body发生位置的移动 */
 			left: 500px;
 		}
 	</style>

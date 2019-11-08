@@ -13,7 +13,7 @@
 			height: 200px;
 			background-color: red;
 			position: relative;  /*可以给元素设置定位流属性来达到想要的效果*/
-			z-index: 1  
+			/*z-index: 1   值越大，显示越靠前*/
 		}
 		.box2{
 			width: 300px;
@@ -22,7 +22,7 @@
 			position: absolute;
 			top: 100px;
 			
-
+												/*box2和box3没有设置z-index的话结构在后面的元素会覆盖在上面*/
 		}
 		.box3{
 			width: 500px;
