@@ -1,0 +1,92 @@
+/*导航区域开始*/
+	.top{
+		width: 100%;
+		height:40px;
+		background-color:#333333; 
+	}
+	.top .nav1{
+		float: left;
+		width: 760px;
+		height: 40px;
+	
+	}
+	.top .nav1 .nav1-son{
+		float: left;
+	}
+	.shuxian{
+		margin-right: 7px;
+		margin-left: 7px;
+		color: #3d3933;
+	}
+	.top .nav2{
+		float: right;
+		width: 160px;
+		height: 40px;
+	}
+	.top .nav2 .nav2-son{
+		float: right;
+	}
+	.top .nav3{
+		float: right;
+		width: 120px;
+		height: 40px;
+		background-color: skyblue;
+	}
+	
+/*导航区域结束*/
+/*焦点区域开始*/
+	.header{
+		width: 100%;
+		height: 770px;
+		background-color: red;
+	}
+	.header .section1{
+		width: 100%;
+		height: 100px;
+		background-color: pink;
+	}
+	.header .section1 .logo a{
+		float: left;
+		width: 55px;
+		height: 55px;
+		background-image: url(../images/);
+		background-color: yellow;
+		margin-top: 22px;
+	}
+	.header .section1 .section1-son2{
+		margin-left: 179px;
+		width: 676px;
+		height: 100px;
+		background-color: red;
+	}
+	.header .section1 .section1-son3{
+		width: 296px;
+		height: 50px;
+		background-color: blue;
+	}
+	.header .section2{
+		width: 100%;
+		height: 460px;
+		background-color: black;
+	}
+	.header .section3{
+		width: 100%;
+		height: 170px;
+		margin-top: 14px;
+		background-color: yellow;
+	}
+/*焦点区域结束*/
+/*主要区域开始*/
+	.article{
+		width: 100%;
+		height: 6035px;
+		background-color: blue;
+	}
+/*主要区域结束*/
+/*底部区域开始*/
+	.footer{
+		width: 100%;
+		height: 522px;
+		background-color: pink;
+	}
+/*底部区域结束*/
