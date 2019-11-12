@@ -223,43 +223,59 @@
 			box-sizing: border-box;
 		}
 		.header .section3 .section3-son1 li{
-			width: 80px;
-			height: 85px;
+			width: 77px;
+			height: 84px;
 			position: absolute;
+			background-color: ;
+			border: 1px solid #665e57;
+		}
+		.header .section3 .section3-son1 li:hover i,
+		.header .section3 .section3-son1 li:hover a{
+			color: #fff;
 		}
 		.header .section3 .section3-son1 i{
 			font-size: 35px;
 			position: absolute;
+			left: 23px;
+			top: 18px;
+			
 		}
 		.header .section3 .section3-son1 li:nth-child(1){
 			
-			top: 21px;
-			left: 30px;
+			top: 0px;
+			left: 0px;
 		}
 		.header .section3 .section3-son1 li:nth-child(2){
 			
-			top: 21px;
-			left: 106px;
+			top: 0px;
+			left: 77px;
 		}
 		.header .section3 .section3-son1 li:nth-child(3){
-			top: 21px;
-			left: 182px;
+			top: 0px;
+			left: 155px;
 		}
 		.header .section3 .section3-son1 li:nth-child(4){
-			top: 103px;
-			left: 30px;
+			top: 84px;
+			left: 0px;
 		}
 		.header .section3 .section3-son1 li:nth-child(5){
-			top: 103px;
-			left: 106px;
+			top: 84px;
+			left: 77px;
 		}
 		.header .section3 .section3-son1 li:nth-child(6){
-			top: 103px;
-			left: 182px;
+			top: 84px;
+			left: 155px;
 		}
-		.header .section3 .section3-son1 a{
+		.header .section3 .section3-son1 li:nth-child(6) i{
+			left: 28px;
+		}
+		.header .section3 .section3-son1 span{
 			position: absolute;
-			top: 30px;
+			left:16px;
+			top: 47px;
+		}
+		.header .section3 .section3-son1 li:nth-child(1) span{
+			left: 15px;
 		}
 		.header .section3 .section3-son2{
 			float: left;
