@@ -277,29 +277,27 @@
 		.header .section3 .section3-son1 li:nth-child(1) span{
 			left: 15px;
 		}
-		.header .section3 .section3-son2{
+		.header .section3 .section3-son2 img{
 			float: left;
 			width: 316px;
 			height: 100%;
-			background-image: url(../images/rexiao-1.jpg);
 			background-repeat: no-repeat;
 			background-size: 100% 100%;
 			margin-left: 14px;
 		}
-		.header .section3 .section3-son3{
+		.header .section3 .section3-son3 img{
 			float: left;
 			width: 316px;
 			height: 100%;
-			background-image: url(../images/rexiao-2.jpg);
+			
 			background-repeat: no-repeat;
 			background-size: 100% 100%;
 			margin-left: 15px;
 		}
-		.header .section3 .section3-son4{
+		.header .section3 .section3-son4 img{
 			float: left;
 			width: 316px;
 			height: 100%;
-			background-image: url(../images/rexiao3.jpg);
 			background-repeat: no-repeat;
 			background-size: 100% 100%;
 			margin-left: 15px;
@@ -310,7 +308,165 @@
 	.article{
 		width: 100%;
 		height: 6035px;
-		background-color: blue;
+		background-color:#f5f5f5;
+	}
+	.article .article-son1{
+		width: 100%;
+		height: 544px;
+	}
+	.article .article-son1 h2{
+		font-size: 20px;
+		color: #333;
+		width: 100%;
+		height: 62px;
+		font-weight: 200;
+		background-color: #f5f5f5;
+		line-height: 62px;
+	}
+	.article .article-son1 .article-son1-whole1{
+		width: 100%;
+		height: 340px;
+	}
+	
+	.article .article-son1 .article-son1-whole2 img{
+		margin-top: 22px;
+		width: 100%;
+		height: 120px;
+		background-size: 100% 100%;
+	}
+	.article .article-son1 .article-son1-whole1 .whole1-1{
+		width: 234px;
+		height: 340px;
+		background-color: #f1eded;
+		float: left;
+		border-top:1px solid #e53935;
+		box-sizing: border-box;
+		text-align: center;
+	}
+	.article .article-son1 .whole1-1 div:nth-child(1){
+		font-size: 19px;
+		color: #ef3a3b;
+		margin-bottom: 34px;
+	}
+	.article .article-son1 .whole1-1 div:nth-child(2){
+		margin-bottom: 35px;
+	}
+	.article .article-son1 .whole1-1 div:nth-child(3){
+		font-size: 13px;
+		color: #6f6d6d;
+		margin-bottom: 33px;
+	}
+	.article .article-son1 .whole1-1 .whole-time{
+		width: 46px;
+		height: 46px;
+		background-color: #605751;
+		color: white;
+		display:inline-block;
+		line-height: 46px;
+	}
+	.article .article-son1 .whole1-1 .whole-fh{
+		width: 4px;
+		height: 3px;
+		color: #605751;
+	}
+	.article .article-son1 .article-son1-whole1 .whole1-2{
+		width: 978px;
+		height: 340px;
+		float: left;
+		margin-left: 14px;
+		position: relative;
+		overflow: hidden;
+	
+	}
+	.article .article-son1 .whole1-2 .whole1-2-son{
+		width: 2000px;
+		height: 340px;
+		animation:sportt 1s linear 7s running;
+		position: absolute;
+	}
+	@keyframes sportt{
+			from{
+				top: 0px;
+				left: 0px;
+			}
+			to{
+				top: 0px;
+				left: -978px;
+			}
+		}
+	.article .article-son1 .whole1-2 .whole1-2-son li{
+		width: 234px;
+		height: 340px;
+		margin-right: 14px;
+		float: left;
+		background-color: #fff;
+		position: relative;
+		border: 1px solid;
+		border-top-color:#e53935;
+		border-right: none;
+		border-left: none;
+		border-bottom: none;
+		box-sizing: border-box
+	}
+	.article .article-son1 .whole1-2 .whole1-2-son li:nth-child(2){
+		border-top:1px solid #ffaa2b;
+		box-sizing: border-box
+	}
+	.article .article-son1 .whole1-2 .whole1-2-son li:nth-child(3){
+		border-top:1px solid #448be7;
+		box-sizing: border-box
+	}
+	.article .article-son1 .whole1-2 .whole1-2-son li:nth-child(4){
+		border-top: 1px solid #e53935;
+		box-sizing: border-box
+	}
+	.article .article-son1 .whole1-2 .whole1-2-son .dazhe{
+		width: 64px;
+		height: 20px;
+		background-color: #e53935;
+		top: 0px;
+		margin-left: 50%;
+		left: -32px;
+		z-index: 3px;
+		position: absolute;
+		text-align: center;
+		line-height: 20px;
+		color: white;
+	}
+	.article .article-son1 .whole1-2 .whole1-2-son img{
+		width: 160px;
+		height: 160px;
+		margin: 40px 37px;
+
+	}
+	.article .article-son1 .whole1-2 .whole1-2-son h3{
+		color: #212121;
+		font-size: 14px;
+		text-align: center;
+		margin-top: -20px;
+		
+	}
+	.article .article-son1 .whole1-2 .whole1-2-son .item-1{
+		color: #ababab;
+		font-size: 12px;
+		text-align: center;
+		display: block;
+		margin-top: 4px;
+
+	}
+	.article .article-son1 .whole1-2 .whole1-2-son .item-2{
+		text-align: center;
+		font-size: 12px;
+		color: #fa6509;
+		line-height: 50px;
+		margin-bottom: 38px;
+
+	}
+	.article .article-son1 .whole1-2 .whole1-2-son a{
+		display: block;
+		width: 100%;
+		height: 100%;
+		line-height: 20px;
 	}
 /*主要区域结束*/
 /*底部区域开始*/
