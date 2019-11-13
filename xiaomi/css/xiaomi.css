@@ -467,6 +467,15 @@
 		height: 100%;
 		line-height: 20px;
 	}
+	.article-son1{
+		float: left;
+	}
+	.article-son1 .right-i{
+		float: right;
+	}
+	.article-son1 .right-i i{
+		color: gray;
+	}
 /*主要区域结束*/
 /*底部区域开始*/
 	.footer{
