@@ -58,6 +58,29 @@
 .hd .more.view:hover span{
 	background: #ff6700;
 }
+.hd .more .tab-item{
+	float: left;
+	margin-left: 32px;
+}
+.hd .more .tab-item a{
+	font-size: 16px;
+	color: #424242;
+}
+.hd .more .tab-item a:hover{
+	color: #ff6700;
+	border-bottom: 2px solid #ff6700;
+}
+.row1{
+		height: 614px;
+	}
+	.row1-img{
+		height: 300px;
+		margin-bottom: 14px;
+	}
+	.row1-img img{
+		width: 100%;
+		height: 100%;
+	}
 /*头部样式开始*/
 	.top{
 		width: 100%;
@@ -475,7 +498,15 @@
 		width: 160px;
 		height: 160px;
 		margin-top: 45px;
+		margin-bottom: 25px;
 	}
+	.bd .col2 .product-item-m .product-img{
+		width: 160px;
+		height: 160px;
+		margin-top: 25px;
+		margin-bottom: 15px;
+	}
+	
 	.bd .col2 .product-item .product-name{
 		font-size: 12px;
 		color:#202020;
@@ -494,7 +525,7 @@
 		font-size: 12px;
 		color:#ff6700;
 	}
-	.main .flash .bd .col2 .product-item .product-price del{
+	.bd .col2 .product-item .product-price del{
 		font-size: 12px;
 		color:#adadad;
 	}
@@ -523,9 +554,10 @@
 	.main .ad.ad1 img{
 		margin-top: 22px;
 	}
-	.main .phone .col1{
+	.main .phone .col1 {
 		height: 614px;
 	}
+	
 	.main .phone .col1 img{
 		width: 100%;
 		height: 100%;
@@ -533,11 +565,81 @@
 	.main .phone .col2{
 		height: 614px;
 	}
+	.main .video .video-item{
+		width: 296px;
+		height: 285px;
+		background-color: #fff;
+		float: left;
+	}
 /*主要区域结束*/
 /*底部区域开始*/
 	.footer{
 		width: 100%;
 		height: 522px;
-		background: yellow;
+	}
+	.footer .ft-top{
+		background-color: #fff;
+		height: 272px;
+		width: 100%;
+	}
+	.footer .ft-top .ft-son1{
+		height: 79px;
+	}
+	.footer .ft-top .ft-item{
+		float: left;
+		width: 20%;
+		text-align: center;
+		line-height: 79px;
+		border-bottom: 1px solid #e0e0e0;
+	}
+	.footer .ft-top .ft-item i{
+		font-size: 24px;
+		vertical-align: -4px;
+		margin-right: 4px;
+	}
+	.footer .ft-top .ft-item a{
+		font-size: 16px;
+		color: #616161;
+		border-right: 1px solid #e0e0e0;
+		padding-right:58px;
+	}
+	.footer .ft-top .ft-item:nth-child(5) a{
+		border-right:none;
+	}
+	.footer .ft-top .ft-item a:hover{
+		color: #ff6700;
+	}
+	.footer .ft-top .ft-son2{
+		width: 100%;
+		height:193px;	
+		float: left;
+	}
+	.footer .ft-top .ft-son2 dl{
+		margin-top: 43px;
+		float: left;
+		margin-right: 104px;
+	}
+	.footer .ft-top .ft-son2 dt{
+		font-size: 12px;
+		margin-bottom: 33px;
+		color: #424242;
+	}
+	.footer .ft-top .ft-son2 dd a:hover{
+		color: #ff6700;
+	}
+	.footer .ft-top .ft-son3{
+		float: right;
+		margin-top: 40px;
+		margin-bottom: 40px;
+		border-left: 1px solid #e0e0e0; 
+		padding-left: 50px;
+		text-align: center;
+	}
+	.footer .ft-top .ft-son3 li:nth-child(1){
+		color: #ff6700;
+	}
+	.footer .ft-bottom{
+		background-color: #fafafa;
+		height: 250px;
 	}
 /*底部区域结束
