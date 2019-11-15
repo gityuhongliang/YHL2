@@ -68,6 +68,7 @@
 }
 .hd .more .tab-item a:hover{
 	color: #ff6700;
+	padding-bottom: 3px;
 	border-bottom: 2px solid #ff6700;
 }
 .row1{
@@ -565,11 +566,35 @@
 	.main .phone .col2{
 		height: 614px;
 	}
-	.main .video .video-item{
+	.main .video .bd .video-son{
+
+	}
+	.main .video .bd .video-item{
+		text-align: center;
 		width: 296px;
 		height: 285px;
 		background-color: #fff;
 		float: left;
+		margin-left: 14px;
+		box-sizing: border-box;
+	}
+	.main .video .bd .video-item img{
+		width: 296px;
+		height: 180px;
+		/*border: 0px;*/
+	}
+	.main .video .bd .video-item p{
+		margin-top: 33px;
+	}
+	.main .video .bd .video-item a{
+		font-size: 12px;
+		color: #333;
+	}
+	.main .video .bd .video-item i{
+		
+	}
+	.main .video .video-item:nth-child(1){
+		margin-left: 0px;
 	}
 /*主要区域结束*/
 /*底部区域开始*/
@@ -632,14 +657,78 @@
 		margin-top: 40px;
 		margin-bottom: 40px;
 		border-left: 1px solid #e0e0e0; 
-		padding-left: 50px;
+		padding-left: 70px;
+		padding-right: 70px;
 		text-align: center;
+		display: block;
 	}
 	.footer .ft-top .ft-son3 li:nth-child(1){
+		color: #ff6700;
+		font-size: 20px;
+	}
+	.footer .ft-top .ft-son3 li:nth-child(2){
+		color: #616161;
+		font-size: 11px;
+		margin-top: 11px;
+		margin-bottom: 7px;
+	}
+	.footer .ft-top .ft-son3 li:nth-child(3){
+		color: #616161;
+		font-size: 11px; 
+		margin-bottom: 10px;
+	}
+	.footer .ft-top .ft-son3 .rg{
+		width: 120px;
+		height: 30px;
+		border: 1px solid #ff6700;
+		text-align: center;
+		line-height: 30px; 
+		margin-left: auto;
+		margin-right: auto;
+		box-sizing: border-box;
+	}
+	.footer .ft-top .ft-son3 .rg:hover{
+		background-color: #ff6700;
+		color: white;
+	}
+	.footer .ft-top .ft-son3 .rg:hover i{
+		color: white;
+	}
+	.footer .ft-top .ft-son3 .rg:hover a{
+		color: white;
+	}
+	.footer .ft-top .ft-son3 .rg i{
+		vertical-align: -1px;
+		color: #ff6700;
+	}
+	.footer .ft-top .ft-son3 .rg a{
 		color: #ff6700;
 	}
 	.footer .ft-bottom{
 		background-color: #fafafa;
 		height: 250px;
 	}
+	.footer .ft-bottom .ft-bt-left{
+		margin-top: 30px;
+		float: left;
+		height: 100%;
+	}
+	.footer .ft-bottom .ft-bt-rg{
+		float: left;
+		margin-top: 30px;
+		width: 1140px;
+		margin-left: 5px;
+	}
+	.footer .ft-bottom .ft-bt-rg a:hover{
+		color: #ff6700;
+	}
+	.footer .ft-bottom .ft-bt-rg li{
+		float: left;
+	}
+	.footer .ft-bottom .ft-bt-rg .shuxian{
+		margin-left: 3px;
+		margin-right: 4px;
+		color: #babacc;
+	}
+
 /*底部区域结束
