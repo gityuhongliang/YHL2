@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-js严格模式.html</title>
+	<script>
+		function fpx(){
+		'use strict' 
+		}
+		function fnc(){
+			alert(!this);
+		}
+		fpx()
+		fnc()
+
+// 'use strict'  针对整个文件,将"use strict"放在脚本文件的第一行,则整个脚本都将以"严格模式"运行,如果这行语句不在第一行,则无效
+// 'use strict'  针对单个函数,将"use strict"放在函数体的第一行,则整个函数以"严格模式"运行
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
