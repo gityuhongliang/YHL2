@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js引用类型的数据特点</title>
+	<script>
+		var a={
+			name:'ttt'
+		};
+		a.age=18;
+		console.log(a);  //可以动态添加属性
+		var b=a;  //引用类型复制时不会新建空间,只是复制了一个新的引用
+		b.name='bbb'  // 引用类型访问的是引用,引用是指向内存的一个指针
+		console.log(b);
+		console.log(a);//复制的引用会修改堆内存
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
