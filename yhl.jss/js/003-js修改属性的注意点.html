@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-js修改属性的注意点.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			/*border-top-width: 10px;*/
+		}
+		.box{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<!-- 修改元素属性的步骤,HTML页面布局,确定修改哪些元素,确定触发修改元素的事件,并将该事件添加在触发元素上,编写JS代码来修改属性 -->
+	<input type="text" value="输入框" id="txt">
+	<input type="button" value="按钮" onclick="document.getElementById('txt').value='s'"> 
+	<!-- 任何属性都可以修改 任何标签都可以有ID属性,可以通过ID属性获取该元素 -->
+	<div id="box" ></div>
+	<input type="button" value="按钮1" onclick="document.getElementById('box').className='box'"> 
+	<!-- 修改属性时,HTML当中怎么写,JS当中就怎么写,但class是特例,用className -->
+	<input type="button" value="按钮2" onclick="document.getElementById('box').style.borderTopWidth='10px'">
+	 <!-- JS用style修改属性时,如果CSS的属性有"-"的话,通常把"-"去掉,然后把"-"后面的单词首字母大写 -->
+</body>
+</html>

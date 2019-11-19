@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-数据转换数值-隐示</title>
+	<script>
+
+		//隐示转换不包括+号；
+		// 隐式转换使用的是Number函数；
+		console.log(10-'5');
+		console.log(10*'5');
+		console.log(10/'5');
+		console.log(5 == '5'); //比较
+		console.log(undefined == null);
+		//undefined == null 返回true；
+		 //经过隐示Number函数转换后它们的（值）相比较后为true；
+		console.log(undefined === null);
+		//undefined === null 返回false；
+		//经过隐示Number函数转换后它们的（数据类型和值）相比较后为false；
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

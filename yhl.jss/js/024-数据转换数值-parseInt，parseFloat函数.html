@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-数据类型转换.html</title>
+	<script>
+		// alert(5+"5");
+		// alert(5+5);
+	</script>
+</head>
+<body>
+	<input type="text" id="text1">+
+	<input type="text" id="text2">
+	<input type="button" value="等于" id="btn">
+	<script>
+		var oText1=document.getElementById('text1');  
+		var oText2=document.getElementById('text2');
+		var oBtn=document.getElementById('btn');
+		// console.log(oText1)
+		oBtn.onclick= function(){
+			// var v1 = oText1.value;  给oText1的value值赋值为v1
+			// var v2 = oText2.value;  给oText1的value值赋值为v2
+
+			// var v1 = parseInt(oText1.value);  //利用parseInt函数把本是数组的oText1的value值转换为nubmer数字类型
+			// var v2 = parseInt(oText2.value);  //利用parseInt函数把本是数组的oText2的value值转换为nubmer数字类型
+			var v1 = parseFloat(oText1.value);
+			var v2 = parseFloat(oText2.value);  //parseInt用来转换整数,parseFloat可以转换整数和小数
+			// console.log(v1);
+			// console.log(typeof v1);
+			// alert('111') 
+			console.log(isNaN(v1));   //isNaN函数来判断转换后的值是不是数字,不是数字返回ture,是数字返回false
+			if (isNaN(v1)) { 
+				alert('第一行错误');
+			}else if (isNaN(v2)) {
+				alert('第二行错误');
+			}else{
+				alert(v1+v2);
+			}
+			// alert(v1+v2); //弹出v1+v2的和
+		}
+		
+	</script>
+</body>
+</html>

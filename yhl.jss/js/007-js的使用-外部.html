@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-js的使用-外部</title>
+	<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				margin: 100px auto;
+			}
+	</style>
+	
+</head>
+<body>
+	<!-- 一，外部引用函数内部调用 -->
+	<div id="box" onmouseover="fnc()"             onmouseout="fpx()"></div> 
+            <!-- 鼠标悬停时调用函数fnc()  --><!-- 鼠标移出时调用函数fpx() -->
+	
+	<!-- 二，外部引用且调用函数 -->
+	<div id="box2"></div>
+	<script src="js/07.js"></script>
+</body>
+</html>

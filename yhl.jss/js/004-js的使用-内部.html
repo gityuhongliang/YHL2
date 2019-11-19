@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-js的使用-内部.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin: 100px auto;
+		}
+	</style>
+	<script>
+		// 函数
+		function fnc() {
+			var oBox= document.getElementById('box'); // 定义同时初始化，分开写就是var=oBox ，oBox=document.getElementById('box')
+			oBox.style.width='200px';
+			oBox.style.height='200px';
+			oBox.style.backgroundColor='blue'
+		}
+		function fpx() {
+			var oBox= document.getElementById('box');
+			oBox.style.width='100px';
+			oBox.style.height='100px';
+			oBox.style.backgroundColor='red'
+		}
+	</script>
+</head>
+<body>
+	<div id="box" onmouseover="fnc()"  onmouseout="fpx()"></div> <!-- 调用函数fnc(),调用函数fpx() -->
+</body>
+</html>
