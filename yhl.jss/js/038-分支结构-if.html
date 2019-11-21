@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>if/else</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="显示/隐藏" id="btn">
+	<div id="box">消息内容</div>
+	<script>
+		// if/else语句
+		var a = 1;
+		if (a > 0) {  //条件是一个布尔值,布尔值只有真或者假
+			alert('正数')
+		}else{        //else可以省略
+			alert('负数')
+		}
+
+		// 案例:单击显示和隐藏
+		var oBtn =document.getElementById('btn')
+		var oBox =document.getElementById('box')
+		console.log(oBtn);
+		console.log(oBox);
+		oBtn.onclick=function(){
+			if(oBox.style.display == 'none') {
+				oBox.style.display = 'block'
+			}else{
+				oBox.style.display == 'none'
+			}	
+		}
+	</script>
+</body>
+</html>

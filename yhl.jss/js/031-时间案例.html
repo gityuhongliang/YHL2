@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间案例</title>
+	<script>
+		var isecond =4302;
+		var hour =parseInt(4302/3600); //3600是一小时有3600秒得到一个小时多 为1
+		console.log(hour)
+		var minute =parseInt((4302%3600)/60) //%得到除去3600一小时剩下的秒 然后除以60秒得到剩下的分钟
+		console.log(minute)
+		var second = (4302%3600)%60; //%得到除去3600一小时剩下的秒再用%60得到剩下的秒
+		if (hour<10) {
+			hour='0'+hour;
+		}
+		if (minute<10) {
+			minute='0'+minute;
+		}
+		if (second<10) {
+			second='0'+second
+		}
+		alert(hour+':'+minute+':'+second)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

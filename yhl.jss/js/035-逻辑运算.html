@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>逻辑运算</title>
+	<script>
+		// 逻辑非运算符返回布尔值
+		var a = 1;
+		console.log(!a); //a=1,除了0 其他数字布尔值均为true，逻辑非运算符（!）返回相反布尔值所以为false；
+
+	
+		//逻辑与运算符（&&）
+		// 运算结果:一假则假
+		// a成立返回值a a不成立返回b值
+		console.log(1 && 2); //2
+		console.log(1 && null);//null
+		console.log(0 && 2); //0
+		console.log(0 && null);//0
+
+
+		//逻辑或运算符（||）
+		// 运算结果:一真则真
+		// a成立返回a值 a不成立返回b值
+		console.log(1 || 2);// 1
+		console.log(1 || null);// 1
+		console.log(0 || 2);//2
+		console.log(0 || null);//null  
+
+	</script>
+</head>
+<body>
+	038-分支结构-if/else.html
+</body>
+</html>
