@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒三角</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.up{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+		}
+		.down{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+		}
+	</style>
+	<script>
+	for(var i=1; i<=5;i++){
+		document.write('<p>')
+		
+		for(var k=1;k<=(5-i);k++){
+			document.write('<span class="up"></span>')
+		}
+		for(var j=1; j<=i;j++){
+			document.write('<span class="down">*</span>')
+		}
+
+		document.write('</p>')
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
