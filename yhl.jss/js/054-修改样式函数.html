@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>54-修改样式函数.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid black;
+		}
+	</style>
+
+</head>
+<body>
+	<input type="button" value="变宽" id="btn1">
+	<input type="button" value="变高" id="btn2">
+	<input type="button" value="变色" id="btn3">
+	<div id="box1"></div>、
+	<div id="box2"></div>
+</body>
+<script>
+	var oBtn1 =document.getElementById('btn1');
+	var oBtn2 =document.getElementById('btn2');
+	var oBtn3 =document.getElementById('btn3');
+	var oBox1 =document.getElementById('box1');
+	var oBox2 =document.getElementById('box2');
+	// console.log(oBtn1);
+	// console.log(oBtn2);
+	// console.log(oBtn3);
+	// console.log(oBox);
+	
+	// oBtn1.onclick=function(){
+	// 	oBox.style.width='400px';
+	// }
+	// oBtn2.onclick=function(){
+	// 	oBox.style.height='400px';
+	// }
+	// oBtn3.onclick=function(){
+	// 	oBox.style.background='red';
+	// }
+
+	// function css(style,value){   //单一修改样式 使用函数的参数;
+	// 	oBox.style.width='400px';
+	// }
+	// oBtn1.onclick=function(){
+	// 	css();
+	// }
+	// oBtn2.onclick=function(){
+	// 	oBox.style.height='400px';
+	// }
+	// oBtn3.onclick=function(){
+	// 	oBox.style.background='red';
+	// }
+	function css(obj,attr,value){    //多样式修改样式 使用函数的参数;
+		obj.style[attr]=value;
+	}
+	oBtn1.onclick=function(){
+		css(oBox1,'width','400px');
+		css(oBox2,'width','400px');
+	}
+	oBtn2.onclick=function(){
+		css(oBox1,'height','400px')
+		css(oBox2,'height','400px')
+	}
+	oBtn3.onclick=function(){
+		css(oBox1,'background','red');
+		css(oBox2,'background','red');
+	}
+</script>
+</html>

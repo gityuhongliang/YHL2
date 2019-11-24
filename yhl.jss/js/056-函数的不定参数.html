@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>056-函数的不定参数.html</title>
+	<script>
+		function sum(){
+			// alert('ll')
+			var result =0;
+			for(var i=0;i<arguments.length;i++){  //arguments是一个参数数组，能获取函数中的参数
+				result =arguments[i]+result;   //0+arguments[参数n]
+				console.log(result)
+			}
+			alert(result)	
+		}
+		sum(1,2,3,4);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
