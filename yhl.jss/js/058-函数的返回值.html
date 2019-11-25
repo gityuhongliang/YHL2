@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> 058-函数的返回值.html</title>
+	 <script>
+	 	function sum(){
+	 		if (arguments[i] == 0) {    //在函数中遇见return，函数就不会再执行 下面sum值改为0测试
+	 			return;
+	 		}
+	 		var result = 0;
+	 		for(var i=0;i<arguments.length;i++){
+	 			result =arguments[i]+result;
+	 		}
+	 		// alert(result);
+	 		return(result);          //在函数体内通过return把函数的执行结果返回
+	 		// return	 			    //没有返回值或者只有return的函数返回值是undefined
+	 	}
+	 	// sum(1,2,3);
+
+	 	var res = sum(1,2,3)  			//函数的返回值是在调用的时候获取的
+	 	console.log(res) 
+	 </script>
+</head>
+<body>
+	
+</body>
+</html>

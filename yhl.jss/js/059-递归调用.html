@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>递归调用</title>
+	<script>
+		//5! = 5 * 4 * 3 * 2 * 1
+		function fact(n){
+			if (n == 1) {   //递归调用必须要有终止条件,否则就会爆栈
+				return 1
+			}
+			return n *arguments.callee(n-1);  //递归调用中的函数可以使用arguments.callee来代替
+		}
+		// fact(5);
+		// var res =fact(5)
+		console.log(fact(5));
+		var fact2=fact;
+		
+		fact=1;   //配合arguments.callee代替fact即可解决fact=1函数不能执行的问题；
+
+		console.log(fact2(5));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

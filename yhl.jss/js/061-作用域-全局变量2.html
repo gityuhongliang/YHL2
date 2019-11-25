@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域-全局2</title>
+	<script>
+		var a = 1;    //定义在所有函数外面,所有的函数都可以使用的变量 
+		function fn1(){
+			var a = 2;    
+			console.log(a);
+			function fn2(){
+				console.log(a);
+				function fn3(){
+					console.log(a);
+				}
+				fn3()
+			}
+			fn2()
+		}
+		console.log('global1',a);  //注意global1在fn1调用函数前执行所以打印为1
+		fn1()
+		console.log('global2',a);   //注意global2在fn1调用函数后执行所以打印为1
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域的决定</title>
+	<script>
+		// var age = 1;
+		// function fn(){
+		// 	var age = 2;
+		// 	return age;
+		// }
+		// alert(age); 
+		// alert(fn());
+		var a = 1;
+		function fn(){
+			
+			console.log('t1',a);
+
+		}
+		function show(){
+			var a = 32;
+			fn()
+		}
+		show();
+	</script>
+<body>
+</head>
+	
+</body>
+</html>

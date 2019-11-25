@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>062-作用域-局部变量.html</title>
+	<script>
+		
+		function fn(){
+			var a = 1;   //定义在函数的内部,只能在函数内部或者函数的子函数中使用
+			console.log(a);
+		}
+		fn()
+		console.log('global',a) //因为定义在函数内部，所以这里会报错找不到a的值。
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
