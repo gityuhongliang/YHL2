@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>074-DOM-节点类型.html</title>
+</head>
+<body>
+	<ul id="up">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('up');
+	var aNodes =oUl.childNodes;
+	console.log(aNodes); 
+	var result =[];
+		for(var i=0; i<aNodes.length;i++){  //遍历数组aNodes
+			if (aNodes[i].nodeType == 1) { // 元素节点nodeType属性的值为1
+			//在数组aNodes中利用nodeType 找到数组某一项文档类型值全等比较=1的话添加到result数组中去
+				result.push(aNodes[i])
+			}
+			// console.log(aNodes[i])
+		}
+		console.log(result);
+		
+</script>
+</html>

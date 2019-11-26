@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>075-DOM-获取子节点.html</title>
+</head>
+<body>
+	<ul id="up">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+<script>
+	var oUl =document.getElementById('up');
+	var aNodes=oUl.childNodes;//返回一个数组,包含父节点中的所有文本节点和元素节点
+	var adren=oUl.children;//返回一个数组, 包含父节点中的所有元素节点
+	var aglobal1=oUl.firstChild;//不区分类型，指向childNodes中的第一个
+	var aglobal2=oUl.lastChild;//不区分类型，指向childNodes中的最后一个
+	var afirst=oUl.firstElementChild;//区分类型 获取元素节点，指向childNodes中的第一个
+	var alast=oUl.lastElementChild;//区分类型 获取元素节点，指向childNodes中的最后一个
+	console.log(aNodes);
+	console.log(adren);
+	console.log(aglobal1);
+	console.log(aglobal2);
+	console.log(afirst);
+	console.log(alast);
+</script>
+</html>

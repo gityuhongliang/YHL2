@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定义数组</title>
+	<script>
+		var arr1 = new Array(1,2,3,4,5,'6','7',true);//方法1 通过Array构造函数
+													//数组中可以存放不同类型的数据
+		var arr2 =[1,2,3,4,5,'6','7',true];//方法2 通过数组字面量
+													////数组中可以存放不同类型的数据
+		console.log(arr1);
+		console.log(arr2);
+		console.log(arr1[1]);//可以通过下标来访问数组中的元素 数组的下标是从0开始的所以1是2
+		console.log(arr1.length);//可以通过数组的length属性获取到数组的长度
+		arr1.push(5,6,7);
+		console.log(arr1);//数组不需要在定义时确定长度, 后续可以动态增长
+		arr2.length = 5;
+		console.log(arr2); //可以改变数组的length属性,改变后的值是数组的实际长度,可以通过这种方法清空数组
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

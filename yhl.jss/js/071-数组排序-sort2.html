@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sort2</title>
+	<script>
+		var arr = [1,3,5,40,7,10,8,30,50,2,4];//sort()方法定义数组排序规则
+		arr.sort(function(n1,n2){
+			if (n1<n2) {
+				return -1;      //负数向后；
+			}else if(n1>n2){
+				return 1;		//正数向前；
+			}else{				
+				return 0;		//为0不动；
+			}
+
+			// return n1-n2;  //简化写法 原理是n1-n2为负数说明n1小于n2, n1-n2是正数说明n1大于n2
+		});
+		console.log(arr);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
