@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>075-封装通过类名获取元素函数.html</title>
+</head>
+<body>
+	<ul id="up">
+		<li class="item"></li>
+		<li></li>
+		<li class="item"></li>
+		<li></li>
+		<li class="item"></li>
+		<li></li>
+	
+	</ul>
+	<div id="down">
+	<div class="box"></div>
+	<div></div>
+	<div class="box"></div>
+	<div></div>
+	</div>
+</body>
+<script>
+	// var oUL =document.getElementsByClassName('up');
+	// console.log(oUL)
+	var oUL =document.getElementById('up');
+	var oBox =document.getElementById('down');
+	function fn(parentNode,className1){  //从哪里的元素，获取的类名
+		var aEl =parentNode.children;   //获取元素中的所有子元素
+		var result=[];
+		for(var i=0; i<aEl.length;i++){   //循环aEi中所有的子元素
+			
+			if (aEl[i].className == className1) {  //比较aEi中所有的子元素和传进来的类名 
+				result.push(aEl[i])  //添加到获取的空数组中
+			}
+		}
+		return result //返回
+	}
+	fn(oUL,'item')
+	var res=fn(oUL,'item'); //元素,类名
+	console.log(res);
+	var oDown =fn(oBox,'box');
+	console.log(oDown);
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>079-DOM-获取兄弟节点.html</title>
+</head>
+<body>
+	<ul>
+		<li></li>		
+		<li></li>		
+		<li id="son"></li>		
+		<li></li>		
+		<li></li>		
+	</ul>
+</body>
+<script>
+	var aLi =document.getElementById('son');
+	console.log(aLi)
+	console.log(aLi.previousSibling);  //不区分元素节点和文本节点，获取兄弟节点的上一个节点
+	console.log(aLi.nextSibling); //不区分元素节点和文本节点，获取兄弟节点的下一个节点
+	console.log(aLi.previousElementSibling);//区分元素节点和文本节点，获取兄弟节点的上一个节点
+	console.log(aLi.nextElementSibling);//区分元素节点和文本节点，获取兄弟节点的下一个节点
+</script>
+</html>

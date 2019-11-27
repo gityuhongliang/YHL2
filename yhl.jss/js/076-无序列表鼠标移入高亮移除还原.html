@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>076-无序列表鼠标移入高亮移除还原.html</title>
+</head>
+<body>
+	<ul id="up">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+	</ul>
+</body>
+<script>
+	var oUl=document.getElementById('up');  //获取id为up的元素
+	var aLi=oUl.children                   //使用children获取aLi的所有子元素
+	console.log(aLi)
+	for(var i=0;i<aLi.length;i++){  //for循环遍历aLi的数组
+		if (i%2) {                      //if判断i模2的值
+			aLi[i].style.backgroundColor='red' 
+		}else{
+			aLi[i].style.backgroundColor='green'
+		}
+		// var res;                             //存一个移入时aLI【i】的值
+		// aLi[i].onmouseover=function(){
+		// 	res=this.style.backgroundColor;     //写在函数中调用时使用
+		// 	this.style.backgroundColor='blue'
+		// }
+		// aLi[i].onmouseout=function(){
+		// 	this.style.backgroundColor=res
+		// }
+
+		aLi[i].onmouseover=function(){
+			this.color=this.style.backgroundColor;   
+			this.style.backgroundColor='blue'
+		}
+		aLi[i].onmouseout=function(){
+			this.style.backgroundColor=this.color
+		}
+	}
+
+</script>
+</html>

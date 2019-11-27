@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性操作</title>
+</head>
+<body>
+	<input type="text" id="text1">
+	<input type="button" id="btn1" value="获取">
+	<textarea name="" id="area" cols="30" rows="10"></textarea>
+</body>
+<script>
+	var oText1 =document.getElementById('text1')
+	var oBtn1 =document.getElementById('btn1')
+	var oArea =document.getElementById('area')
+	
+	oBtn1.onclick=function(){   
+		// var val =oText1.value;   //获取属性的值 oNode.属性名称
+		// console.log(val)
+		// var val =oText1['value']; //获取属性的值 oNode["属性名称"]
+		// console.log(val)
+		// var val =oText1.getAttribute("value"); 
+		// console.log(val)；
+		//获取属性的值oNode.getAttribute(名称),有属性获取值,没有属性返回null 
+		//只能获取在节点中有的属性值 且能获取到自定义属性
+		var val =oText1.value ="ffff";
+	}
+
+</script>
+</html>
