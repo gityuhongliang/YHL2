@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>081-DOM-节点操作.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var oDiv =document.createElement('div');
+	console.log(oDiv);
+	 //该方法会返回一个DOM节点,创建的元素并不会插入到页面
+	 //需要用追加或者插入方法来将新创建的元素插入到页面
+	document.body.appendChild(oDiv);
+	// 将指定节点追加到父节点的最后面
+	// appendChild会把要追加的节点从原父节点中删除,(删除原来的重新添加进去)
+	
+</script>
+</html>

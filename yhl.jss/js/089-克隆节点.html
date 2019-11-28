@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>089-克隆节点.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="cloneNode(false)" id="btn1">
+	<input type="button" value="cloneNode(true)" id="btn2">
+	<div  class="son">
+		box
+	</div>
+</body>
+<script>
+	var oBtn1 =document.getElementById('btn1');
+	var oBtn2 =document.getElementById('btn2');
+	var oBox =document.querySelector('.son')
+	oBtn1.onclick=function(){
+		var newBox= oBox.cloneNode(false);  //浅拷贝  不拷贝内容 默认flase
+		document.body.appendChild(newBox)
+	}
+	oBtn2.onclick=function(){
+		var newBox= oBox.cloneNode(true);
+		document.body.appendChild(newBox)
+	}
+</script>
+</html>

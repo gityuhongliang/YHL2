@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>删除元素</title>
+</head>
+<body>
+	<ul>
+		<li>1<a href="#">删除</a></li>
+		<li>2<a href="#">删除</a></li>
+		<li>3<a href="#">删除</a></li>
+		<li>4<a href="#">删除</a></li>
+		<li>5<a href="#">删除</a></li>
+		<li>6<a href="#">删除</a></li>
+		<li>7<a href="#">删除</a></li>
+		<li>8<a href="#">删除</a></li>
+		<li>9<a href="#">删除</a></li>
+		<li>10<a href="#">删除</a></li>
+	</ul>
+</body>
+<script>
+	var aA =document.getElementsByTagName('a');
+	var aLi =aA.parentNode
+	console.log(aA)
+	for(var i=0;i<aA.length;i++){
+		aA[i].onclick=function(){
+			// this.parentNode.style.display='none';  //利用获取父节点parentNode
+			// this.parentNode.parentNode.removeChild(this.parentNode)
+			this.parentNode.parentNode.removeChild(aLi)
+		}
+	}
+</script>
+</html>
