@@ -19,22 +19,23 @@
 <script>
 	var oUl1 =document.getElementById('ul1');
 	var oBtn =document.getElementById('btn');
-	var aLi  =oUl1.children;
-	console.log(aLi);
+	var aLi  =oUl1.children;   //获取对象oUl中的所有元素节点
+	// console.log(aLi);
 	oBtn.onclick=function(){
-		var result=[];
+		var result=[];      ////初始化目标数组为空数组用来存放去除重复后的值
 		for(var i=0;i<aLi.length;i++){
-			result.push(aLi[i]);
+			result.push(aLi[i]); //添加获取aLi[i]的值到result数组中去
 			// console.log(aLi[i])
 		}
-		// result.sort(function(n1,n2){
-		// 	return n1.innerHTML =n2.innerHTML;
+		// result.sort(function(n1,n2){   //使用sort方法对数组进行排序（result是真数组）
+		// 	return n1.innerHTML - n2.innerHTML; //使用innerHTML使它们的以内容值来排序
 		// })
-		var res =result.sort(function(n1,n2){
-			return n1.innerHTML - n2.innerHTML;
+		var res =result.sort(function(n1,n2){  //使用sort方法对数组进行排序（result是真数组）
+			return n1.innerHTML - n2.innerHTML;//使用innerHTML使它们的以内容值来排序
 		})
-		for (var j = 0; j <res.length; j++) {
-			oUl1.appendChild(res[i])
+		console.log(res)
+		for (var j=0; j<res.length;j++) {
+			oUl1.appendChild(res[j])   //使用appendChild方法使res经过排序后的节点插入到oUl里面
 		}
 	}
 </script>
