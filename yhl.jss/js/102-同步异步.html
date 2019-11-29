@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>同步异步</title>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn">
+</body>
+<script>
+	var oBtn =document.getElementById('btn');
+
+	var i  = 0;  //同步任务
+
+	oBtn.onclick=function(){  //异步任务，任务队列，只要异步任务有了运行结果,就在"任务队列"之中放置一个事件。
+		i++;
+		console.log(i);
+	}
+
+	setTimeout(function(){    //异步任务
+		console.log(i);
+	},2000)
+
+
+	i++;  //同步任务
+    
+
+    // 总结：先执行同步任务i++此时i值为1，异步任务进入任务队列 如果点击事件比延定时器执行前先点击那么值i++为
+</script>
+</html>

@@ -34,7 +34,7 @@
 <script>
 	var oTxt =document.getElementById('txt');
 	var oBtn =document.getElementById('btn');
-	var oUl =document.getElementById('up');
+	var oUl  =document.getElementById('up');
 	
 	oBtn.onclick=function(){
 		var val=oTxt.value
@@ -46,9 +46,10 @@
 		oUl.appendChild(oLi);
 		oLi.appendChild(oA)
 		oA.onclick=function(){
-			this.parentNode.parentNode.removeChild(this.parentNode)
+			// this.parentNode.parentNode.removeChild(this.parentNode)
+			oUl.removeChild(oLi);
 		}
-		
+		oTxt.value="";
 	}
 </script>
 </html>

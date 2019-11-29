@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关闭定时器</title>
+</head>
+<body>
+	<input type="button" value="关闭延迟型定时器" id="btn1">
+	<input type="button" value="关闭循环定时器" id="btn2">
+</body>
+<script>
+	var oBtn1=document.getElementById('btn1');
+	var oBtn2=document.getElementById('btn2');
+	
+
+	var time =0;   //定义定时器的id值为time  id为整型数字；
+	time = setTimeout('console.log(123)',2000);
+	var res =1;    //定义定时器的id值为time  id为整型数字
+	res = setInterval('console.log(456)',2000);
+	oBtn1.onclick=function(){
+		
+		clearTimeout(time)   //关闭延迟型定时器
+	}
+	oBtn2.onclick=function(){
+		clearInterval(res)   //关闭循环型定时器
+	}
+</script>
+</html>

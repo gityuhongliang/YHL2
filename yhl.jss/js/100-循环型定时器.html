@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>100-循环型定时器.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// console.log(123);
+	// setInterval('console.log(123)',2000); //setInterval(函数或者代码字符串,时间)开启延迟型定时器
+
+
+	// function fn(){
+	// 	console.log(123);
+	// }
+	// setInterval(fn,2000);   //setInterval(函数或者代码字符串,时间)开启延迟型定时器
+
+
+	setInterval(function(){  //setInterval(函数或者代码字符串,时间)开启延迟型定时器
+		console.log(123);
+	},2000)
+
+	var res =setInterval('console.log(123)',3000)
+	console.log(res);   //返回一个唯一的整型数字代表定时器的ID
+</script>
+</html>
