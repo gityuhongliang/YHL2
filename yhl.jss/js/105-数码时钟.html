@@ -21,18 +21,69 @@
 </head>
 <body>
 	<div id="box">
-		20:20:20
+		
 	</div>
 </body>
 <script>
-	var oBox =document.getElementById('box');
-	var today =new Date();
-	var iHours =today.getHours();
-	var iMinutes =today.getMinutes();
-	var iSeconds =today.getSeconds();
-	var time=iHours+':'+iMinutes+':'+iSeconds;
-	oBox.innerHTML=time;
+	var oBox =document.getElementById('box');//获取box元素；
+	
+	setInterval(function(){    //定义一个循环型定时器用于循环执行下面的任务
+		var today =new Date(); //Date对象可以拿到当前的时间
+		var iHours =today.getHours();  //给todady使用 getHours()返回指定日期对象的小时。
+		if (iHours<10) {
+			iHours='0'+iHours; 
+		}
+		var iMinutes =today.getMinutes();
+		// getMinutes() 返回指定日期对象的分钟数
+		if (iMinutes<10) {
+			iMinutes='0'+iMinutes;
+		}
+		var iSecond =today.getSeconds();
+		// getSeconds() 返回指定日期对象的秒数。
+		if (iSecond<10) {
+			iSecond='0'+iSecond;
+		}
+		var time=iHours+':'+iMinutes+':'+iSecond; //定义time值为。。。。
+		oBox.innerHTML=time;//给oBox的内容值赋给time
+	},1000)
 
-	console.log(time);
+
+	//可以在页面中再写一遍，同步先执行一遍获取到，就不会出现刷新黑一秒
+		// var oBox =document.getElementById('box');
+		// var today =new Date();
+		// var iHours =today.getHours();
+		// if (iHours<10) {
+		// 	iHours='0'+iHours; 
+		// }
+		// var iMinutes =today.getMinutes();
+		// if (iMinutes<10) {
+		// 	iMinutes='0'+iMinutes;
+		// }
+		// var iSeconds =today.getSeconds();
+		// if (iSecond<10) {
+		// 	iSecond='0'+iSecond;
+		// }
+		// var time=iHours+':'+iMinutes+':'+iSeconds;
+		// oBox.innerHTML=time;
+		// var oBox =document.getElementById('box');
+		// function fn(){
+		// 	var today =new Date();
+		// 	var iHours =today.getHours();
+		// 	if (iHours<10) {
+		// 		iHours='0'+iHours; 
+		// 	}
+		// 	var iMinutes =today.getMinutes();
+		// 	if (iMinutes<10) {
+		// 		iMinutes='0'+iMinutes;
+		// 	}
+		// 	var iSeconds =today.getSeconds();
+		// 	if (iSecond<10) {
+		// 		iSecond='0'+iSecond;
+		// 	}
+		// 	var time=iHours+':'+iMinutes+':'+iSeconds;
+		// 	oBox.innerHTML=time;
+		// }
+		// setInterval(fn,1000)
+		// fn()
 </script>
 </html>
