@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #000;
+		}
+		#time{
+			text-align:center;
+			margin-top: 100px;
+			font-size: 60px;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div id="time">
+		
+	</div>
+</body>
+<script>
+	var oBox =document.getElementById('time');
+	var res =new Date('2019/12/1 15:00:00');
+	// Date.now()方法返回自 1970-1-1 00:00:00  UTC (世界标准时间)至今所经过的毫秒数。
+	       // 	oBox.innerHTML=oTxt;//给oBox的内容值赋给oTxt
+		var aA=0;
+		
+		function fn(){
+			function to2str(num){
+					if (num<10) {
+						return '0'+num
+					}else{
+						return ''+num
+					}
+				}
+		var oTime = Date.now();
+		var end =  parseInt((res-oTime)/1000)
+			if (end<=0) {
+				clearInterval(aA)
+				end=0
+			}
+		// console.log(end);
+		var hour =parseInt(end/3600); //3600是一小时有3600秒得到一个小时多 为1
+		// console.log(hour)
+		var minute =parseInt((end%3600)/60) //%得到除去3600一小时剩下的秒 然后除以60秒得到剩下的分钟
+		// console.log(minute)
+		var second = (end%3600)%60
+		// console.log(second)
+		var oTxt ="距离结束还有"+to2str(hour)+"时"+to2str(minute)+"分"+to2str(second)+"秒"  //定义oTxt值为。。。。
+		oBox.innerHTML=oTxt
+	} 
+		aA=setInterval(fn,1000)
+		fn()
+	
+
+</script>
+</html>

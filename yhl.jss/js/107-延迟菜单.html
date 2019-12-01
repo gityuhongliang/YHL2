@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>107-延迟菜单.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 500px;
+			margin: 100px auto;
+		}
+		#left{
+			width: 150px;
+			height: 300px;
+			background-color: red;
+			float: left;
+		}
+		#right{
+			width: 300px;
+			height: 300px;
+			background-color: green;
+			float: right;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="left"></div>
+		<div id="right"></div>
+	</div>
+</body>
+<script>
+	
+	// 获取元素
+	var oBox1 =document.getElementById('left');
+	var oBox2 =document.getElementById('right');
+	var time;
+	// console.log(oBox1)
+	// console.log(oBox2)
+	//鼠标移入左边盒子，右边盒子显示；
+	oBox1.onmouseover=function(){
+		clearTimeout(time)
+		oBox2.style.display="block"
+	}
+	//鼠标移出左边盒子，右边盒子消失；
+	oBox1.onmouseout=function(){
+		time=setTimeout(function(){
+			oBox2.style.display="none"
+		},500)
+	}
+	//鼠标移入右边盒子，保持显示
+	oBox2.onmouseover=function(){
+		clearTimeout(time);
+		oBox2.style.display="block"
+	}
+	//
+	oBox2.onmouseout=function(){
+		time=setTimeout(function(){
+			oBox2.style.display="none"
+		},500)
+	}
+
+</script>
+</html>
