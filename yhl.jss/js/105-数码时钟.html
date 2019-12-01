@@ -86,10 +86,10 @@
 			var iMinutes =today.getMinutes();
 			var iSeconds =today.getSeconds();
 			var time=to2str(iHours)+to2str(iMinutes)+to2str(iSeconds);
-			
+			// console.log(time.charAt(1))
 
 			for(var i=0; i<res.length;i++){
-				res[i].src="../imges/"+res.charAt(i)+".png"
+				res[i].src="../imges/"+time.charAt(i)+".png"  //time charat方法获取time实时的时间
 			}
 		}
 		
