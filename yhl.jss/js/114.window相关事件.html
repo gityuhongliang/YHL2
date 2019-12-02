@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>114.window相关事件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3001px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	var i=0;
+	window.onload=function(){   //页面加载完毕后触发
+		console.log(++i)
+	}
+	window.onresize=function(){   //窗口大小发生变化触发
+		console.log(++i)
+	}
+	window.onscroll=function(){   //拖动滚动条触发
+		console.log(++i)
+	}
+</script>
+</html>

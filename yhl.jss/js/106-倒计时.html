@@ -26,13 +26,13 @@
 </body>
 <script>
 	var oBox =document.getElementById('time');
-	var res =new Date('2019/12/1 15:00:00');
+	var res =new Date('2019/12/3 15:00:00');
 	// Date.now()方法返回自 1970-1-1 00:00:00  UTC (世界标准时间)至今所经过的毫秒数。
 	       // 	oBox.innerHTML=oTxt;//给oBox的内容值赋给oTxt
 		var aA=0;
 		
 		function fn(){
-			function to2str(num){
+			function to2str(num){         //if判断num的值小于10则添加0字符串
 					if (num<10) {
 						return '0'+num
 					}else{
@@ -41,7 +41,7 @@
 				}
 		var oTime = Date.now();
 		var end =  parseInt((res-oTime)/1000)
-			if (end<=0) {
+			if (end<=0) {                       //if判断end值为0时 停止循环定时器 且end=0
 				clearInterval(aA)
 				end=0
 			}
@@ -50,7 +50,7 @@
 		// console.log(hour)
 		var minute =parseInt((end%3600)/60) //%得到除去3600一小时剩下的秒 然后除以60秒得到剩下的分钟
 		// console.log(minute)
-		var second = (end%3600)%60
+		var second = (end%3600)%60 
 		// console.log(second)
 		var oTxt ="距离结束还有"+to2str(hour)+"时"+to2str(minute)+"分"+to2str(second)+"秒"  //定义oTxt值为。。。。
 		oBox.innerHTML=oTxt

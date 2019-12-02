@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>轮播图</title>
+	<title>轮播图2</title>
 	<style>
 		*{
 			margin: 0;
@@ -17,21 +17,31 @@
 			left:300px;
 			width: 1226px;
 			height: 460px;
+			/*overflow: hidden;*/
 		}
-	
-		.carousel .carousel-item{
+		.carousel-imgs{
+			width: 3678px;
+			height: 100%;
 			position: absolute;
 			top: 0px;
-			left: 0px;
-			transition: all 0.5s;
-
+			left:0px;
 		}
+		.carousel .carousel-item{
+			float: left;
+			transition: all 0.5s;
+		}
+	/*	.carousel .carousel-item:nth-child(2){
+			position: absolute;
+			top: 0px;
+
+			left: 1226px;
+		}*/
 		.carousel .carousel-item img{
 			width: 1226px;
 			height: 460px;
 		}
 		.carousel-item:first-child{
-			z-index: 2;
+			z-index: 10;
 		}
 		.carousel .arrow{
 			position: absolute;
@@ -104,61 +114,17 @@
 	</div>
 </body>
 <script>
-	// 获取元素
-	var aImgli =document.querySelectorAll('.carousel-item');
-	console.log(aImgli);
+	var aImgli=document.querySelectorAll('.carousel-imgs');
 	var oLeft=document.querySelector('.left-arrow');
 	var oRight=document.querySelector('.right-arrow');
 	var oBtn=document.querySelectorAll('.btn-item');
-	var oBox=document.querySelector('.carousel')
-	var time=0;
-	var now=0;   //默认显示的第一张图片的下标
-	// console.log(oLeft);
-	// console.log(oRight);
-	//点击事件右边按钮显示下一张
-	function tab(){
-			// 清空操作
-		for(var i=0;i<aImgli.length;i++){
-			aImgli[i].style.opacity='0'
-			aImgli[i].style.zIndex='0'
-			oBtn[i].className='btn-item'
-		}
-		aImgli[now].style.opacity='1'
-		aImgli[now].style.zIndex='50'
-		oBtn[now].className='btn-item active'
-	}
-
+	var now=0;
+	var t=1266
 	oRight.onclick=function(){
-		now++// now=now+1
-		if (now >aImgli.length-1) {
-		 		now =0;
-		}
-		tab()
-	}
-	//点击事件左边按钮显示上一张
-	oLeft.onclick=function(){
-		now--// now=now+1
-		if (now<0) {
-		 	now=aImgli.length-1;
-		}
-		tab()
-	}
-	//点击底部按钮显示某一张
-	
-	for(var i=0;i<oBtn.length;i++){  //因为上面for循环是局部里面所以这里能继续使用i否则不能使用
-		oBtn[i].index = i            //因为点击事件是异步任务所以这里要存一个i值用来在同步任务
-		oBtn[i].onclick=function(){    
-			now=this.index           //now对应的是每一个图片的下标  等于点击的这个按钮存的i值
-			tab()                      //每点击一个btn按钮调用一次上面tab函数（）
-		}
-	}
-	//自动轮播
-	time=setInterval(oRight.onclick,2000);   //也可以复制点击事件相当于复制一个指针
-	oBox.onmouseover=function(){
-		clearInterval(time);
-	}
-	oBox.onmouseout=function(){
-		time=setInterval(oRight.onclick,2000);
+
+		
+		
+		aImgli.style.left="-1226px"
 	}
 </script>
 </html>

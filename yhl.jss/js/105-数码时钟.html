@@ -70,7 +70,7 @@
 		// }
 		// var time=iHours+':'+iMinutes+':'+iSeconds;
 		// oBox.innerHTML=time;
-		var oBox =document.getElementById('box');
+		var oBox =document.getElementById('box');//获取box元素；
 		var res =oBox.children
 		function to2str(num){
 				if (num<10) {
@@ -81,11 +81,11 @@
 			}
 		function fn(){
 			
-			var today =new Date();
-			var iHours =today.getHours();
-			var iMinutes =today.getMinutes();
-			var iSeconds =today.getSeconds();
-			var time=to2str(iHours)+to2str(iMinutes)+to2str(iSeconds);
+			var today =new Date();//Date对象可以拿到当前的时间
+			var iHours =today.getHours();//给todady使用 getHours()返回指定日期对象的小时。
+			var iMinutes =today.getMinutes(); // getMinutes() 返回指定日期对象的分钟数
+			var iSeconds =today.getSeconds();// getSeconds() 返回指定日期对象的秒数。
+			var time=to2str(iHours)+to2str(iMinutes)+to2str(iSeconds);//定义time值为。。。。
 			// console.log(time.charAt(1))
 
 			for(var i=0; i<res.length;i++){
@@ -94,7 +94,7 @@
 		}
 		
 		fn()
-		setInterval(fn,1000)
+		setInterval(fn,1000) //定义一个循环型定时器用于循环执行下面的任务
 
 </script>
 </html>

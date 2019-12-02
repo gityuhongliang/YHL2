@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>117-js动画正负值.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 150px;
+			height: 150px;
+			background-color: red;
+			position: absolute;
+			top: 30px;
+			left: 0px;
+		}
+		.line{
+			width: 1px;
+			height: 600px;
+			background-color: #000;
+			position: absolute;
+			top: 0px;
+			left: 500px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="开始" id="btn">
+	<div class="box"></div>
+	<div class="line"></div>
+</body>
+<script>
+	var oBtn =document.getElementById('btn'); //获取元素
+	var oBox =document.querySelector('.box');//获取元素
+	var time =0;  //定义定时器的id
+	var oLeft =0;
+	oBtn.onclick=function(){
+		clearInterval(time)
+		time=setInterval(function(){
+			// oBox.style.left=oBox.offsetLeft+10+'px';  //使用offsetLeft获取box每次移动的距离+10
+			if(oBox.offsetLeft<500){
+				oLeft=10;
+			}else if(oBox.offsetLeft>500){
+				oLeft=-10;
+			}
+			oBox.style.left=oBox.offsetLeft+oLeft+'px';
+			if (oBox.offsetLeft == 500) {     //if判断left到500时停止循环定时器 写在下面可以达到最后不会再运行一次定时器
+				clearInterval(time)
+			}
+			
+		},30)
+	}
+</script>
+</html>
