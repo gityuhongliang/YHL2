@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>123-底部固定案例.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 3000px;
+
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oBox =document.getElementById('box');
+	
+	window.onresize=window.onload=window.onscroll=function(){   //拖动滚动条触发
+		var iTop =window.innerHeight - oBox.offsetHeight + getScrollTop();
+		// oBox.style.top=iTop+'px'
+		animate(oBox,'top',iTop)
+	}
+</script>
+</html>

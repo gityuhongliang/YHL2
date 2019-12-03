@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>122-匀速动画封装函数.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 100px;
+			margin: 50px auto;
+		}
+		.father div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			line-height: 100px;
+			text-align:center;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div id="box1">变宽</div>
+		<div id="box2">变高</div>
+		<div id="box3">变透明</div>
+	</div>
+</body>
+<script>
+	function animate(obj,attr,agrment){
+		clearInterval(obj.time)
+		obj.time=setInterval(function(){
+			var iSpeed =0;
+			var current=parseFloat(getComputedStyle(obj,false)['attr'])
+			// console.log(current);
+			if (attr=='opacity') {
+				current=Math.round(current*100);
+			}
+			// console.log(current);
+			if(current<agrment){  
+				iSpeed=6;
+			}else{
+				iSpeed=-6;
+			}
+			if (Math.abs(agrment-current) < Math.abs(iSpeed)) {  
+				obj.style[attr]=1;
+				clearInterval(obj.time)
+			}else{
+				obj.style[attr]=(current + iSpeed)/100;
+			}
+		},30)
+	}
+	clearInterval(oBox2.time)
+		oBox2.time=setInterval(function(){
+			var iSpeed =0;
+			if(oBox2.offsetHeight<500){  
+				iSpeed=6;
+			}else{
+				iSpeed=-6;
+			}
+			if (Math.abs(500-oBox2.offsetHeight) < Math.abs(iSpeed)) {  
+				oBox2.style.height="500px";
+				clearInterval(time)
+			}else{
+				oBox2.style.height=oBox2.offsetHeight + iSpeed + 'px';
+			}
+		},30)
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var oBox3 = document.getElementById('box3');
+	// var time=0;
+	oBox1.onmouseover=function(){
+		clearInterval(oBox1.time)
+		oBox1.time=setInterval(function(){
+			var iSpeed =0;
+			if(oBox1.offsetWidth<500){  
+				iSpeed=6;
+			}else{
+				iSpeed=-6;
+			}
+			if (Math.abs(500-oBox1.offsetWidth) < Math.abs(iSpeed)) {  
+				oBox1.style.width="500px";
+				clearInterval(time)
+			}else{
+				oBox1.style.width=oBox1.offsetWidth + iSpeed + 'px';
+			}
+		},30)
+	}
+	oBox2.onmouseover=function(){
+		
+	}
+		oBox3.onmouseover=function(){
+		animate(oBox1,'opacity',20)
+	}
+
+</script>
+<ml>
