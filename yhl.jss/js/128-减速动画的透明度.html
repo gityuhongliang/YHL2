@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>128-减速动画的透明度.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 150px;
+			height: 150px;
+			background-color: red;
+			position: absolute;
+			top: 30px;
+			left:0px;
+			opacity: 0.5
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="开始" id="btn">
+	<div class="box"></div>
+	<div class="line"></div>
+</body>
+<script>
+	var oBtn =document.getElementById('btn'); //获取元素
+	var oBox =document.querySelector('.box');//获取元素
+	var time =0;  //定义定时器的id
+	oBtn.onclick=function(){
+		clearInterval(time)
+		time=setInterval(function(){
+		var ispeed =0;
+			var current=parseFloat(getComputedStyle(oBox,false)['opacity'])
+			// console.log(current);
+			current=Math.round(current*100);
+			ispeed=(100-current)/10
+			// if(ispeed>0){
+			// 	ispeed=Math.ceil(ispeed)
+			// }else{
+			// 	ispeed=Math.floor(ispeed)
+			// }
+			// ispeed>0 ? ispeed=Math.ceil(ispeed) : ispeed=Math.floor(ispeed);
+			if(!ispeed){  //结束条件 因为速度的值总会为0所以用速度值来当作if判断关闭定时器条件 
+						  //因为0布尔值为false 所以用！改变它的布尔值 让它进入
+				clearInterval(time)
+			}else{
+			 	oBox.style.opacity=(current+ispeed)/100
+			}
+			
+		},30)
+	}
+</script>
+</html>

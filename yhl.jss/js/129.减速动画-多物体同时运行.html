@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>129.减速动画-多物体同时运行.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 100px;
+			margin: 50px auto;
+		}
+		.father div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			line-height: 100px;
+			text-align:center;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div id="box1">变宽</div>
+		<div id="box2">变高</div>
+		<div id="box3">变透明</div>
+	</div>
+</body>
+<script>
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var oBox3 = document.getElementById('box3');
+	// var time=0;
+	oBox1.onmouseover=function(){
+		clearInterval(oBox1.time)
+		oBox1.time=setInterval(function(){
+		var ispeed =0;
+
+			// oBox.style.left=oBox.offsetLeft+10+'px';  //使用offsetLeft获取box每次移动的距离+10
+			ispeed=(500-oBox1.offsetWidth)/10;  //用目标值减去当前值的差来当作速度因为差越来越小所以速度越来越慢
+			ispeed=Math.floor(ispeed)  //取速度值负值小数向上取值
+			// if(ispeed>0){
+			// 	ispeed=Math.ceil(ispeed)
+			// }else{
+			// 	ispeed=Math.floor(ispeed)
+			// }
+			ispeed>0 ? ispeed=Math.ceil(ispeed) : ispeed=Math.floor(ispeed);
+			if(!ispeed){  //结束条件 因为速度的值总会为0所以用速度值来当作if判断关闭定时器条件 
+						  //因为0布尔值为false 所以用！改变它的布尔值 让它进入
+				clearInterval(oBox1.time)
+			}else{
+			 	oBox1.style.width=oBox1.offsetWidth+ispeed+'px';
+			}
+			
+		},30)
+	}
+	oBox2.onmouseover=function(){
+		clearInterval(oBox2.time)
+		oBox2.time=setInterval(function(){
+			var ispeed =0;
+			// oBox.style.left=oBox.offsetLeft+10+'px';  //使用offsetLeft获取box每次移动的距离+10
+			ispeed=(500-oBox2.offsetHeight)/10;  //用目标值减去当前值的差来当作速度因为差越来越小所以速度越来越慢
+			ispeed=Math.floor(ispeed)  //取速度值负值小数向上取值
+			// if(ispeed>0){
+			// 	ispeed=Math.ceil(ispeed)
+			// }else{
+			// 	ispeed=Math.floor(ispeed)
+			// }
+			ispeed>0 ? ispeed=Math.ceil(ispeed) : ispeed=Math.floor(ispeed);
+			if(!ispeed){  //结束条件 因为速度的值总会为0所以用速度值来当作if判断关闭定时器条件 
+						  //因为0布尔值为false 所以用！改变它的布尔值 让它进入
+				clearInterval(oBox2.time)
+			}else{
+			 	oBox2.style.height=oBox2.offsetHeight+ispeed+'px';
+			}
+			
+		},30)
+
+	
+	}
+	oBox3.onmouseover=function(){
+		clearInterval(oBox3.time)
+		oBox3.time=setInterval(function(){
+		var ispeed =0;
+			var current=parseFloat(getComputedStyle(oBox3,false)['opacity'])
+			// console.log(current);
+			current=Math.round(current*100);
+			ispeed=(20-current)/10
+			// if(ispeed>0){
+			// 	ispeed=Math.ceil(ispeed)
+			// }else{
+			// 	ispeed=Math.floor(ispeed)
+			// }
+			ispeed>0 ? ispeed=Math.ceil(ispeed) : ispeed=Math.floor(ispeed);
+			if(!ispeed){  //结束条件 因为速度的值总会为0所以用速度值来当作if判断关闭定时器条件 
+						  //因为0布尔值为false 所以用！改变它的布尔值 让它进入
+				clearInterval(oBox3.time)
+			}else{
+			 	oBox3.style.opacity=(current+ispeed)/100
+			}
+			
+		},30)
+	}
+
+</script>
+<html>

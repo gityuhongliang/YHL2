@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>130.减速动画-封装函数.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 100px;
+			margin: 50px auto;
+		}
+		.father div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			line-height: 100px;
+			text-align:center;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div id="box1">变宽</div>
+		<div id="box2">变高</div>
+		<div id="box3">变透明</div>
+	</div>
+</body>
+<script>
+	function animate1(obj,attr,target){
+		clearInterval(obj.time)
+		obj.time=setInterval(function(){
+		var ispeed =0;
+			var current=parseFloat(getComputedStyle(obj,false)[attr])
+			// console.log(current);
+			if (attr == 'opacity') {
+				current=Math.round(current*100);
+			}
+			
+			ispeed=(target-current)/10
+			// if(ispeed>0){
+			// 	ispeed=Math.ceil(ispeed)
+			// }else{
+			// 	ispeed=Math.floor(ispeed)
+			// }
+			ispeed>0 ? ispeed=Math.ceil(ispeed) : ispeed=Math.floor(ispeed);
+			if(!ispeed){  //结束条件 因为速度的值总会为0所以用速度值来当作if判断关闭定时器条件 
+						  //因为0布尔值为false 所以用！改变它的布尔值 让它进入
+				clearInterval(obj.time)
+			}else{
+				if (attr == 'opacity') {
+					obj.style[attr]=(current+ispeed)/100
+				}else{
+					obj.style[attr]=current+ispeed+'px';
+				}
+			}
+			
+		},30)
+	}
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var oBox3 = document.getElementById('box3');
+	// var time=0;
+	oBox1.onmouseover=function(){
+	animate1(oBox1,'width',300)
+
+	}
+	oBox2.onmouseover=function(){
+	animate1(oBox2,'height',300)
+	
+	}
+	oBox3.onmouseover=function(){
+	animate1(oBox3,'opacity',20)
+	}
+
+</script>
+<html>

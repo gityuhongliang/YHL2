@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>127-减速动画的正负值和结束条件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 150px;
+			height: 150px;
+			background-color: red;
+			position: absolute;
+			top: 30px;
+			left: 800px;
+		}
+		.line{
+			width: 1px;
+			height: 600px;
+			background-color: #000;
+			position: absolute;
+			top: 0px;
+			left: 500px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="开始" id="btn">
+	<div class="box"></div>
+	<div class="line"></div>
+</body>
+<script>
+	var oBtn =document.getElementById('btn'); //获取元素
+	var oBox =document.querySelector('.box');//获取元素
+	var time =0;  //定义定时器的id
+	oBtn.onclick=function(){
+		clearInterval(time)
+		time=setInterval(function(){
+		var ispeed =0;
+
+			// oBox.style.left=oBox.offsetLeft+10+'px';  //使用offsetLeft获取box每次移动的距离+10
+			ispeed=(500-oBox.offsetLeft)/10;  //用目标值减去当前值的差来当作速度因为差越来越小所以速度越来越慢
+			ispeed=Math.floor(ispeed)  //取速度值负值小数向上取值
+			// if(ispeed>0){
+			// 	ispeed=Math.ceil(ispeed)
+			// }else{
+			// 	ispeed=Math.floor(ispeed)
+			// }
+			ispeed>0 ? ispeed=Math.ceil(ispeed) : ispeed=Math.floor(ispeed);
+			if(!ispeed){  //结束条件 因为速度的值总会为0所以用速度值来当作if判断关闭定时器条件 
+						  //因为0布尔值为false 所以用！改变它的布尔值 让它进入
+				clearInterval(time)
+			}else{
+			 	oBox.style.left=oBox.offsetLeft+ispeed+'px';
+			}
+			
+		},30)
+	}
+</script>
+</html>

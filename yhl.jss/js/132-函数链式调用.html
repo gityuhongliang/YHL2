@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>122-匀速动画封装函数.html</title>
-	<style>
+	<title>132-函数链式调用.html</title>
+<style>
 		*{
 			margin: 0;
 			padding: 0;
@@ -30,65 +30,73 @@
 	</div>
 </body>
 <script>
-	function animate(obj,attr,target){
+	function animate1(obj,attr,target,islinear,end){
+		if(islinear==undefined){
+			islinear=true
+		}
 		clearInterval(obj.time)
 		obj.time=setInterval(function(){
+			var iSstop =false
 			var iSpeed =0;
 			var current=parseFloat(getComputedStyle(obj,false)['attr'])
 			// console.log(current);
 			if (attr=='opacity') {
 				current=Math.round(current*100);
 			}
-			// console.log(current);
-			if(current<target){  
-				iSpeed=6;
-			}else{
-				iSpeed=-6;
-			}
-			if (Math.abs(target-current) < Math.abs(iSpeed)) { 
-				if (attr=='opacity') {
-					obj.style[attr]=target/100;
-				} else{
-					obj.style[attr]=target+'px';
+			if(islinear){
+
+				if(current<target){  
+					iSpeed=6;
+				}else{
+					iSpeed=-6;
 				}
+				if (Math.abs(target-current) < Math.abs(iSpeed)) { 
+					if (attr == 'opacity') {
+						obj.style[attr]=target/100;
+					} else{
+						
+						obj.style[attr]=target+'px';
+					}
+					iSstop=true
+				}
+			}else{
+				iSpeed=(target-current)/10
+				iSpeed>0 ? iSpeed=Math.ceil(iSpeed) : iSpeed=Math.floor(iSpeed);
+				if(!iSpeed){  
+					iSstop=true
+				}
+			}
+			if (iSstop) {
+				end()
 				clearInterval(obj.time)
 			}else{
-				if (attr=='opacity') {
-					obj.style[attr]=(current + iSpeed)/100;
+			
+				if (attr == 'opacity') {
+					obj.style[attr]=(current+iSpeed)/100
 				}else{
 					obj.style[attr]=current + iSpeed + 'px';
-
-				}	
+				}
 			}
 		},30)
 	}
-	
+
 	var oBox1 = document.getElementById('box1');
 	var oBox2 = document.getElementById('box2');
 	var oBox3 = document.getElementById('box3');
 	// var time=0;
 	oBox1.onmouseover=function(){
-		clearInterval(oBox1.time)
-		oBox1.time=setInterval(function(){
-			var iSpeed =0;
-			if(oBox1.offsetWidth<500){  
-				iSpeed=6;
-			}else{
-				iSpeed=-6;
-			}
-			if (Math.abs(500-oBox1.offsetWidth) < Math.abs(iSpeed)) {  
-				oBox1.style.width="500px";
-				clearInterval(time)
-			}else{
-				oBox1.style.width=oBox1.offsetWidth + iSpeed + 'px';
-			}
-		},30)
+		animate1(oBox1,'width',300,true,function(){
+			animate1(oBox2,'height',300)
+		})
+
+
 	}
 	oBox2.onmouseover=function(){
 		
+	
 	}
-		oBox3.onmouseover=function(){
-		animate(oBox1,'opacity',20)
+	oBox3.onmouseover=function(){
+		animate1(oBox3,'opacity',20)
 	}
 
 </script>
