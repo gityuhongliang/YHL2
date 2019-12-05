@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>135-事件处理程序.html</title>
+</head>
+<body>
+	<input type="button" value="添加" id="btn1">
+	<input type="button" value="移除" id="btn2">
+</body>
+<script>
+	var oBtn1 =document.getElementById('btn1');
+	var oBtn2 =document.getElementById('btn2');
+	function sayHi(){
+		alert(111)
+	}
+	function fn(){
+		alert(222)
+	}
+	
+	// oBtn1.onclick=sayHi;  //DOM0级
+	//添加事件处理程序:elem.addEventListener(事件名,执行函数,那个阶段调用)
+	//DOM2事件可以为一个事件指定多个执行程序
+	oBtn1.addEventListener('click',sayHi,false)
+	oBtn1.addEventListener('click',fn,false)
+	oBtn1.addEventListener('click',function(){
+		alert(333)
+	},false)
+	oBtn2.onclick=function(){
+	//移除事件处理程序:elem.removeEventListener(事件名,执行函数,那个阶段调用)
+		oBtn1.removeEventListener('click',sayHi,false)
+		oBtn1.removeEventListener('click',fn,false)
+		oBtn1.removeEventListener('click',function(){
+		alert(333)
+		},false)//移除事件监听只能是移除有函数名的，不能移除匿名函数的
+
+	}
+</script>
+</html>

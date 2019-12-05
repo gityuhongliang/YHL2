@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>131-综合动画封装函数</title>
+	<title>133-多值动画.html</title>
 <style>
 		*{
 			margin: 0;
@@ -25,19 +25,17 @@
 <body>
 	<div class="father">
 		<div id="box1">变宽</div>
-		<div id="box2">变高</div>
-		<div id="box3">变透明</div>
 	</div>
 </body>
 <script>
-	function animate1(obj,attr,target,islinear){
+	function animate1(obj,options,islinear,end){
 		if(islinear==undefined){
 			islinear=true
 		}
-		var iSstop =false
 		clearInterval(obj.time)
 		obj.time=setInterval(function(){
-			
+			for(attr in options)
+			var iSstop =false
 			var iSpeed =0;
 			var current=parseFloat(getComputedStyle(obj,false)['attr'])
 			// console.log(current);
@@ -55,7 +53,7 @@
 					if (attr == 'opacity') {
 						obj.style[attr]=target/100;
 					} else{
-
+						
 						obj.style[attr]=target+'px';
 					}
 					iSstop=true
@@ -68,6 +66,7 @@
 				}
 			}
 			if (iSstop) {
+				end()
 				clearInterval(obj.time)
 			}else{
 			
@@ -85,17 +84,16 @@
 	var oBox3 = document.getElementById('box3');
 	// var time=0;
 	oBox1.onmouseover=function(){
-		animate1(oBox1,'height',300,true)
+		animate1(oBox1,'width',300,true,
 
 
 	}
 	oBox2.onmouseover=function(){
-		animate1(oBox2,'height',300)
+		
 	
 	}
 	oBox3.onmouseover=function(){
 		animate1(oBox3,'opacity',20)
 	}
-
-</script>
+	</script>
 <html>

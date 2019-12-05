@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>138-鼠标事件-同时移动多个物体.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			top:0px;
+			left: 0px;
+		}
+		img{
+			width: 100px;
+			height: 100px;
+		}
+		div:nth-child(1){
+			z-index: 100;
+		}
+	</style>
+</head>
+<body>
+	<div><img src="../imges/wushi.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	<div><img src="../imges/huoyan.jpg" alt=""></div>
+	
+</body>
+<script src="js/util.js"></script>
+<script>
+	var aDiv =document.getElementsByTagName('div')
+		console.log(aDiv)
+
+	window.addEventListener('mousemove',function(ev){
+		aDiv[0].style.top=(getScrollTop() + ev.clientY -50) + 'px';
+		aDiv[0].style.left=(getScrollLeft() + ev.clientX -50) + 'px';
+		console.log(ev)
+		// for(var i = 1; i<aDiv.length-1; i++){
+		// 	aDiv[i].style.top=aDiv[i-1].offsetTop+10+'px';
+		// 	aDiv[i].style.left=aDiv[i-1].offsetLeft+10+'px';
+		// }
+		for(var i =aDiv.length-1; i>0; i--){
+			aDiv[i].style.top=aDiv[i-1].offsetTop+10+'px';
+			aDiv[i].style.left=aDiv[i-1].offsetLeft+10+'px';
+		}
+	},false)
+</script>
+</html>

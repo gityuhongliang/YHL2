@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>136-DOM事件流.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box1{
+			width: 150px;
+			height: 500px;
+			background-color: yellow;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="消息" id="btn1">
+	<div id="box1"></div>
+</body>
+<script>
+	var oBtn =document.getElementById('btn1');
+	var oBox =document.getElementById('box1');
+	oBtn.addEventListener('click',function(ev){ //事件流false从下往上 
+		ev.stopPropagation();  //先从具体元素开始然后会传到window会触发下面的window上会变为none所以阻止事件冒泡传递
+		oBox.style.display='block'
+	},false)
+	window.addEventListener('click',function(){
+		oBox.style.display='none'
+	},false)
+	oBox.addEventListener('click',function(ev){
+		ev.stopPropagation();  //因为盒子也是window点击盒子会触发none所以阻止盒子事件冒泡
+	},false)
+
+
+
+	oBox.addEventListener('click',function(){
+		console.log('click','oBox')
+	
+	},false)
+	oBox.addEventListener('click',function(){
+		console.log('click','oBox')
+	
+	},false)
+	oBox.addEventListener('click',function(){
+		console.log('click','oBox')
+		
+	},false)
+	window.addEventListener('click',function(){
+		console.log('click','oBox')
+	},false)
+</script>
+</html>
