@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>142-基础拖拽-吸附拖拽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			width: 600px;
+			height: 600px;
+			background-color: gray;
+			position: relative;
+			margin: 100px auto;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="box"></div>
+	</div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oBox = document.getElementById('box');
+	var oFather = document.getElementById('father');
+	 oBox.onmousedown=function(ev){
+	 	var disX=ev.clientX - oBox.offsetLeft; //disY =视口里鼠标的位置
+	 	var disY=ev.clientY - oBox.offsetTop;
+		document.onmousemove=function(ev){
+			var l = ev.clientX - disX;
+			var t = ev.clientY - disY;
+			if (l<30){
+		 		l=0;
+		 	}else if(l>oFather.offsetWidth- oBox.offsetWidth -30){
+		 		l=oFather.offsetWidth - oBox.offsetWidth
+		 	}
+		 	if (t<30){
+		 		t=0;
+		 	}else if(t>oFather.offsetHeight- oBox.offsetHeight-30){
+		 		t=oFather.offsetHeight - oBox.offsetHeight
+		 	}
+		 	oBox.style.left= l +'px';
+		 	oBox.style.top= t + 'px';
+		 	
+		 } 
+		document.onmouseup=function(ev){
+			document.onmousemove=null
+			document.onmouseup=null
+		}
+	 }
+	 
+</script>
+</html>

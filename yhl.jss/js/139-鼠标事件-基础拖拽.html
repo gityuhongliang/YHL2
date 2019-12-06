@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>139-鼠标事件-基础拖拽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oBox = document.getElementById('box');
+	 oBox.onmousedown=function(ev){
+	 	var disX=ev.clientX - oBox.offsetLeft; //disY =视口里鼠标的位置
+	 	var disY=ev.clientY - oBox.offsetTop;
+		document.onmousemove=function(ev){
+		 	oBox.style.left=ev.clientX - disX +'px';
+		 	oBox.style.top=ev.clientY - disY + 'px';
+		 } 
+		document.onmouseup=function(ev){
+			document.onmousemove=null
+			document.onmouseup=null
+		}
+	 }
+	 
+</script>
+</html>

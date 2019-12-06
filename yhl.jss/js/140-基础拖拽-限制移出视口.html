@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>140-基础拖拽-限制移出视口.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oBox = document.getElementById('box');
+	 oBox.onmousedown=function(ev){
+	 	var disX=ev.clientX - oBox.offsetLeft; //disY =视口里鼠标的位置
+	 	var disY=ev.clientY - oBox.offsetTop;
+		document.onmousemove=function(ev){
+			var l = ev.clientX - disX;
+			var t = ev.clientY - disY;
+			var r =window.innerWidth - oBox.offsetWidth;
+			// console.log(r)
+			// console.log(window.innerWidth)
+			// console.log(oBox.offsetWidth)
+			var b =window.innerHeight - oBox.offsetHeight;
+			// console.log(b)
+			if (l<0){
+		 		l=0;
+		 	}else if(l>r){
+		 		l=r;
+		 	}
+		 	if (t<0){
+		 		t=0;
+		 	}else if(t>b){
+		 		t=b;
+		 	}
+		 	oBox.style.left= l +'px';
+		 	oBox.style.top= t + 'px';
+		 	
+		 } 
+		document.onmouseup=function(ev){
+			document.onmousemove=null
+			document.onmouseup=null
+		}
+	 }
+	 
+</script>
+</html>
