@@ -23,13 +23,16 @@
 <script>
 	var oBtn =document.getElementById('btn1');
 	var oBox =document.getElementById('box1');
+	//添加事件处理程序:elem.addEventListener(事件名,执行函数,那个阶段调用)
 	oBtn.addEventListener('click',function(ev){ //事件流false从下往上 
 		ev.stopPropagation();  //先从具体元素开始然后会传到window会触发下面的window上会变为none所以阻止事件冒泡传递
 		oBox.style.display='block'
 	},false)
+	//添加事件处理程序:elem.addEventListener(事件名,执行函数,那个阶段调用)
 	window.addEventListener('click',function(){
 		oBox.style.display='none'
 	},false)
+	//添加事件处理程序:elem.addEventListener(事件名,执行函数,那个阶段调用)
 	oBox.addEventListener('click',function(ev){
 		ev.stopPropagation();  //因为盒子也是window点击盒子会触发none所以阻止盒子事件冒泡
 	},false)

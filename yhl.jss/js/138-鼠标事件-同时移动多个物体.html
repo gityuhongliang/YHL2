@@ -93,7 +93,9 @@
 		console.log(aDiv)
 
 	window.addEventListener('mousemove',function(ev){
+		//aDiv的第0个下标的top值等于内容区域上侧的高度+ev上的clientY方法的值
 		aDiv[0].style.top=(getScrollTop() + ev.clientY -50) + 'px';
+		//aDiv的第0个下标的left值等于内容区域左侧的宽度+ev上的clientX方法的值
 		aDiv[0].style.left=(getScrollLeft() + ev.clientX -50) + 'px';
 		console.log(ev)
 		// for(var i = 1; i<aDiv.length-1; i++){
@@ -102,7 +104,10 @@
 		// }
 		for(var i =aDiv.length-1; i>0; i--){
 			aDiv[i].style.top=aDiv[i-1].offsetTop+10+'px';
+		//aDiv的第i个下标的top值等于aDiv第i个下标-1的offsetTop值+10个值的距离
 			aDiv[i].style.left=aDiv[i-1].offsetLeft+10+'px';
+		//aDiv的第i个下标的left值等于aDiv第i个下标-1的offsetleft值+10个值的距离
+			
 		}
 	},false)
 </script>

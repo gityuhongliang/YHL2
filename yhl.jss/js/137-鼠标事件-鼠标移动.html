@@ -28,10 +28,11 @@
 <script src="js/util.js"></script>
 <script>
 	var oBox =document.getElementById('box');
+	//添加事件处理程序:elem.addEventListener(事件名,执行函数,哪个阶段调用)
 	window.addEventListener('mousemove',function(ev){
 		//onmousemove 鼠标移动
-		oBox.style.top=(getScrollTop() + ev.clientY -50) + 'px';
-		oBox.style.left=(getScrollLeft() + ev.clientX -50) + 'px';
+		oBox.style.top=(getScrollTop() + ev.clientY -50) + 'px';//top值等于内容区域上侧的高度+ev上的clientY方法的值
+		oBox.style.left=(getScrollLeft() + ev.clientX -50) + 'px';//left值等于内容区域左侧的宽度+ev上的clientX方法的值
 		console.log(ev)
 	},false)
 </script>

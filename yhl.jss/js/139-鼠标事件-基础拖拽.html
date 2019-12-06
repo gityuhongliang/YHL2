@@ -29,15 +29,17 @@
 <script>
 	var oBox = document.getElementById('box');
 	 oBox.onmousedown=function(ev){
-	 	var disX=ev.clientX - oBox.offsetLeft; //disY =视口里鼠标的位置
-	 	var disY=ev.clientY - oBox.offsetTop;
-		document.onmousemove=function(ev){
-		 	oBox.style.left=ev.clientX - disX +'px';
-		 	oBox.style.top=ev.clientY - disY + 'px';
+	 	console.log(ev.clientY)
+	 	var disX=ev.clientX - oBox.offsetLeft; //disY =（视口里鼠标的位置）-（减去obox元素的左外边框和参考父元素左内边框的距离）得到obox盒子中点击位置距离盒子边框的top值
+	 	var disY=ev.clientY - oBox.offsetTop;//disY =（视口里鼠标的位置）-（减去obox元素的上外边框和参考父元素上内边框的距离）得到obox盒子中点击位置距离盒子边框的left值
+		document.onmousemove=function(ev){ //这里注意是在什么DOM节点 而非box
+	 	console.log('dd',ev.clientY)
+		 	oBox.style.left=ev.clientX - disX +'px';//oBox的left值等于 (鼠标放下时位置值) -（obox盒子中点击位置距离盒子边框的left值) 得到是盒子边框距离视口的left值 随后赋予obox的left值即可得到放下盒子位于哪里
+		 	oBox.style.top=ev.clientY - disY + 'px';//oBox的top值等于 (鼠标放下时位置值) -（obox盒子中点击位置距离盒子边框的top值) 得到是盒子边框距离视口的top值 随后赋予obox的top值即可得到放下盒子位于哪里
 		 } 
-		document.onmouseup=function(ev){
-			document.onmousemove=null
-			document.onmouseup=null
+		document.onmouseup=function(){ //这里注意是在什么DOM节点 而非box
+			document.onmousemove=null  //放下后没有必要存在
+			document.onmouseup=null   //放下后没有必要存在
 		}
 	 }
 	 

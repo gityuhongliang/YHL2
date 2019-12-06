@@ -35,13 +35,13 @@
 		if(islinear==undefined){ 
 			islinear=true
 		}
-		clearInterval(obj.time)
-		obj.time=setInterval(function(){
+		clearInterval(obj.time) //此处关闭定时器是为了循环后防止多次循环所以写在最前面
+		obj.time=setInterval(function(){//开启循环型定时器
 			var iSstop =false//此变量是为了减速动画判断中止条件		
 			var iSpeed =0;
-			var current=parseFloat(getComputedStyle(obj,false)[attr])
+			var current=parseFloat(getComputedStyle(obj,false)[attr]);//获取对象后paseFloat取整得到属性当前值
 			// console.log(current);
-			if (attr=='opacity') {
+			if (attr=='opacity') { //判断属性是否是opacity执行下列
 				current=Math.round(current*100);
 			}
 			//通过if判断isLinear的值，决定执行什么动画
@@ -53,7 +53,7 @@
 					iSpeed=-6;
 				}
 				if (Math.abs(target-current) < Math.abs(iSpeed)) {  //匀速动画的中止条件
-					if (attr == 'opacity') {
+					if (attr == 'opacity') { //判断属性是否是opacity执行下列
 						obj.style[attr]=target/100;
 					} else{
 
@@ -63,7 +63,7 @@
 				}
 			}else{ 
 				//减速动画
-				iSpeed=(target-current)/10
+				iSpeed=(target-current)/10 
 				//决定减速动画的速度
 				iSpeed>0 ? iSpeed=Math.ceil(iSpeed) : iSpeed=Math.floor(iSpeed);
 				if(!iSpeed){   //匀速动画的中止条件 
@@ -74,7 +74,7 @@
 				clearInterval(obj.time)
 			}else{
 			
-				if (attr == 'opacity') {
+				if (attr == 'opacity') { //判断属性是否是opacity执行下列
 					obj.style[attr]=(current+iSpeed)/100
 				}else{
 					obj.style[attr]=current + iSpeed + 'px';
@@ -88,13 +88,13 @@
 	var oBox3 = document.getElementById('box3');
 	// var time=0;
 	oBox1.onmouseover=function(){
-		animate3(oBox1,'width',300,true)
+		animate3(oBox1,'width',300,true) 
 	}
 	oBox2.onmouseover=function(){
-		animate3(oBox2,'height',300)
+		animate3(oBox2,'height',300)//第四个值不传参数默认是false
 	}
 	oBox3.onmouseover=function(){
-		animate3(oBox3,'opacity',20)
+		animate3(oBox3,'opacity',20)//第四个值不传参数默认是false
 	}
 
 </script>

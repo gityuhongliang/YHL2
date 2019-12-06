@@ -31,16 +31,16 @@
 </body>
 <script>
 	function animate2(obj,attr,target){
-		clearInterval(obj.time)
+		clearInterval(obj.time)//此处关闭定时器是为了循环后防止多次循环所以写在最前面
 		obj.time=setInterval(function(){
 		var ispeed =0;
-			var current=parseFloat(getComputedStyle(obj,false)[attr])
+			var current=parseFloat(getComputedStyle(obj,false)[attr])//获取对象后paseFloat取整得到属性当前值
 			// console.log(current);
-			if (attr == 'opacity') {
-				current=Math.round(current*100);
+			if (attr == 'opacity') {//判断属性是否是opacity执行下列
+				current=Math.round(current*100); //透明度值*100比较好运算
 			}
 			
-			ispeed=(target-current)/10
+			ispeed=(target-current)/10 
 			// if(ispeed>0){
 			// 	ispeed=Math.ceil(ispeed)
 			// }else{
@@ -51,8 +51,8 @@
 						  //因为0布尔值为false 所以用！改变它的布尔值 让它进入
 				clearInterval(obj.time)
 			}else{
-				if (attr == 'opacity') {
-					obj.style[attr]=(current+ispeed)/100
+				if (attr == 'opacity') { //判断属性是否是opacity执行下列
+					obj.style[attr]=(current+ispeed)/100 
 				}else{
 					obj.style[attr]=current+ispeed+'px';
 				}
