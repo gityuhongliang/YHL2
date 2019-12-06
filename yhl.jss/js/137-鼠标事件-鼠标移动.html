@@ -29,6 +29,7 @@
 <script>
 	var oBox =document.getElementById('box');
 	window.addEventListener('mousemove',function(ev){
+		//onmousemove 鼠标移动
 		oBox.style.top=(getScrollTop() + ev.clientY -50) + 'px';
 		oBox.style.left=(getScrollLeft() + ev.clientX -50) + 'px';
 		console.log(ev)

@@ -28,52 +28,65 @@
 	</div>
 </body>
 <script>
-	function animate1(obj,options,islinear,end){
-		if(islinear==undefined){
+	function animate1(obj,options,islinear,endFn){
+		//判断如果不传第四个参数的话，默认执行匀速动画
+		if(islinear==undefined){ 
 			islinear=true
 		}
 		clearInterval(obj.time)
 		obj.time=setInterval(function(){
-			for(attr in options)
-			var iSstop =false
-			var iSpeed =0;
-			var current=parseFloat(getComputedStyle(obj,false)['attr'])
-			// console.log(current);
-			if (attr=='opacity') {
-				current=Math.round(current*100);
-			}
-			if(islinear){
-
-				if(current<target){  
-					iSpeed=6;
-				}else{
-					iSpeed=-6;
+			var iSstopAll = true;
+			for(var attr in options){
+				var iSstop =false//此变量是为了减速动画判断中止条件		
+				var iSpeed =0;
+				var current=parseFloat(getComputedStyle(obj,false)[attr])
+				// console.log(current);
+				if (attr=='opacity') {
+					current=Math.round(current*100);
 				}
-				if (Math.abs(target-current) < Math.abs(iSpeed)) { 
-					if (attr == 'opacity') {
-						obj.style[attr]=target/100;
-					} else{
-						
-						obj.style[attr]=target+'px';
+				//通过if判断isLinear的值，决定执行什么动画
+				if(islinear){
+					//匀速动画
+					if(current<options[attr]){//决定匀速动画的速度
+						iSpeed=6;
+					}else{
+						iSpeed=-6;
 					}
-					iSstop=true
+					if (Math.abs(options[attr]-current) < Math.abs(iSpeed)) {  //匀速动画的中止条件
+						if (attr == 'opacity') {
+							obj.style[attr]=options[attr]/100;
+						} else{
+
+							obj.style[attr]=options[attr]+'px';
+						}
+						iSstop=true
+					}else{
+						iSstopAll =false;
+					}
+				}else{ 
+					//减速动画
+					iSpeed=(options[attr]-current)/10
+					//决定减速动画的速度
+					iSpeed>0 ? iSpeed=Math.ceil(iSpeed) : iSpeed=Math.floor(iSpeed);
+					if(!iSpeed){   //匀速动画的中止条件 
+						iSstop=true
+					}else{
+						iSstopAll =false;
+					}
 				}
-			}else{
-				iSpeed=(target-current)/10
-				iSpeed>0 ? iSpeed=Math.ceil(iSpeed) : iSpeed=Math.floor(iSpeed);
-				if(!iSpeed){  
-					iSstop=true
+				if (!iSstop) { //判断是否中止动画
+					if (attr == 'opacity') {
+						obj.style[attr]=(current+iSpeed)/100
+					}else{
+						obj.style[attr]=current + iSpeed + 'px';
+					}
 				}
-			}
-			if (iSstop) {
-				end()
-				clearInterval(obj.time)
-			}else{
-			
-				if (attr == 'opacity') {
-					obj.style[attr]=(current+iSpeed)/100
-				}else{
-					obj.style[attr]=current + iSpeed + 'px';
+				if (iSstopAll) {
+					clearInterval(obj.time)
+					if (typeof endFn == 'function') {
+						endFn();
+					}
+		
 				}
 			}
 		},30)
@@ -84,16 +97,19 @@
 	var oBox3 = document.getElementById('box3');
 	// var time=0;
 	oBox1.onmouseover=function(){
-		animate1(oBox1,'width',300,true,
-
-
+		// animate1(oBox1,'width',300,true,function(){
+		// 	animate1(oBox1,'height',300,true,function(){
+		// 		animate1(oBox1,'opacity',30,true)
+		// 	})
+		// })
+		animate1(oBox1,{width:300,height:300,opacity:50},false)
 	}
-	oBox2.onmouseover=function(){
+	oBox1.onmouseout=function(){
 		
+		
+		
+	}
 	
-	}
-	oBox3.onmouseover=function(){
-		animate1(oBox3,'opacity',20)
-	}
-	</script>
+
+</script>
 <html>

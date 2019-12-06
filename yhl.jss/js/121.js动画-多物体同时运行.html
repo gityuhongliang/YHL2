@@ -35,7 +35,7 @@
 	var oBox3 = document.getElementById('box3');
 	// var time=0;
 	oBox1.onmouseover=function(){
-		clearInterval(oBox1.time)
+		clearInterval(oBox1.time)//如果不设置定时器当前id不能同时运行
 		oBox1.time=setInterval(function(){
 			var iSpeed =0;
 			if(oBox1.offsetWidth<500){  
@@ -52,7 +52,7 @@
 		},30)
 	}
 	oBox2.onmouseover=function(){
-		clearInterval(oBox2.time)
+		clearInterval(oBox2.time)//如果不设置定时器当前id不能同时运行
 		oBox2.time=setInterval(function(){
 			var iSpeed =0;
 			if(oBox2.offsetHeight<500){  
@@ -69,7 +69,7 @@
 		},30)
 	}
 		oBox3.onmouseover=function(){
-		clearInterval(oBox3.time)
+		clearInterval(oBox3.time) //如果不设置定时器当前id不能同时运行
 		oBox3.time=setInterval(function(){
 			var iSpeed =0;
 			var current=parseFloat(getComputedStyle(oBox3,false)['opacity'])

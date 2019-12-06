@@ -34,7 +34,7 @@
 		clearInterval(obj.time)
 		obj.time=setInterval(function(){
 			var iSpeed =0;
-			var current=parseFloat(getComputedStyle(obj,false)['attr'])
+			var current=parseFloat(getComputedStyle(obj,false)[attr])
 			// console.log(current);
 			if (attr=='opacity') {
 				current=Math.round(current*100);
@@ -68,27 +68,13 @@
 	var oBox3 = document.getElementById('box3');
 	// var time=0;
 	oBox1.onmouseover=function(){
-		clearInterval(oBox1.time)
-		oBox1.time=setInterval(function(){
-			var iSpeed =0;
-			if(oBox1.offsetWidth<500){  
-				iSpeed=6;
-			}else{
-				iSpeed=-6;
-			}
-			if (Math.abs(500-oBox1.offsetWidth) < Math.abs(iSpeed)) {  
-				oBox1.style.width="500px";
-				clearInterval(time)
-			}else{
-				oBox1.style.width=oBox1.offsetWidth + iSpeed + 'px';
-			}
-		},30)
+		animate(oBox1,'width',200)
 	}
 	oBox2.onmouseover=function(){
-		
+		animate(oBox2,'height',200)
 	}
-		oBox3.onmouseover=function(){
-		animate(oBox1,'opacity',20)
+	oBox3.onmouseover=function(){
+		animate(oBox3,'opacity',20)
 	}
 
 </script>

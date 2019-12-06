@@ -30,28 +30,29 @@
 	</div>
 </body>
 <script>
-	function animate1(obj,attr,target,islinear){
-		if(islinear==undefined){
+	function animate3(obj,attr,target,islinear){
+		//判断如果不传第四个参数的话，默认执行匀速动画
+		if(islinear==undefined){ 
 			islinear=true
 		}
-		var iSstop =false
 		clearInterval(obj.time)
 		obj.time=setInterval(function(){
-			
+			var iSstop =false//此变量是为了减速动画判断中止条件		
 			var iSpeed =0;
-			var current=parseFloat(getComputedStyle(obj,false)['attr'])
+			var current=parseFloat(getComputedStyle(obj,false)[attr])
 			// console.log(current);
 			if (attr=='opacity') {
 				current=Math.round(current*100);
 			}
+			//通过if判断isLinear的值，决定执行什么动画
 			if(islinear){
-
-				if(current<target){  
+				//匀速动画
+				if(current<target){//决定匀速动画的速度
 					iSpeed=6;
 				}else{
 					iSpeed=-6;
 				}
-				if (Math.abs(target-current) < Math.abs(iSpeed)) { 
+				if (Math.abs(target-current) < Math.abs(iSpeed)) {  //匀速动画的中止条件
 					if (attr == 'opacity') {
 						obj.style[attr]=target/100;
 					} else{
@@ -60,14 +61,16 @@
 					}
 					iSstop=true
 				}
-			}else{
+			}else{ 
+				//减速动画
 				iSpeed=(target-current)/10
+				//决定减速动画的速度
 				iSpeed>0 ? iSpeed=Math.ceil(iSpeed) : iSpeed=Math.floor(iSpeed);
-				if(!iSpeed){  
+				if(!iSpeed){   //匀速动画的中止条件 
 					iSstop=true
 				}
 			}
-			if (iSstop) {
+			if (iSstop) { //判断是否中止动画
 				clearInterval(obj.time)
 			}else{
 			
@@ -85,16 +88,13 @@
 	var oBox3 = document.getElementById('box3');
 	// var time=0;
 	oBox1.onmouseover=function(){
-		animate1(oBox1,'height',300,true)
-
-
+		animate3(oBox1,'width',300,true)
 	}
 	oBox2.onmouseover=function(){
-		animate1(oBox2,'height',300)
-	
+		animate3(oBox2,'height',300)
 	}
 	oBox3.onmouseover=function(){
-		animate1(oBox3,'opacity',20)
+		animate3(oBox3,'opacity',20)
 	}
 
 </script>

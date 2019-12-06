@@ -41,19 +41,16 @@
 		time=setInterval(function(){
 			var iSpeed =0;
 			// oBox.style.left=oBox.offsetLeft+10+'px';  //使用offsetLeft获取box每次移动的距离+10
-			if(oBox.offsetLeft<500){  
+			if(oBox.offsetLeft<500){  //判断匀速动画的速度
 				iSpeed=6;
 			}else{
-				iSpeed=-6;
+				iSpeed=-6;   //优化过后 ispeed可以随意设置值 
 			}
 			
-			// if (oBox.offsetLeft == 500) {     //if判断left到500时停止循环定时器 写在下面可以达到最后不会再运行一次定时器
-			// 	clearInterval(time)
-			// }
-			if (Math.abs(500-oBox.offsetLeft) < Math.abs(iSpeed)) {  
+			if (Math.abs(500-oBox.offsetLeft) < Math.abs(iSpeed)) {  //判断匀速动画的中止条件
 				oBox.style.left="500px";    //关闭定时器判断 当500-去当前值的差小于一次移动距离的值时 直接移动到500px
-											//并且关闭定时器
-				clearInterval(time)
+
+         		clearInterval(time)		//并且关闭定时器
 			}else{
 				oBox.style.left=oBox.offsetLeft + iSpeed + 'px';
 			}
