@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>148-键盘事件-左右移动.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 150px;
+			height: 150px;
+			background-color: red;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox =document.getElementById('box');
+	var ispead =10
+	document.onkeydown=function(ev){
+		console.log(ev.keyCode)
+		if (ev.keyCode == 37) {
+			oBox.style.left=oBox.offsetLeft-ispead +'px';
+		}else if(ev.keyCode == 39){
+			oBox.style.left=oBox.offsetLeft+ispead +'px';
+		}else if (ev.keyCode == 38) {
+			oBox.style.top=oBox.offsetTop-ispead +'px';
+		}else if(ev.keyCode == 40){
+			oBox.style.top=oBox.offsetTop+ispead +'px';
+		}
+	}
+</script>
+</html>

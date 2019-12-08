@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>146-放大镜.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			position: absolute;
+			top: 50px;
+			left: 50px;
+		}
+		#bigBox{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 450px;
+			height: 450px;
+			border: 1px solid #000;
+		}
+		
+		#list{
+			position: absolute;
+			top: 460px;
+			left: 0px;
+			width: 452px;
+			height: 60px;
+		}
+		#list li{
+			list-style: none;
+			float: left;
+			width: 54px;
+			height: 54px;
+			margin-right: 10px;
+			border: 2px solid transparent;
+		}
+		#list li.active{
+			border: 2px solid #f00;
+		}
+		#largeBox{
+			position: absolute;
+			top: 0px;
+			left: 452px;
+			width: 600px;
+			height: 600px;
+			border: 1px solid #000;
+			overflow: hidden;
+			/*display: none;*/
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="bigBox">
+			<img src="../imges/p_b_0001.jpg" alt="">
+			<div id="mask"></div>
+		</div>
+		<ul id="list">
+			<li class="active">
+				<img src="../imges/p_s_0001.jpg" alt="">
+			</li>
+			<li>
+				<img src="../imges/p_s_0002.jpg" alt="">
+			</li>
+			<li>
+				<img src="../imges/p_s_0003.jpg" alt="">
+			</li>
+		</ul>
+		<div id="largeBox">
+			<img src="../imges/p_l_0001.jpg" alt="">
+		</div>
+	</div>
+</body>
+<script>
+	var aList =document.querySelectorAll('#list li');
+	var oImg =document.querySelector('#bigBox img');
+	var oImges=document.querySelector('#largeBox img');
+	// console.log(oImges);
+	for(var i = 0; i<aList.length;i++){
+		aList[i].index=i;
+		aList[i].onmouseover=function(){
+			for(var j =0;j<aList.length;j++){
+				aList[j].className='';
+			}
+			this.className='active'
+			oImg.src="../imges/p_b_000"+(this.index+1)+".jpg";
+			oImges.src="../imges/p_l_000"+(this.index+1)+".jpg";
+		}
+	}
+</script>
+</html>
