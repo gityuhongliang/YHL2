@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>151-愤怒的小鸟.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #ff6700;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		#son{
+			width: 50px;
+			height: 50px;
+			background-color: red;
+			border: 1px solid yellow;
+			position: absolute;
+			top: 0px;
+			left: 50%;
+			margin-left: -25px;
+		}
+		.upline{
+			width: 30px;
+			background-color: #ff6700;
+			position: absolute;
+			top: 0px;
+			left: 100%;
+		}
+		.downline{
+			width: 30px;
+			background-color: #ff6700;
+			position: absolute;
+			bottom: 0px;
+			left: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="son"></div>
+	</div>
+</body>
+<script>
+	function getRandom(min,max){
+		return (min+Math.round((max-min)*Math.random()))
+	}
+	var oBox =document.getElementById('box');
+	var oSon =document.getElementById('son');
+	// console.log(oBox)
+	var iSpead = 0;
+	var oBirdtime = 0;
+	var oHeight =200;
+	clearInterval(oBirdtime)
+	oBirdtime=setInterval(function(){
+		iSpead +=1;
+		var t = oSon.offsetTop + iSpead;
+		if (t<0) {
+			t =0;
+			die()
+		}else if(t>oBox.offsetHeight- oSon.offsetHeight){
+			t=oBox.offsetHeight- oSon.offsetHeight;
+			die()
+		}
+		oSon.style.top=t+ 'px';		
+	},30)
+	document.onkeydown=function(){
+		iSpead=-10;
+	}
+	function die(){
+		clearInterval(oBirdtime);
+	}
+	//生成柱子函数
+	function addline(){
+		var aUp =document.createElement('div');
+		var aDown =document.createElement('div');
+		var h =getRandom(100,200);
+		
+		aUp.style.height=h+'px';
+		aDown.style.height=oBox.offsetHeight - h - oHeight - 2 +'px';
+		aUp.className='upline';
+		aDown.className='downline';
+		oBox.appendChild(aUp);
+		oBox.appendChild(aDown);
+	}
+	addline();
+	//移动柱子的定时器
+	clearInterval(oLinetime)
+	oLinetime=setInterval(function(){},30)
+</script>
+</html>

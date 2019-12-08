@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>152-表单事件.html</title>
+</head>
+<body>
+	<form action="http://www.baidu.com" id="form">
+		<input type="text" id="txt" autocomplete="off">
+		<input type="button" id="btn1" value="提交">
+		<input type="reset" id="btn2" value="重置">
+		<p id="text"></p>
+	</form>
+</body>
+<script>
+	var oTxt =document.getElementById('txt');
+	var oBtn1 =document.getElementById('btn1');
+	var oBtn2 =document.getElementById('btn2');
+	var oForm =document.getElementById('form');
+	var oText =document.getElementById('text');
+	oTxt.onfocus=function(){ //onfocus 表单获取焦点触发
+		console.log('获取焦点触发')
+		oText.innerHTML="请输入3-6位数字"
+		oText.style.color='red'
+	}
+	oTxt.onblur=function(){ //onblur 表单失去焦点触发
+		console.log('失去焦点触发')
+	}
+	oTxt.oninput=function(){ //oninput 输入后触发,不包括功能键
+		console.log('输入后触发')
+		var l=oTxt.value.length;
+		if (l<3 || l>6) {
+			oText.innerHTML="输入错误，请输入3-6位数字"
+			oText.style.color='red'
+		}else{
+			oText.innerHTML="输入正确"
+			oText.style.color='green'
+		}
+	}
+	oTxt.onchange=function(){ //onchange 页面内容有改动,失去焦点后执行
+		console.log('有改动')
+	}
+	oForm.onsubmit=function(){ //onsubmit form表单提交事件
+		console.log('form表单提交')
+	}
+	oForm.onreset=function(){ //onreset form表单重置事件
+		console.log('form表单重置')
+	}
+	oTxt.onkeydown=function(ev){ //在text输入框中的键盘事件所以写onkeydown；
+		console.log(ev.keyCode)
+		if ((ev.keyCode<48 || ev.keyCode >57) && (ev.keyCode<95 || ev.keyCode >105) && ev.keyCode != 8 && ev.keyCode != 37 && ev.keyCode != 39) {
+			return false  //阻止浏览器默认行为
+		}
+	}
+</script>
+</html>

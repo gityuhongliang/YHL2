@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>153.默认行为-自定义右键菜单.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 500px;
+			background-color: red;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox =document.getElementById('box');
+	document.oncontextmenu=function(ev){
+		ev.preventDefault()  //阻止浏览器默认右键菜单弹出
+		oBox.style.display='block'
+		oBox.style.top=ev.clientY +'px'; //top值等于鼠标在视口中的位置
+		oBox.style.left=ev.clientX +'px';//left值等于鼠标在视口中的位置
+	}
+	document.onclick=function(){  //点击document时 display为none
+		oBox.style.display='none'
+	}
+ 	oBox.onclick=function(ev){ //阻止事件冒泡
+ 		ev.stopPropagation(); 
+ 	}
+</script>
+</html>
