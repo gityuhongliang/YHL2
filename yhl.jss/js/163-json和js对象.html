@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>163-json和js对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//json的值不能是函数,js对象的值可以是任意类型
+	var json = '{"name":"tom","age":"18"}';//json的键必须添加双引号,js对象键不用加双引号,但是如果js对象的属性不是一个合法的变量名时需要加双引号
+	var obj = {
+		name:'tom',
+		age:18,
+		sayhi:function(){
+			console.log(11)
+		}
+	}
+	console.log('json',json);
+	console.log('obj',obj);
+	var jsontojs =JSON.parse(json); //json转js对象:JSON.parse(json)
+	var jstojson =JSON.stringify(obj);//js对象转json:JSON.stringify(js对象)
+	console.log('jsontojs',jsontojs);
+	console.log('jstojson',jstojson);
+</script>
+</html>

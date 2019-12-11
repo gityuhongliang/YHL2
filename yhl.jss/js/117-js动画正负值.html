@@ -40,13 +40,14 @@
 		clearInterval(time)
 		time=setInterval(function(){
 			// oBox.style.left=oBox.offsetLeft+10+'px';  //使用offsetLeft获取box每次移动的距离+10
-			if(oBox.offsetLeft<500){  
+			if(oBox.offsetLeft<500){  //判断匀速动画的速度
 				oLeft=10;
 			}else{
 				oLeft=-10;
 			}
 			
-			if (oBox.offsetLeft == 500) {     //if判断left到500时停止循环定时器 写在下面可以达到最后不会再运行一次定时器
+			if (oBox.offsetLeft == 500) { //判断匀速动画的中止条件
+			//if判断left到500时停止循环定时器 写在下面可以达到最后不会再运行一次定时器
 				clearInterval(time)
 			}else{
 				oBox.style.left=oBox.offsetLeft+oLeft+'px';

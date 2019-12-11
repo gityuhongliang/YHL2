@@ -55,7 +55,7 @@
 	var oSon =document.getElementById('son');
 	// console.log(oBox)
 	var iSpead = 0;
-	var oBirdtime = 0;
+	var oBirdtime = 0,oLinetime=0,oLinemoveTimer=0;
 	var oHeight =200;
 	clearInterval(oBirdtime)
 	oBirdtime=setInterval(function(){
@@ -73,25 +73,48 @@
 	document.onkeydown=function(){
 		iSpead=-10;
 	}
-	function die(){
-		clearInterval(oBirdtime);
-	}
 	//生成柱子函数
 	function addline(){
-		var aUp =document.createElement('div');
-		var aDown =document.createElement('div');
-		var h =getRandom(100,200);
-		
-		aUp.style.height=h+'px';
-		aDown.style.height=oBox.offsetHeight - h - oHeight - 2 +'px';
-		aUp.className='upline';
-		aDown.className='downline';
-		oBox.appendChild(aUp);
-		oBox.appendChild(aDown);
+		var oUp = document.createElement('div');
+		var oDown = document.createElement('div');
+		var h = getRandom(100,200);
+		oUp.leftDate = 100;
+		oUp.style.height= h + 'px';
+		oDown.style.height= oBox.offsetHeight - h - oHeight - 2 +'px';
+		oUp.className= 'upline';
+		oDown.className= 'downline';
+		oBox.appendChild(oUp);
+		oBox.appendChild(oDown);
 	}
-	addline();
+	//生成柱子的定时器
+	clearInterval(oLinetime);
+	oLinetime=setInterval(addline,300)
 	//移动柱子的定时器
-	clearInterval(oLinetime)
-	oLinetime=setInterval(function(){},30)
+	clearInterval(oLinemoveTimer);
+	oLinemoveTimer =setInterval(function(){
+		var aUpLine= document.querySelectorAll('.upline');
+		var aDownLine= document.querySelectorAll('.downline');
+
+		for(var i=0;i<aUpLine.length;i++){
+			if (true) {}
+			aDownLine[i].style.left=aUpLine[i].style.left = aUpLine[i].leftDate - 1 + '%';
+			aUpLine[i].leftDate -= 1;
+			if (aUpLine[i].leftDate < -10) {
+				oBox.removeChild(aUpLine[i]);
+				oBox.removeChild(aDownLine[i]);
+			}
+		}
+		
+	},30)
+
+
+
+
+	function die(){
+		clearInterval(oBirdtime);
+		clearInterval(oLinemoveTimer);
+		clearInterval(oLinetime);
+
+	}
 </script>
 </html>

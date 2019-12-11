@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>165-用JS内置的构造函数创建对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arry = new Array();
+
+		arry.name = 'Tom';
+		arry.age = 18;
+		arry.sayHi = function() {
+			console.log("Hello");
+		}
+		console.log(arry);
+		// arry.sort()
+		arry.sort=function(){
+			console.log("Hello1");
+		}
+		arry.sort() //失去之前排序的功能缺点
+
+</script>
+</html>

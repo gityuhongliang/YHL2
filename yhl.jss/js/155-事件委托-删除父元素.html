@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>删除父元素</title>
+</head>
+<body>
+	<input type="button" value="添加元素" id="btn">
+	<ul id="ul1">
+		<li>1<a href="javascript:;">删除</a></li>
+		<li>2<a href="javascript:;">删除</a></li>
+		<li>3<a href="javascript:;">删除</a></li>
+		<li>4<a href="javascript:;">删除</a></li>
+		<li>5<a href="javascript:;">删除</a></li>
+		<li>6<a href="javascript:;">删除</a></li>
+		<li>7<a href="javascript:;">删除</a></li>
+		<li>8<a href="javascript:;">删除</a></li>
+		<li>9<a href="javascript:;">删除</a></li>
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('ul1');
+	var aA = document.getElementsByTagName('a');
+	var oBtn = document.getElementById('btn');
+	// for(i = 0; i<aA.length;i++){
+	// 	// console.log(aA)
+	// 	// aA[i].onclick=function(){
+	// 	// 	oUl.removeChild(this.parentNode)
+	// 	// }
+	// }
+	oUl.onclick=function(ev){  //事件委托是利用了事件冒泡原理,在父元素上监听事件,来处理子元素
+		oUl.removeChild(ev.target.parentNode); //动态添加的DOM元素也可以有事件处理，减少绑定DOM事件 
+	}
+	oBtn.onclick=function(){
+		var oLi=document.createElement('li');
+		var oA=document.createElement('a');
+		oA.href='javascript:;'
+		oA.innerHTML ='删除'
+		oLi.innerHTML ='后来添加的'
+		oUl.appendChild(oLi);
+		oLi.appendChild(oA);
+	}
+</script>
+</html>

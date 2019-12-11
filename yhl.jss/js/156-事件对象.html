@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>156-事件对象.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<input type="text" id="txt">
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	var oText = document.getElementById('txt');
+	oBox.onclick=function(ev){
+		oBox.style.background='blue';
+		console.log(ev)
+	}
+	oText.onkeydown=function(ev){
+		oBox.style.background='yellow';
+		console.log(ev)
+
+	}
+</script>
+</html>

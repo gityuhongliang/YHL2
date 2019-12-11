@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>157-事件对象-共同事件属性.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1<a href="javascript:;">删除</a></li>
+		<li>2<a href="javascript:;">删除</a></li>
+		<li>3<a href="javascript:;">删除</a></li>
+		<li>4<a href="javascript:;">删除</a></li>
+		<li>5<a href="javascript:;">删除</a></li>
+		<li>6<a href="javascript:;">删除</a></li>
+		<li>7<a href="javascript:;">删除</a></li>
+		<li>8<a href="javascript:;">删除</a></li>
+		<li>9<a href="javascript:;">删除</a></li>
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('ul1');
+	var aA = document.getElementsByTagName('a');
+	oUl.onclick=function(ev){
+		console.log('ev.currentTarget',ev.currentTarget)//返回绑定事件的对象
+	}
+	oUl.onclick=function(ev){
+		console.log('ev.target',ev.target)//返回，点击谁触发的事件的对象
+	}
+	oUl.onclick=function(ev){
+		console.log('ev.type',ev.type)//返回，事件类型
+	}
+</script>
+</html>

@@ -37,13 +37,13 @@
 			// console.log(current);
 			current=Math.round(current*100);
 			console.log(current);
-			if(current<20){  
+			if(current<20){    //判断匀速动画的速度
 				iSpeed=6;
 			}else{
 				iSpeed=-6;
 			}
 			
-			if (Math.abs(20-current) < Math.abs(iSpeed)) {  
+			if (Math.abs(20-current) < Math.abs(iSpeed)) {  //判断匀速动画的中止条件
 				oBox.style.opacity=1;
 				clearInterval(time)
 			}else{

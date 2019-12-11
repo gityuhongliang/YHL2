@@ -41,7 +41,7 @@
 		var ispeed =0;
 
 			// oBox.style.left=oBox.offsetLeft+10+'px';  //使用offsetLeft获取box每次移动的距离+10
-			ispeed=(500-oBox.offsetLeft)/10;
+			ispeed=(500-oBox.offsetLeft)/10;//用目标值减去当前值的差来当作速度因为差越来越小所以速度越来越慢
 			ispeed=Math.ceil(ispeed)
 
 			if (oBox.offsetLeft == 500) {     //if判断left到500时停止循环定时器 写在下面可以达到最后不会再运行一次定时器

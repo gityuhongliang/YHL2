@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>160-点击登录跳转蒙版界面.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 260px;
+			height: 500px;
+			background-color: #fff;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -250px;
+			margin-left: -130px;
+			display: none;
+		}
+		#mask{
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.2);
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="btn1" value="登陆">
+	<div id="mask"></div>
+	<div id="box">
+		<input type="text">
+		<input type="button" value="登陆" id="btn2">
+	</div>
+</body>
+<script>
+	var oBox =document.getElementById('box');
+	var oMask =document.getElementById('mask');
+	var oBtn1 =document.getElementById('btn1');
+	var oBtn2 =document.getElementById('btn2');
+	oBtn1.onclick=function(ev){
+		ev.stopPropagation();
+		oMask.style.display='block';
+		oBox.style.display='block';
+	}
+	document.onclick=function(){
+		oMask.style.display='none';
+		oBox.style.display='none';
+	}
+	oBox.onclick=function(ev){
+		ev.stopPropagation();
+	}
+	oBtn2.onclick=function(){
+		window.location='http://www.baidu.com';
+	}
+</script>
+</html>

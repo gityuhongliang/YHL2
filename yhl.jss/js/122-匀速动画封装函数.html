@@ -40,12 +40,13 @@
 				current=Math.round(current*100);
 			}
 			// console.log(current);
-			if(current<target){  
+			//匀速动画
+			if(current<target){  //决定匀速动画的速度
 				iSpeed=6;
 			}else{
 				iSpeed=-6;
 			}
-			if (Math.abs(target-current) < Math.abs(iSpeed)) { 
+			if (Math.abs(target-current) < Math.abs(iSpeed)) {  //匀速动画的中止条件
 				if (attr=='opacity') {
 					obj.style[attr]=target/100;
 				} else{
