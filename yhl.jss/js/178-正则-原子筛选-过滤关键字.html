@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>178-正则-原子筛选.html</title>
+<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" value="发布" id="btn">
+	<ul id="ul1">
+		<li>dd</li>
+	</ul>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oText =document.getElementById('txt');
+	var oBtn =document.getElementById('btn');
+	var oUl =document.getElementById('ul1');
+	oBtn.onclick=function(){
+		console.log(111)
+
+		if (oText.value == '') {
+			return
+		}
+		console.log(111)
+		var val=oText.value;  //1，先获取oText的value值并且赋值给val
+		var oLi=document.createElement('li') //2，生成节点li 并且赋值给oLi
+		// console.log(oLi);
+		var reg=/草泥马|你大爷|死/g
+		oLi.innerHTML =val.replace(reg,'*');  //4，找到oLi添加innerHTML 让oLi（li+内容）变量等于获取oText的value值
+		// oUl.appendChild(oLi)  //3，找到oUL（ul列表）插入oLi（生成的li节点）第4步之后oLi就是li节点加内容了
+		oUl.insertBefore(oLi,oUl.firstChild)  //在父节点中的node2之前插入node1
+		oText.value ='';  //上到下
+		oLi.style.opacity=0;
+		oLi.style.lineHeight=0;
+		
+		animate4(oLi,'lineHeight',30,false,function(){
+			animate4(oLi,'opacity',100,false)
+		})
+		
+
+	}
+</script>
+</html>

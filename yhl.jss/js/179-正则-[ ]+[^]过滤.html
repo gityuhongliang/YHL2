@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>179-正则-[]+[^]过滤.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = 'shdakDSADhao￥$$DS5454545asdsda';
+	var reg =/[a-z]/g;//括号中任意一个原子,可以写区间(闭区间),如[a-z0-9]
+	var reg2 =/[a-zA-Z]/g;//区分大小写
+	var reg3 =/[^a-zA-Z]/g;//取括号选中的原子之外的原子
+	console.log(str.replace(reg,'*'));
+	console.log(str.replace(reg2,'*'));
+	console.log(str.replace(reg3,'*'));
+</script>
+</html>

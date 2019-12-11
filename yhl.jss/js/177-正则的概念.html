@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>177-正则的概念.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = '$hhh. * + ? $ ^ |:! \ /() {} []';
+	var reg =/$/;
+	var reg2 =/\$/;
+	//以下字符具有特殊含义,如果要使用原本的字符意思,需要在前面添加\来转义
+	//. * + ? $ ^ |:! \ /() {} []
+	console.log(str.replace(reg,'#'))
+</script>
+</html>

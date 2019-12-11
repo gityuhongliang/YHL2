@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>176-创建正则.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str ='abc abd abf'
+	var reg =new RegExp('a','g');//方法一(构造函数): new RegExp(规则,修正模式)
+	var reg2 =/b/g;//方法二(字面量): /规则/修正模式 
+	console.log(str.replace(reg,'!'));
+	console.log(str.replace(reg2,'*'));
+</script>
+</html>
