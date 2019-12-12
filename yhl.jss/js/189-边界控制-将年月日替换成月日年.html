@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = '2019-12-12';
+	var reg =/\d{4}-\d{2}-\d{2}/;
+	var reg1 =/(\d{4})-(\d{2})-(\d{2})/;
+//() 把括号里面的正常表达匹配的结果当作一个原子来看,起到分组的效果,分组后可以通过反向引用来取得分组后的值,反向引用从$1开始
+	console.log(str.replace(reg,'*'))
+	console.log(str.replace(reg1,'$3/$2/$s1'))
+</script>
+</html>

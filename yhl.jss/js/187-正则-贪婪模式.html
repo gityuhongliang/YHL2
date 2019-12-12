@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>187-正则-贪婪模式.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str ='12356789';
+	var reg =/\d{2,5}/;//默认贪婪模式
+	var reg2 =/\d{2,5}?/ //在后面加非贪婪模式区别于前面的？号
+	console.log(str.replace(reg,'*'))
+	console.log(str.replace(reg2,'*'))
+</script>
+</html>

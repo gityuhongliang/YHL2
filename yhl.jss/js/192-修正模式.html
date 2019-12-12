@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>192-修正模式.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str ='aaaAAaaA';
+	var reg =/[a-z]/i;//i(ignoreCase) 忽略大小写,默认区分大小写,可以通过正则对象上的ignoreCase属性查看
+	var reg1 =/[a-z]/ig;//g(global) 匹配所有的,默认只找到第一个,可以通过正则对象上的global属性查看
+	console.log(str.replace(reg,'*'))
+	console.log(str.replace(reg2,'*'))
+</script>
+</html>

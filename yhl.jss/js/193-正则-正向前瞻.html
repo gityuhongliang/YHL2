@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>193-正则-正向前瞻.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str ='a1a2a!A$AaaA';
+	var reg =/[a-z](?=\d)/g; //正向前瞻判断字母前一位是否是\d数字，是的话就修改
+	var reg1 =/[a-z](?!\d)/g;//反向前瞻判断字母前一位是否是\d数字，不是的话就修改
+	console.log(str.replace(reg,'*'))
+	console.log(str.replace(reg1,'*'))
+</script>
+</html>

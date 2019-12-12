@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>182.正则-原子集合.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = 'sfjfjdk 64f4df sda';
+	var reg =/[0-9]/g;
+	var reg2 =/\d/g;//\d 任意数字,等价[0-9]
+	var reg3 =/[^0-9]/g;
+	var reg4 =/\D/g;//\D 任意非数字 等价[^0-9]
+	var reg5 =/[0-9a-zA-Z_]/g;
+	var reg6 =/\w/g;//\w 任意数字,字母,下划线 等价[0-9a-zA-Z_]
+	var reg7 =/[^0-9a-zA-Z_]/g;
+	var reg8 =/\W/g;//\W 任意非数字,字母,下划线 等价[^0-9a-zA-Z_]
+	var reg9 =/[\t\n\f\r]/g;
+	var reg10 =/\s/g;//\s 空白符 等价于[\t\n\f\r]
+	var reg11 =/[^\t\n\f\r]/g;
+	var reg12 =/\S/g;//\S 非空白符 等价于[^\t\n\f\r]
+
+	console.log(str.replace(reg,'*'));
+	console.log(str.replace(reg2,'*'));
+	console.log(str.replace(reg3,'*'));
+	console.log(str.replace(reg4,'*'));
+	console.log(str.replace(reg5,'*'));
+	console.log(str.replace(reg6,'*'));
+	console.log(str.replace(reg7,'*'));
+	console.log(str.replace(reg8,'*'));
+	console.log(str.replace(reg9,'*'));
+	console.log(str.replace(reg10,'*'));
+	console.log(str.replace(reg11,'*'));
+	console.log(str.replace(reg12,'*'));
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>190-边界控制-邮箱校验.html</title>
+</head>
+<body>
+	输入邮箱：<input type="text" id="txt" autocomplete="off">
+	<input type="button" id="btn" value="检测">
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick=function(){
+		var val =oTxt.value;
+		var reg =/^\w+@[a-zA-Z]{2,5}\.[a-zA-Z]+$/;
+		console.log(reg.test(val))
+		if (reg.test(val)) {
+			alert('合法')
+		}else{
+			alert('非法')
+		}
+	}
+</script>
+</html>
