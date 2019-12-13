@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>199-表单元素的属性.html</title>
+</head>
+<body>
+	<h1>用户注册表</h1>
+	<form action="https://www.kuazhu.com" method="get">
+		<p>
+			<label for="username">用户名：</label>
+			<input type="text" name="username" placeholder="请输入用户名" id="username" autocomplete="off">
+		</p>
+		<p>
+			<label for="password">密码：</label>
+			<input type="password" name="password" id="password">
+		</p>
+		
+		<p>
+			性别: <input type="radio" name="sex" value="male"  checked>男
+				<input type="radio" name="sex" value="female">女
+				<input type="radio" name="sex" value="mimi">保密
+		</p>	
+		<p>
+			爱好： <input type="checkbox" name="hobby" value="football"checked>足球
+			 	<input type="checkbox" name="hobby" value="basketball">蓝球
+			 	<input type="checkbox" name="hobby" value="paiqiu">排球
+		</p>
+		<p>
+			<input type="hidden" name="toutou" value="我是偷偷上传的">
+		</p>
+		
+		<p>
+			地址：<select name="adress" id="">
+				<optgroup label="直辖市">
+					<option value="sh">上海</option>
+					<option value="bj">北京</option>
+					
+				</optgroup>
+				<optgroup label="省份">
+					<option value="hn" selected>河南省</option>
+					<option value="hb">河北省</option>
+				</optgroup>
+				
+			</select>
+		</p>
+		<p>
+			<input type="button" value="按钮">
+			<input type="submit" value="提交">
+			<input type="reset" value="重置">
+		</p>
+	</form>
+</body>
+<script>
+	var oForm =document.forms[0];
+	// console.log(oForm);
+	var Form = oForm.elements; 
+	Form.username.disabled = true; 
+	//禁用表单元素
+	//禁用表单元素.disabled = true;
+	//值不会被提交
+	Form.password.readOnly = true; 
+	//禁用表单元素
+	//表单元素.readOnly = true;
+	//只针对input(text/password)/textarea
+	//值会被提交
+	Form.sex[1].checked = true;
+	//单选框选中属性 checked,如设置选中aRadio[0].checked = true
+	Form.hobby[1].checked = true;
+	//多选框选中属性 checked,如设置选中aCheckBox[0].checked = true
+	Form.adress.options[1].selected = true;
+	//下拉框选中属性 selected,如设置某个选项选中 oSelect.options[i].selected = true
+
+</script>
+</html>

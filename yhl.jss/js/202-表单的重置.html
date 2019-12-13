@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>202-表单的重置.html</title>
+<body>
+	<form action="https://www.kuazhu.com" method="get">
+		<p>
+			<label for="username">用户名：</label>
+			<input type="text" name="username" placeholder="请输入用户名" id="username" autocomplete="off">
+		</p>
+		<p>
+			<label for="password">密码：</label>
+			<input type="password" name="password" id="password">
+		</p>
+		<input type="reset" value="reset重置"> <!-- HTML按钮默认重置 -->
+		<button type="reset">resetbutton重置</button> <!-- HTML按钮默认重置 -->
+	</form>
+	<input type="button" id="btn" value="form外reset()重置">
+</body>
+	<script>
+		var oBtn =document.getElementById('btn');
+		var oForm=document.forms[0]
+		oBtn.onclick=function(){
+			oForm.reset()   //form的reset()方法重置
+		}
+		oForm.onreset=function(){ //form的reset()方法会触发form.onrest事件
+			console.log('on')
+			return false   //阻止默认行为后表单内的重置按钮失效 测试记得注释
+		}
+	</script>
+</html>

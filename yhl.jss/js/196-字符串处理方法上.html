@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串处理方法</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str ='asdadad';
+	var reg = /a/;//search方法不执行全局匹配,它会忽略g,并且总是从字符串开始检索
+	console.log(str.search(reg));//从字符中检索与正则相匹配的字符串,返回第一个匹配结果的下标,查不到返回-1
+
+	var str1 = 'a2018-05-10b2019-06-10c';
+	var reg1 = /\d{4}-\d{2}-\d{2}/g;
+	console.log(str1.match(reg1));//["2018-05-10", "2019-06-10"]
+	//找到字符串中的所有匹配的字符串,如果没有匹配的话返回null,有的话返回一个数组
+
+	var str2 = 'a b c d e f g';
+	var reg2 = / /;
+	console.log(str2.split(reg2));//根据正则匹配的内容把字符串分隔成数组
+</script>
+</html>

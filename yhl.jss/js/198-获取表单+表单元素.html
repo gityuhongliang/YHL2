@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>198-获取表单+表单元素.html</title>
+</head>
+<body>
+	<form action="" method="get">
+		<input type="text" name="username">
+		<input type="password" name="password">
+	</form>
+</body>
+<script>
+	var oForm =document.forms[0];
+	//document.forms 代表页面所有的表单集合,document.forms[0]页面中的第一个表单
+	console.log(oForm);
+	console.log(oForm.elements);
+	//表单.elements代表了表单中的所有表单元素集合
+	console.log(oForm.elements[1]);//表单元素集合[下标]
+	console.log(oForm.elements['username']);//表单元素集合["元素名称"]
+	console.log(oForm.elements['password']);//表单元素集合["元素名称"]
+	console.log(oForm.elements.username);//表单元素集合.元素名称
+	console.log(oForm.elements.password);//表单元素集合.元素名称
+	console.log(oForm.username.form);//表单.元素名称
+	console.log(oForm.password);//表单.元素名称
+	console.log(oForm.username.form);//表单元素.form 代表表单元素所在的form
+</script>
+</html>
