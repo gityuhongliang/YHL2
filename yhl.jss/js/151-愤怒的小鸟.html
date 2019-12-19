@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<title>151-愤怒的小鸟.html</title>
@@ -15,6 +15,7 @@
 			position: absolute;
 			top: 0px;
 			left: 0px;
+			overflow: hidden;
 		}
 		#son{
 			width: 50px;
@@ -25,6 +26,9 @@
 			top: 0px;
 			left: 50%;
 			margin-left: -25px;
+			background-image: url(../imges/xiaoniao.jpg);
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
 		}
 		.upline{
 			width: 30px;
@@ -48,6 +52,17 @@
 	</div>
 </body>
 <script>
+	function checkBump(obj1,obj2){
+		if(obj1.offsetLeft > (obj2.offsetLeft - obj1.offsetWidth) 
+	 		&& obj1.offsetTop > (obj2.offsetTop - obj1.offsetHeight)
+	 		&& obj1.offsetLeft < (obj2.offsetLeft + obj2.offsetWidth)
+	 		&& obj1.offsetTop < (obj2.offsetTop + obj2.offsetHeight)) 
+		{
+	 			return true
+	 	}else{
+	 			return false
+	 	}
+	}
 	function getRandom(min,max){
 		return (min+Math.round((max-min)*Math.random()))
 	}
@@ -96,7 +111,9 @@
 		var aDownLine= document.querySelectorAll('.downline');
 
 		for(var i=0;i<aUpLine.length;i++){
-			if (true) {}
+			if (checkBump(oSon,aUpLine[i]) || checkBump(oSon,aDownLine[i])) {
+				die()
+			}
 			aDownLine[i].style.left=aUpLine[i].style.left = aUpLine[i].leftDate - 1 + '%';
 			aUpLine[i].leftDate -= 1;
 			if (aUpLine[i].leftDate < -10) {
@@ -106,7 +123,6 @@
 		}
 		
 	},30)
-
 
 
 

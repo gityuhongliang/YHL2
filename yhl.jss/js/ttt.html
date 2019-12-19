@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="dianwo">
+	<input type="checkbox">
+</body>
+<script>
+	var obtn1 =document.querySelector('input:nth-child(1)');
+	var obtn2 =document.querySelector('input:nth-child(2)');
+	obtn1.onclick=function(){
+		obtn2.className='checked'
+	}
+</script>
+</html>
