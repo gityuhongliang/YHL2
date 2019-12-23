@@ -329,17 +329,17 @@
                 oCancel.style.display='none'  
             }
         }
-        // oForm.onclick=function(ev){
-        //     var oCancel =ev.target
-        //     var oInput =oCancel.previousElementSibling;
-        //     console.log(oCancel)
-        //     if (oInput) {
-        //         oInput.value='';
-        //         oCancel.style.display='none';
-        //         oInput.focus();
-        //     }
+        oForm.onclick=function(ev){
+            var oCancel =ev.target
+            var oInput =oCancel.previousElementSibling;
+            console.log(oCancel)
+            if (oInput) {
+                oInput.value='';
+                // oCancel.style.display='none';
+                oInput.focus();
+            }
            
-        // }
+        }
     }
     //3监听处理事件
     function handleUsername(){
