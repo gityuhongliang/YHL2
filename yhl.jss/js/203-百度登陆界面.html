@@ -8,10 +8,10 @@
             margin: 0;
             padding: 0;
         }
-        .top-boD{
+        .top-box{
             width: 100%;
             height: 100px;
-            background-image: url(../imges/t.png);
+            background-image: url(images/t.png);
             background-repeat: no-repeat;
             background-position: -150px 0px;
         }        
@@ -117,9 +117,9 @@
             float: left;
             top: 14px;
             height: 16px;
-            line-height: 20px;
-            padding-left: 18px;
-            background: url(../imges/reg_icons.png) -80px 0 no-repeat;
+            line-height: 12px;
+            padding-left: 20px;
+            background: url(images/reg_icons.png) -80px 0 no-repeat;
         }
         .err {
             float: left;
@@ -127,9 +127,8 @@
             width: 250px;
             height: 16px;            
             top: 12px;
-            line-height: 20px;
-            padding-left: 18px;            
-            background: url(../imges/reg_icons.png) -80px -23px no-repeat;
+            padding-left: 20px;            
+            background: url(images/reg_icons.png) -80px -23px no-repeat;
             font-size: 12px;
             color: #fc4343;            
         }
@@ -139,10 +138,9 @@
             left: 398px;            
             width: 16px;
             height: 16px;
-            background: url(../imges/reg_icons.png) -32px -24px no-repeat;
+            background: url(images/reg_icons.png) -32px -24px no-repeat;
             cursor: pointer;
         }
-
         .cancel:hover {
             background-position: -48px -24px;
         }
@@ -157,7 +155,6 @@
             width: 250px;          
             line-height: 18px;
         }
-
         #pwdChecklist{
             position: absolute;
             top: 0;
@@ -183,7 +180,7 @@
         .pwd-checklist-item {
             line-height: 20px;
             padding-left: 18px;
-            background: url(../imges/reg_icons.png) no-repeat -86px -112px;
+            background: url(images/reg_icons.png) no-repeat -86px -112px;
             color: #666;
         }
         .pwd-checklist-arrow{
@@ -225,17 +222,8 @@
             float: right;            
             width: 270px;
             height: 427px;
-            background-image: url(../imges/l.png);
+            background-image: url(images/l.png);
             background-repeat: no-repeat;
-        }
-        .wb1{
-            font-size: 12px;
-            color: #999;
-        }
-        .wb2{
-            font-size: 12px;
-            color: #999;
-            line-height: 42px; 
         }
     </style>
 </head>
@@ -248,14 +236,12 @@
                     <label for="username">用户名</label>
                     <input type="text"  autocomplete="off" name="username" placeholder="请设置用户名">
                     <span class="cancel" style="display: none;"></span>
-                    <span class="wb1" style="display: none;">设置后不可更改<br>中英文均可,最长14个英文或者7个汉字</span>
                     <span class="msg"></span>
                 </div>
                 <div id="phone-box">
                     <label for="phone">手机号</label>
                     <input type="text" autocomplete="off" name="phone" placeholder="可用于登录和找回密码">
                     <span class="cancel" style="display: none;"></span>
-                    <span class="wb2" style="display: none;">请输入中国大陆手机号,其他用户不可见</span>
                     <span class="msg"></span>
                 </div>
                 <div id="pwd-box" class="pwd-box">
@@ -267,7 +253,7 @@
                         <ul>
                             <li class="pwd-checklist-item">长度为8~14个字符</li>
                             <li class="pwd-checklist-item">支持数字,大小写字母和标点符号</li>
-                            <li class="pwd-checklist-item">不允许有空格</li>
+                            <li class="pwd-checklist-item ">不允许有空格</li>
                         </ul>
                         <span class="pwd-checklist-arrow"></span>
                     </div>
@@ -283,7 +269,7 @@
                    <input type="checkbox" name='isAgree'> 
                    <label for="isAgree">阅读并接受</label>
                    <a href="#">《百度用户协议》</a>及<a href="#">《百度隐私权保护声明》</a>  
-                   <span class="msg" id='agreeErr'>请勾选“阅读并接受百度用户协议”</span>               
+                   <span class="msg" id='agreeErr'>选“阅读并接受百度用户协议”</span>               
                 </div>           
                 <div class="subBtn">
                     <input type="button" value="注册" id="subBtn">
@@ -306,7 +292,7 @@
     var oMsg2 =document.querySelectorAll('.msg')[1];
     var oMsg3 =document.querySelectorAll('.msg')[2];
     // var oOK1 =document.querySelectorAll('.ok')[0];
-    console.log(oDel3)
+    console.log(oPass)
     var oForm =document.forms[0];
     var Form = oForm.elements; 
     var oBtn1 = Form.username;

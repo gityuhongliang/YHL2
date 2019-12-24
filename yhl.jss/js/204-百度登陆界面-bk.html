@@ -8,7 +8,7 @@
             margin: 0;
             padding: 0;
         }
-        .top-boD{
+        .top-box{
             width: 100%;
             height: 100px;
             background-image: url(../imges/t.png);
@@ -218,7 +218,7 @@
         }
         #agree-box .msg{
             float: none;
-            top: 0;
+            top: 0px;
             color: #fc4343;
         }
         .left-box{
@@ -227,15 +227,6 @@
             height: 427px;
             background-image: url(../imges/l.png);
             background-repeat: no-repeat;
-        }
-        .wb1{
-            font-size: 12px;
-            color: #999;
-        }
-        .wb2{
-            font-size: 12px;
-            color: #999;
-            line-height: 42px; 
         }
     </style>
 </head>
@@ -292,15 +283,16 @@
     </div>
 </body>
 <script>
+
     function getLen(str){
        return str.replace(/[\u4e00-\u9fa5]/g,'aa').length;
     }
-    function oErr(oInput,oMsg,txt){
+    function setErr(oInput,oMsg,txt){
         oInput.className='input-err'
         oMsg.className='err';
         oMsg.innerHTML=txt
     }
-    function setok(oInput,oMsg){
+    function setOk(oInput,oMsg){
         oInput.className=''
         oMsg.className='ok';
         oMsg.innerHTML=''
@@ -309,16 +301,30 @@
     var oForm =document.forms[0];
     var Form = oForm.elements; 
     var oUsername = Form.username;
+    var oPhone = Form.phone;
+    var oPwd = Form.password;
+    var oVerify = Form.verify;
     var aMsg = document.querySelectorAll('.msg');
-    console.log(aMsg[0])
+    var aCancel=document.querySelectorAll('.cancel');
+    var oPanel =document.querySelector('.pwd-checklist');
+    var aPassCheckli=document.querySelectorAll('.pwd-checklist-item');
+    var oSmsBtn = document.getElementById('smsBtn');
+    var oSubBtn = document.getElementById('subBtn');
+    console.log(aPassCheckli)
+    //定义全局判断变量
+    var bUsername = false,bPhone = false,bPwd = false,bVerify = false;
     //2.初始化
     init()
-    handleUsername()
-    function init(){ 
+    checkUsername()
+    checkPhone()
+    checkPwd()
+    checkVerify()
+    // handleUsername()
+    function init(){
         oUsername.focus();
         aMsg[0].className='tiptext';
         aMsg[0].innerHTML='设置后不可更改<br>中英文均可,最长14个英文或者7个汉字';
-        //事件委托
+        //所有输入框输入时(运用了事件委托)
         oForm.oninput=function(ev){
             var oInput=ev.target
             // console.log(oInput)
@@ -329,43 +335,54 @@
                 oCancel.style.display='none'  
             }
         }
+
+    }
+    //给所有的取消按钮绑定点击事件(运用了事件委托)
         oForm.onclick=function(ev){
             var oCancel =ev.target
             var oInput =oCancel.previousElementSibling;
             console.log(oCancel)
-            if (oInput) {
-                oInput.value='';
-                // oCancel.style.display='none';
-                oInput.focus();
-            }
-           
+            if (oCancel.className == 'cancel') {
+                if(oInput.name) {
+                    switch(oInput.name){ //只有选择的能够使用
+                        case 'username':
+                        case 'phone':
+                        case 'password':
+                        case 'verify':
+                        oInput.value = '';
+                        oCancel.style.display = 'none';
+                        oInput.focus();
+                        break;
+                }
+            } 
         }
     }
     //3监听处理事件
-    function handleUsername(){
-        var oCancel =oUsername.nextElementSibling;
-        console.log(oCancel)
-        oUsername.oninput=function(){
-            if (oUsername.value.length>0) {
-                oCancel.style.display='block'
-            }else{
-                oCancel.style.display='none'  
-            }
-            oCancel.onclick=function(){
-                oUsername.value='';
-                oCancel.style.display='none';
-                oUsername.focus();
-            }      
-      }
-    //验证
+    // function handleUsername(){
+    //     var oCancel =oUsername.nextElementSibling;
+    //     console.log(oCancel)
+    //     oUsername.oninput=function(){
+    //         if (oUsername.value.length>0) {
+    //             oCancel.style.display='block'
+    //         }else{
+    //             oCancel.style.display='none'  
+    //         }
+    //         oCancel.onclick=function(){
+    //             oUsername.value='';
+    //             oCancel.style.display='none';
+    //             oUsername.focus();
+    //         }      
+    //   }
+    //验证用户名
+    function checkUsername(){
         oUsername.onblur=function(){
             var val =oUsername.value
-            var reg =/^\s+$/;
-            var reg1=/[^a-z\u4e00-\u9fa5_\d]/i
-            var reg2=/^\d+$/;
+            var reg =/^\s+$/;  //全空正则
+            var reg1=/[^a-z\u4e00-\u9fa5_\d]/ig;//用户名仅支持中英文、数字和下划线
+            var reg2=/^\d+$/;//不能时纯数字
             //什么都不输入
-            if (val == '') {
-                aMsg[0].className='msg';
+            if ( val == '') {
+                aMsg[0].className = 'msg';
                 //清空操作之后的
                 oUsername.className=''
             }
@@ -374,37 +391,187 @@
                 // oUsername.className='input-err'
                 // aMsg[0].className='err';
                 // aMsg[0].innerHTML='请输入用户名'
-                oErr(oUsername,aMsg[0],'请输入用户名');
+                setErr(oUsername,aMsg[0],'请输入用户名');
             }
             //长度验证用户名不能超过7个汉字或14个字符
             else if(getLen(val)>14){
                 // oUsername.className='input-err'
                 // aMsg[0].className='err';
                 // aMsg[0].innerHTML='用户名不能超过7个汉字或14个字符'
-                 oErr(oUsername,aMsg[0],'用户名不能超过7个汉字或14个字符');
+                 setErr(oUsername,aMsg[0],'用户名不能超过7个汉字或14个字符');
             }
             //用户名支持中英文，数字，下划线且不能为纯数字
             else if(reg1.test(val) || reg2.test(val)){
                 // oUsername.className='input-err'
                 // aMsg[0].className='err';
                 // aMsg[0].innerHTML='用户名支持中英文，数字，下划线且不能为纯数字'
-                 oErr(oUsername,aMsg[0],'用户名支持中英文，数字，下划线且不能为纯数字');
+                 setErr(oUsername,aMsg[0],'用户名支持中英文，数字，下划线且不能为纯数字');
             }
             else{
                 // oUsername.className=''
                 // aMsg[0].className='ok';
                 // aMsg[0].innerHTML=''
-                setok(oUsername,aMsg[0])
+                setOk(oUsername,aMsg[0])
             }
             //输入
         }
-    //获取焦点的时的状态
+        //获取焦点的时的状态
         oUsername.onfocus=function(){
             aMsg[0].className='tiptext';
             aMsg[0].innerHTML='设置后不可更改<br>中英文均可,最长14个英文或者7个汉字';
         }
     }
-    
+    //验证手机号
+    function checkPhone(){
+        oPhone.onblur=function(){
+            var val =oPhone.value
+            var reg =/^\s+$/;//全空正则
+            var reg1=/^1[35789]\d{9}$/;//正确的手机号格式
+            if (val == '') {
+                aMsg[1].className='msg';
+                oPhone.className=''
+                bPhone = false;
+            }
+            //全空正则
+            else if(reg.test(val)){
+                oPhone.value='';
+                aMsg[1].className='msg';
+                aCancel[1].style.display='none'
+                bPhone = false;
+            }
+            //正确的手机号格式取反
+            else if(!reg1.test(val)){
+                oPhone.className='input-err'
+                aMsg[1].className='err';
+                aMsg[1].innerHTML='手机号码格式不正确'
+                
+                bPhone = false;
+            }
+            else{  
+                
+                aMsg[1].className='ok';
+                aMsg[1].innerHTML=''
+                bPhone=true
+            }
+        }
+        oPhone.onfocus=function(){
+            aMsg[1].className='tiptext';
+            aMsg[1].innerHTML='请输入中国大陆手机号，其他用户不可见';
+        }
+        oPhone.onkeydown = function(ev){
+            var val = oPhone.value;
+            console.log(ev.keyCode)
+            if ((ev.keyCode<48 || ev.keyCode >57 || val.length > 10) && (ev.keyCode<95 || ev.keyCode >105 || val.length > 10) && ev.keyCode != 8 && ev.keyCode != 37 && ev.keyCode != 39) {
+                return false  //阻止浏览器默认行为
+            }
+        }
+    }
+    //验证密码
+    function checkPwd(){
+        var bPwd1 = false,bPwd1 = false,bPwd2 = false,bPwd3 = false;
+        oPwd.onfocus = function(){
+            oPanel.style.display = 'block';
+            aMsg[2].className = 'msg';
+        }
+        oPwd.oninput=function(){
+            var sClassError='pwd-checklist-item pwd-checklist-item-error';
+            var sClassOk='pwd-checklist-item pwd-checklist-item-success';
+            var val = oPwd.value;
+            //长度为8~14个字符
+            var reg1 = /^.{8,14}$/;
+            //支持数字，大小写字母和标点符号
+            var reg2 = /[^0-9_a-z\.\!\@\s]/i;
+            //不允许有空格
+            var reg3 = /\s/g;
+            //当输入内容长度为零时，让后面面板内容重置
+            if(!reg1.test(val)){
+               aPassCheckli[0].className = sClassError;
+               bPwd1 = false;
+            }else{
+               aPassCheckli[0].className = sClassOk;
+               bPwd1 = true;
+            }
+            if(reg2.test(val)){
+               aPassCheckli[1].className = sClassError;
+               bPwd2 = false;
+            }else{
+               aPassCheckli[1].className = sClassOk;
+               bPwd2 = true;
+            }
+            if(reg3.test(val)){
+               aPassCheckli[2].className = sClassError;
+               bPwd3 = false;
+            }else{
+               aPassCheckli[2].className = sClassOk;
+               bPwd3 = true;
+            }
+        }
+        oPwd.onblur = function(){
+            var val = oPwd.value;
+            var reg =/^\s+$/;
+            if (val == '') {
+                oPanel.style.display = 'none';
+                aMsg[2].className = 'msg';
+            }
+            else if(reg.test(val)){
+                    oPwd.value ='';
+                    oPanel.style.display = 'none';
+                    aCancel[2].style.display = 'none';
+            }
+            else if(bPwd1 && bPwd2 && bPwd3){
+                    oPanel.style.display = 'none';
+                    setOk(oPwd,aMsg[2])
+            }   
+        }
+        aCancel[2].onclick=function(){
+            aPassCheckli[0].className = 'pwd-checklist-item';
+            aPassCheckli[1].className = 'pwd-checklist-item';
+            aPassCheckli[2].className = 'pwd-checklist-item';
+        }
+    }
+    //验证码
+    function checkVerify(){
+        oSmsBtn.onclick=function(){
+            if (oPhone.value == '') {
+                setErr(oPhone,aMsg[1],'请输入用户名');
+                return false
+            }
+            if(!bPhone){
+                return false;
+            }
+            alert('发送短信');
+        }
+        oVerify.onblur=function(){
+            var val =oVerify.value
+            var reg =/^\s+$/;//全空正则
+            var reg1=/[a-z0-9]{6}/i;//正确的手机号格式
+            if (val == '') {
+                aMsg[1].className='msg';
+                bPhone = false;
+            }
+            //全空正则
+            else if(reg.test(val)){
+                oVerify.value='';
+                aMsg[3].className='msg';
+                aCancel[3].style.display='none'
+                bPhone = false;
+            }
+            //正确的手机号格式取反
+            else if(reg1.test(val)){
+                aMsg[3].className='err';
+                aMsg[3].innerHTML='请输入正确的验证码'
+                bPhone = false;
+            }
+            else{
+                aMsg[3].className='ok';
+                aMsg[3].innerHTML=''
+                bPhone=true
+            }
+            oVerify.onfocus = function(){
+                aMsg[3].className = 'msg';
+            }
+        }
+    }
 </script>
 </html>
 
