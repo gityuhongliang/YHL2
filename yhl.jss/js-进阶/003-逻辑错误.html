@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>逻辑错误</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//求1到参数的所有数字的和
+	//打断点(在程序需要开始跟踪的地方设置标记,让程序执行到标记处暂停)
+	//方法一:在程序中需要开始跟踪的地方添加debugger关键字
+	function sum(num){
+		var tatal =0
+		for(var i = 1; i<=num; i++){
+			tatal+=i
+		}
+		return tatal
+	}
+	debugger//打断点
+	console.log(sum(5))
+</script>
+</html>

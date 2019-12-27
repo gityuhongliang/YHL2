@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>常用语法错误</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	//注意点控制台中的错误提示中一个token就是指JS中的一个符号,例如分号,var关键字等
+	
+	//中文输入指令错误 
+	var a = 1； //Uncaught SyntaxError: Invalid or unexpected token
+	//少打,漏打       
+	var a =;   //Uncaught SyntaxError: Unexpected token ';'
+	//多打
+	if(true){{}//Uncaught SyntaxError: Unexpected end of input
+	//变量名不合法
+	var class = 'abc';//Uncaught SyntaxError: Unexpected token =
+	//语句写错 
+	functionn test(){}//Uncaught SyntaxError: Unexpected identifier
+</script>
+</html>

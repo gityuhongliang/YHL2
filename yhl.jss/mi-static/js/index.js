@@ -1,6 +1,7 @@
 handleCarousel()
 handleCate()
 handleCountent()
+handleFlashProductTab()
 function handleCarousel(){
 	new Carousel({
 		id:'carousel',
@@ -37,9 +38,9 @@ function handleCate(){
 	}
 	function loadDate(index){
 		// console.log(index)
-		var date=aLoadCadeList[index];
+		var date=aCateListData[index];
+		var html='<ul>'
 		for(var i=0;i<date.length;i++){
-			var html='<ul>'
 			html += 	'<li>'
 			html +=			'<a href="'+date[i].url+'">'						
 			html +=			'<img src="'+date[i].img+' alt="">'
@@ -48,7 +49,7 @@ function handleCate(){
 			html += 	'<li>'
 		}
 			html +=  '</ul>'
-			aCatecontent.innerHTML=index
+			aCatecontent.innerHTML=html
 	}
 }
 function handleCountent(){
@@ -59,10 +60,12 @@ function handleCountent(){
 	function fn(){
 		var oTime = Date.now()
 		var overTime =endTimer-oTime;
-		if (oTime = 0) {
-			clearInterval(time)
-		}
+		
 		var allSecound = overTime/1000
+		if (allSecound < 0) {
+			clearInterval(time)
+			allSecound=0
+		}
 		var iHour=parseInt(allSecound/3600);
 		var iMinute =parseInt((allSecound % 3600)/60)
 		var iSecond =parseInt((allSecound % 3600)%60)
@@ -79,4 +82,22 @@ function handleCountent(){
 	}
 	setInterval(fn,1000)
 	fn()
+}
+function handleFlashProductTab(){
+	var aElecTab =document.querySelectorAll('.elec .tab-item');
+	// var 
+	for(var i = 0; i<aElecTab.length;i++){
+		aElecTab[i].index=i
+		aElecTab[i].onmoWuseenter=function(){
+			for(var j=0;j<aElecTab.length;j++){
+				aElecTab[j].className='tab-item'
+			}
+			this.className='tab-item tab-item-active'
+			loadTab(this.index)
+		}
+	}
+	function loadTab(index){
+		var data =aElecListData[index]
+		console.log(data)
+	}
 }
