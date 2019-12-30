@@ -31,7 +31,7 @@ function handleCate(){
 	}
 	//
 	oCatebox.onmouseleave=function(){
-		aCatecontent.style.display='none'
+		aCatecontent.style.display='none';
 		for(var j=0;j<aCateitem.length;j++){
 			aCateitem[j].className='cate-item'
 		}
@@ -73,7 +73,7 @@ function handleCountent(){
 					if (num<10) {
 						return '0'+num
 					}else{
-						return ''+num
+						return ''+num 
 					}
 				}
 		aTime[0].innerHTML=to2str(iHour)
