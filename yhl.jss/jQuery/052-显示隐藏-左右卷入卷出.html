@@ -100,24 +100,24 @@
 				// if(elem.data('status') == 'shown')return;
 				// if(elem.data('status') == 'show')return;
 				// elem.trigger('show').data('status','show');
-				show(elem,function(){
-					elem.stop().slideDown(function(){
-						elem.trigger('shown').data('status','shown');
-					});
-				});
-				
+				// show(elem,function(){
+				// 	elem.stop().slideDown(function(){
+				// 		elem.trigger('shown').data('status','shown');
+				// 	});
+				// });
+				js._show(elem,'slideDown');
 				
 			},
 			hide:function(elem){
 				// if(elem.data('status') == 'hiden')return;
 				// if(elem.data('status') == 'hide')return;
 				// elem.trigger('hide').data('status','hide');
-				hide(elem,function(){
-					elem.stop().slideUp(function(){
-						elem.trigger('hidden').data('status','hidden');
-					});
-				});
-				
+				// hide(elem,function(){
+				// 	elem.stop().slideUp(function(){
+				// 		elem.trigger('hidden').data('status','hidden');
+				// 	});
+				// });
+				js._hide(elem,'slideUp');
 			}
 		},
 		fade:{
