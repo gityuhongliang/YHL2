@@ -1,0 +1,13 @@
+.container{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+a{
+	text-decoration: none;
+	font-size: 11px;
+	color: #555a5e;
+}
+a:hover{
+	color: #ea6b5c;
+}

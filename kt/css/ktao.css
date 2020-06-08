@@ -1,0 +1,32 @@
+.top{
+	width: 100%;
+	height: 150px;
+	background-color: #fff;
+}
+.top .top2{
+	width: 100%;
+	height: 50px;
+	background-color:#f4f5f7;
+	line-height: 50px;
+}
+.top .top2 .nav-item{
+	float: left;
+	margin-left: 7px;
+}
+.top .top2 .nav li:first-child a{
+	color: #e4715f;
+}
+.top .top2 .nav-item2{
+	float: right;
+	margin-right: 10px;
+}
+.header{
+	width: 100%;
+	height: 740px;
+	background-color: yellow;
+}
+.article{
+	width: 100%;
+	height: 2730px;
+	background-color: green;
+}

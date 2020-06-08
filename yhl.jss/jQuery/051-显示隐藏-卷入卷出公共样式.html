@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>051-显示隐藏-卷入卷出公共样式</title>
 	<style>
 		*{
 			margin: 0;
@@ -37,6 +37,7 @@
 		elem.trigger('show').data('status','show');
 		callback();
 	}
+
 	function hide(elem,callback){
 		if(elem.data('status') == 'hidden')return;
 		if(elem.data('status') == 'hide')return;
@@ -44,18 +45,30 @@
 		callback();
 	}
 
-	
+
+
 	var slient ={
 		init:function(elem){
+			// if (elem.is(':hidden')) {
+			// 	elem.data('status','hidden');
+			// }else{
+			// 	elem.data('status','shown')
+			// }
 			init(elem);
 		},
 		show:function(elem){
+			// if(elem.data('status') == 'shown')return;
+			// if(elem.data('status') == 'show')return;
+			// elem.trigger('show').data('status','show');
 			show(elem,function(){
 				elem.show();
 				elem.trigger('shown').data('status','shown');
 			});	
 		},
 		hide:function(elem){
+			// if(elem.data('status') == 'hiden')return;
+			// if(elem.data('status') == 'hide')return;
+			// elem.trigger('hide').data('status','hide');
 			hide(elem,function(){
 				elem.hide();
 				elem.trigger('hidden').data('status','hidden');
@@ -63,46 +76,79 @@
 		}
 	}
 	var js={
+		slide:{
+			init:function(elem){
+				// elem.removeClass();
+				// if (elem.is(':hidden')) {
+				// 	elem.data('status','hidden');
+				// }else{
+				// 	elem.data('status','shown')
+				// }
+				init(elem);
+			},
+			show:function(elem){
+				// if(elem.data('status') == 'shown')return;
+				// if(elem.data('status') == 'show')return;
+				// elem.trigger('show').data('status','show');
+				// show(elem,function(){
+				// 	elem.stop().slideDown(function(){
+				// 		elem.trigger('shown').data('status','shown');
+				// 	});
+				// });
+				js._show(elem,'slideDown');	
+			},
+			hide:function(elem){
+				// if(elem.data('status') == 'hiden')return;
+				// if(elem.data('status') == 'hide')return;
+				// elem.trigger('hide').data('status','hide');
+				// hide(elem,function(){
+				// 	elem.stop().slideUp(function(){
+				// 		elem.trigger('hidden').data('status','hidden');
+				// 	});
+				// });
+				js._hide(elem,'slideUp');
+			}
+		},
 		fade:{
 			init:function(elem){
 				init(elem);
 			},
 			show:function(elem){
-				show(elem,function(){
-					elem.stop().fadeIn(function(){
-						elem.trigger('shown').data('status','shown');
-					});
-				});
+				// show(elem,function(){
+				// 	elem.stop().fadeIn(function(){
+				// 		elem.trigger('shown').data('status','shown');
+				// 	});
+				// });
+				js._show(elem,'fadeIn');	
 			},
 			hide:function(elem){
-				hide(elem,function(){
-					elem.stop().fadeOut(function(){
-						elem.trigger('hidden').data('status','hidden');
-					});
-				});
+				// hide(elem,function(){
+				// 	elem.stop().fadeOut(function(){
+				// 		elem.trigger('hidden').data('status','hidden');
+				// 	});
+				// });
+				js._hide(elem,'fadeOut');
 			}
-		},
-		slideUpdown:{
-			init:function(elem){
-				init(elem);
-			},
-			show:function(elem){
-				show(elem,function(){
-					elem.stop().slideDown(function(){
-						elem.trigger('shown').data('status','shown');
-					});
-				});		
-			},
-			hide:function(elem){
-				hide(elem,function(){
-					elem.stop().slideUp(function(){
-						elem.trigger('hidden').data('status','hidden');
-					});
-				});
-			}
-		}	
+		}
+		
 	}
-
+	js._init = function(elem){
+		init(elem);
+	}
+	js._show = function(elem,mode){
+		show(elem,function(){
+			elem.stop()[mode](function(){
+						elem.trigger('shown').data('status','shown');
+					});
+		});
+	}
+	js._hide = function(elem,mode){
+		hide(elem,function(){
+			elem.stop()[mode](function(){
+						elem.trigger('hidden').data('status','hidden');
+					});
+		});
+	}
 	$('div').on('show shown hide hiden',function(ev){
 		if (ev.type=='show'){
 			console.log('show');
@@ -126,12 +172,12 @@
 	// $('div').on('hiden',function(){
 	// 	console.log('hiden')
 	// })
-	js.init($('div'))
+	js.fade.init($('div'))
 	$('button').eq(0).on('click',function(){
-		js.show($('div'))
+		js.fade.show($('div'))
 	})
 	$('button').eq(1).on('click',function(){
-		js.hide($('div'))
+		js.fade.hide($('div'))
 	})
 </script>
 </html>

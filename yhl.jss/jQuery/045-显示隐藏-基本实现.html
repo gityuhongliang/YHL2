@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	var slient ={
+		show:function(elem,callback){
+			elem.show();
+		},
+		hide:function(elem,callback){
+			elem.hide();
+		}
+	}
+
+	$('button').eq(0).on('click',function(){
+		slient.show($('div'),function(){
+			console.log('show')
+		})
+	})
+	$('button').eq(1).on('click',function(){
+		slient.hide($('div'),function(){
+			console.log('hide')
+		})
+	})
+</script>
+</html>
