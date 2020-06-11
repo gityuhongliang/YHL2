@@ -1,0 +1,167 @@
+/*
+* @Author: Chen
+* @Date:   2020-05-25 17:27:27
+* @Last Modified by:   Chen
+* @Last Modified time: 2020-05-28 17:42:59
+*/
+/*顶部导航开始*/
+	.top{
+		/*height: 50px;*/
+		background-color: #f3f5f7;
+	}
+	.top .top-left li{
+		height: 44px;
+		margin-right: 8px;
+		line-height: 44px;
+	}
+	.login{
+		color: #ea7469;
+	}
+	.top .dropdown{
+		margin-left: 10px;
+	}
+	.top .dropdown-toggle{
+		display: block;
+		padding:0 5px; 
+		height: 44px;
+		line-height: 44px;
+		/*background-color: #fff;*/
+	}
+	.top .dropdown-layer{
+		top: 44px;
+		border:1px solid  #f3f5f7;
+		border-top: none;
+		white-space: nowrap;
+		background-color:#fff; 
+	}
+	/*
+	.dropdown:hover .dropdown-toggle{
+		background-color: #fff;
+	}
+	.dropdown:hover .dropdown-layer{
+		display: block;
+	}
+	.dropdown:hover .dropdown-icon{
+		transform: rotateZ(180deg);
+	}
+	*/
+	.menu-active .dropdown-toggle{
+		background-color: #fff;
+	}
+	/*
+	.menu-active .dropdown-layer{
+		display: block;
+	}
+	*/
+	.menu-active .dropdown-icon{
+		transform: rotateZ(180deg);
+	}
+	
+	.top .dropdown-layer li{
+		height: 30px;
+		padding:0 5px;
+		line-height: 30px;
+	}
+	.top .dropdown-layer li:hover{
+		background-color: #f3f5f7;
+	}
+	.top .dropdown-loading{
+		background-image: url(../img/loading.gif);
+		background-repeat: no-repeat;
+		width: 32px;
+		height: 32px;
+		margin-left: 16px;
+	}
+/*顶部导航结束*/
+
+/*头部搜索开始*/
+	.header{
+		height: 100px;
+		
+	}
+	.header h1 a{
+		width: 248px;
+		height: 70px;
+		background-image: url(../img/header-logo.png);
+		background-repeat: no-repeat;
+		display: block;
+		margin-top: 15px;
+	}
+	.header .search{
+		margin-left: 200px;
+		margin-top: 30px;
+		position: relative;
+	}
+	.header .search .search-input{
+		width: 400px;
+		height: 40px;
+		outline: none;
+		box-sizing: border-box;
+		border: 1px solid #ccc;
+	}
+	.header .search .search-button{
+		width: 60px;
+		height: 40px;
+		background-color: black;
+		outline: none;
+		border: none;
+		color: white;
+		cursor: pointer;
+
+	}
+	.header .search .search-layer{
+		width: 400px;
+		box-sizing: border-box;
+		position: absolute;
+		top: 40px;
+		left: 0px;
+		border: 1px solid #f3f5f7;
+		background-color: #fff;
+
+	}
+	.header .search .search-layer li{
+		width: 100%;
+		height: 30px;
+		line-height: 30px;
+		padding-left: 10px;
+		font-size: 16px;
+		cursor: pointer;
+		box-sizing: border-box;
+		display: none;
+	}
+	.header .search .search-layer li:hover{
+		background-color: #f3f5f7;
+	}
+/*头部搜索结束*/
+
+/*主导航区域开始*/
+	.nav-main{
+		height: 50px;
+		background-color: black;
+	}
+
+/*主导航区域结束*/
+
+/*焦点区域开始*/
+	.focus{
+		height: 400px;
+		background-color: yellow;
+	}
+
+/*焦点区域结束*/
+
+/*今日热销区域开始*/
+	.todays{
+		height: 100px;
+		background-color: tomato;
+	}
+
+/*今日热销区域结束*/
+
+/*楼层开始*/
+	.floor{
+		height: 400px;
+		background-color: green;
+	}
+
+/*楼层结束*/
