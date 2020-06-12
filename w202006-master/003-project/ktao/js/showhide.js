@@ -17,6 +17,7 @@
 	}
 	function show($elem,callBack){
 		//获取元素的显示隐藏状态信息
+		console.log($elem.data('status'));
 		if($elem.data('status') == 'shown') return ;
 		if($elem.data('status') == 'show') return ;
 		$elem.trigger('show').data('status','show');
@@ -40,7 +41,7 @@
 				$elem.trigger('shown').data('status','shown');
 			})
 		},
-		hide:function($elem,){
+		hide:function($elem){
 			hide($elem,function(){
 				$elem.hide();
 				$elem.trigger('hidden').data('status','hidden');
@@ -55,7 +56,7 @@
 			show:function($elem){
 				js._show($elem,'fadeIn')
 			},
-			hide:function($elem,){
+			hide:function($elem){
 				js._hide($elem,'fadeOut');
 			}
 		},
@@ -64,9 +65,10 @@
 				js._init($elem)
 			},
 			show:function($elem){
+				console.log(33);
 				js._show($elem,'slideDown')
 			},
-			hide:function($elem,){
+			hide:function($elem){
 				js._hide($elem,'slideUp');
 			}
 		},
@@ -205,13 +207,14 @@
 				if(!showHideObj){
 					options = $.extend({},DEFAULT,options);
 					//2.获取显示隐藏的方法
-					var showHideObj = getShowHide($elem,options);
+					showHideObj = getShowHide($elem,options);
 					//将显示隐藏方法存到当前dom节点上
 					$elem.data('showHideObj',showHideObj);
 				}
 				//判断当传入的参数是方法时,则调用该方法
 				if(typeof showHideObj[options] == 'function'){
 					//调用显示隐藏方法时必须传入jQuery对象
+					console.log(22);
 					showHideObj[options]($elem);
 				}
 			})

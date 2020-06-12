@@ -74,29 +74,26 @@
 			.done(function(data){
 				// console.log(data);
 				//1.生成html
-				// var html=''
-				// for(var i=0;i<data.result.length;i++){
-				// 	html += '<li>'+data.result[i][0]+'</li>'
-				// }
-				// //2.将html内容插入到下拉层
-				// // console.log(html)
-				// // this.$searchLayer.html(html)
-				// this.appendHtml(html)
+				var html=''
+				for(var i=0;i<data.result.length;i++){
+					html += '<li>'+data.result[i][0]+'</li>'
+				}
+				//2.将html内容插入到下拉层
+				// console.log(html)
+				// this.$searchLayer.html(html)
+				this.appendHtml(html)
 
 				
-				// //3.显示下拉层
-				// // this.$searchLayer.showHide('show');
-				// if (html =='') {
-				// 	this.hideLayer();
-				// }else{
-				// 	this.showLayer();
-				// }
-				this.$elem.trigger('getSearchData',[data])
+				//3.显示下拉层
+				// this.$searchLayer.showHide('show');
+				if (html =='') {
+					this.hideLayer();
+				}else{
+					this.showLayer();
+				}
 			}.bind(this))
 			.fail(function(err){
-				// console.log(err);
-				this.$elem.trigger('getNoSearchData')
-
+				console.log(err);
 			})
 		},
 		appendHtml:function(html){
@@ -138,7 +135,7 @@
 	// 	}
 	// })
 	$.fn.extend({
-		search:function(options,val){
+		search:function(options){
 			return this.each(function(){
 				var $elem = $(this);
 				var search = $elem.data('search');

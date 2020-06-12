@@ -43,6 +43,34 @@
 /*顶部导航逻辑--------------------结束*/
 /*搜索区域逻辑--------------------开始*/
 	var $search = $('.header .search');
-		$search.search({})
+		$search.search({
+			js:true,
+			mode:'slideDownUp'
+		});
+		$search.on('getSearchData',function(ev,data){
+			var $elem =$(this)
+			//1.生成html
+			var html=''
+			for(var i=0;i<data.result.length;i++){
+				html += '<li>'+data.result[i][0]+'</li>'
+			}
+			//2.将html内容插入到下拉层
+			// console.log(html)
+			// this.$searchLayer.html(html)
+			$elem.search('appendHtml',html);
+			//3.显示下拉层
+			// this.$searchLayer.showHide('show');
+			if (html =='') {
+				$elem.search('hideLayer');
+				
+			}else{
+				$elem.search('showLayer');
+			}
+		});
+		$search.on('getNoSearchData',function(){
+			$elem.search('appendHtml','');
+			$elem.search('hideLayer');
+		}
+		//生成下拉层
 /*搜索区域逻辑--------------------结束*/
 })(jQuery);

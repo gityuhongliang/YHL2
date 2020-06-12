@@ -7,14 +7,13 @@
 		this.$searchForm =this.$elem.find('.search-form')
 		this.$searchInput =this.$elem.find('.search-input')
 		this.$searchButton =this.$elem.find('.search-button')
-		this.$searchLayer =this.$elem.find('.search-layer')
-		this.$isLoadeHtml= false;
 		// console.log(this.$searchButton)
 
 		//2.初始化
 		this.init()
 		// console.log(this.options);
 		if (this.options.autocomplete){
+			console.log(11)
 			this.autocomplete()
 		};
 	}
@@ -37,31 +36,15 @@
 			return $.trim(this.$searchInput.val())
 		},
 		autocomplete:function(){
-			//初始化显示隐藏插件
-			this.$searchLayer.showHide(this.options)
-			//1.监听输入框输入事件
+		//监听输入框输入事件
+			console.log(11)
 			this.$searchInput.on('input',$.proxy(this.getData,this))
-			//2.监听点击页面其他部分，隐藏搜索下拉层事件
-			$(document).on('click',function(){
-				3//调用hide方法隐藏下拉层
-				this.hideLayer();
-			}.bind(this))
-			//4.点击搜索框阻止事件冒泡
-			this.$searchInput.on('click',function(ev){
-				ev.stopPropagation();
-			})
-			//5.监听获取焦点显示下拉事件
-			this.$searchInput.on('focus',function(ev){
-				if (this.getInputval()){
-					this.showLayer();
-				}
-			}.bind(this))
+			
 		},
 		getData:function(){
 			//发送jsonp请求
 			////如果输入框值是空不发送请求
 			if(this.getInputval() ==''){
-				this.hideLayer();
 					return;
 				}
 				// console.log(this.options.url+this.getInputval())
@@ -72,59 +55,20 @@
 				jsonp:'callback'
 			})
 			.done(function(data){
-				// console.log(data);
-				//1.生成html
-				// var html=''
-				// for(var i=0;i<data.result.length;i++){
-				// 	html += '<li>'+data.result[i][0]+'</li>'
-				// }
-				// //2.将html内容插入到下拉层
-				// // console.log(html)
-				// // this.$searchLayer.html(html)
-				// this.appendHtml(html)
-
-				
-				// //3.显示下拉层
-				// // this.$searchLayer.showHide('show');
-				// if (html =='') {
-				// 	this.hideLayer();
-				// }else{
-				// 	this.showLayer();
-				// }
-				this.$elem.trigger('getSearchData',[data])
-			}.bind(this))
-			.fail(function(err){
-				// console.log(err);
-				this.$elem.trigger('getNoSearchData')
-
+				console.log(data);
 			})
-		},
-		appendHtml:function(html){
-			//将html内容插入到下拉层
-			this.$searchLayer.html(html)
-			this.isLoadeHtml =!!html;
-		},
-		showLayer:function(){
-			if (!this.isLoadeHtml) return
-
-			//显示下拉层
-			this.$searchLayer.showHide('show');
-		},
-		hideLayer:function(){
-			this.$searchLayer.showHide('hide');
-
+			.fail(function(err){
+				console.log(err);
+			})
 		}
 		
 	};
 	//如果不传递参数则使用默认配置信息
 	Search.DEFAULT = {
-		autocomplete:true,//是否显示下拉层
-		url:'https://suggest.taobao.com/sug?code=utf-8&q='
+		autocomplete:true,
+		url:'https://suggest.taobao.com/sug?q='
 	}
 // https://cread.jd.com/readask/canReadForJSONP.action?my=ebook3&bookIds=&callback=jQuery2272491&_=1591861086717
-
-
-
 
 	// $.fn.extend({
 	// 	search:function(options){
@@ -138,7 +82,7 @@
 	// 	}
 	// })
 	$.fn.extend({
-		search:function(options,val){
+		search:function(options){
 			return this.each(function(){
 				var $elem = $(this);
 				var search = $elem.data('search');
