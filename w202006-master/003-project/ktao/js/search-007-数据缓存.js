@@ -109,7 +109,7 @@
 			if (this.jqXHR) {
 				this.jqXHR.abort()
 			}
-			//判断是否有缓存 
+			//判断是否有缓存
 			if(cache.getData(this.getInputval())){
 				var cacheData = cache.getData(this.getInputval())
 				return;

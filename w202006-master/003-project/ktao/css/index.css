@@ -156,7 +156,6 @@
 /*主导航区域结束*/
 
 /*焦点区域开始*/
-	/* 焦点区域开始 */
 	.focus{
 		height: 504px;
 		background: #f7f7f7;
@@ -184,6 +183,16 @@
 	.category .dropdown{
 		position: static;
 	}
+	.category .dropdown:hover .dropdown-toggle{
+		background-color: #ccc;
+	}
+	.category .dropdown:hover .dropdown-link,
+	.category .dropdown:hover .dropdown-icon{
+		color: #ea675a;
+	}
+	/*.category .dropdown:hover .dropdown-layer{
+		display: block;
+	}*/
 	.category .dropdown-toggle{
 		width: 100%;
 		height: 36px;
@@ -212,7 +221,7 @@
 		background: #fff;
 		padding-bottom: 24px;
 		box-sizing: border-box;
-		z-index: 50;
+		overflow: hidden;
 	}
 	.category-details{
 		overflow: hidden;
@@ -246,12 +255,11 @@
 		color: #ea675a;
 	}
 	.category .dropdown-loading{
-		display: block;
 		margin: 220px auto;
 	}
 /* 焦点区域结束 */
 
-/*焦点区域结束*/
+
 
 /*今日热销区域开始*/
 	.todays{

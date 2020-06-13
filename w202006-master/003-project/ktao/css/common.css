@@ -41,7 +41,7 @@
 		text-decoration: none;
 		color: #4d555d;
 	}
-	.link:hover{
+	a.link:hover{
 		color: #ea7469;
 	}
 /*a链接共同样式结束*/

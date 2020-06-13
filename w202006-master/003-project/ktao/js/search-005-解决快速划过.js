@@ -1,21 +1,4 @@
 ;(function($){
-	//缓存
-	cache = {
-		data:{},
-		count:0,
-		addData:function(key,val){
-			this.data[key] = val;
-			this.count++;
-		},
-		getData:function(key){
-			return this.data[key]
-		}
-	}
-
-
-
-
-
 	function Search($elem,options){
 		//1.罗列属性
 		this.$elem = $elem;
@@ -26,8 +9,7 @@
 		this.$searchButton =this.$elem.find('.search-button')
 		this.$searchLayer =this.$elem.find('.search-layer')
 		this.$isLoadeHtml= false;
-		this.time=null;
-		this.jqXHR=null;
+		this.time=null
 		// console.log(this.$searchButton)
 
 		//2.初始化
@@ -90,6 +72,7 @@
 			this.$elem.on('click','.search-item',function(){
 				//1.获取当前点击项的值
 				var val =$(this).html();
+
 				//2.把数据赋给输入框
 				_this.setInputVal(val)
 				//3.提交数据
@@ -105,36 +88,20 @@
 					return;
 				}
 				// console.log(this.options.url+this.getInputval())
-				//终止之前的请求，获取最新数据
-			if (this.jqXHR) {
-				this.jqXHR.abort()
-			}
-			//判断是否有缓存 
-			if(cache.getData(this.getInputval())){
-				var cacheData = cache.getData(this.getInputval())
-				return;
-			}
-			console.log(2222);
-			//发送请求获取数据
-			this.jqXHR = $.ajax({
+				//发送请求获取数据
+			$.ajax({
 				url:this.options.url+this.getInputval(),
 				dataType:'jsonp',
 				jsonp:'callback'
 			})
-
 			.done(function(data){
-				this.$elem.trigger('getSearchData',[data])
-				//将获取的数据缓存下来
-				cache.addData(this.getInputval(),data)
-			}.bind(this))
 
+				this.$elem.trigger('getSearchData',[data])
+			}.bind(this))
 			.fail(function(err){
 				// console.log(err);
 				this.$elem.trigger('getNoSearchData')
-			})
 
-			.always(function(){
-				this.jqXHR=null;
 			})
 		},
 		appendHtml:function(html){

@@ -38,8 +38,6 @@
 			})
 		}
 	})
-	
-
 /*顶部导航逻辑--------------------结束*/
 /*搜索区域逻辑--------------------开始*/
 	var $search = $('.header .search');
@@ -52,7 +50,7 @@
 			//1.生成html
 			var html=''
 			for(var i=0;i<data.result.length;i++){
-				html += '<li>'+data.result[i][0]+'</li>'
+				html += '<li class="search-item">'+data.result[i][0]+'</li>'
 			}
 			//2.将html内容插入到下拉层
 			// console.log(html)
@@ -70,7 +68,14 @@
 		$search.on('getNoSearchData',function(){
 			$elem.search('appendHtml','');
 			$elem.search('hideLayer');
-		}
+		});
 		//生成下拉层
 /*搜索区域逻辑--------------------结束*/
-})(jQuery);
+/*焦点区域分类列表逻辑-------------开始*/
+	var $categoryDropdown = $('.focus .dropdown');
+		$categoryDropdown.dropdown({
+		js:true,
+		mode:'slideLeftRight'
+	});
+/*焦点区域分类列表逻辑-------------结束*/
+ })(jQuery);

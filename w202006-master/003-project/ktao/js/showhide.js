@@ -214,7 +214,6 @@
 				//判断当传入的参数是方法时,则调用该方法
 				if(typeof showHideObj[options] == 'function'){
 					//调用显示隐藏方法时必须传入jQuery对象
-					console.log(22);
 					showHideObj[options]($elem);
 				}
 			})
