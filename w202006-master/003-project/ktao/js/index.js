@@ -77,5 +77,42 @@
 		js:true,
 		mode:'slideLeftRight'
 	});
+		//加载分类列表数据
+		$categoryDropdown.on('dropdown-show dropdown-shown dropdown-hide dropdown-hidden',function(ev){
+			//加载数据显示下拉层
+			if(ev.type == 'dropdown-show'){
+				var $this =$(this);
+				var $dropdownLayer =$this.find('.dropdown-layer');
+				var url = $this.data('load');
+				//获取数据
+				$.getJSON(url,function(data){
+					var html =''
+					//动态加载数据
+					for(var i=0; i<data.length; i++){
+						// console.log(data[i])
+						// <li><a href="'+data[i].url+'">'+data[i].name+'</a></li>
+						html +='<dl class="category-details">'
+						html +='		<dt class="category-details-title fl">'
+						html +='			<a href="#" class="category-details-title-link">电视</a>'
+						html +='		</dt>'
+						html +='		<dd class="category-details-item fl">'
+						for(var j=0;j<data[i].items.length;j++){
+						html +='			<a href="#" class="link">'+data[i].items[j]+'</a>'
+					}
+						html +='		</dd>'
+						html +='	</dl>'
+					}
+					console.log($dropdownLayer)
+					//模拟网络延迟加载
+					setTimeout(function(){
+						$dropdownLayer.html(html)
+						//数据加载
+						$this.data('isLoaded',true)
+					},500)
+					
+				})
+			}
+		})
 /*焦点区域分类列表逻辑-------------结束*/
  })(jQuery);
+ 
