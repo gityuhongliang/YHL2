@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js移动</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/index.css">
+	<style>
+		input{
+			width: 100px;
+			height: 100px;
+			padding-right: 20px;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+			position: absolute;
+			left: 0px;
+			top: 150px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="还原">
+	<input type="button" value="移动">
+	<div class="box"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/move.js"></script>
+<script>
+	var $box =$('.box');
+	var move = $box.move({
+		js:true
+	})
+	// var $elem =new Js($box);
+	$box.on('move moved',function(ev){
+		console.log(ev.type)
+	})
+	$('input').eq(0).on('click',function(){
+		move.move('to',0,150)
+		// $elem.to(0,150)
+
+	})
+	$('input').eq(1).on('click',function(){
+		// $elem.move(300,300)
+		// $elem.x(300)
+		// $elem.y(300)
+		move.move('to',0,150)
+	})
+</script>
+</html>
