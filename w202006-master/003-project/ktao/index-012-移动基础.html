@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>移动基础</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/index.css">
+	<style>
+		input{
+			width: 100px;
+			height: 100px;
+			padding-right: 20px;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+			position: absolute;
+			left: 0px;
+			top: 150px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="还原">
+	<input type="button" value="移动">
+	<div class="box"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	function Slient($elem){
+		this.$elem = $elem;
+		this.currentX = parseFloat(this.$elem.css('left'));
+		this.currentY = parseFloat(this.$elem.css('top'));
+		console.log(this.currentX,this.currentY)
+	}
+	Slient.prototype ={
+		constructor:Slient,
+			move:function(x,y){
+				//每次移动前判断是否到达目标坐标
+				//防止多次运行
+				if(this.currentX == x && this.currentY == y){
+					return;
+				}
+				//移动前执行事件
+				this.$elem.trigger('move')
+				this.$elem.css({
+					left:x,
+					top:y
+				})
+				//移动后执行事件
+				this.$elem.trigger('moved')
+				//更新坐标
+				this.currentY= x;
+				this.currentX= y;
+				console.log(this.currentX,this.currentY)
+
+			}
+		}
+</script>
+<script>
+	var $box =$('.box');
+	var $elem =new Slient($box);
+	$box.on('move moved',function(ev){
+		console.log(ev.type)
+	})
+	$('input').eq(0).on('click',function(){
+		$elem.move(0,150)
+
+	})
+	$('input').eq(1).on('click',function(){
+		$elem.move(300,300)
+	})
+</script>
+</html>
