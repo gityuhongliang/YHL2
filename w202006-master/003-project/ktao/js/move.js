@@ -6,7 +6,7 @@
 	}
 	function to(x,y,callback){
 		x =(typeof x == 'number') ? x : this.currentX;
-		y =(typeof y == 'number') ? y : this.currentX;
+		y =(typeof y == 'number') ? y : this.currentY;
 		//每次移动前判断是否到达目标坐标
 		//防止多次运行
 		if(this.currentX == x && this.currentY == y){
@@ -16,8 +16,9 @@
 		this.$elem.trigger('move')
 		typeof callback == 'function' && callback()
 		//更新坐标
-		this.currentY= x;
-		this.currentX= y;
+		this.currentX= x;
+		this.currentY= y;
+
 	}
 	function Slient($elem){
 		init.call(this,$elem);
@@ -107,7 +108,7 @@
 				//判断当传入的参数是方法时,则调用该方法
 				if(typeof moveObj[options] == 'function'){
 					//调用显示隐藏方法时必须传入jQuery对象
-					moveObj[options]();
+					moveObj[options](n1,n2);
 				}
 			})
 		}

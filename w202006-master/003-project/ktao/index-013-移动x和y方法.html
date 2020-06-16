@@ -43,12 +43,14 @@
 				//因为直接修改x和y参数传参进来改变的都是x(left)轴的参数
 				//无法判断是x的参数还是y的参数,做不到只移动x(left)轴或者y(top)轴
 				x =(typeof x == 'number') ? x : this.currentX;
-				y =(typeof y == 'number') ? y : this.currentX;
+				y =(typeof y == 'number') ? y : this.currentY;
+
 				//每次移动前判断是否到达目标坐标
 				//防止多次运行
 				if(this.currentX == x && this.currentY == y){
 					return;
 				}
+
 				//移动前执行事件
 				this.$elem.trigger('move')
 				this.$elem.css({
@@ -58,8 +60,9 @@
 				//移动后执行事件
 				this.$elem.trigger('moved')
 				//更新坐标
-				this.currentY= x;
-				this.currentX= y;
+				this.currentX= x;
+
+				this.currentY= y;
 				console.log(this.currentX,this.currentY)
 			},
 			x:function(x){

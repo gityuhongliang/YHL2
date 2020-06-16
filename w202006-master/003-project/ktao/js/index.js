@@ -119,7 +119,9 @@
 /*焦点区域分类列表逻辑-------------结束*/
 /*焦点区域轮播图逻辑-------------开始*/
 	var $cousrsel = $('.focus .carousel-wrap');
-		console.log($cousrsel);
+	$cousrsel.on('coursel-show',function(ev,index,elem)/*下标，DOM节点*/{
+		console.log(index,elem)
+	})
 		$cousrsel.coursel({})
 /*焦点区域轮播图逻辑-------------结束*/
  })(jQuery);

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>js移动</title>
+	<title>js移动方法共同</title>
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/all.css">
 	<link rel="stylesheet" href="css/common.css">
@@ -48,8 +48,9 @@
 				this.$elem.trigger('move')
 				typeof callback == 'function' && callback()
 				//更新坐标
-				this.currentY= x;
-				this.currentX= y;
+				this.currentX= x;
+				this.currentY= y;
+
 	}
 	function Slient($elem){
 		// this.$elem = $elem;
