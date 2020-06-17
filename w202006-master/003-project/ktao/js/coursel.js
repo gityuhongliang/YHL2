@@ -19,6 +19,9 @@
 		constructor:Coursel,
 		init:function(){
 			var _this = this;
+			//默认加载第一张图片
+			this.$elem.trigger('coursel-show',[this.now,this.$courselItems[this.now]])
+			
 			if(this.options.slide){//动画切换左右划入划出
 				//1.隐藏所有图片显示当前图片
 				this.$elem.addClass('slide');
@@ -67,7 +70,9 @@
 				this.$courselControls.hide();
 			}.bind(this));
 			//4.(事件代理)监听点击左右按钮实现动画切换
-			this.$elem.on('click','.control',function(){
+			this.$elem.on('click','.control',function(ev){
+				//阻止事件冒泡
+				ev.stopPropagation()
 				var $this = $(this);
 				if($this.hasClass('control-left')){//点击左按钮
 					_this._tab(_this._getCorrentIndex(_this.now-1))
@@ -136,7 +141,7 @@
 			}
 			return num;
 		},
-		autoplay:function(){
+		autoplay:function(){ //调用点击按钮移动图片实现自动轮播
 			this.timer = setInterval(function(){
 				this.$courselControls.eq(1).trigger('click')
 			}.bind(this),this.options.autotime)

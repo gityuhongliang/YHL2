@@ -236,7 +236,7 @@
 			},function(){
 				$img.attr('src','img/focus-carousel/placeholder.png')
 			})
-
+			
 			//图片加载完毕
 			$todaysCoursel.item[index]='loaded';
 			$todaysCoursel.totalLoadedNum++;//运行完加1
