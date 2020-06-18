@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	cookie
+</body>
+<script>
+	// document.cookie = 'key1=value1';
+	// document.cookie = 'key2=value2';
+
+
+
+	// var oDate = new Date();
+    // oDate.setDate(oDate.getDate() + 14);
+    // document.cookie = "name=Tom;expires="+oDate;
+    // document.cookie = "name=Leo;max-age=10"
+
+
+    //创建Cookie
+    function setCookie(key,value,iDate){
+        var oDate = new Date();
+        oDate.setDate(oDate.getDate() + iDate);
+        document.cookie = key+"="+value+";expires="+oDate;
+    }
+    setCookie('tom','20',10)
+    //获取Cookie
+    function getCookie(name){
+        var str = document.cookie;
+        var arr1 = str.split(";");
+        var result = "";
+        for(var i=0;i<arr1.length;i++){
+            var arr2 = arr1[i].split("=");
+            if(arr2[0].trim() == name.trim()){
+                result = arr2[1];
+                break;
+            }
+        }
+        return result;
+    }
+   
+    console.log(getCookie('tom'))
+    //删除Cookie
+    function removeCookie(name){
+        setCookie(name,false,-1);
+    }
+</script>
+</html>

@@ -59,7 +59,6 @@
 		},500)
 	}
 /*顶部导航逻辑--------------------结束*/
-
 /*搜索区域逻辑--------------------开始*/
 	var $search = $('.header .search');
 		$search.search({
@@ -92,7 +91,6 @@
 		});
 		//生成下拉层
 /*搜索区域逻辑--------------------结束*/
-
 /*焦点区域分类列表逻辑-------------开始*/
 	var $categoryDropdown = $('.focus .dropdown');
 		$categoryDropdown.dropdown({
@@ -136,41 +134,41 @@
 
 /*焦点区域轮播图逻辑-------------开始*/
 	var $cousrsel = $('.focus .carousel-wrap');
-	$cousrsel.item = {};//{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
-	      				//判断有没有loaded 如果有就不运行了
-	$cousrsel.totalLoadedNum = 0; 
-	$cousrsel.totalNum = $cousrsel.find('.carousel-img').length; //拿到图片
-	$cousrsel.fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
+	var item = {};  //{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
+	      			//判断有没有loaded 如果有就不运行了
+	var totalLoadedNum = 0; //
+	var totalNum = $cousrsel.find('.carousel-img').length; //拿到图片
+	var fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
 
-
+	
 	//1.开始加载
-	$cousrsel.on('coursel-show',$cousrsel.fnload = function(ev,index,elem)/*下标，DOM节点*/{
-		if (!$cousrsel.item[index]) {
+	$cousrsel.on('coursel-show',fnload = function(ev,index,elem)/*下标，DOM节点*/{
+		if (!item[index]) {
 			$cousrsel.trigger('coursel-load',[index,elem])
 		}
 	})
 	//2.执行加载
 	$cousrsel.on('coursel-load',function(ev,index,elem){
 		var $elem = $(elem);
-		var $img = $elem.find('.carousel-img');
-		var imgUrl = $img.data('src');	
-		loadImg(imgUrl,function(imgUrl){
-			$img.attr('src',imgUrl)
-		},function(){
-			$img.attr('src','img/focus-carousel/placeholder.png')
-		})
-		//图片加载完毕
-		$cousrsel.item[index]='loaded';
-		$cousrsel.totalLoadedNum++;//运行完加1
-			//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
-		if($cousrsel.totalLoadedNum == $cousrsel.totalNum){
-			// $cousrsel.off('coursel-show',fnload)//移除监听事件
-			$cousrsel.trigger('coursel-loaded')//自定义事件
-		}
+			var $img = $elem.find('.carousel-img');
+			var imgUrl = $img.data('src');	
+			loadImg(imgUrl,function(imgUrl){
+				$img.attr('src',imgUrl)
+			},function(){
+				$img.attr('src','img/focus-carousel/placeholder.png')
+			})
+				//图片加载完毕
+			item[index]='loaded';
+			totalLoadedNum++;//运行完加1
+				//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
+			if(totalLoadedNum == totalNum){
+				// $cousrsel.off('coursel-show',fnload)//移除监听事件
+				$cousrsel.trigger('coursel-loaded')//自定义事件
+			}
 	})
 	//3.加载完毕
 	$cousrsel.on('coursel-loaded',function(){ //监听上面的自定义事件 调用方法移除coursel-show监听事件
-		$cousrsel.off('coursel-show',$cousrsel.fnload)//移除监听事件
+		$cousrsel.off('coursel-show',fnload)//移除监听事件
 	})
 	
 	// $cousrsel.on('coursel-show',fnload = function(ev,index,elem)/*下标，DOM节点*/{
@@ -210,50 +208,5 @@
 	// })
 		$cousrsel.coursel({})
 /*焦点区域轮播图逻辑-------------结束*/
-
-/*今日热销区域逻辑-------------开始*/
-	var $todaysCoursel = $('.todays .carousel-wrap');
-	$todaysCoursel.item = {};//{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
-	      				//判断有没有loaded 如果有就不运行了
-	$todaysCoursel.totalLoadedNum = 0; 
-	$todaysCoursel.totalNum = $cousrsel.find('.carousel-img').length; //拿到图片
-	$todaysCoursel.fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
-	//1.开始加载
-	$todaysCoursel.on('coursel-show',$todaysCoursel.fnload = function(ev,index,elem)/*下标，DOM节点*/{
-		if (!$todaysCoursel.item[index]) {
-			$todaysCoursel.trigger('coursel-load',[index,elem])
-		}
-	})
-	//2.执行加载
-	$todaysCoursel.on('coursel-load',function(ev,index,elem){
-		var $elem = $(elem);
-		var $img = $elem.find('.carousel-img');
-		$img.each(function(){
-			var $img =$(this)  //利用each方法拿到每一张图片
-			var imgUrl = $img.data('src');	
-			loadImg(imgUrl,function(imgUrl){
-				$img.attr('src',imgUrl)
-			},function(){
-				$img.attr('src','img/focus-carousel/placeholder.png')
-			})
-
-			//图片加载完毕
-			$todaysCoursel.item[index]='loaded';
-			$todaysCoursel.totalLoadedNum++;//运行完加1
-			//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
-			if($todaysCoursel.totalLoadedNum == $todaysCoursel.totalNum){
-			// $todaysCoursel.off('coursel-show',fnload)//移除监听事件
-			$todaysCoursel.trigger('coursel-loaded')//自定义事件
-			}
-		})
-		
-	})
-	//3.加载完毕
-	$todaysCoursel.on('coursel-loaded',function(){ //监听上面的自定义事件 调用方法移除coursel-show监听事件
-		$todaysCoursel.off('coursel-show',$todaysCoursel.fnload)//移除监听事件
-	})
-
-	$todaysCoursel.coursel({})
-/*今日热销区域逻辑-------------结束*/
  })(jQuery);
  
