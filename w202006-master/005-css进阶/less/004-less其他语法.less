@@ -1,0 +1,50 @@
+/*嵌套*/
+ul{
+	list-style: none;
+	width: 500px;
+	height: 300px;
+	margin: 50px auto;
+	border: 1px solid #000;+
+	li{
+		width: 100%;
+		line-height: 40px;
+		height: 40px;
+		span{
+			float: left;
+		}
+		a{
+			float: right;
+		}
+		&:hover{
+			background-color: red;
+		}
+	}
+}
+
+
+/*运算*/
+.calc-fs(@fs){
+	font-size: @fs+10px;
+}
+.box5{
+	// font-size: 20px;
+	// .calc-fs(20px);
+	font-size: calc(20px + 20);
+}
+
+/*避免编译*/
+.box6{
+	.box5 !important;
+	font-size: ~'calc(20px + 20px)';
+}
+
+/*混合参数做为属性和设置计算后的属性值*/
+
+.setAttr(@attr,@val){
+	/*// @attr:@val;/*错误*/
+	@{attr}:unit(@val,px);
+}
+
+.box7{
+	.setAttr(font-size,40)
+}

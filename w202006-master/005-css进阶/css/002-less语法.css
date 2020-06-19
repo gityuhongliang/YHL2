@@ -1,0 +1,28 @@
+/*我是注释1*/
+/*变量*/
+/*没有默认值*/
+/*有默认值*/
+.box1 {
+  width: 100px;
+  height: 100px;
+  background-color: #ffff00;
+  margin-bottom: 10px;
+}
+.box2 {
+  width: 100px;
+  height: 100px;
+  background-color: #ffff00;
+  margin-bottom: 10px;
+}
+.box3 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border: 40px solid #000;
+  /*.border-r(50px)*/
+  -o-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}

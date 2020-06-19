@@ -1,0 +1,44 @@
+.trangle(@_,@w,@c){
+	width: 0;
+	height: 0;
+	border-style: solid;
+}
+/*
+.trangle(top){
+	border-width: 50px;
+	border-color: #f00 transparent transparent transparent;
+}
+.trangle(right){
+	border-width: 50px;
+	border-color: transparent #f00 transparent transparent;
+}
+.trangle(bottom){
+	border-width: 50px;
+	border-color: transparent transparent #f00 transparent;
+}
+.trangle(left){
+	border-width: 50px;
+	border-color: transparent transparent transparent #f00;
+}
+*/
+.trangle(top,@w,@c){
+	border-width: @w;
+	border-color: @c transparent transparent transparent;
+}
+.trangle(right,@w,@c){
+	border-width: @w;
+	border-color: transparent @c transparent transparent;
+}
+.trangle(bottom,@w,@c){
+	border-width: @w;
+	border-color: transparent transparent @c transparent;
+}
+.trangle(left,@w,@c){
+	border-width: @w;
+	border-color: transparent transparent transparent @c;
+}
+
+/*选择符合条件的混合模式,根据传入的参数来决定使用哪个混合*/
+.box4{
+	.trangle(top,50px,#f00);
+}

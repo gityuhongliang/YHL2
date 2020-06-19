@@ -1,0 +1,47 @@
+/*我是注释1*/
+//我是注释2  
+
+
+/*变量*/
+@w:100px;
+@h:100px;
+@bg:yellow;
+@bl:10px;
+
+
+/*没有默认值*/
+.border-r(@d){
+	-o-border-radius:@d;
+	-webkit-border-radius:@d;
+	-ms-border-radius:@d;
+	-moz-border-radius:@d;
+	border-radius: @d;
+}
+/*有默认值*/
+.border-r-def(@d:20px){
+	-o-border-radius:@d;
+	-webkit-border-radius:@d;
+	-ms-border-radius:@d;
+	-moz-border-radius:@d;
+	border-radius: @d;
+}
+
+.box1{
+	width: @w;
+	height:@h;
+	background-color: @bg;
+	margin-bottom: @bl;
+}
+.box2{
+	.box1
+}
+
+.box3{
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	border: 40px solid #000;
+
+	/*.border-r(50px)*/ 
+	.border-r-def()
+}

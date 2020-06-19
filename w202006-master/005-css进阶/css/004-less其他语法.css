@@ -1,0 +1,36 @@
+/*嵌套*/
+ul {
+  list-style: none;
+  width: 500px;
+  height: 300px;
+  margin: 50px auto;
+  border: 1px solid #000;
+}
+ul + li {
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+}
+ul + li span {
+  float: left;
+}
+ul + li a {
+  float: right;
+}
+ul + li:hover {
+  background-color: red;
+}
+/*运算*/
+.box5 {
+  font-size: calc(40px);
+}
+/*避免编译*/
+.box6 {
+  font-size: calc(40px) !important;
+  font-size: calc(20px + 20px);
+}
+/*混合参数做为属性和设置计算后的属性值*/
+.box7 {
+  /*// @attr:@val;/*错误*/
+  font-size: 40px;
+}

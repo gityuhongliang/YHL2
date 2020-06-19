@@ -227,8 +227,8 @@
 	//2.执行加载
 	$todaysCoursel.on('coursel-load',function(ev,index,elem){
 		var $elem = $(elem);
-		var $img = $elem.find('.carousel-img');
-		$img.each(function(){
+		var $imgs = $elem.find('.carousel-img');
+		$imgs.each(function(){
 			var $img =$(this)  //利用each方法拿到每一张图片
 			var imgUrl = $img.data('src');	
 			loadImg(imgUrl,function(imgUrl){
