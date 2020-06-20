@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.father{
+				display: flex;
+				width: 1100px;
+				margin: 50px auto;
+				border: 1px solid #000;
+
+				/*justify-content 决定项目的水平对齐方式
+				flex-start(默认值):左对齐
+				flex-end:右对齐
+				center:居中
+				space-between:两端对齐,项目之间的间隔都相等。
+				space-around:每个项目两侧的间隔相等。所以,项目之间的间隔比项目与边框的间隔大一倍。*/
+				justify-content:center;
+			}
+			.father div{
+				/*float: left;*/
+				height: 50px;
+			}
+			.son1{
+				width: 200px;
+				background-color: yellow;
+			}
+			.son2{
+				width: 300px;
+				background-color: blue;
+			}
+			.son3{
+				width: 500px;
+				background-color: black;
+			}
+		</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">1</div>
+		<div class="son2">2</div>
+		<div class="son3">3</div>
+	</div>
+</body>
+</html>

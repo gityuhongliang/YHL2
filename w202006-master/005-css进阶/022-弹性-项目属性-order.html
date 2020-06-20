@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-项目属性-排列顺序.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			display: flex;
+			width: 1000px;
+			margin: 50px auto;
+			border: 1px solid #000;
+		}
+		.father div{
+			height: 50px;
+		}
+
+		/*order 项目的排列顺序,数值越小,排列越靠前,默认为0*/
+		.son1{
+			order: 2;
+			width: 200px;
+			background-color: yellow;
+		}
+		.son2{
+			order: 1;
+			width: 300px;
+			background-color: blue;
+		}
+		.son3{
+			order: 3;
+			width: 500px;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">son1</div>
+		<div class="son2">son2</div>
+		<div class="son3">son3</div>
+	</div>
+</body>
+</html>

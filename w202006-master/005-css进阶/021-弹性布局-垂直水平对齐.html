@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>垂直</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			display: flex;
+			flex-wrap: wrap;
+			width: 800px;
+			height: 400px;
+			margin: 50px auto;
+			border: 1px solid #000;
+
+
+
+
+			
+
+		/*	align-items/align-content的区别
+			align-item换行后会根据父容器的高度填充整个行
+			align-content换行后按项目的的高度来填充行
+			align-content对于单个垂直对齐线不起作用,只对多个垂直对齐线起作用*/
+
+
+			/*stretch(默认值):换行后,如果容器项目未设置高度或设为auto,将占满整个容器的高度
+			flex-start：起点对齐
+			flex-end：终点对齐
+			center：中点对齐
+			baseline: 项目的第一行文字的基线对齐*/
+
+
+			/*align-items:stretch;*/
+			/*align-items:flex-start;*/
+			/*align-items:flex-end;*/
+			/*align-items:center;*/
+			/*align-items:baseline;*/
+
+
+			/*align-content:stretch;*/
+			/*align-content:flex-start;*/
+			/*align-content:flex-end;*/
+			align-content:center;
+			/*align-content:baseline;*/
+
+		}
+		.father div{
+			height: 50px;
+		}
+		.son1{
+				width: 200px;
+				background-color: yellow;
+			}
+			.son2{
+				width: 300px;
+				background-color: blue;
+			}
+			.son3{
+				width: 500px;
+				background-color: black;
+			}
+	</style>
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">1</div>
+		<div class="son2">2</div>
+		<div class="son3">3</div>
+	</div>
+</body>
+</html>

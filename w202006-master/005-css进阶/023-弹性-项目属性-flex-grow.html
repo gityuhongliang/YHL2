@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-弹性布局项目属性-flex-grow.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			display: flex;
+			width: 1600px;
+			margin: 50px auto;
+			border: 1px solid #000;
+		}
+		.father div{
+			height: 50px;
+		}
+		/*如果所有项目的flex-grow属性都为1,则它们将等分剩余空间(如果有的话)
+		如果一个项目的flex-grow属性为2,其他项目都为1,则前者占据的剩余空间将比其他项多一倍 */
+		.son1{
+			flex-grow: 1;
+			width: 200px;
+			background-color: pink;
+		}
+		.son2{
+			flex-grow: 0;
+			width: 300px;
+			background-color: orange;
+		}
+		.son3{
+			flex-grow: 0;
+			width: 500px;
+			background-color: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">son1</div>
+		<div class="son2">son2</div>
+		<div class="son3">son3</div>
+	</div>
+</body>
+</html>

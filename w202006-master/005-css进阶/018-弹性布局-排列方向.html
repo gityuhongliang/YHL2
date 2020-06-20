@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-排列方向.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			display: flex;
+			width: 1000px;
+			margin: 50px auto;
+			border: 1px solid #000;
+
+		/*	row(默认值):水平方向,起点在左端
+			row-reverse:水平方向,起点在右端
+			column:垂直方向,起点在上沿
+			column-reverse:垂直方向,起点在下沿*/
+
+			/*flex-direction: row;*/
+			/*flex-direction: row-reverse;*/
+			/*flex-direction: column;*/
+			flex-direction: column-reverse;
+		}
+		.father div{
+			/*float: left;*/
+			height: 50px;
+		}
+		.son1{
+			width: 200px;
+			background-color: yellow;
+		}
+		.son2{
+			width: 300px;
+			background-color: blue;
+		}
+		.son3{
+			width: 500px;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1"></div>
+		<div class="son2"></div>
+		<div class="son3"></div>
+	</div>
+</body>
+</html>
