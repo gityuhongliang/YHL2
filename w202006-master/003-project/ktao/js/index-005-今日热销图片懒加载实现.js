@@ -135,22 +135,22 @@
 /*焦点区域分类列表逻辑-------------结束*/
 
 /*焦点区域轮播图逻辑-------------开始*/
-	var $cousrsel = $('.focus .carousel-wrap');
-	$cousrsel.item = {};//{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
+	var $coursel = $('.focus .carousel-wrap');
+	$coursel.item = {};//{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
 	      				//判断有没有loaded 如果有就不运行了
-	$cousrsel.totalLoadedNum = 0; 
-	$cousrsel.totalNum = $cousrsel.find('.carousel-img').length; //拿到图片
-	$cousrsel.fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
+	$coursel.totalLoadedNum = 0; 
+	$coursel.totalNum = $coursel.find('.carousel-img').length; //拿到图片
+	$coursel.fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
 
 
 	//1.开始加载
-	$cousrsel.on('coursel-show',$cousrsel.fnload = function(ev,index,elem)/*下标，DOM节点*/{
-		if (!$cousrsel.item[index]) {
-			$cousrsel.trigger('coursel-load',[index,elem])
+	$coursel.on('coursel-show',$coursel.fnload = function(ev,index,elem)/*下标，DOM节点*/{
+		if (!$coursel.item[index]) {
+			$coursel.trigger('coursel-load',[index,elem])
 		}
 	})
 	//2.执行加载
-	$cousrsel.on('coursel-load',function(ev,index,elem){
+	$coursel.on('coursel-load',function(ev,index,elem){
 		var $elem = $(elem);
 		var $img = $elem.find('.carousel-img');
 		var imgUrl = $img.data('src');	
@@ -160,20 +160,20 @@
 			$img.attr('src','img/focus-carousel/placeholder.png')
 		})
 		//图片加载完毕
-		$cousrsel.item[index]='loaded';
-		$cousrsel.totalLoadedNum++;//运行完加1
+		$coursel.item[index]='loaded';
+		$coursel.totalLoadedNum++;//运行完加1
 			//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
-		if($cousrsel.totalLoadedNum == $cousrsel.totalNum){
-			// $cousrsel.off('coursel-show',fnload)//移除监听事件
-			$cousrsel.trigger('coursel-loaded')//自定义事件
+		if($coursel.totalLoadedNum == $coursel.totalNum){
+			// $coursel.off('coursel-show',fnload)//移除监听事件
+			$coursel.trigger('coursel-loaded')//自定义事件
 		}
 	})
 	//3.加载完毕
-	$cousrsel.on('coursel-loaded',function(){ //监听上面的自定义事件 调用方法移除coursel-show监听事件
-		$cousrsel.off('coursel-show',$cousrsel.fnload)//移除监听事件
+	$coursel.on('coursel-loaded',function(){ //监听上面的自定义事件 调用方法移除coursel-show监听事件
+		$coursel.off('coursel-show',$coursel.fnload)//移除监听事件
 	})
 	
-	// $cousrsel.on('coursel-show',fnload = function(ev,index,elem)/*下标，DOM节点*/{
+	// $coursel.on('coursel-show',fnload = function(ev,index,elem)/*下标，DOM节点*/{
 	// 	if (!item[index]) {  //判断下标有没有loaded 取非没有就运行 如果有就不运行了 
 	// 		console.log('will load img ...')
 	// 		var $elem = $(elem);
@@ -204,11 +204,11 @@
 	// 		totalLoadedNum++;//运行完加1
 	// 			//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
 	// 		if(totalLoadedNum == totalNum){
-	// 			$cousrsel.off('coursel-show',fnload)//移除监听事件
+	// 			$coursel.off('coursel-show',fnload)//移除监听事件
 	// 		}
 	// 	}
 	// })
-		$cousrsel.coursel({})
+		$coursel.coursel({})
 /*焦点区域轮播图逻辑-------------结束*/
 
 /*今日热销区域逻辑-------------开始*/
@@ -216,7 +216,7 @@
 	$todaysCoursel.item = {};//{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
 	      				//判断有没有loaded 如果有就不运行了
 	$todaysCoursel.totalLoadedNum = 0; 
-	$todaysCoursel.totalNum = $cousrsel.find('.carousel-img').length; //拿到图片
+	$todaysCoursel.totalNum = $coursel.find('.carousel-img').length; //拿到图片
 	$todaysCoursel.fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
 	//1.开始加载
 	$todaysCoursel.on('coursel-show',$todaysCoursel.fnload = function(ev,index,elem)/*下标，DOM节点*/{
@@ -234,9 +234,9 @@
 			loadImg(imgUrl,function(imgUrl){
 				$img.attr('src',imgUrl)
 			},function(){
-				$img.attr('src','img/focus-carousel/placeholder.png')
+				$img.attr('src','img/todays-carousel/placeholder.png')
 			})
-			
+
 			//图片加载完毕
 			$todaysCoursel.item[index]='loaded';
 			$todaysCoursel.totalLoadedNum++;//运行完加1
@@ -250,7 +250,7 @@
 	})
 	//3.加载完毕
 	$todaysCoursel.on('coursel-loaded',function(){ //监听上面的自定义事件 调用方法移除coursel-show监听事件
-		$todaysCoursel.off('coursel-show',$todaysCoursel.fnload)//移除监听事件
+		$coursel.off('coursel-show',$todaysCoursel.fnload)//移除监听事件
 	})
 
 	$todaysCoursel.coursel({})

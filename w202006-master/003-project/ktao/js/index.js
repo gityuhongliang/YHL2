@@ -135,125 +135,183 @@
 /*焦点区域分类列表逻辑-------------结束*/
 
 /*焦点区域轮播图逻辑-------------开始*/
-	var $cousrsel = $('.focus .carousel-wrap');
-	$cousrsel.item = {};//{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
+	function carouselLazyLoad($elem){
+		$elem.item = {};//{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
 	      				//判断有没有loaded 如果有就不运行了
-	$cousrsel.totalLoadedNum = 0; 
-	$cousrsel.totalNum = $cousrsel.find('.carousel-img').length; //拿到图片
-	$cousrsel.fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
-
-
-	//1.开始加载
-	$cousrsel.on('coursel-show',$cousrsel.fnload = function(ev,index,elem)/*下标，DOM节点*/{
-		if (!$cousrsel.item[index]) {
-			$cousrsel.trigger('coursel-load',[index,elem])
-		}
-	})
-	//2.执行加载
-	$cousrsel.on('coursel-load',function(ev,index,elem){
-		var $elem = $(elem);
-		var $img = $elem.find('.carousel-img');
-		var imgUrl = $img.data('src');	
-		loadImg(imgUrl,function(imgUrl){
-			$img.attr('src',imgUrl)
-		},function(){
-			$img.attr('src','img/focus-carousel/placeholder.png')
+		$elem.totalLoadedNum = 0; 
+		$elem.totalNum = $coursel.find('.carousel-img').length; //拿到图片
+		$elem.fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
+		//1.开始加载
+		$elem.on('coursel-show',$elem.fnload = function(ev,index,elem)/*下标，DOM节点*/{
+			if (!$elem.item[index]) {
+				$elem.trigger('coursel-load',[index,elem])
+			}
 		})
-		//图片加载完毕
-		$cousrsel.item[index]='loaded';
-		$cousrsel.totalLoadedNum++;//运行完加1
-			//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
-		if($cousrsel.totalLoadedNum == $cousrsel.totalNum){
-			// $cousrsel.off('coursel-show',fnload)//移除监听事件
-			$cousrsel.trigger('coursel-loaded')//自定义事件
-		}
-	})
-	//3.加载完毕
-	$cousrsel.on('coursel-loaded',function(){ //监听上面的自定义事件 调用方法移除coursel-show监听事件
-		$cousrsel.off('coursel-show',$cousrsel.fnload)//移除监听事件
-	})
-	
-	// $cousrsel.on('coursel-show',fnload = function(ev,index,elem)/*下标，DOM节点*/{
-	// 	if (!item[index]) {  //判断下标有没有loaded 取非没有就运行 如果有就不运行了 
-	// 		console.log('will load img ...')
-	// 		var $elem = $(elem);
-	// 		var $img = $elem.find('.carousel-img');
-	// 		var imgUrl = $img.data('src');	
-	// 			// console.log(imgUrl)
-	// 			// $img.attr('src',imgUrl)
-	// 			// 直接赋值图片地址缺点：
-	// 			// 1.网络波动容易出现卡顿
-	// 			// 2.错误图片地址不容易处理
+		//2.执行加载
+		$elem.on('coursel-load',function(ev,index,elem){
+			var $this = $(elem);
+			var $img = $this.find('.carousel-img');
+			$img.each(function(){
+				var $img =$(this)  //利用each方法拿到每一张图片
+				var imgUrl = $img.data('src');	
+				loadImg(imgUrl,function(imgUrl){
+					$img.attr('src',imgUrl)
+				},function(){
+					$img.attr('src','img/todays-carousel/placeholder.png')
+				})
+
+				//图片加载完毕
+				$elem.item[index]='loaded';
+				$elem.totalLoadedNum++;//运行完加1
+				//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
+				if($elem.totalLoadedNum == $elem.totalNum){
+				// $elem.off('coursel-show',fnload)//移除监听事件
+				$elem.trigger('coursel-loaded')//自定义事件
+				}
+			})
 			
-	// 		var img = new Image();
-	// 		img.onload = function(){
-	// 			$img.attr('src',imgUrl)
-	// 		}
-	// 		img.onerror = function(){
-	// 			$img.attr('src','img/focus-carousel/placeholder.png')
-	// 		}
-	// 		img.src =imgUrl
-			
-	// 		loadImg(imgUrl,function(imgUrl){
-	// 			$img.attr('src',imgUrl)
-	// 		},function(){
-	// 			$img.attr('src','img/focus-carousel/placeholder.png')
-	// 		})
-	// 			//图片加载完毕
-	// 		item[index]='loaded';
-	// 		totalLoadedNum++;//运行完加1
-	// 			//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
-	// 		if(totalLoadedNum == totalNum){
-	// 			$cousrsel.off('coursel-show',fnload)//移除监听事件
-	// 		}
-	// 	}
-	// })
-		$cousrsel.coursel({})
+		})
+		//3.加载完毕
+		$elem.on('coursel-loaded',function(){ //监听上面的自定义事件 调用方法移除coursel-show监听事件
+			$coursel.off('coursel-show',$elem.fnload)//移除监听事件
+		})
+	}
+	var $coursel = $('.focus .carousel-wrap');
+		carouselLazyLoad($coursel)
+		$coursel.coursel({})
 /*焦点区域轮播图逻辑-------------结束*/
 
 /*今日热销区域逻辑-------------开始*/
 	var $todaysCoursel = $('.todays .carousel-wrap');
-	$todaysCoursel.item = {};//{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
-	      				//判断有没有loaded 如果有就不运行了
-	$todaysCoursel.totalLoadedNum = 0; 
-	$todaysCoursel.totalNum = $cousrsel.find('.carousel-img').length; //拿到图片
-	$todaysCoursel.fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
-	//1.开始加载
-	$todaysCoursel.on('coursel-show',$todaysCoursel.fnload = function(ev,index,elem)/*下标，DOM节点*/{
-		if (!$todaysCoursel.item[index]) {
-			$todaysCoursel.trigger('coursel-load',[index,elem])
-		}
-	})
-	//2.执行加载
-	$todaysCoursel.on('coursel-load',function(ev,index,elem){
-		var $elem = $(elem);
-		var $imgs = $elem.find('.carousel-img');
-		$imgs.each(function(){
-			var $img =$(this)  //利用each方法拿到每一张图片
-			var imgUrl = $img.data('src');	
-			loadImg(imgUrl,function(imgUrl){
-				$img.attr('src',imgUrl)
-			},function(){
-				$img.attr('src','img/focus-carousel/placeholder.png')
-			})
-
-			//图片加载完毕
-			$todaysCoursel.item[index]='loaded';
-			$todaysCoursel.totalLoadedNum++;//运行完加1
-			//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
-			if($todaysCoursel.totalLoadedNum == $todaysCoursel.totalNum){
-			// $todaysCoursel.off('coursel-show',fnload)//移除监听事件
-			$todaysCoursel.trigger('coursel-loaded')//自定义事件
-			}
-		})
-		
-	})
-	//3.加载完毕
-	$todaysCoursel.on('coursel-loaded',function(){ //监听上面的自定义事件 调用方法移除coursel-show监听事件
-		$todaysCoursel.off('coursel-show',$todaysCoursel.fnload)//移除监听事件
-	})
-
+	carouselLazyLoad($todaysCoursel)
 	$todaysCoursel.coursel({})
 /*今日热销区域逻辑-------------结束*/
+/*楼层区域区域逻辑-------------开始*/
+	//楼层图片懒加载
+	function floorImageLazyLoad($elem){
+		$elem.item = {};//{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
+	      				//判断有没有loaded 如果有就不运行了
+		$elem.totalLoadedNum = 0; 
+		$elem.totalNum = $elem.find('.floor-img').length; //拿到图片
+		$elem.fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
+		//1.开始加载
+		$elem.on('tab-show',$elem.fnload = function(ev,index,elem)/*下标，DOM节点*/{
+			if (!$elem.item[index]) {
+				$elem.trigger('tab-load',[index,elem])
+			}
+		})
+		//2.执行加载
+		$elem.on('tab-load',function(ev,index,elem){
+			var $this = $(elem);
+			var $img = $this.find('.floor-img');
+			$img.each(function(){
+				var $img =$(this)  //利用each方法拿到每一张图片
+				var imgUrl = $img.data('src');	
+				loadImg(imgUrl,function(imgUrl){
+					$img.attr('src',imgUrl)
+				},function(){
+					$img.attr('src','img/todays-carousel/placeholder.png')
+				})
+
+				//图片加载完毕
+				$elem.item[index]='loaded';
+				$elem.totalLoadedNum++;//运行完加1
+				//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
+				if($elem.totalLoadedNum == $elem.totalNum){
+					// $elem.off('coursel-show',fnload)//移除监听事件
+					$elem.trigger('tab-loaded')//自定义事件
+				}
+			})
+			
+		})
+		//3.加载完毕
+		$elem.on('tab-loaded',function(){ //监听上面的自定义事件 调用方法移除coursel-show监听事件
+			$elem.off('tab-show',$elem.fnload)//移除监听事件
+		})
+	}
+
+
+
+	//楼层HTML懒加载
+	// function floorHtmlLazyLoad($elem){
+	// 	$elem.item = {};//{0下标:loaded,1下标:loaded} 每加载一个图片记录一次loaded
+	//       				//判断有没有loaded 如果有就不运行了
+	// 	$elem.totalLoadedNum = 0; 
+	// 	$elem.totalNum = $floor.length; //拿到图片
+	// 	$elem.fnload =null //匿名函数不能移除所以赋值fnload等于匿名函数
+	// 	//1.开始加载
+	// 	$doc.on('floor-show',$elem.fnload = function(ev,index,elem)/*下标，DOM节点*/{
+	// 		if (!$elem.item[index]) {
+	// 			$doc.trigger('floor-load',[index,elem])
+	// 		}
+	// 	})
+	// 	//2.执行加载
+	// 	$doc.on('floor-load',function(ev,index,elem){
+	// 		var $this = $(elem);
+	// 		//1.加载数据
+	// 		getDataOnce($doc,'data/floor/floorData.json',function(data){
+	// 		console.log(data[index]);
+	// 		var html = buildFloorHtml(data[index]);
+	// 		// console.log(html)
+	// 		//2.生成HTML结构并插入到楼层中
+	// 		$(elem).html(html)
+	// 		//3.实现楼层图片懒加载
+	// 		floorHtmlLazyLoad($(elem));
+	// 		//4.激活选项卡
+	// 		$(elem).tab({})
+	// 		//HTML加载完毕
+	// 		$elem.item[index]='loaded';
+	// 		$elem.totalLoadedNum++;//运行完加1
+	// 		//判断是否所有图片加载完毕，如果加载完毕则移除监听事件
+	// 		if($elem.totalLoadedNum == $elem.totalNum){
+	// 			// $elem.off('coursel-show',fnload)//移除监听事件
+	// 			$elem.trigger('floor-loaded')//自定义事件
+	// 		}
+			
+	// 	})
+	// 	//3.加载完毕
+	// 	$doc.on('floor-loaded',function(){ //监听上面的自定义事件 调用方法移除coursel-show监听事件
+	// 		$doc.off('floor-show',$elem.fnload)//移除监听事件
+	// 	})
+	// }
+
+	// floorHtmlLazyLoad()
+
+
+	//判断楼层是否进入到可视区 
+	function isVisible($elem){
+		return ($win.height()+$win.scrollTop()>$elem.offset().top) && ($elem.height()+$elem.offset().top > $win.scrollTop());
+	}
+
+	var $floor = $('.floor');
+	var $win = $(window);
+	var $doc = $(document);
+
+	//遍历每个楼层实现图片懒加载
+	/*
+	$floor.each(function(){
+		floorImageLazyLoad($(this))
+	})
+	*/
+	//监听可视区位置事件
+	$doc.on('floor-show',function(ev,index,elem){
+		console.log(index,elem);
+	})
+	//遍历每一个楼层判断是否在可视区
+	function timeShow(){
+		$floor.each(function(index,elem){
+			if(isVisible($(elem))){
+				$doc.trigger('floor-show',[index,elem]);
+			}
+		})
+	}
+	//监听事件
+	$win.on('load resize scroll',function(){
+		clearTimeout($doc.floorTimer);
+		//定时器定时监听事件
+		$doc.floorTimer = setTimeout(timeShow,300)
+	})
+	// $floor.tab({})
+/*楼层区域区域逻辑-------------结束*/
  })(jQuery);
  

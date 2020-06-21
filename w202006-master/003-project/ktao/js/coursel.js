@@ -109,7 +109,7 @@
 			this.now = index;
 		},
 		_slide:function(index,direction){
-			//index表示将要显示的下表
+			//index表示将要显示的下标
 			//direction表示滑动的方向
 			if (index > this.now) {
 				direction = 1;
