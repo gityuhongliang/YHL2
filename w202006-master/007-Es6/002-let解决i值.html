@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Let解决i值</title>
+</head>
+<body>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+</body>
+<script>
+	var aBtn =document.getElementsByTagName('button');
+	//存i值
+	// for(var i=0;i<aBtn.length;i++){
+	//	aBtn[i].index =i
+	// 	aBtn[i].onclick=function(){
+	// 		console.log(this.index)
+	// 	}
+	// }
+
+	//闭包
+	// for(var i=0;i<aBtn.length;i++){
+	// 	;(function(i){
+	// 		aBtn[i].onclick=function(){
+	// 		console.log(i)
+	// 	}
+	// })(i)
+	
+	//let块级作用域
+	for(let i=0;i<aBtn.length;i++){
+		aBtn[i].onclick=function(){
+			console.log(i)
+		}
+	}
+</script>
+</html>

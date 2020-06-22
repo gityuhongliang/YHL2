@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串补全长度</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	// 如果某个字符串不够指定长度，会在头部或尾部补全。
+
+	var str = '1'
+	// padStart()用于头部补全
+	//console.log(str.padStart(5,'abc'))//abca1\
+	 // padEnd()用于尾部补全。
+	//console.log(str.padEnd(5,'abc'))//1abca
+
+	//1
+	console.log(('1').padStart(5,'0'))
+	//111
+	//三位数差两位补全5个 在后面补两位0
+	console.log(('111').padEnd(5,'0'))
+	//三位数差两位补全5个 在前面补两位0
+	console.log(('111').padStart(5,'0'))
+</script>
+</html>
