@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr =[1,0,3,4,0,6,0,8,9,7,0]
+	function fn(arr){
+		var up =[];
+		for(var i=0;i<arr.length;i++){
+			if (!up.indexOf(arr[i]) == 0) {
+				up.push(arr[i])
+
+			}
+			return up
+		}
+	}
+	var res =fn(arr)
+	console.log(res)
+</script>
+</html>

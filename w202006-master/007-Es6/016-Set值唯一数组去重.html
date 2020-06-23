@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-Set值唯一数组去重.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let arr1 = [1,9,3,9,1,8,5,0,1,1,7,8];
+		// console.log(arr);
+		/*
+		function uniqueArray(arr){
+			let result =[];
+			for(i=0;i<arr.length;i++){
+				if (result.indexOf(arr[i])== -1) { 
+					result.push(arr[i])
+				}
+			}
+			return result
+		}
+		console.log(uniqueArray(arr))
+		*/
+
+
+		/*
+		function sum(arr1){
+			let result =[];
+			let obj =[];
+			for(let i=0;i<arr1.length;i++){
+				obj[arr1[i]]=arr1[i]
+			}
+			for (key in obj){
+				result.push(key*1)
+			}
+			return result
+		}
+		console.log(sum(arr1))
+		*/
+
+
+
+		let s =new Set(arr1);
+		let arr2 =[...s]
+		console.log(arr2);
+
+</script>
+</html>

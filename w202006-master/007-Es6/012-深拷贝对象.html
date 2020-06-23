@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-深拷贝对象.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../003-project/ktao/js/jquery-1.12.4.js"></script>
+<script>
+	let obj1 = {
+		name:'tom',
+		age:18,
+		friends:{name:'leo',age:20},
+		pets:['cat','dog']
+	}
+	/*
+	const obj2 = {...obj1}
+	obj2.name = 'tom'
+	obj2.friends.name = 'peter'
+	obj2.pets.push('tiger')
+	console.log('obj1::',obj1)
+	console.log('obj2::',obj2)
+	*/
+
+	/*
+	const obj2 = JSON.parse(JSON.stringify(obj1))
+	obj2.name = 'tom'
+	obj2.friends.name = 'peter'
+	obj2.pets.push('tiger')
+	console.log('obj1::',obj1)
+	console.log('obj2::',obj2)
+	*/
+
+
+	const obj2 = $.extend(true,{},obj1)
+	obj2.name = 'tom'
+	obj2.friends.name = 'peter'
+	obj2.pets.push('tiger')
+
+	console.log('obj1::',obj1)
+	console.log('obj2::',obj2)
+</script>
+</html>

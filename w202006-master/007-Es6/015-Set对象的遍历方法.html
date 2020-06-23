@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Set对象的遍历方法</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let arr= [4,6,5,8,9]
+	let s =new Set(arr);
+
+	// keys():返回键名的遍历器
+	// for(let key of s.keys()){
+	// 	console.log('key:',key)
+	// }
+
+
+	// values():返回键值的遍历器
+	// for(let value of s.values()){
+	// 	console.log('value:',value)
+	// }
+
+	// entries():返回键值对的遍历器
+	// for(let entries of s.entries()){
+	// 	console.log('entries:',entries)
+	// }
+
+	// forEach(function(value,key){}):使用回调函数遍历
+	s.forEach(function(value,key){
+		console.log('value= ',value,'key= ',key)
+	})
+</script>
+</html>
