@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-map基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//没有成功
+	let obj = {};
+	obj['name'] = 'tom';
+	let obj1 = {id:'obj1充当obj的键'};
+	let obj2 = {id:'obj1充当obj的键'};
+	obj[obj1] = '001';
+	obj[obj2] = '002';
+
+	console.log(obj);
+
+
+	// map基本使用
+	let m1 = new Map();
+	m1.set('name','tom')
+	// let m2 = new Map();
+
+	 console.log(m1);
+	
+	// obj[m1] = 'hello'
+
+</script>
+</html>

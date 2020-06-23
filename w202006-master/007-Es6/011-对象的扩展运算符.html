@@ -9,33 +9,47 @@
 	
 </body>
 <script>
-	let obj = {
+	/*
+	let obj1 = {
 		name:'tom',
 		age:18,
 		friends:{name:'leo',age:20},
-		pets:['cat','dog']
+		pets:['cat','tigger']
 	}
-	//console.log(obj)
-	//console.log({...obj})
-
-	/*直接赋值,浅copy*/
-	/*
-	const obj2 = obj
-	obj2.name = 'anmy'
-	obj2.friends.name = 'peter'
-	obj2.pets.push('tiger')
-	console.log('obj::',obj)//name:anmy;obj.friends.name:peter true
-	console.log('obj2::',obj2)//name:anmy;obj2.friends.name:peter true
+	let obj2 = {...obj1}
+	console.log('obj1:',obj1)
+	console.log('obj2:',obj2)
 	*/
 
 
-	/*对象的扩展运算,不完全深copy*/
-	const obj2 = {...obj}
-	obj2.name = 'anmy'
-	obj2.friends.name = 'peter'
-	obj2.pets.push('tiger')
+	//直接复制浅拷贝
+	/*
+	let obj1 = {
+		name:'tom',
+		age:18,
+		friends:{name:'leo',age:20},
+		pets:['cat','tigger']
+	}
+	let obj2 = obj1
+	obj1.name ='petter';
+	obj1.friends.age=99;
+	obj1.pets.push('dog')
+	console.log('obj1:',obj1) //petter 99 dog 
+	console.log('obj2:',obj2) //petter 99 dog 
+	*/
 
-	console.log('obj::',obj)//name:tom;obj.friends.name:prter true
-	console.log('obj2::',obj2)//name:anmy;obj2.friends.name:peter true
+	//扩展运算，浅拷贝
+	let obj1 = {
+		name:'tom',//基本数据类型 深拷贝
+		age:18,
+		friends:{name:'leo',age:20},//复杂数据 复制指针地址引用
+		pets:['cat','tigger'] //复制指针地址引用
+	}
+	let obj2 = {...obj1};//{name:'tom' 99 dog} 
+	obj1.name ='petter';
+	obj1.friends.age=99;
+	obj1.pets.push('dog')
+	console.log('obj1:',obj1) //petter 99 dog 
+	console.log('obj2:',obj2) //tom 99 dog
 </script>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-map实例方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj1 = {id:'obj1充当m的键'};
+	let obj2 = {id:'obj2充当m的键'};
+	
+	let m = new Map();
+
+	/*
+	m.name  ='tom'
+	m[obj1] = '001';
+	m[obj2] = '002';
+	*/
+
+
+	//set(key，value)设置键名key对应的键值为value，返回整个map结构
+	//如果key已经有值，则键值更新 如下 否则新生成该键
+	m.set('name','tom');
+	m.set(obj1,'001');
+	m.set(obj2,'002');
+	console.log(m);
+
+
+	// get(key):读取key对应的键值，如果找不到key，返回undefined。
+	console.log(m.get('name'));
+	// 如果找不到key，返回undefined
+	console.log(m.get(age));//age不存在
+
+	// delete(key):delete方法删除某个键，返回true。如果删除失败，返回false。
+	console.log(m.delete('name'));
+	// 如果删除失败，返回false。 
+	console.log(m.delete(age));//age不存在
+
+	// has(key):has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。
+	console.log(m.has(obj2));
+
+	
+	// clear():清除所有键值,没有返回值
+	console.log(m.clear(obj2));
+
+</script>
+</html>

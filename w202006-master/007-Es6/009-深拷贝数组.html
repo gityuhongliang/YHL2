@@ -6,37 +6,58 @@
 </head>
 <body>
 	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
 </body>
 <script>
-	// let arr1=[1,2,3,4,5,6,7,8,9]
-	// let arr2=[]
-	// for(let i=0;i<arr.length;i++){
-	// 	arr2.push(arr1[i])
-	// }
-	// console.log(arr1 === arr2)
-	// console.log(arr2)
-	//深拷贝数组
+	/*
+	//浅拷贝数组
+	let arr1=[1,2,3,4,5,6,7,8,9]
+	let arr2=arr1;
+	arr1.push(66);
+	console.log(arr1 === arr2) //返回ture 浅拷贝
+	console.log(arr2)
+	*/
 
-	// let arr1=[1,2,3,4,5,6,7,8,9]
-	// let arr2=arr.concat()
-
-	// console.log(arr1 === arr2)
-	// console.log(arr2)
-
-	// let arr1=[1,2,3,4,5,6,7,8,9]
-	// let arr2=arr.slice()
-
-	// console.log(arr1 === arr2)
-	// console.log(arr2)
 	/*
 	let arr1=[1,2,3,4,5,6,7,8,9]
-	let arr2=[...arr1]   //扩展运算
-
+	let arr2=[]
+	for(let i=0;i<arr.length;i++){
+		arr2.push(arr1[i])
+	}
 	console.log(arr1 === arr2)
 	console.log(arr2)
 	*/
-	let aBtn =document.getElementsByTagName('button');
+	
+	
+	// 深拷贝数组
+	/*
+	let arr1=[1,2,3,4,5,6,7,8,9]
+	let arr2=arr.concat()
+	console.log(arr1 === arr2)
+	console.log(arr2)
 
+	*/
+
+	/*
+	let arr1=[1,2,3,4,5,6,7,8,9]
+	let arr2=arr.slice()
+	console.log(arr1 === arr2)
+	console.log(arr2)
+	*/
+
+
+	/*
+	let arr1=[1,2,3,4,5,6,7,8,9]
+	let arr2=[...arr1]   //扩展运算
+	console.log(arr1 === arr2)
+	console.log(arr2)
+	*/
+
+
+
+	let aBtn =document.getElementsByTagName('button');
 	let arr1=[1,2,3,4,5,6,7,8,9]
 	let arr2 =[...aBtn]
 	console.log(arr2)
