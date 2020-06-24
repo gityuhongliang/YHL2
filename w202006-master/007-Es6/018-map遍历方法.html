@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>map遍历方法</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj1 = {id:'obj1充当m的键'};
+	let obj2 = {id:'obj2充当m的键'};
+	let m = new Map();
+	m.set('name','tom');
+	m.set(obj1,'001');
+	m.set(obj2,'002');
+	// console.log(m);
+
+
+	// keys():返回键名的遍历器
+	/*
+	for(let key of m.keys()){
+		console.log('key:',key);
+	}
+	*/
+	/*
+	for(let value of m.values()){
+		console.log('value:',value);
+	}
+	*/
+
+	/*
+	for(let entrie of m.entries()){
+		console.log('entries:',entries);
+	}
+	*/
+	
+	m.forEach(function(value,key){
+		console.log('value::',value,'key::',key)
+	})
+
+</script>
+</html>

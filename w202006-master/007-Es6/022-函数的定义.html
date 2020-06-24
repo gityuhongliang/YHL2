@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-函数的定义</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+		函数声明
+		function 函数名(){
+		   函数体;
+		}
+		function show(){
+			console.log('a')
+		}
+		show()
+	*/
+	/*
+		函数表达式
+		var 函数名 =  function(){
+		   函数体;
+		}
+		var show =function(){
+			console.log('b')
+		}
+		show()
+	*/
+	// 函数表达式定义的函数没有函数声明的提升,只有变量声明提升
+	var show =function(){
+		console.log('b')
+	}
+	
+	//函数声明的提升是指在代码开始执行前,解析器会把所有用函数声明定义的函数放到代码的顶部
+	function show(){
+		console.log('a')  
+	}
+	show() //b //函数声明的提升
+</script>
+</html>

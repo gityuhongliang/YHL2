@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise的then方法</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	let promise =new Promise((resolve,reject)=>{
+		// console.log('aa')
+		setTimeout(function(){
+			resolve('data:ok');
+			// reject('data:ok');
+		})
+	})
+	
+
+	// then(resolved状态的回调,rejected状态的回调)
+	// then方法返回的是一个新的Promise实例
+	/*
+	let p1=promise.then(data=>{
+		// console.log(data);
+		return data
+	})
+	console.log(p1);
+	console.log(p1 ===promise); //新的Promise实例所以不等于promise
+	*/
+
+	var p2 
+	 p1=promise.then(data=>{
+		p2=new Promise ((resolve,reject)=>{
+			setTimeout(function(){
+				resolve('data:ok');
+			},0)
+		})
+		return p2
+	})
+	console.log(p2);
+</script>
+</html>

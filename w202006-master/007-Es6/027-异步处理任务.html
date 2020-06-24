@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-异步处理任务.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../002-jquery/js/jquery-1.12.4.js"></script>
+<script>
+	
+	//ajax请求
+	
+	$.get('https://api.github.com/users/gityuhongliang',function(data){
+		console.log(data);
+		$.get(data.followers_url,function(data){
+			console.log(data);
+			$.get(data[1].followers_url,function(data){
+				console.log(data);
+			})
+		})
+	});
+	console.log('load ajax');
+	
+
+	//dom事件
+	/*
+	var img =new Image();
+	img.onload= function(){
+		console.log('load img success');
+	}
+	img.onerror= function(){
+		console.log('load img error');
+	}
+	img.src ='../003-project/ktao/img/logo.jpg';
+	console.log('load img');
+	*/
+	//定时器
+	/*
+	setTimeout(function(){
+		console.log('load timer')
+	},0)
+	*/
+</script>
+</html>

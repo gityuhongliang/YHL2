@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-Promise基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//1.在生成promise实例是必须传入回调函数,回调函数接收两个参数(resolve,reject)
+	//2.在生成promise实例时会马上执行回调函数
+	let promise =new Promise((resolve,reject)=>{
+		console.log('aa')
+		setTimeout(function(){
+			resolve('data:ok') //resolve函数在异步操作成功时调用,并将异步操作的结果作为参数传递出去
+			reject('err:no') //reject在异步操作失败时调用,并将异步操作报出的错误作为参数传递出去
+		})
+	})
+	/*
+	Promise有三种状态
+	pending（进行中）
+	fulfilled（已成功）
+	rejected（已失败）
+	*/
+	console.log(promise);
+
+
+	//promise实例有一个then方法
+	//接收两个回调函数一个是成功的回调函数,一个是失败的回调函数
+	promise.then(data=>{
+		console.log(promise);
+	},err=>{
+		console.log(promise);
+	})
+</script>
+</html>

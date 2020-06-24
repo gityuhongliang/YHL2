@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	let s = new Symbol()//Symbol不是构造函数
+	console.log(s)
+	*/
+
+	// Symbol函数可以接受一个字符串作为参数,表示对Symbol实例的描述
+	let s1 = Symbol('tom');
+	let s2 = Symbol('tom');
+	// console.log(s1);
+	// console.log(s2);
+
+
+	// Symbol是一种新的数据类型,表示独一无二的值
+	// console.log(s1 === s2);
+
+	let obj = {
+		name:'leo'
+	}
+
+	// Symbol值作为对象属性名时,不能用点运算符,在对象的内部也不可以
+	// obj.s1 = '001'
+	// obj.s2 = '002'
+	obj[s1]='001';
+	obj[s2]='002';
+	console.log(obj)
+
+
+	/*
+	for(let key in obj){	Symbol值作为对象属性时是不可枚举的
+		console.log(key)  //拿不到
+	}
+	*/
+
+	//可以利用Reflect.ownKeys(obj)获取对象上的所有key来遍历
+	console.log(Reflect.ownKeys(obj))
+	
+	let keys = Reflect.ownKeys(obj)
+	for(let i=0;i<keys.length;i++){
+		// console.log(keys[i])
+		console.log(obj[keys[i]])
+	}
+</script>
+</html>

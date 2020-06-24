@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-箭头函数中的this指向问题.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var id = 50;
+	function timer(id){
+		this.id = 20;
+		setTimeout (function(){
+			console.log(this.id)
+		},100)
+	}
+	var time = new timer()
+	*/
+
+
+	//箭头函数中的this是在定义时确定的(定义时属于谁),而不是在运行时确定(谁调用)的
+	 
+	var id = 50;
+	function timer(id){
+		this.id = 20;
+		setTimeout (()=>{
+			console.log(this.id)//箭头函数导致this总是指向函数定义生效时所在的对象
+		},100)
+	}
+	var time = new timer()
+</script>
+</html>
