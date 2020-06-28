@@ -26,18 +26,26 @@
 		return data
 	})
 	console.log(p1);
+	//新的promise调用then方法（成功回调函数）中的data数据是上一个promise调用then方法成功回调函数的返回值
+	p1.then((data)=>{
+		console.log(data)
+	})
 	console.log(p1 ===promise); //新的Promise实例所以不等于promise
 	*/
 
 	var p2 
-	 p1=promise.then(data=>{
-		p2=new Promise ((resolve,reject)=>{
+	p1 = promise.then(data=>{
+		p2 = new Promise ((resolve,reject)=>{
 			setTimeout(function(){
-				resolve('data:ok');
+				resolve('data:ok3');
 			},0)
 		})
 		return p2
 	})
-	console.log(p2);
+	p1.then((data)=>{
+		console.log(p1);
+		console.log(p2);
+		console.log(p1 === p2);
+	})
 </script>
 </html>
