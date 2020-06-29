@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-Promise处理ajax.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../002-jquery/js/jquery-1.12.4.js"></script>
+<script>
+	function getDataPromsie(url) {
+		return new Promise((resolve,reject)=>{
+			$.ajax({
+				url:url,
+				success:(data)=>{
+					resolve(data)
+				},
+				error:(jqXHR,statusMsg)=>{
+					reject(statusMsg)
+				}
+			})	
+		})
+	}
+
+	getDataPromsie('https://api.github.com/users/gityuhongliang')
+	.then(data=>{
+		// console.log(data)
+		return getDataPromsie(data.followers_url)
+	})
+	.then(data=>{
+		// console.log(data)
+		return getDataPromsie(data[0].followers_url)
+	})
+	.then(data=>{
+		console.log(data)
+	})
+	.catch(err=>{
+		console.log(err)
+	})
+</script>
+</html>
