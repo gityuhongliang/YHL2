@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class定义类</title>
+</head>
+<body>
+	
+</body>
+<script>	
+	class Person{
+		constructor(name,age){
+			this.name = name
+			this.age = age
+		}
+		showName(){
+			console.log('I am '+this.name)
+		}
+		showAge(){
+			console.log('I am '+this.age+' years old')
+		}
+		static sayHello(){
+			console.log('hello')
+		}
+	}
+	const p1 =new Person('Tom',18);
+	p1.showName();
+	p1.showAge();
+	Person.sayHello();
+
+
+	class Student extends Person{
+		constructor(name,age,major){
+			super(name,age)
+			this.major = major
+		}
+		showMajor(){
+			console.log('I am from '+this.major)
+		}
+		static sayHello(){
+			console.log('hello')
+		}
+	}
+	const s1 = new Student('leo',88,'computer')
+	console.log('s1:',s1)
+	s1.showName()
+	s1.showAge()
+	s1.showMajor()
+	Student.sayHello()
+</script>
+</html>

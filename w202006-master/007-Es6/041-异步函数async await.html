@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-异步函数async await.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function  fn(){
+		console.log('a')
+	}
+	console.log(fn);//函数
+	console.log(fn());// a 和undefined
+	*/
+
+
+	/*
+	async function as(){  //async function表示这个函数里面有异步处理
+		console.log('a');
+		return 'async'
+	} 
+	console.log(as);
+	console.log(as()) //async函数返回一个 Promise 对象，可以使用then方法添加回调函数。
+
+	let promise = as();
+	promise
+	.then(data=>{ //async函数内部return语句返回的值，会成为then方法回调函数的参数。
+		console.log(data);
+	})
+	*/
+
+
+	let p1 
+	async function fn(){
+		p1 = new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				resolve('data:ok')
+			})
+		})
+		return p1
+	}
+	let promise = fn()
+	console.log('p1',p1);
+	console.log('promise',promise);
+	console.log(p1 === promise);  //false
+</script>
+</html>

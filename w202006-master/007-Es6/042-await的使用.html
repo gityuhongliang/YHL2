@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>042-await的使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// await只能放到async函数体中
+	//遇到await会等待后面的语句执行完毕,然后再去执行下面的语句
+	/*
+	async function fn(){
+		//await表示后面的处理需要等待,通常await后面是一个 Promise 对象，返回该对象的结果。
+		// 如果不是 Promise 对象，就直接返回对应的值。
+		const data1 = await 'get data1';
+		console.log(data1);
+		const data2 = await 'get data2';
+		console.log(data2);
+		return data1
+	}
+
+	const p1 = fn()
+	p1.then(data=>{
+		console.log(data)
+	})
+
+	*/
+	const promsie = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			resolve('get data ok')
+			// reject('get err')
+		},200)
+	})
+	async function fn(){
+		try{
+			const data1 = await promsie;
+			console.log(data1); 
+			return data1
+		}
+		catch(err){
+			console.log(err)
+		}
+		
+	}
+	const p2 =fn()
+	p2.then(data=>{
+		console.log(data)
+	})
+
+
+	// 防止出错的方法，是await语句放在try...catch代码块之中。
+	/*
+	.catch(err=>{
+		console.log(err)
+	})
+	*/
+</script>
+</html>

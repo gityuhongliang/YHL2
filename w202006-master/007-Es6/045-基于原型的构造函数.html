@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>045-基于原型的构造函数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name 
+		this.age = age 
+	}
+	Person.prototype.sayName = function(){
+		console.log('I am '+this.name)
+	}
+	Person.prototype.sayAge = function(){
+		console.log('I am '+this.age+' years old')
+	}
+	Person.sayHello = function(){
+		console.log('hello everybody')
+	}
+
+
+	const p1 = new Person('tom',18)
+	// p1.sayName()
+	// p1.sayAge()
+	// p1.sayHello()
+	// Person.sayHello()
+	// p1.sayMajor()
+
+
+	function Student(name,age,major){
+		Person.call(this,name,age)
+		this.major = major
+	}
+	Student.prototype = Object.create(Person.prototype)
+	Student.prototype.sayMajor = function(){
+		console.log('I am from '+this.major)
+	}
+	Student.sayHello = Person.sayHello
+
+
+	const s1 = new Student('leo',20,'computer')
+	s1.sayName()
+	s1.sayAge()
+	s1.sayMajor()
+	Student.sayHello()
+</script>
+</html>

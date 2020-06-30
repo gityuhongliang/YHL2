@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>040-Generatorh函数处理ajax.html</title>
+	<title>040-Generator函数处理ajax.html</title>
 </head>
 <body>
 	
@@ -45,6 +45,7 @@
 	})
 	.then(data=>{
 		console.log(data)
+		console.log(g.next(data[0].followers_url))
 	})
 </script>
 </html>

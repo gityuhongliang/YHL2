@@ -26,11 +26,11 @@
 	getDataPromsie('https://api.github.com/users/gityuhongliang')
 	.then(data=>{
 		// console.log(data)
-		return getDataPromsie(data.followers_url)
+		return getDataPromsie(data.followers_url)//返回出去让下面拿到
 	})
 	.then(data=>{
 		// console.log(data)
-		return getDataPromsie(data[0].followers_url)
+		return getDataPromsie(data[0].followers_url)//返回出去让下面拿到
 	})
 	.then(data=>{
 		console.log(data)
