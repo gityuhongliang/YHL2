@@ -1,0 +1,16 @@
+{
+  "name": "02-install",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  //参数--save:
+  // 把包的版本信息添加到package.json中dependencies 中(默认),一般是需要最终需要打包到业务代码中的依赖
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
