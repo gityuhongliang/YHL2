@@ -36,7 +36,7 @@ emitter.emit('test');
 // emitter.addListener和emitter.on(eventName, listener)是同一个方法
 // console.log(emitter.addListener === emitter.on)
 
-
+/*
 // 一个EventEmitter对象默认最大可以有10个监听,可以通过emitter.setMaxListeners(n)来设置最大监听数
 emitter.on('test1',()=>{
 	console.log('默认十个监听事件');
@@ -72,3 +72,4 @@ emitter.on('test1',()=>{
 	console.log('默认十个监听事件');
 })
 emitter.emit('test1');
+*/
