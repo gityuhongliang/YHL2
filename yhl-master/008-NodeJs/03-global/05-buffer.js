@@ -22,8 +22,8 @@ const buf3 =Buffer.alloc(10);
 buf3[0] = 0xfa   //通过下标修改
 buf3[1] = 99
 console.log(buf3);
-
 */
+
 const buf4 =Buffer.alloc(1);
 buf4[0]=0x61  //a的十六进制是61 
 console.log(buf4.toString()); //转换后为a
