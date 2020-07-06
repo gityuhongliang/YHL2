@@ -5,7 +5,7 @@ const mime =require('./mime.json');
 const url =require('url');
 const swig = require('swig');
 const querystring =require('querystring');
-const { get } = require('./model/item.js');
+const {get,add} = require('./model/item.js');
 const server = http.createServer((req,res)=>{
 	
 	const filePath =req.url
@@ -18,7 +18,7 @@ const server = http.createServer((req,res)=>{
 		get()
 		.then(data=>{
 			// console.log(result)
-			//引入模板处理数据
+			//获取请求地址
 			const filename = path.normalize(__dirname+'/static/index.html')
 			var template = swig.compileFile(filename)
 			const html = template({
@@ -48,7 +48,9 @@ const server = http.createServer((req,res)=>{
 		req.on('end',()=>{
 			//将参数转换成对象
 			const query = querystring.parse(body);
-			console.log(query);
+			// console.log(query);
+			// 将任务添加到后台数据文件中
+			add(query.task)
 		})
 		res.end('ok')
 	}else{
@@ -60,8 +62,8 @@ const server = http.createServer((req,res)=>{
 				// console.log(err)
 				res.setHeader('Content-type','text/html;charset="utf-8"')
 				res.statusCode = 404
-				res.end('你请求的地址出错<')
-			console.log(222);
+				res.end('你请求的地址出错')
+				console.log(222);
 
 			}else{
 				// console.log(data)

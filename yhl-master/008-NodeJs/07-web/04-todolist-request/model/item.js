@@ -2,10 +2,13 @@ const fs = require('fs');
 const path = require('path')
 const util =require('util')
 
-//返回一个pormise对象
-const readFile = util.promisify(fs.readFile)
+
+const readFile = util.promisify(fs.readFile);
+
+const writeFile = util.promisify(fs.writeFile);
+
 //获取json文件地址
-const filepath = path.normalize(__dirname+'/../data/item.json')
+const filepath = path.normalize(__dirname+'/../data/item.json');
 
 // 异步处理获取json数据
 async function get(){
@@ -18,6 +21,9 @@ async function get(){
 }
 
 //添加数据
+async function add(task){
+	console.log(task)
+}
 //删除数据
 
 
@@ -26,5 +32,6 @@ async function get(){
 
 
 module.exports= {
-	get
+	get,
+	add,
 }

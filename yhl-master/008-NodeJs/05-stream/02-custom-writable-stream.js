@@ -23,11 +23,11 @@ const write = new CustomStream();
 write.on('h1',()=>{
 	console.log('hahaha')
 })
-write.write('2',()=>{
+write.write('a1',()=>{
 	console.log('hello ')
 })
-write.write('a')
-write.end()
+write.write('a2')
+write.end()//把流写完了 然后结束
 /*
 chunk: <Buffer 32>
 encoding: buffer

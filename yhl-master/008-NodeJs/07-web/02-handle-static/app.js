@@ -14,7 +14,7 @@ const server = http.createServer((req,res)=>{
 			// console.log(err)
 			res.setHeader('Content-type','text/html;charset="utf-8"')
 			res.statusCode = 404
-			res.end('你请求的地址出错<')
+			res.end('你请求的地址出错')
 		}else{
 			// console.log(data)
 			//根据请求的文件决定不同的文档类型
