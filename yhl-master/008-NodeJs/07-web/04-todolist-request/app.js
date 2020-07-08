@@ -51,8 +51,20 @@ const server = http.createServer((req,res)=>{
 			// console.log(query);
 			// 将任务添加到后台数据文件中
 			add(query.task)
+			.then(data =>{
+				res.end(JSON.stringify({
+					code:0,
+					message:'添加任务成功',
+					data:data
+				}))
+			})
+			.catch(err=>{
+				res.end(JSON.stringify({
+					code:1,
+					message:'添加任务失败',
+				}))
+			})
 		})
-		res.end('ok')
 	}else{
 		//处理静态资源
 		const filename = path.normalize(__dirname+'/static/'+filePath)
