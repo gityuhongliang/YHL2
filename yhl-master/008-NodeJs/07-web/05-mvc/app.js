@@ -38,7 +38,9 @@ const server = http.createServer((req,res)=>{
 				res.setHeader('Content-type',mimeType+';charset="utf-8"')
 				res.end(data)
 			}
-		}
+		})
+	}else if(){
+		
 	}
 
 
