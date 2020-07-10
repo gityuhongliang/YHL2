@@ -28,3 +28,4 @@ db.once('open',function(){
 			console.log('deleteOne success:',data)
 		}
 	})
+})
