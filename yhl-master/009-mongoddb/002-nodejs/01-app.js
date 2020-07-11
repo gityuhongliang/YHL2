@@ -15,7 +15,7 @@ client.connect(function(err) {
   if (err) {
   	console.log(err)
   }else{
-  	console.log('succes')
+  	console.log('success')
   	client.close();
   }
 });
