@@ -11,6 +11,7 @@ db.on("error",(err=>{
 
 db.once('open',function(){
 	console.log('connect mongodb success')
+
 	// 生成文档模型
 	const kittySchema = new mongoose.Schema({
 		name:String,
@@ -21,7 +22,7 @@ db.once('open',function(){
 	const Kitten = mongoose.model('Kitten', kittySchema);
 
 
-// 根据生成的集合进行数据库操作：CRUD
+	// 根据生成的集合进行数据库操作：CRUD
 	// MyModel.find({ name: 'john', age: { $gte: 18 }});
 	// MyModel.find({ name: 'john', age: { $gte: 18 }}, function (err, docs) {});
 	Kitten.find({name:'tk'},(err,data)=>{

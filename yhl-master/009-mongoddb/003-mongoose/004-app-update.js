@@ -20,7 +20,7 @@ db.once('open',function(){
 	//根据文档模型生成集合
 	const Kitten = mongoose.model('Kitten', kittySchema);
 	// 根据生成的集合进行数据库操作：CRUD
-/*
+	/*
 	Kitten.updateMany({name:"tk",age:66},(err,data)=>{
 		if(err){
 			console.log('updateMany err:',err)
@@ -28,7 +28,7 @@ db.once('open',function(){
 			console.log('updateMany success:',data)
 		}
 	})
-*/
+	*/
 	Kitten.updateOne({name:'tk'},{age:20},(err,data)=>{
 		if(err){
 			console.log('updateOne err:',err)

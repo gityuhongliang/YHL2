@@ -26,23 +26,23 @@ db.once('open',function(){
 	// Model.prototype.save()
 
 	// Model.insertMany()
-	/*
-	 Kitten.insertMany({name:'Tom',age:18})
+	
+	 Kitten.insertMany({name:'zs',age:22,major:'LOL'})
 	 .then(data=>{
 	 	console.log(data)
 	 })
 	 .catch(err=>{
 	 	console.log(err)
 	 })
-	*/
+	
 
 	 // Model.create()
-	 Kitten.create([{name:"tk",age:50},{name:'cz',age:66}])
-	 .then(data=>{
-	 	console.log(data)
-	 })
-	 .catch(err=>{
-	 	console.log(err)
-	 })
+	 // Kitten.create([{name:"tk",age:50},{name:'cz',age:66}])
+	 // .then(data=>{
+	 // 	console.log(data)
+	 // })
+	 // .catch(err=>{
+	 // 	console.log(err)
+	 // })
 
 })
