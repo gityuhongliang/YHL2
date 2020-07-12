@@ -1,6 +1,6 @@
 //引入模块
 const mongoose = require('mongoose');
-const Schema =require('./models/blog.js')
+const ModelBlog =require('./models/blog.js')
 const ModelUser =require('./models/user.js')
 
 // 连接到数据库
@@ -20,7 +20,7 @@ db.once('open',function(){
 	
 	// 根据生成的集合进行数据库操作：CRUD
 	/*
-	Schema.insertMany({name:"Tom",age:15,major:"LOL",_id:"5f09734877977a2484b453e6"})
+	ModelUser.insertMany({name:'zsssss',age:22,major:"UZI",author:'5f082d685777fd25fcc7389c'})
 	 .then(data=>{
 	 	console.log(data)
 	 })
@@ -28,11 +28,12 @@ db.once('open',function(){
 	 	console.log(err)
 	 })
 	 */
-	 
-	 Schema.findOne({name:'CC'})
+	 //正常方法找到id为什么什么的 一对一
+	 /*
+	 ModelUser.findOne({name:'CCCCCC'})
 	 .then(data=>{
 	 	console.log(data)
-	 	ModelUser.find({author:data.id},(err,data)=>{
+	 	ModelBlog.find({author:data.id},(err,data)=>{
 	 		if (err) {
 	 			console.log(err)
 	 		}else{
@@ -44,5 +45,22 @@ db.once('open',function(){
 	 .catch(err=>{
 	 	console.log(err)
 	 })
-	 
+	 */
+	
+	//自定义实例方法
+	 ModelUser.findOne({name:'CCCCCC'})
+	 .then(data=>{
+	 	console.log(data)
+		data.getBlogs((err,data)=>{
+			if (err) {
+	 			console.log(err)
+	 		}else{
+	 			console.log(data)
+	 		}
+		})
+	 	
+	 })
+	 .catch(err=>{
+	 	console.log(err)
+	 })
 })

@@ -17,13 +17,25 @@ db.once('open',function(){
 
 	
 	// 根据生成的集合进行数据库操作：CRUD
-	ModelUser.insertMany({name:'zs',age:22,author:'5f09736772efb637c874b08c'})
-	 .then(data=>{
+	ModelUser.insertMany({name:'zsssss',age:22,major:"UZI",author:'5f082d685777fd25fcc7389c'})
+	.then(data=>{
 	 	console.log(data)
-	 })
-	 .catch(err=>{
+	})
+	.catch(err=>{
 	 	console.log(err)
-	 })
+	})
 
+
+/*
+	ModelUser.findOne({_id:"************"},(err,data)=>{
+		if(err){
+			console.log('findOne err:',err)
+		}else{
+			console.log('findOne success:',data.createdAt.toLocaleString())
+			// console.log(moment(data.createdAt).format('YYYY - MM - DD HH:mm:ss'))
+			//需要安装moment.js
+		}
+	})
+*/
 })
 

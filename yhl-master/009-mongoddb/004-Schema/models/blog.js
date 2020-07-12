@@ -6,8 +6,7 @@ const mongoose = require('mongoose');
 	const kittySchema = new mongoose.Schema({
 		name:
 		{
-			type:String,
-			required: [true,'用户名不能为空']
+			type:String
 		},
 		age:
 		{
@@ -17,15 +16,25 @@ const mongoose = require('mongoose');
 		{
 			type:String
 		},
+		phone:
+		{
+			type:Number
+		},
 		admin:
 		{
 			type:Boolean
 		},
-		fiends:
+		friends:
 		{
 			type:Array
 		},
-		_id:
+		createdAt:
+		{
+			type:Date,
+			default:Date.now//default:指定默认值
+
+		},
+		author:
 		{
 			type:mongoose.Schema.Types.ObjectId
 		}
@@ -33,7 +42,7 @@ const mongoose = require('mongoose');
 
 	//根据文档模型生成集合
 	
-const Schema = mongoose.model('Schema', kittySchema);
+const ModelBlog = mongoose.model('ModelBlog', kittySchema);
 
-module.exports = Schema
+module.exports = ModelBlog
 

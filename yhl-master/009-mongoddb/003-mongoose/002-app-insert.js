@@ -19,30 +19,34 @@ db.once('open',function(){
 		major:String
 	})
 	//根据文档模型生成集合
+	//第一个参数是生成集合的名称（mongoose会将集合的名称变成负数）
+	//第二个参数是传入定义的文档模型
 	const Kitten = mongoose.model('Kitten', kittySchema);
 
 
 	// 根据生成的集合进行数据库操作：CRUD
 	// Model.prototype.save()
-
 	// Model.insertMany()
-	
-	 Kitten.insertMany({name:'zs',age:22,major:'LOL'})
+	/*
+	 Kitten.insertMany([{name:'zs',age:22,major:'LOL'},{name:'ls',age:21,major:'UZI'}])
 	 .then(data=>{
-	 	console.log(data)
+	 	console.log("insertMany success :",data)
 	 })
 	 .catch(err=>{
-	 	console.log(err)
+	 	console.log("insertMany err",err)
 	 })
-	
+	*/
 
 	 // Model.create()
-	 // Kitten.create([{name:"tk",age:50},{name:'cz',age:66}])
-	 // .then(data=>{
-	 // 	console.log(data)
-	 // })
-	 // .catch(err=>{
-	 // 	console.log(err)
-	 // })
+	 // create === insertMany 和insertMany一样
+	 // 区别是insertMany是一下全部插入。create是一条条插入
+	Kitten.create([{name:"tk",age:50},{name:'cz',age:66}])
+	.then(data=>{
+	 	console.log("create success :",data)
+	})
+	.catch(err=>{
+	 	console.log("create err",err)
+	})
+	
 
 })
