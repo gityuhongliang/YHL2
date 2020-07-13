@@ -25,19 +25,19 @@ app.use(express.static('public'))
 		// 第二个参数是模板名称,也就是app.engine的第一个参数
 // 渲染模板
 
-// app.get('/',(req,res)=>{
-//     //4.渲染模板
-//     //第一个参数是相对于模板目录的文件
-//     //第二个参数是传递给模板的数据
-//     res.render('index',{
-//         title:'跨猪网',
-//         content:'我是内容',
-//         name:"Tom",
-//         age:10,
-//         major:['LOL','UZI','THY']
+app.get('/',(req,res)=>{
+    //4.渲染模板
+    //第一个参数是相对于模板目录的文件
+    //第二个参数是传递给模板的数据
+    res.render('index',{
+        title:'跨猪网',
+        content:'我是内容',
+        name:"Tom",
+        age:10,
+        major:['LOL','UZI','THY']
 
-//     })
-// })
+    })
+})
 app.get('/',(req,res)=>{
     //4.渲染模板
     //第一个参数是相对于模板目录的文件
