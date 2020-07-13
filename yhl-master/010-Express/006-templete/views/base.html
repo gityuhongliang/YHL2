@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+</head>
+<body>
+	<p>
+		{%if name === 'Tom' %}
+  			hello Tom
+		{% endif %}
+	</p>
+	<p>
+		{% if name === 'Tom' %}
+		  hello Tom
+		{% elseif name === 'Leo' %}
+		  hello Leo
+		{% else %}
+		  hello word
+		{% endif %}
+	</p>
+	<p>
+		{% for key, val in major %}
+		  <p>{{ key }} -- {{ val }}</p>
+		{% endfor %}
+	</p>
+</body>
+<script src="jquery-1.12.4.min.js"></script>
+</html>
