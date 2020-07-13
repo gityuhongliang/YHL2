@@ -6,23 +6,22 @@ const url =require('url')
 app.use(express.static('public'))
 // app.use('/static', express.static('public'))
 
-app.all('/',(req,res,next)=>{
-	console.log('alway something')
-	next()
-})
-
-// /?name=Tom&age=19
 app.get('/', (req, res) =>{ 
-	/*
-	const query = url.parse(req.url,true)
-	*/
+	
 	console.log(req.query)
-	res.send('get t!')
-})
-// /users/:userId/books/:bookId
-app.get('/users/:userId/books/:bookId', (req, res) =>{ 
-	console.log(req.params)
-	res.send('get t!')
+	// res.end('get t!')  //字符串
+	// res.end('<p>我是段落</>')  //标签  结束返回处理
+
+	// res.end({name:'tom'}) //对象
+	
+	// res.json('get t!')  //字符串
+	// res.json('<p>我是段落</>')  //标签
+
+	// res.json({name:'tom'}) //对象  返回json
+	// 
+	// res.send('get t!')  //字符串
+	// res.send('<p>我是段落</>')  //标签
+	// res.send({name:'tom'}) //对象      返回多种类型数据
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

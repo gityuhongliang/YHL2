@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+</head>
+<body>
+	<button class="get1">get1</button>
+	<button class="get2">get2</button>
+
+</body>
+<script src="jquery-1.12.4.min.js"></script>
+<script>
+	// /?name=Tom&age=19
+	$('.get1').on('click',function(){
+		$.ajax({
+				url:'/',
+				type:'get',
+				data:{
+					name:'Tom',
+					age:19
+				},
+				success:(data)=>{
+					console.log(data)
+				},
+				error:(err)=>{
+					console.log(err)
+				}
+			})	
+	})
+
+	
+</script>
+</html>
