@@ -23,8 +23,8 @@ app.use(express.static('public'))
 	app.set('view engine', 'html')
 		// 第一个参数必须是view engine
 		// 第二个参数是模板名称,也就是app.engine的第一个参数
+        
 // 渲染模板
-
 app.get('/',(req,res)=>{
     //4.渲染模板
     //第一个参数是相对于模板目录的文件
