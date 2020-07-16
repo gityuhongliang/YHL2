@@ -44,8 +44,9 @@
 		
 	  		<div class="col-md-4 hidden-xs hidden-sm">
 	          	<!--用户注册登录-->
-	          	<div class="user-panel" id='user-info' style="display: none;">
-	           		<span>Tom</span>
+	          	{% if userInfo._id %}
+	          	<div class="user-panel" id='user-info'>
+	           		<span>{{ userInfo.username }}</span>
 	            		<a class="link" href="/home">进入个人中心</a>
 	            		<a class="link" href="javascript:;" id='logout'>退出</a>
 		            <div class="form-group">
@@ -54,23 +55,24 @@
 		             		</div>
 		            </div>              
 	          	</div>
+	          	{% else %}
 	          	<div class="form-horizontal user-panel" id='register' style="display: none;">
 	            	<div class="form-group">
 	              	<label class="col-sm-4 control-label">用户名</label>
 	              	<div class="col-sm-6">
-	                	<input autocomplete="off" type="text" class="form-control" name='username' placeholder="请输入用户名">
+	                	<input autocomplete="off" type="text" class="form-control" name='username' placeholder="请输入用户名" id="username">
 	              	</div>
 	            </div>
 	            <div class="form-group">
 	             	<label class="col-sm-4 control-label">密码</label>
 	              	<div class="col-sm-6">
-	                	<input autocomplete="off" type="password" class="form-control" name="password" placeholder="请输入密码">
+	                	<input autocomplete="off" type="password" class="form-control" name="password" placeholder="请输入密码" id="password">
 	              	</div>
 	            </div>
 	            <div class="form-group">
 	              	<label class="col-sm-4 control-label">重复密码</label>
 	              	<div class="col-sm-6">
-	                	<input autocomplete="off" type="password" class="form-control" name="repassword" placeholder="请再次输入密码">
+	                	<input autocomplete="off" type="password" class="form-control" name="repassword" placeholder="请再次输入密码" id="repassword">
 	              	</div>
 	            </div>            
 	            <div class="form-group">
@@ -90,13 +92,13 @@
 	            <div class="form-group">
 	              	<label class="col-sm-4 control-label">用户名</label>
 	              	<div class="col-sm-6">
-	                	<input autocomplete="off" type="text" class="form-control" name='username' placeholder="请输入用户名">
+	                	<input autocomplete="off" type="text" class="form-control" name='username' placeholder="请输入用户名" id="login-username">
 	              	</div>
 	            </div>
 	            <div class="form-group">
 	              	<label class="col-sm-4 control-label">密码</label>
 	              	<div class="col-sm-6">
-	                	<input autocomplete="off" type="password" class="form-control" name="password" placeholder="请输入密码">
+	                	<input autocomplete="off" type="password" class="form-control" name="password" placeholder="请输入密码" id="login-password">
 	              	</div>
 	            </div>            
 	            <div class="form-group">
@@ -111,6 +113,7 @@
 	              	</div>
 	            </div>            
 	        </div>
+	        {% endif %}
 	          <!--用户注册登录--> 
 
 	          <div class="ad">
@@ -179,6 +182,8 @@
 	</div>
 </body>
 <script src="bootstrap-3.3.7/dist/js/jquery-1.12.4.js"></script>
+<script src="lib/jquery/jquery-1.12.4.min.js"></script>
 <script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="js/common.js"></script>
 {% block footer %}{% endblock %}
 </html>

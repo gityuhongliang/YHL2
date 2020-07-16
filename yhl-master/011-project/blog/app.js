@@ -3,7 +3,9 @@ const app = express()
 const mongoose = require('mongoose');
 const port = 3000
 const swig =require('swig')
-
+const bodyParser =require('body-parser')
+const Cookies =require('cookies')
+const session = require('express-session');
 //处置静态资源
 app.use(express.static('public'))
 
@@ -47,12 +49,62 @@ db.once('open',function(){
 
 
 /*----------------------配置模板引擎结束-------------------------*/
+
+/*----------------------中间件配置开始-------------------------*/
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+// 配置中间件信息后post的参数会被存在req.body
+
+/*----------------------中间件配置结束-------------------------*/
+/*----------------------利用cookies保存用户状态开始-------------------------*/
+
+/*
+app.use('/',(req,res,next)=>{
+	//生成cookies实例并保存在req上，这样所有的路由都可以通过req来操作cookies
+	req.cookies =new Cookies(req,res);
+	let userInfo ={}
+	if(req.cookies.get('userInfo')){
+		userInfo = JSON.parse(req.cookies.get('userInfo'))
+	}
+	//把cookie信息保存在req.userInfo上，后面所有的路由可以通过req.userInfo拿到用户状态信息
+	req.userInfo =userInfo
+	next()
+})
+
+*/
+app.use(session({
+    //设置cookie名称
+    name:'kzid',
+    //用它来对session cookie签名，防止篡改
+    secret:'abc',
+    //强制保存session即使它并没有变化
+    resave: true,
+    //强制将未初始化的session存储
+    saveUninitialized: true, 
+    //如果为true,则每次请求都更新cookie的过期时间
+    rolling:true,
+    //cookie过期时间 1天
+    cookie:{maxAge:1000*60*60*24},
+ 
+}))
+app.use('/',(req,res,next)=>{
+	
+	req.userInfo =req.session.userInfo  || {}
+	next()
+})
+/*----------------------利用cookies保存用户状态结束-------------------------*/
+
 /*----------------------配置路由开始-------------------------*/
 
 const BlogRouter = require('./route/index.js')
+const UserRouter = require('./route/user.js')
 
 
 app.use('/', BlogRouter)
+app.use('/user', UserRouter)
 
 
 
