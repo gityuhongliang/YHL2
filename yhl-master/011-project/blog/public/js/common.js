@@ -122,7 +122,7 @@
 		}	
 	})
 
-
+	/*
 	//退出登录
 	$('#logout').on('click',function(){
 		$.ajax({
@@ -139,4 +139,5 @@
 			$userInfo.find('.err').html('退出失败')
 		})
 	})
+	*/
 })(jQuery)

@@ -6,6 +6,8 @@ const swig =require('swig')
 const bodyParser =require('body-parser')
 const Cookies =require('cookies')
 const session = require('express-session');
+const MongoStore = require("connect-mongo")(session);
+
 //处置静态资源
 app.use(express.static('public'))
 
@@ -88,7 +90,8 @@ app.use(session({
     rolling:true,
     //cookie过期时间 1天
     cookie:{maxAge:1000*60*60*24},
- 
+ 	//设置session存储在数据库中
+    store:new MongoStore({ mongooseConnection: mongoose.connection })  
 }))
 app.use('/',(req,res,next)=>{
 	
@@ -101,10 +104,12 @@ app.use('/',(req,res,next)=>{
 
 const BlogRouter = require('./route/index.js')
 const UserRouter = require('./route/user.js')
+const AdminRouter = require('./route/admin.js')
 
 
 app.use('/', BlogRouter)
 app.use('/user', UserRouter)
+app.use('/admin', AdminRouter)
 
 
 

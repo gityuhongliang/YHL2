@@ -16,7 +16,11 @@ route.post('/register', (req, res) => {
 				massage:'该用户已被注册，请重新注册'
 			})
 		}else{
-				userModel.insertMany({username:username,password:hmac(password)})
+				userModel.insertMany({
+					username:username,
+					password:hmac(password),
+					// isAdmin:true
+				})
 				.then(result=>{
 					res.json({
 						code:0,
@@ -75,8 +79,9 @@ route.post('/login', (req, res) => {
 
 route.get('/logout',(req,res)=>{
 	//清除cookie
-	req.cookies.set('userInfo',null)
-
+	// req.cookies.set('userInfo',null)
+	//session方法退出
+	req.session.destroy()
 	res.json({
 		code:0,
 		message:'退出成功'
