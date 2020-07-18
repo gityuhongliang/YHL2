@@ -8,7 +8,16 @@
 	var loginUsername = $('#login-username');
 	var loginPassword = $('#login-password');
 
-
+	$('#login').on('keydown',function(ev){
+		if(ev.keyCode == 13){ 
+			$('#sub-login').trigger('click')
+		}
+	})
+	$('#register').on('keydown',function(ev){
+		if(ev.keyCode == 13){ 
+			$('#sub-register').trigger('click')
+		}
+	})
 	$('#go-register').on('click',function(){
 		//隐藏登录面板
 		login.hide();

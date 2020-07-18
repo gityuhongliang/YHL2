@@ -13,7 +13,7 @@ route.use('/',(req,res,next)=>{
 })
 
 
-//显示后台管理员首页
+//显示分类管理页面
 route.get('/',(req,res)=>{
 	res.render('admin/index',{
 		userInfo:req.userInfo
@@ -26,45 +26,52 @@ route.get('/users',(req,res)=>{
 	// 第一页显示1-4 skip (1-1)*4
 	// 第二页显示5-8 skip (2-1)*4
 	// 第三页显示9-12  skip (3-1)*4
-
 	let page =req.query.page / 1
 	const limit = 4
 	if(isNaN(page)){
 		page = 1
 	}
-	//跳过几条
-	let skip =(page - 1)*limit
-
 	// 边界控制
 	if(page == 0){
 		page = 1
 	}
+	//跳过几条
+	let skip =(page - 1)*limit
+
+	
 	//拿到数据库有多少条数据
 	UserModel.countDocuments((err,counts)=>{
-		let pages = Math.ceil(counts/limit)
-		
-		if (page == pages) {
+		let pages = Math.ceil(counts/limit)		
+		//生成页码
+		let list = []
+		for(let  i = 1; i<=pages;i++){
+			list.push(i)
+		}
+		//下一页边界控制
+		if (page > pages) {
 			page = pages
 		}
-	})
-	//查询数据库获取用户信息
-	UserModel.find({},'-password -__v')
-	.skip(skip)
-	.limit(limit)
-	.sort({_id:1})
-	.then(users=>{
-		console.log(users)
-		res.render('admin/user_list',{
-			userInfo:req.userInfo,
-			users:users,
-			page:page
+		//查询数据库获取用户信息
+		UserModel.find({},'-password -__v')
+		.skip(skip)
+		.limit(limit)
+		.sort({_id:1})
+		.then(users=>{
+			// console.log(users)
+			res.render('admin/user_list',{
+				userInfo:req.userInfo,
+				users:users,
+				page:page,
+				list:list,
+				pages:pages
+			})
+		})
+		.catch(err=>{
+			console.log(err)
 		})
 	})
-	.catch(err=>{
-		console.log(err)
-	})
-	
 })
+
 
 
 

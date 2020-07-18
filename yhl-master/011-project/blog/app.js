@@ -105,11 +105,14 @@ app.use('/',(req,res,next)=>{
 const BlogRouter = require('./route/index.js')
 const UserRouter = require('./route/user.js')
 const AdminRouter = require('./route/admin.js')
+const CategoryRouter = require('./route/category.js')
 
 
 app.use('/', BlogRouter)
 app.use('/user', UserRouter)
 app.use('/admin', AdminRouter)
+app.use('/category', CategoryRouter)
+
 
 
 

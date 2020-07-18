@@ -2,8 +2,11 @@
 	float: right;
 	margin-top: 10px;
 	margin-right: 100px;
+	position: relative;
+
 }
 
 .pagination{
-	margin-top: 150px;
+	position: absolute;
+	top: 350px;
 }
