@@ -17,7 +17,7 @@ db.once('open',function(){
 
 	
 	// 根据生成的集合进行数据库操作：CRUD
-	ModelUser.insertMany({name:"CCCCCC",age:22,major:"UZI",phone:'13283763610'})
+	ModelUser.insertMany({name:"sadasd",age:22,major:"UZI",phone:'13283763610'})
 	.then(data=>{
 	 	console.log(data)
 	})
