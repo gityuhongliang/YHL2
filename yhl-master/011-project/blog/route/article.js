@@ -2,6 +2,7 @@ const express = require('express')
 const route = express.Router()  
 const UserModel = require('../module/user.js')
 const CategoryModel = require('../module/category.js')
+const ArticleModel = require('../module/article.js')
 const hmac = require('../util/hmac.js')
 const pagination = require('../util/pagination.js')
 

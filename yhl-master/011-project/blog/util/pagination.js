@@ -39,6 +39,9 @@ async function pagination(options){
 		if (page > pages) {
 			page = pages
 		}
+		if(page = 0){
+			page = 1
+		}
 		//查询数据库获取用户信息
 		const docs = await model.find(query,projection)
 		.skip(skip)
