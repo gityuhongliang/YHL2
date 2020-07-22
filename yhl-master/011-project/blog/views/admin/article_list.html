@@ -1,0 +1,48 @@
+{% extends './layout.html' %}
+{% block title %}
+	文章管理
+{% endblock %}
+{% block header %}
+	欢迎来到文章列表
+{% endblock %}
+{% block content %}
+<a href ="/article/add" class="btn btn-primary">新增文章</a>
+	<div class="table-responsive">
+	    <table class="table table-striped">
+	      <thead>
+	        <tr>
+	          <th>标题</th>
+	          <th>作者</th>
+	          <th>分类</th>
+	          <th>发表时间</th>
+	          <th>点击量</th>
+	          <th>编辑</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	{% for article in articles %}
+	        <tr>
+	          	<td>{{ article.title }}</td>
+	          	<td>{{ article.user }}</td>
+	          	<td>{{ article.category }}</td>
+	          	<!-- <td>{{ article.createdAt | date('Y年m月d日 H:i:s',-8*60) }}</td> -->
+	          	<td>{{ article.createdTime }}</td>
+	          	<td>{{ article.click }}</td>
+	          	<td>
+					<a href="/detail/{{ article._id.toString() }}">查看详情</a>
+	          	</td>
+	          	<td>
+					<a href="/article/edit/{{ article._id.toString() }}">编辑</a>
+	          	</td>
+	          	<td>
+	          		<a href="/article/detele/{{ article._id.toString()}}" class="del">删除</a>
+	          	</td>
+	          
+	        </tr>
+	        {% endfor %}
+	      </tbody>
+	    </table>
+	  </div>
+
+{% include './pagination.html' %}
+{% endblock %}

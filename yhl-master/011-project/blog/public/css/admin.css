@@ -10,3 +10,6 @@
 	position: absolute;
 	top: 350px;
 }
+.ck-content{
+	min-height: 200px
+}
