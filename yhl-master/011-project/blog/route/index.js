@@ -2,15 +2,20 @@ const express = require('express')
 
 const route = express.Router()
 
-const CategoryModel =require('../module/category.js')
+const CategoryModel = require('../module/category.js')
+
+const ArticleModel = require('../module/article.js')
 
 async function getCommonData(){
 	//获取顶部分类数据
 	const getCategoriesDataPromise = CategoryModel.find({},'name').sort({_id:1})
 	const categoriesData  = await getCategoriesDataPromise
 	//获取点击排行数据
+	const getTopArticlesDataPromise = ArticleModel.find({},'click title').sort({click:-1}).limit(10)
+	const topArticles = await getTopArticlesDataPromise
 	return {
-		categoriesData
+		categoriesData,
+		topArticles
 	}
 }
  
@@ -25,11 +30,12 @@ route.get('/', (req, res) => {
 	*/
 	getCommonData()
 	.then(result=>{
-		const { categoriesData } = result
-		console.log(categoriesData)
+		const { categoriesData,topArticles } = result
+		console.log(topArticles)
 		res.render('main/index',{
 			userInfo:req.userInfo,
-			categoriesData
+			categoriesData,
+			topArticles
 		})
 	})
 	.catch(err=>{
