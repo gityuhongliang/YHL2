@@ -26,11 +26,12 @@ route.get('/',(req,res)=>{
 		model:ArticleModel,
 		query:{},
 		projection:'-__v',
-		sort:{_id:1}
+		sort:{_id:1},
+		populates:[{path:'user',select:'username'},{path:'category',select:'name'}]
 	}
 	pagination(options)
 	.then(result=>{
-		console.log(result.pages);
+		console.log(result.docs);
 		res.render('admin/article_list',{
 			userInfo:req.userInfo,
 			articles:result.docs,
