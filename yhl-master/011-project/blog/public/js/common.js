@@ -149,4 +149,11 @@
 		})
 	})
 	*/
+
+
+	//5.首页分页器逻辑
+	var $articlePage =$('#articlePage');
+	$articlePage.pagination({
+		url:'/'
+	})
 })(jQuery)

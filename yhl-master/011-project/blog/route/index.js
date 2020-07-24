@@ -28,25 +28,38 @@ route.get('/', (req, res) => {
 		userInfo = JSON.parse(req.cookies.get('userInfo'))
 	}
 	*/
-	getCommonData()
-	.then(result=>{
-		const { categoriesData,topArticles } = result
-		console.log(topArticles)
-		res.render('main/index',{
-			userInfo:req.userInfo,
-			categoriesData,
-			topArticles
+	ArticleModel.getPaginationData(req)
+	.then(data=>{
+		getCommonData()
+		.then(result=>{
+			const { categoriesData,topArticles } = result
+			console.log(topArticles)
+			res.render('main/index',{
+				userInfo:req.userInfo,
+				categoriesData,
+				topArticles,
+				//返回分页数据
+				articles:data.docs,
+				page:data.page,
+				list:data.list,
+				pages:data.pages,
+				url:'/'
+			})
+		})
+		.catch(err=>{
+			console.log(err)
 		})
 	})
 	.catch(err=>{
 		console.log(err)
 	})
 	
+	
 })
 
 
 //显示列表页
-route.get('/list', (req, res) => {
+route.get('/list/:id', (req, res) => {
 	//获取cookie信息进行验证
 	/*
 	let userInfo = {}
@@ -54,8 +67,35 @@ route.get('/list', (req, res) => {
 		userInfo = JSON.parse(req.cookies.get('userInfo'))
 	}
 	*/
-	res.render('main/list',{
-		userInfo:req.userInfo
+	const id = req.params.id 
+	let query={}
+	if(id){
+		query.category = id 
+	}
+	ArticleModel.getPaginationData(req)
+	.then(data=>{
+		getCommonData()
+		.then(result=>{
+			const { categoriesData,topArticles } = result
+			console.log(topArticles)
+			res.render('main/list',{
+				userInfo:req.userInfo,
+				categoriesData,
+				topArticles,
+				//返回分页数据
+				articles:data.docs,
+				page:data.page,
+				list:data.list,
+				pages:data.pages,
+				url:'/'
+			})
+		})
+		.catch(err=>{
+			console.log(err)
+		})
+	})
+	.catch(err=>{
+		console.log(err)
 	})
 })
 route.get('/detail', (req, res) => {

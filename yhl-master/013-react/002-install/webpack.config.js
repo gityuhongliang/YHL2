@@ -14,7 +14,7 @@ module.exports = {
   	//多入口写法
   	entry: {
   	//chunk名称:入口文件路径
-  		index: "./src/index.js",
+  		index: "./src/index.js"
   		
 	},
   	output: { //指定出口文件
