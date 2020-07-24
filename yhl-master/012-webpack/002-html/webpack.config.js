@@ -62,6 +62,11 @@ module.exports = {
    		 }),
     		//清理输出文件夹
     		 new CleanWebpackPlugin()
-		]
+		],
+      devServer:{
+          contentBase: './dist',//内容的目录
+          port:8080//服务运行的端口
+      }
+
 };
 

@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "webpack --progress --display-modules --display-reasons --watch"
+    "build": "webpack --progress --display-modules --display-reasons --watch",
+    "start": "webpack-dev-server --open"
   },
   "author": "",
   "license": "ISC",
