@@ -1,3 +1,7 @@
+
+
+//注意多次引用模块只执行一次
+
 // 写法一
 import { a } from './modules.js'
 
