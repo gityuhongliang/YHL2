@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const moment = require('moment')
-const pagination =require('../util/pagination.js')
+const pagination = require('../util/pagination.js')
 
 //1.定义文档模型
 	const ArticleSchema = new mongoose.Schema({

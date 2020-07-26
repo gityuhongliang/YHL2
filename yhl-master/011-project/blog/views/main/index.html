@@ -40,7 +40,8 @@
     </a>
 	</div>
   <!-- 文章列表渲染 -->
-  {% for article in articles %}
+  <div id="article-wrap">
+    {% for article in articles %}
     <div class="panel panel-default content-item">
     	<div class="panel-heading">
      	 	<h3 class="panel-title">
@@ -61,7 +62,8 @@
           	<span class="panel-footer-text text-muted"><em>{{ article.click}}</em>已阅读</span>
         </div>
     </div>
-{% endfor%}
+    {% endfor%}
+  </div>
 <!-- 分页器 -->
 <nav aria-label="Page navigation" id="articlePage">
   {% include './pagination.html' %}

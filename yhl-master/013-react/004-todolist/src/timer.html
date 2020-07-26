@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		{
+			margin: 0;
+			padding: 0;
+		}
+		h1,p{
+			text-align: center;
+			margin-top:200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="root">
+		<h1> 北京时间 </h1>
+		<p>2020-7-26 17:10:00</p>
+	</div>
+</body>
+<script>
+	var oRoot = document.getElementById('root');
+	console.log(oRoot)
+	function fn(){
+		oRoot.innerHTML = `<h1> 北京时间 </h1><p>${ new Date().toLocaleString() }</p>`
+	}
+	setInterval(fn,1000)
+</script>
+</html>

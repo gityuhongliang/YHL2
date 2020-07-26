@@ -28,6 +28,7 @@ route.get('/', (req, res) => {
 		userInfo = JSON.parse(req.cookies.get('userInfo'))
 	}
 	*/
+
 	ArticleModel.getPaginationData(req)
 	.then(data=>{
 		getCommonData()
@@ -44,6 +45,7 @@ route.get('/', (req, res) => {
 				list:data.list,
 				pages:data.pages,
 				url:'/'
+
 			})
 		})
 		.catch(err=>{
@@ -57,6 +59,26 @@ route.get('/', (req, res) => {
 	
 })
 
+
+
+//处理首页分页ajax请求
+route.get('/articles',(req,res)=>{
+	ArticleModel.getPaginationData(req)
+	.then(data=>{
+		res.json({
+			code:0,
+			message:'获取分页文章成功',
+			data:data
+		})
+	})
+	.catch(err=>{
+		res.json({
+			code:10,
+			message:'获取分页文章失败',
+			data:data
+		})
+	})
+})
 
 //显示列表页
 route.get('/list/:id', (req, res) => {
