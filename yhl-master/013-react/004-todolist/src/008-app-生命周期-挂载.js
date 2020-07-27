@@ -8,12 +8,12 @@ import Item from './item.js'
 
 // this.setState方法改变数据会引起页面数据的变化
 
-
 // 组件的生命周期
-// 更新,当组件的 props 或 state 发生变化时会触发更新,组件更新的生命周期调用顺序
+// 挂载,当组件实例被创建并插入 DOM 中时,其生命周期调用顺序
 
 //调用this必须用constructor
 class App extends Component {
+
 
 
     //生命周期函数 在某个时刻组件会自动执行的函数
@@ -39,48 +39,15 @@ class App extends Component {
         console.log('getDerivedStateFromProps,props',props);
         console.log('getDerivedStateFromProps,state',state);
         return{
-            
+            null
         }
     }
-
-
-    // 该方法返回布尔值,根据返回的布尔值决定是否执行后续的周期函数,一般用来阻止不必要的页面渲染
-    shouldComponentUpdate(nextProps, nextState){
-        console.log('shouldComponentUpdate(nextProps, nextState)',nextProps, nextState);
-        if (nextState.task == 'a') {
-            return false
-        }else{
-            return true
-        }
-    }
-
-
-    //生成快照 把之前的数据存起来
-    getSnapshotBeforeUpdate(prevProps, prevState){
-        console.log('getSnapshotBeforeUpdate(prevProps, prevState)',prevProps, prevState);
-        // 该方法返回一个值,这个值会随后被传入到 componentDidUpdate 中使用
-        return {
-            name:'tom',
-            age:18
-        }
-    }
-
-
-
-    //组件更新完成后执行
-    componentDidUpdate(prevProps, prevState,snapshot){
-        console.log('componentDidUpdate(prevProps, prevState,snapshot)',prevProps, prevState,snapshot);
-
-    }
-
 
 
     //生命周期函数 组件挂载完毕执行,多用于发送ajax获取数据
     componentDidMount(){
         console.log('componentDidMount');
     }
-
-
 
     handleClick(){
         // console.log(this)

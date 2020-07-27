@@ -163,7 +163,7 @@
 			      		</h3>
 			    	</div>
 			        <div class="panel-body">
-			           ${ article.intro }
+			        ${ article.intro }
 			        </div>
 			        <div class="panel-footer">
 			          	<span class="glyphicon glyphicon-user"></span>
@@ -198,7 +198,7 @@
 		}
 		list.forEach(function(i){
 			if(i == page){
-				html+=`<li class="active"><a href="#">${ i }</a></li>`
+				html+=`<li class="active"><a href="javascript:;">${ i }</a></li>`
 			}else{
 				html+=`<li><a href="javascript:;">${ i }</a></li>`
 			}

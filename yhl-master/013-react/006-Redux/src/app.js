@@ -1,7 +1,10 @@
 import React,{ Component,Fragment} from 'react'
 import './app.css'
-import Item from './item.js'
+import {  Input,Button,List} from 'antd';
 
+import store from './store/index.js'
+
+// import 'antd/dist/antd.css';
 // 在jsx语法中使用组件分为html组件和自定义组件,自定义组件必须大写字母开头
 // render方法的return语句后面不能是空白行,可以用()来格式化代码 
 // 在返回组件内容时,如果不想有多余的标签,可以使用React.Fragment来代替html标签
@@ -15,18 +18,19 @@ import Item from './item.js'
 //调用this必须用constructor
 class App extends Component {
 
-
+//生命周期函数开始
     //生命周期函数 在某个时刻组件会自动执行的函数
     constructor(props){
         console.log('App constructor(props)')
         super(props)
         //初始化数据
+        /*
         this.state={
             list:['吃饭','吃饭','吃饭'],
             task:''//赋值为空在下面再让输入框value值等于task 就等于清空操作
         }
-
-
+        */
+        this.state= store.getState()
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
     }
@@ -79,8 +83,7 @@ class App extends Component {
     componentDidMount(){
         console.log('componentDidMount');
     }
-
-
+//结束
 
     handleClick(){
         // console.log(this)
@@ -99,9 +102,9 @@ class App extends Component {
 
     handleChange(ev){
 
-        // const val =ev.target.value 
+        const val =ev.target.value 
         // console.log(this.input)
-        const val =this.input.value 
+        // const val =this.input.value 
       
         // this.state.task = val
         this.setState((preState)=>({
@@ -159,7 +162,8 @@ class App extends Component {
                 // 给输入框添绑定onChange事件
                 // 在onChange的事件函数中通过event.target.value获取值,将获取到的值赋值给this.state
                 }
-                <input className='input' 
+                <Input className='input'
+
                     //ref属性获取DOM节点
                     //input等于this(APP组件).input = input 等于把input存在App组件上
                     ref = { (input)=>{ this.input = input}}
@@ -167,17 +171,16 @@ class App extends Component {
                     // value = { this.state.task.bind(this)}
                     value = { this.state.task}
                      // onChange={ this.handleChange.bind(this)}
-                    onChange={ this.handleChange}/>
+                    onChange={ this.handleChange}
+                />
 
-                <button className ='btn' 
+                <Button className ='btn' 
+                    type="primary"
                     // onClick={this.handleClick.bind(this)}
                     onClick={this.handleClick}>
-
                 提交
-
-                </button>
-                <ul className='list'>
-                    {
+                </Button>
+                     {
                         /* this.state.list.map((item,index)=>{
                         //         return(
                         //             <Item 
@@ -190,9 +193,22 @@ class App extends Component {
                         //         )
                              })
                          */
-                        this.getItems()
-                    }
-                </ul>
+                        // this.getItems()
+
+
+                     }
+
+                 <List style={{marginTop:10}}
+                          bordered
+                          dataSource={this.state.list}
+                          renderItem={(item,index) =>
+                           <List.Item 
+                           onClick={ this.handleDel.bind(this,index)}>
+                           {item}
+                           </List.Item>}
+                 />
+                   
+
                 </div>
                 </Fragment>
             )
