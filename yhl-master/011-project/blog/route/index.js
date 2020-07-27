@@ -44,7 +44,6 @@ route.get('/', (req, res) => {
 				page:data.page,
 				list:data.list,
 				pages:data.pages,
-				url:'/'
 
 			})
 		})
@@ -109,7 +108,6 @@ route.get('/list/:id', (req, res) => {
 				page:data.page,
 				list:data.list,
 				pages:data.pages,
-				url:'/'
 			})
 		})
 		.catch(err=>{

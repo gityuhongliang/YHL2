@@ -9,8 +9,10 @@ const defaultState ={
 }
 
 export default (state=defaultState,action)=>{
-	console.log('state',state)
-	console.log('action',action)
-
+	// console.log('state',state)
+	// console.log('action',action)
+	if (action.type == 'change_item') {
+		state.task = action.payload;
+	}
 	return state
 }

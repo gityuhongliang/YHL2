@@ -30,9 +30,20 @@ class App extends Component {
             task:''//赋值为空在下面再让输入框value值等于task 就等于清空操作
         }
         */
+       
+
+       // reducer返回的state可以用 store.getState() 
         this.state= store.getState()
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
+
+        //从reducer返回的新的state需要监听才能让组件知道返回数据了
+        store.subscribe(()=>{
+            console.log(11)
+            //这里是新的state值用setState接收
+            this.setState(store.getState())
+        })
+
     }
 
 
@@ -105,14 +116,16 @@ class App extends Component {
         const val =ev.target.value 
         // console.log(this.input)
         // const val =this.input.value 
-      
-        // this.state.task = val
-        this.setState((preState)=>({
-            task:val
-        }),()=>{
-            // 由于setState是一个异步方法,如果需要获取最新的Dom,需要写在setState方法的第二个回调函数中
-             console.log(this.input)
-        })
+        
+
+        //派发action
+        //action 必须是一个对象
+        //必须有一个Type属性
+        const action = {
+            type:'change_item',
+            payload:val
+        }
+        store.dispatch(action)
     }
 
 
