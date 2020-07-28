@@ -169,6 +169,7 @@
 			          	<span class="glyphicon glyphicon-user"></span>
 			          	<span class="panel-footer-text text-muted">${ article.user.username}</span>
 			          	<span class="glyphicon glyphicon-th-list"></span>
+			          	<span class="panel-footer-text text-muted">${ article.categories.name}</span>
 			          	<span class="glyphicon glyphicon-time"></span>
 			          	<span class="panel-footer-text text-muted">${article.createdTime}</span>
 			          	<span class="glyphicon glyphicon-eye-open"></span>

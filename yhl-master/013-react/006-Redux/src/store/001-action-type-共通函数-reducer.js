@@ -1,4 +1,4 @@
-import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM,LOAD_DATA} from './actionType.js'
+import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM} from './actionType.js'
 
 
 const defaultState ={
@@ -38,10 +38,6 @@ export default (state=defaultState,action)=>{
 		newstate.list.splice(action.payload,1)
 
 		return newstate
-	}else if(action.type == LOAD_DATA){
-		const newState = JSON.parse(JSON.stringify(state))
-		newState.list = action.payload
-		return newState
 	}
 	return state
 }
