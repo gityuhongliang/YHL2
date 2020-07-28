@@ -34,7 +34,6 @@ route.get('/', (req, res) => {
 		getCommonData()
 		.then(result=>{
 			const { categoriesData,topArticles } = result
-			console.log(topArticles)
 			res.render('main/index',{
 				userInfo:req.userInfo,
 				categoriesData,
@@ -98,7 +97,6 @@ route.get('/list/:id', (req, res) => {
 		getCommonData()
 		.then(result=>{
 			const { categoriesData,topArticles } = result
-			console.log(topArticles)
 			res.render('main/list',{
 				userInfo:req.userInfo,
 				categoriesData,

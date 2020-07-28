@@ -34,7 +34,6 @@ route.get('/',(req,res)=>{
 	*/
  	ArticleModel.getPaginationData(req)
 	.then(result=>{
-		console.log(result.docs);
 		res.render('admin/article_list',{
 			userInfo:req.userInfo,
 			articles:result.docs,

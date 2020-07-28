@@ -171,7 +171,7 @@
 			          	<span class="glyphicon glyphicon-th-list"></span>
 			          	<span class="panel-footer-text text-muted">${ article.category.name}</span>
 			          	<span class="glyphicon glyphicon-time"></span>
-			          	<span class="panel-footer-text text-muted">${article.createdTime}</span>
+			          	<span class="panel-footer-text text-muted">${article.createdAt}</span>
 			          	<span class="glyphicon glyphicon-eye-open"></span>
 			          	<span class="panel-footer-text text-muted"><em>${ article.click}</em>已阅读</span>
 			        </div>
