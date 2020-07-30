@@ -6,7 +6,7 @@ const port = 3000;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.end(JSON.stringify(['吃饭','吃饭','吃饭1']));
+  res.end(JSON.stringify(['吃饭','吃饭','吃饭121']));
 });
 
 server.listen(port, hostname, () => {

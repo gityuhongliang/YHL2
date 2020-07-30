@@ -4,7 +4,7 @@ import store from './store/index.js'
 
 // import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM} from './store/actionType.js'
 
-import {getChangeItemAction,getAddItemAction,getDelItemAction,getLoadDataAction}  from './store/actioncreator.js'
+import {getChangeItemAction,getAddItemAction,getDelItemAction,getLoadDataAction,getRequestLoadDataAction}  from './store/actioncreator.js'
 
 import AppUI from './appUI.js'
 
@@ -57,6 +57,9 @@ class App extends Component {
     }
     //生命周期函数 组件挂载完毕执行,多用于发送ajax获取数据
     componentDidMount(){
+        /*
+        //发送ajax请求获取数据
+        
         axios.get('http://127.0.0.1:3000')
         .then(result=>{
             //派发action
@@ -65,7 +68,9 @@ class App extends Component {
         .catch(err=>{
             console.log(err)
         })
-        
+        */
+       store.dispatch(getRequestLoadDataAction())
+       
     }
 
 //生命周期函数
