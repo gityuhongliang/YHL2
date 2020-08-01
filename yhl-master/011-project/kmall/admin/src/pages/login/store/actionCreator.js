@@ -1,9 +1,3 @@
-/*
-* @Author: Chen
-* @Date:   2019-12-02 16:52:50
-* @Last Modified by:   Chen
-* @Last Modified time: 2019-12-03 17:45:26
-*/
 import axios from 'axios'
 import * as types from './actionTypes.js'
 import { message } from 'antd'
@@ -12,12 +6,6 @@ export const getChangeItemAction = (val)=>({
 	type:types.CHANGE_ITEM,
 	payload:val
 })
-
-
-
-const error = () => {
-  	message.error()
-}
 export const getLoginAction = (data)=>{
 	return (dispatch,getState)=>{
 		

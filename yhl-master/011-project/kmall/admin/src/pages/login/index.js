@@ -4,6 +4,7 @@
 * @Last Modified by:   Chen
 * @Last Modified time: 2019-12-06 15:11:45
 */
+import s from './sdad.js'
 import React,{Component} from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
@@ -59,7 +60,6 @@ class NormalLoginForm extends React.Component {
 	          <Button type="primary" 
 	          onClick={this.handleSubmit} 
 	          className="login-form-button btn-sub-login"
-	          loading={isFecthing}
 	          >
 	            登录
 	          </Button>
