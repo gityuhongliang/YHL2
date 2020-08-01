@@ -27,7 +27,7 @@ module.exports = {
     resolve:{
         alias:{
             pages:path.resolve(__dirname,'./src/pages'),
-            // util:path.resolve(__dirname,'./src/util'),
+            util:path.resolve(__dirname,'./src/util'),
         }
     },
   //输出
@@ -99,8 +99,8 @@ module.exports = {
            options: {
              lessOptions: { // If you are using less-loader@5 please spread the lessOptions to options directly
                modifyVars: {
-                 'primary-color': 'rgb(0,0,0)',
-                 'link-color': 'rgb(0,0,0)',
+                 'primary-color': 'rgb(0, 0, 0, 0.65)',
+                 'link-color': 'rgb(0, 0, 0, 0.65)',
                  'border-radius-base': '2px',
                },
                javascriptEnabled: true,

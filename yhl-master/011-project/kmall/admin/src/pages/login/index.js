@@ -22,19 +22,21 @@ class NormalLoginForm extends React.Component {
 	    e.preventDefault();
 	    this.props.form.validateFields((err, values) => {
 	      if (!err) {
-	        console.log('Received values of form: ', values);
+	        // console.log('Received values of form: ', values);
+	        this.props.handleLogin(values)
 	      }
 	    });
 	  };
 
 	  render() {
 	    const { getFieldDecorator } = this.props.form;
+	    const { isFecthing } = this.props
 	    return (
 	    <div className="Login">
 	      <Form  className="login-form">
 	        <Form.Item>
 	          {getFieldDecorator('username', {
-	            rules: [{ required: true, message: '请输入用户名' },{pattern: /^[a-z][a-z0-9]$/i, message: '请输入首位是字母的3-6位用户名' }],
+	            rules: [{ required: true, message: '请输入用户名' },{pattern: /^[a-z][a-z0-9]{3,6}$/i, message: '请输入首位是字母的3-6位用户名' }],
 	          })(
 	            <Input
 	              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -54,7 +56,11 @@ class NormalLoginForm extends React.Component {
 	          )}
 	        </Form.Item>
 	        <Form.Item>
-	          <Button type="primary" onClick={this.handleSubmit} className="login-form-button btn-sub-login">
+	          <Button type="primary" 
+	          onClick={this.handleSubmit} 
+	          className="login-form-button btn-sub-login"
+	          loading={isFecthing}
+	          >
 	            登录
 	          </Button>
 	        </Form.Item>
@@ -73,15 +79,15 @@ const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLogin
 const mapStateToProps = (state)=>{
 	console.log(state)
 	return {
-		handleInput:(data)=>{
-			dispatch(actionCreator.getChangeItemAction(val))
-		}
+		isFecthing:state.get('login').get('isFecthing')
 	}
 }
 //将方法映射到组件
 const mapDispatchToProps = (dispatch)=>{
 	return {
-		
+		handleLogin:(data)=>{
+			dispatch(actionCreator.getLoginAction(data))
+		}
 	}
 }
 

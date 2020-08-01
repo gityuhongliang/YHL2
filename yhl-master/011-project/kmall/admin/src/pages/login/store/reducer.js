@@ -6,8 +6,7 @@
 */
 import { fromJS } from 'immutable'
 const defaultState = fromJS({
-	list:['吃饭','睡觉','学习'],
-	task:''
+	isFecthing:true
 })
 import {
 	CHANGE_ITEM,
