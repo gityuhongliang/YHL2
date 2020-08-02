@@ -68,8 +68,8 @@ class Todolist extends Component {
 //将数据,属性从store映射到组件
 const mapStateToProps = (state /*, ownProps*/) => {
   return {
-    task:state.todolist.task,
-    list:state.todolist.list,
+    task:state.get('todolist').get('task'),
+    list:state.get('todolist').get('list'),
 
   }
 }

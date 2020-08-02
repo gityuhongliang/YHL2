@@ -25,9 +25,13 @@ module.exports = {
     	// filename: '[hash].js',
     	// 多出口写法
     	filename: '[name]-[hash].bundle.js',
-    	path: path.resolve(__dirname, 'dist')
+    	path: path.resolve(__dirname, 'dist'),
     	// 所有输出文件的目标路径
     	// 必须是绝对路径（使用 Node.js 的 path 模块）
+      
+
+      //静态资源路径配置
+      publicPath:'/'
   	},
   	module: {
 	    rules:[
@@ -58,7 +62,8 @@ module.exports = {
                     use: {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['env', 'react'],
+                            // presets: ['env', 'react'],
+                            presets: ['env','es2015','react','stage-3'],
                             plugins: [
                                         ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }] 
                                      ]
