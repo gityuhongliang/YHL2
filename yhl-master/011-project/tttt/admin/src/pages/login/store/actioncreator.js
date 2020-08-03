@@ -23,7 +23,8 @@ export const getLoginAction = (data)=>{
 		axios({
 			method:'post',
 			url:'http://127.0.0.1:3000/sessions/users',
-			data:data
+			data:data,
+			withCredentials:true//携带cookies
 		})
 		.then(result=>{
 			// console.log(result)
