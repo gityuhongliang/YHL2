@@ -41,6 +41,7 @@ module.exports = {
           alias:{
               pages:path.resolve(__dirname,'./src/pages'),
               util:path.resolve(__dirname,'./src/util'),
+              common:path.resolve(__dirname,'./src/common'),
           }
       },
   	module: {

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as types from './actionType.js'
 import { message } from 'antd'
-import { saveUsername } from '../../../util/index.js'
+import { saveUsername } from 'util'
 import {
 	LOGIN_START_ACTION,
 	LOGIN_DONE_ACTION
@@ -31,7 +31,7 @@ export const getLoginAction = (data)=>{
 			const data = result.data;
 			if(data.code == 0){
 				//1.将用户信息保存在前台
-				// saveUsername(data.data.username)
+				saveUsername(data.data.username)
 				//2.登录成功回到后台管理页面
 				window.location.href ='/'
 			}else{

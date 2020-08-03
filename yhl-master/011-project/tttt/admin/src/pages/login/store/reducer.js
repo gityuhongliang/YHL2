@@ -7,7 +7,7 @@ import {
 import { fromJS }  from 'immutable';
 
 const defaultState = fromJS({
-	isFecthing:true
+	isFecthing:false
 })
 
 
