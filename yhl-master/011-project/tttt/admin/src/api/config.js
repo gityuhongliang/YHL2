@@ -1,0 +1,9 @@
+
+
+export const SERVER = 'http://127.0.0.1:3000'
+
+export const API_CONFIG  = {
+	login: ['/sessions/users','post'],//路径，方法
+	logout: ['/sessions/users','delete'],
+	getCounts: ['/counts','get']
+}

@@ -2,7 +2,7 @@ import React,{ Component,Fragment} from 'react'
 import { Layout, Menu, Breadcrumb, Icon,Input,Button,List,Dropdown } from 'antd';
 import './index.css'
 import { getUsername,removeUsername} from 'util'
-
+import apiObj from 'api/index.js'
 import axios from 'axios'
 
 const { SubMenu } = Menu;
@@ -14,10 +14,13 @@ class AdminHeader extends Component {
         this.handleLogout = this.handleLogout.bind(this)
     }
     handleLogout(){
+        /*
         axios({
             method:'delete',
             url:'http://127.0.0.1:3000/sessions/users',
         })
+        */
+        apiObj.logout()
         .then(result=>{
             console.log(result)
             //派发action

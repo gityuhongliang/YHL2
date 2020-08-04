@@ -15,11 +15,39 @@ export const getLoginDoneAction = ()=>({
 	type:LOGIN_DONE_ACTION
 })
 
+
+import apiObj from 'api/index.js'
+
+
+
 export const getLoginAction = (data)=>{
 	return (dispatch,getState)=>{
 		//发送请求之前显示登录loding状态
 		dispatch(getLoginStartAction())
 		data.role ='admin'
+		//首先发送请求再生成action对象
+		apiObj.login(data)
+		.then(result=>{
+			// console.log(result)
+			//派发action
+			const data = result.data;
+			if(data.code == 0){
+				//1.将用户信息保存在前台
+				saveUsername(data.data.username)
+				//2.登录成功回到后台管理页面
+				window.location.href ='/'
+			}else{
+				message.error(data.message)
+			}
+		})
+		.catch(err=>{
+			console.log(err)
+		})
+		.finally(()=>{
+		//无论请求成功或者失败取消loading状态
+		dispatch(getLoginDoneAction())
+		})
+		/*
 		axios({
 			method:'post',
 			url:'http://127.0.0.1:3000/sessions/users',
@@ -46,5 +74,6 @@ export const getLoginAction = (data)=>{
 		//无论请求成功或者失败取消loading状态
 		dispatch(getLoginDoneAction())
 		})
+	*/
 	}
 }

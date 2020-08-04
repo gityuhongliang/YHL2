@@ -7,7 +7,6 @@ import Login from 'pages/login'
 import Err from 'common/err'
 import User from 'pages/user'
 
-
 import { 
     BrowserRouter as Router,
     // HashRouter as Router,
