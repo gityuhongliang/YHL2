@@ -26,8 +26,16 @@ const request = (url,method,data) =>{
 		const options = {
 			method:method,
 			url:url,
-			data:data,
 			withCredentials:true//携带cookies
+		}
+		//axios携带参数get,delete得用params
+		switch(method.toUpperCase()){
+			case 'GET':
+			case 'DELETE':
+				options.params = data
+				break
+				default :
+				options.data =data
 		}
 		axios(options)
 		.then(data=>{

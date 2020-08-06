@@ -8,7 +8,9 @@ const defaultState = fromJS({
             total:0,
 	        pageSize:0,
 	        current:1,
-            isFecthing:false          
+            isFecthing:false,
+            categories:[]
+
                    
 })
 
@@ -22,6 +24,9 @@ const defaultState = fromJS({
 export default (state=defaultState,action)=>{
 	// console.log('state',state)
 	// console.log('action',action)
+	
+
+	// 处理分类列表
 	if (action.type == types.SET_PAGE) {
 		
 		return state.merge({
@@ -32,10 +37,15 @@ export default (state=defaultState,action)=>{
 		})
 
 	}
-	else if (action.type == types.Counts_START_ACTION) {
+	else if (action.type == types.REQUEST_START_ACTION) {
 		return state.set('isFetching',true)
-	}else if (action.type == types.Counts_DONE_ACTION) {
+	}else if (action.type == types.REQUEST_DONE_ACTION) {
 		return state.set('isFetching',false)
+	}
+	//处理设置分类数据
+	else if (action.type == types.SET_LEVEL_CATEGORIES) {
+		console.log(action.payload)
+		return state.set('categories',fromJS(action.payload))
 	}
 	return state
 }

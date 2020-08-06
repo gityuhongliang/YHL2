@@ -43,10 +43,10 @@ class AdminSider extends Component {
                                 <Link to= '/'><Icon type="home" theme="twoTone"/>首页</Link>
                                 </Menu.Item>
                                 <Menu.Item key="2">
-                                <Link to= 'user'><Icon type="user" />用户列表</Link>
+                                <Link to= '/user'><Icon type="user" />用户列表</Link>
                                 </Menu.Item>
                                 <Menu.Item key="3">
-                                <Link to= '#'><Icon type="menu" />订单列表</Link>
+                                <Link to= '/category'><Icon type="menu" />分类管理</Link>
                                 </Menu.Item>
                                 <Menu.Item key="4">
                                 <Link to= '#'><Icon type="shopping" />商品列表</Link>

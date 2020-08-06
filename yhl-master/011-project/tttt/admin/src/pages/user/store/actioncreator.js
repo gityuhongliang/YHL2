@@ -1,35 +1,46 @@
-import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM,LOAD_DATA} from './actionType.js'
-
+import * as types from './actionType.js'
+import { message } from 'antd'
 import axios from 'axios'
 
-export const getChangeItemAction = (val)=>({
-	type:CHANGE_ITEM,
-    payload:val
+import apiObj from 'api'
+
+export const getCountsStartAction = ()=>({
+	type:types.Counts_START_ACTION
 })
-export const getAddItemAction = ()=>({
-	type:ADD_ITEM,
-})
-export const getDelItemAction = (index)=>({
-	type:DEL_ITEM,
-    payload:index
+export const getCountsDoneAction = ()=>({
+	type:types.Counts_DONE_ACTION
 })
 
-export const getLoadDataAction = (data) =>({
-	type:LOAD_DATA,
-	payload:data
+export const setPageAction = (val)=>({
+	type:types.SET_PAGE,
+	payload:val
 })
-export const getRequestLoadDataAction =()=>{
+export const getPageAction =(page)=>{
 	//有了thunk中间件才能处理异步函数 所以在这里面的派发是真正派发
         return (dispatch)=>{
-			//发送ajax请求再生成action对象
-        	axios.get('http://127.0.0.1:3000')
-	        .then(result=>{
-	            //真正派发action
-	           dispatch(getLoadDataAction(result.data))
-	        })
-	        .catch(err=>{
-	            console.log(err)
-	        })
+        	//发送请求之前显示loding状态
+			dispatch(getCountsStartAction())
+        	apiObj.getUserList({
+        		page:page
+        	})
+        	.then(result=>{
+				console.log(result)
+				const data = result.data;
+				if(data.code == 0){//登录成功
+					//派发action将数据存到store中
+					dispatch(setPageAction(data.data))
+				}else{//登录失败
+					message.error(data.message)
+				}
+			})
+			.catch(err=>{
+				console.log(err);
+				message.error('请求失败,请稍后再试!!')
+			})
+			.finally(()=>{
+			//无论请求成功或者失败取消loading状态
+			dispatch(getCountsDoneAction())
+			})
         }
         
 }
