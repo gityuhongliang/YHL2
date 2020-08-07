@@ -23,8 +23,8 @@ class Categorylist extends Component {
     componentDidMount(){
     this.props.handlePage(1)
   }
- 
-
+         
+               
  //生命周期函数
     render(){
       const columns = [

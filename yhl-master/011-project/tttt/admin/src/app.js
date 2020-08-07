@@ -47,7 +47,7 @@ class App extends Component {
                         <TodolistRoute exact path="/" component={Home} />
                         <TodolistRoute  path="/user" component={User} />
                         <TodolistRoute  path="/category" component={Category} />
-                        <TodolistRoute  path="/Product" component={Product} />
+                        <TodolistRoute  path="/product" component={Product} />
                         <LoginRoute path="/login" component={Login} />
                         <Route component = {Err}/>
                     </Switch>                  

@@ -33,11 +33,11 @@ const setLevelCategories = (payload)=>({
 	payload
 })
 
-//处理获取最新父级分类
+//处理获取最新商品分类
 export const getLevelCategoriesAction = ()=>{
 	return (dispatch,getState)=>{
 		apiObj.getLevelCategories({
-			level:2
+			level:3
 		})
 		.then(result=>{
 			const data = result.data;

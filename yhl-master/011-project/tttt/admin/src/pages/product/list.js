@@ -19,7 +19,7 @@ import AdminLayout from 'common/layout/index.js'
 
 
 //调用this必须用constructor
-class Categorylist extends Component {
+class ProductList extends Component {
     componentDidMount(){
     this.props.handlePage(1)
   }
@@ -116,16 +116,16 @@ class Categorylist extends Component {
           const dataSource = list.toJS()
           // console.log(dataSource)
         return (
-                <div className = 'Categorylist' >
+                <div className = 'ProductList' >
                    <AdminLayout >
                     <Breadcrumb style={{ margin: '16px 0'}}>
                         <Breadcrumb.Item>首页</Breadcrumb.Item>
-                        <Breadcrumb.Item>分类管理</Breadcrumb.Item>
-                        <Breadcrumb.Item>分类列表</Breadcrumb.Item>
+                        <Breadcrumb.Item>商品管理</Breadcrumb.Item>
+                        <Breadcrumb.Item>商品列表</Breadcrumb.Item>
                     </Breadcrumb>
                     <div className = 'btn'>
-                    <Link to = '/category/add'> 
-                      <Button type="primary">新增分类</Button>
+                    <Link to = '/product/save'> 
+                      <Button type="primary">新增商品</Button>
                     </Link>
                     </div>
                     <div className='content'>
@@ -155,11 +155,11 @@ class Categorylist extends Component {
 const mapStateToProps = (state /*, ownProps*/) => {
   return {
  
-      list:state.get('category').get('list'),
-      current:state.get('category').get('current'),
-      pageSize:state.get('category').get('pageSize'),
-      total:state.get('category').get('total'),
-      isFetching:state.get('category').get('isFetching'),
+      list:state.get('product').get('list'),
+      current:state.get('product').get('current'),
+      pageSize:state.get('product').get('pageSize'),
+      total:state.get('product').get('total'),
+      isFetching:state.get('product').get('isFetching'),
   }
 }
 
@@ -183,4 +183,4 @@ const mapDispatchToProps = (dispatch /*, ownProps*/) => {
       }
     }
 }
-export default connect( mapStateToProps, mapDispatchToProps)(Categorylist)
+export default connect( mapStateToProps, mapDispatchToProps)(ProductList)

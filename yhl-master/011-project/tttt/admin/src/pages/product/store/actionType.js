@@ -1,6 +1,6 @@
-export const SET_PAGE = 'category@set_page'
-export const REQUEST_START_ACTION = 'category@request_start_action';
-export const REQUEST_DONE_ACTION = 'category@request_done_action';
+export const SET_PAGE = 'product@set_page'
+export const REQUEST_START_ACTION = 'product@request_start_action';
+export const REQUEST_DONE_ACTION = 'product@request_done_action';
 
 
-export const SET_LEVEL_CATEGORIES = 'category@set_level_categories';
+export const SET_LEVEL_CATEGORIES = 'product@set_level_categories';

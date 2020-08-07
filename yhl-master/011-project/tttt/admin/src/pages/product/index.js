@@ -10,22 +10,22 @@ import {
 } from "react-router-dom";
 
 
-import CategoryAdd from './add.js'
-import CategoryList from './list.js'
+import ProductSave from './save.js'
+import ProductList from './list.js'
 
 
 
 //调用this必须用constructor
-class Category extends Component {
+class Product extends Component {
   
  //生命周期函数
     render(){
       
         return (
-                <div className = 'Category' >
+                <div className = 'Product' >
                 <Switch>
-                  <Route  path="/Category/add" component={CategoryAdd} />
-                  <Route  path="/Category" component={CategoryList} />
+                  <Route  path="/product/save" component={ProductSave} />
+                  <Route  path="/product" component={ProductList} />
                   
                 </Switch>
 
@@ -37,4 +37,4 @@ class Category extends Component {
 
 
 
-export default Category
+export default Product

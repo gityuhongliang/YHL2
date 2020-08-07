@@ -2,20 +2,20 @@
 import { combineReducers } from 'redux-immutable'
 
 //从pages/todolist/store/index里面导出的是个对象所以花括号
-import {reducer as todolistreducer} from 'pages/todolist/store/index.js'
-import {reducer as loginreducer} from 'pages/login/store/index.js'
-import {reducer as homereducer} from 'pages/home/store/index.js'
-import {reducer as userreducer} from 'pages/user/store/index.js'
-import {reducer as categoryreducer} from 'pages/Category/store/index.js'
-import {reducer as productreducer} from 'pages/product/store/index.js'
+import {reducer as todolistReducer} from 'pages/todolist/store/index.js'
+import {reducer as loginReducer} from 'pages/login/store/index.js'
+import {reducer as homeReducer} from 'pages/home/store/index.js'
+import {reducer as userReducer} from 'pages/user/store/index.js'
+import {reducer as categoryReducer} from 'pages/Category/store/index.js'
+import {reducer as productReducer} from 'pages/product/store/index.js'
 
 
 export default combineReducers ({
-	todolist:todolistreducer,
-	login:loginreducer,
-	home:homereducer,
-	user:userreducer,
-	category:categoryreducer,
-	product:productreducer
+	todolist:todolistReducer,
+	login:loginReducer,
+	home:homeReducer,
+	user:userReducer,
+	category:categoryReducer,
+	product:productReducer
 
 })
