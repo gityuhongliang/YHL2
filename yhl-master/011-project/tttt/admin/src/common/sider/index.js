@@ -49,7 +49,7 @@ class AdminSider extends Component {
                                 <Link to= '/category'><Icon type="menu" />分类管理</Link>
                                 </Menu.Item>
                                 <Menu.Item key="4">
-                                <Link to= '#'><Icon type="shopping" />商品列表</Link>
+                                <Link to= '/product'><Icon type="shopping" />商品管理</Link>
                                 </Menu.Item>
                               </SubMenu>
                               

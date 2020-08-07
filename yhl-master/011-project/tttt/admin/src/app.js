@@ -7,6 +7,7 @@ import Login from 'pages/login'
 import Err from 'common/err'
 import User from 'pages/user'
 import Category from 'pages/Category'
+import Product from 'pages/product'
 
 import { 
     BrowserRouter as Router,
@@ -45,7 +46,8 @@ class App extends Component {
                     <Switch>              
                         <TodolistRoute exact path="/" component={Home} />
                         <TodolistRoute  path="/user" component={User} />
-                        <TodolistRoute  path="/Category" component={Category} />
+                        <TodolistRoute  path="/category" component={Category} />
+                        <TodolistRoute  path="/Product" component={Product} />
                         <LoginRoute path="/login" component={Login} />
                         <Route component = {Err}/>
                     </Switch>                  
