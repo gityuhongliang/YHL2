@@ -38,14 +38,27 @@ class ProductSave extends Component {
         this.props.form.validateFields((err, values) => {
         if (!err) {
             // console.log('Received values of form: ', values);
-                this.props.handleAddCategories(values)
+                this.props.handleSave(values)
             }
         });
      };
  //生命周期函数
     render(){
         const { getFieldDecorator } = this.props.form;
-        const { categories } = this.props
+        const { 
+            categories,
+
+            handleMainImages,
+            handleImages,
+            handleDetail,
+
+            mainImageValidateStatus,
+            mainImageHelp,
+            imagesValidateStatus,
+            imagesHelp,
+
+
+            } = this.props
         return (
                 <div className = 'ProductSave' >
                     <AdminLayout >
@@ -86,28 +99,47 @@ class ProductSave extends Component {
                                 <Form.Item label="商品价格">
                                     {getFieldDecorator('price', {
                                         rules: [{ required: true, message: '请添加商品价格' }],
-                                    })(<InputNumber style= {{width:80}} />)}
+                                    })(<InputNumber min={0} style= {{width:80}} />)}
                                 </Form.Item>
                                 <Form.Item label="商品库存">
                                     {getFieldDecorator('stock', {
                                         rules: [{ required: true, message: '请添加商品库存' }],
-                                    })(<InputNumber style= {{width:80}} />)}
+                                    })(<InputNumber min={0} style= {{width:80}} />)}
                                 </Form.Item>
-                                <Form.Item label="商品封面">
+                                <Form.Item 
+                                    label="商品封面"
+                                    required={true}
+                                    validateStatus={mainImageValidateStatus}
+                                    help={mainImageHelp}
+                                >
                                     <UploadImages 
                                     action = {UPLOAD_IMAGES}
                                     max={1}
+                                    getFileList= {(fileList)=>{
+                                        handleMainImages(fileList)
+                                    }}
                                     />
                                 </Form.Item>
-                                <Form.Item label="商品图片">
+                                <Form.Item 
+                                    label="商品图片"
+                                    required={true}
+                                    validateStatus={imagesValidateStatus}
+                                    help={imagesHelp}
+                                >
                                     <UploadImages 
                                     action = {UPLOAD_IMAGES}
                                     max={3}
+                                    getFileList= {(fileList)=>{
+                                        handleImages(fileList)
+                                    }}
                                     />
                                 </Form.Item>
                                 <Form.Item label="商品详情">
                                     <RichEditor 
                                     url={UPLOAD_DETATL_IMAGES}
+                                    getValues= {(values)=>{
+                                        handleDetail(values)
+                                    }}
                                     />
                                 </Form.Item>
                                 <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
@@ -132,7 +164,13 @@ class ProductSave extends Component {
 //将数据,属性从store映射到组件
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
-        categories:state.get('product').get('categories')
+        categories:state.get('product').get('categories'),
+
+
+        mainImageValidateStatus:state.get('product').get('mainImageValidateStatus'),
+        mainImageHelp:state.get('product').get('mainImageHelp'),
+        imagesValidateStatus:state.get('product').get('imagesValidateStatus'),
+        imagesHelp:state.get('product').get('imagesHelp')
     }
 }
 
@@ -141,12 +179,21 @@ const WrappedProductSave = Form.create({ name: 'coordinated' })(ProductSave);
 //将数据,方法从store映射到组件
 const mapDispatchToProps = (dispatch /*, ownProps*/) => {
     return {
-        handleAddCategories:(values)=>{
-            dispatch(actionCreators.getAddCategoriesAction(values))
+        handleSave:(values)=>{
+            dispatch(actionCreators.getSaveProductAction(values))
         },
         handleLevelCategories:()=>{
             dispatch(actionCreators.getLevelCategoriesAction())
-        }
+        },
+        handleMainImages:(mainImage)=>{
+            dispatch(actionCreators.getMainImagesAction(mainImage))
+        },
+        handleImages:(images)=>{
+            dispatch(actionCreators.getImagesAction(images))
+        },
+        handleDetail:(values)=>{
+            dispatch(actionCreators.getDetailAction(values))
+        },
     }
 }
 export default connect( mapStateToProps, mapDispatchToProps)(WrappedProductSave)

@@ -27,7 +27,15 @@ class UploadImages extends Component{
             previewVisible: true,
         });
     };
-     handleChange({ fileList }){ this.setState({ fileList }); }
+    handleChange({ fileList }){ //无论上传还是删除都会触发此事件
+        this.setState({ fileList },()=>{
+            this.props.getFileList(fileList.map(file=>{
+                if(file.response){//有时候属性是unfind所以判断有属性才能拿到
+                    return file.response.url
+                }
+            }).join(','))
+        }); 
+    }
     render(){
         const { previewVisible, previewImage, fileList } = this.state;
         const uploadButton = (

@@ -9,7 +9,17 @@ const defaultState = fromJS({
 	        pageSize:0,
 	        current:1,
             isFecthing:false,
-            categories:[]
+            categories:[],
+            //封面，图片，详情
+            mainImage:'',
+            images:'',
+            detail:'',
+
+
+            mainImageValidateStatus:"",
+            mainImageHelp:"",
+            imagesValidateStatus:"",
+            imagesHelp:""
 
                    
 })
@@ -26,7 +36,7 @@ export default (state=defaultState,action)=>{
 	// console.log('action',action)
 	
 
-	// 处理分类列表
+	// 处理商品列表
 	if (action.type == types.SET_PAGE) {
 		
 		return state.merge({
@@ -46,6 +56,17 @@ export default (state=defaultState,action)=>{
 	else if (action.type == types.SET_LEVEL_CATEGORIES) {
 		console.log(action.payload)
 		return state.set('categories',fromJS(action.payload))
+	}
+
+	//处理自定义组件存值
+	else if (action.type == types.SET_MAIN_IMAGE) {
+		return state.set('mainImage',action.payload)
+	}
+	else if (action.type == types.SET_IMAGES) {
+		return state.set('images',action.payload)
+	}
+	else if (action.type == types.SET_DETAI) {
+		return state.set('values',action.payload)
 	}
 	return state
 }

@@ -46,6 +46,10 @@ class RichEditor extends Component {
             fileKey:'upload'
           }
         });
+
+        this.editor.on('valuechanged',()=>{
+          this.props.getValues(this.editor.getValue())
+        })
     }
     render(){
         return(

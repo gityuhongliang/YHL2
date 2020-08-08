@@ -166,7 +166,7 @@ const mapStateToProps = (state /*, ownProps*/) => {
 //将数据,方法从store映射到组件
 const mapDispatchToProps = (dispatch /*, ownProps*/) => {
   return {
-       handlePage:(page)=>{
+      handlePage:(page)=>{
           dispatch(actionCreators.getPageAction(page))
       },
       handleUpdateCategories:(id,newName)=>{
