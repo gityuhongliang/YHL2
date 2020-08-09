@@ -1,5 +1,5 @@
 import React,{ Component,Fragment} from 'react'
-import { Breadcrumb, Table, Button ,Input,InputNumber,Switch  } from 'antd';
+import { Breadcrumb, Table, Button ,Input,InputNumber,Switch,Divider  } from 'antd';
 
 import { connect } from 'react-redux' 
 
@@ -20,6 +20,10 @@ import AdminLayout from 'common/layout/index.js'
 
 //调用this必须用constructor
 class ProductList extends Component {
+  constructor(props){
+    super(props)
+
+  }
     componentDidMount(){
     this.props.handlePage(1)
   }
@@ -29,39 +33,12 @@ class ProductList extends Component {
     render(){
       const columns = [
             {
-              title: '分类名称',
+              title: '商品名称',
               dataIndex: 'name',
               key: 'name',
-              render: (name,record) => {
-                return <Input 
-                style= {{width:100}}
-                defaultValue={name}
-                onBlur={(ev)=>{
-                  if(name != ev.target.value){
-                  handleUpdateCategories(record._id,ev.target.value)
-                  }
-                }}
-                />
-              }
             },
             {
-              title: '三级分类名称',
-              dataIndex: 'mobileName',
-              key: 'mobileName',
-              render: (mobileName,record) => {
-                return <Input 
-                style= {{width:100}}
-                defaultValue={mobileName}
-                onBlur={(ev)=>{
-                  if(mobileName != ev.target.value){
-                    handleUpdateMobileName(record._id,ev.target.value)
-                  }
-                }}
-                />
-              }
-            },
-            {
-              title: '是否显示',
+              title: '是否首页显示',
               dataIndex: 'isShow',
               key: 'isShow',
               render:(isShow,record)=>{
@@ -82,6 +59,43 @@ class ProductList extends Component {
               }
             },
             {
+              title: '是否热卖',
+              dataIndex: 'isHot',
+              key: 'isHot',
+              render:(isHot,record)=>{
+                return(
+                    <Switch 
+                    checkedChildren="是" 
+                    unCheckedChildren="否" 
+                    defaultChecked = {isHot == '0' ? false : true}
+
+                    onChange = {(checked)=>{
+                        const isHot = checked ? '1' : '0'
+                        handleUpdateIsHot(record._id,isHot)
+                    }}
+                     />
+                  )
+              }
+            },
+            {
+              title: '上架下架',
+              dataIndex: 'status',
+              key: 'status',
+              render:(status,record)=>{
+                return(
+                    <Switch 
+                    checkedChildren="是" 
+                    unCheckedChildren="否" 
+                    defaultChecked = {status == '0' ? false : true}
+                    onChange = {(checked)=>{
+                        const status = checked ? '1' : '0'
+                        handleUpdateStatus(record._id,status)
+                    }}
+                     />
+                  )
+              }
+            },
+            {
               title:'排序',
               key: 'order',
               dataIndex: 'order',
@@ -97,6 +111,26 @@ class ProductList extends Component {
                 
                 />
               }
+            },
+            {
+              title:'操作',
+              render:(name,record)=>{
+                return(
+                    <span>
+                    {
+                    //携带id才能知道是编辑哪个商品
+                    }
+                    <Link to={'/product/save/'+record._id}>
+                      编辑
+                   
+                    </Link>
+                    <Divider type ="vertical" />
+                    <Link to={'/product/detail/'+record._id}>
+                      详情
+                    </Link>
+                    </span>
+                  )
+              }
             }
           ];
 
@@ -107,10 +141,10 @@ class ProductList extends Component {
               total,
               handlePage,
               isFetching,
-              handleUpdateCategories,
-              handleUpdateMobileName,
+              handleUpdateStatus,
               handleUpdateOrder,
-              handleUpdateIsShow
+              handleUpdateIsShow,
+              handleUpdateIsHot
 
              } = this.props;
           const dataSource = list.toJS()
@@ -132,6 +166,7 @@ class ProductList extends Component {
                         <Table columns={columns}
                         dataSource={dataSource} 
                         loading={isFetching}
+                        rowKey="_id"
                         pagination ={{
                           total:total,
                           pageSize:pageSize,
@@ -169,18 +204,20 @@ const mapDispatchToProps = (dispatch /*, ownProps*/) => {
        handlePage:(page)=>{
           dispatch(actionCreators.getPageAction(page))
       },
-      handleUpdateCategories:(id,newName)=>{
-          dispatch(actionCreators.getUpdateCategoriesAction(id,newName))
-      },
-      handleUpdateMobileName:(id,newMobileName)=>{
-          dispatch(actionCreators.getUpdateMobileNameAction(id,newMobileName))
+      
+      handleUpdateStatus:(id,newStatus)=>{
+          dispatch(actionCreators.getUpdateStatusAction(id,newStatus))
       },
       handleUpdateOrder:(id,newOrder)=>{
           dispatch(actionCreators.getUpdateOrderAction(id,newOrder))
       },
       handleUpdateIsShow:(id,newIsShow)=>{
           dispatch(actionCreators.getUpdateIsShowAction(id,newIsShow))
-      }
+      },
+      handleUpdateIsHot:(id,newIsHot)=>{
+          dispatch(actionCreators.getUpdateIsHotAction(id,newIsHot))
+      },
+
     }
 }
 export default connect( mapStateToProps, mapDispatchToProps)(ProductList)

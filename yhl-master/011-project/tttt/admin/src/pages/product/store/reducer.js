@@ -19,9 +19,13 @@ const defaultState = fromJS({
             mainImageValidateStatus:"",
             mainImageHelp:"",
             imagesValidateStatus:"",
-            imagesHelp:""
+            imagesHelp:"",
 
-                   
+            category:'',
+            name:'',
+            description:'',
+            price:'',
+            stock:'',
 })
 
 
@@ -59,14 +63,52 @@ export default (state=defaultState,action)=>{
 	}
 
 	//处理自定义组件存值
+    //只要自定义组件存值则说明上传了封面图片和商品图片即可取消认证
 	else if (action.type == types.SET_MAIN_IMAGE) {
-		return state.set('mainImage',action.payload)
+		return state.merge({
+            mainImage:action.payload,
+            mainImageValidateStatus:"",
+            mainImageHelp:"",
+        })
 	}
 	else if (action.type == types.SET_IMAGES) {
-		return state.set('images',action.payload)
+		return state.merge({
+            images:action.payload,
+            imagesValidateStatus:"",
+            imagesHelp:""
+        })
 	}
 	else if (action.type == types.SET_DETAI) {
 		return state.set('values',action.payload)
 	}
+
+
+    //处理自定义组件验证
+   
+    else if (action.type == types.SET_MAIN_IMAGE_ERR) {
+        return state.merge({
+            mainImageValidateStatus:'error',
+            mainImageHelp:'请上传封面图片'
+        })
+    }
+    else if (action.type == types.SET_IMAGES_ERR) {
+        return state.merge({
+            imagesValidateStatus:'error',
+            imagesHelp:'请上传商品图片'
+        })
+    }
+    //处理获取商品详情
+    else if (action.type == types.SET_PRODUCT_DETAI) {
+        return state.merge({
+            category:action.payload.category._id,
+            name:action.payload.name,
+            description:action.payload.description,
+            price:action.payload.price,
+            stock:action.payload.stock,
+            mainImage:action.payload.mainImage,
+            images:action.payload.images,
+            detail:action.payload.detail,
+        })
+    }
 	return state
 }

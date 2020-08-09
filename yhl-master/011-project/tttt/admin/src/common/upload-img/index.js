@@ -17,6 +17,15 @@ class UploadImages extends Component{
           this.handleChange=this.handleChange.bind(this)
           this.handlePreview=this.handlePreview.bind(this)
     }
+    static getDerivedStateFromProps(props, state){
+        //判断fileList大于0个代表传过来有值，只有编辑商品fileList才有值次   判断原来的state是空的才是编辑，因为只有新增才需要上传图片
+        if(props.fileList.length > 0 && state.fileList.length == 0){
+            return {
+                fileList:props.fileList
+            }
+        }
+        return null
+    }
     handleCancel(){
         this.setState({ previewVisible: false })
     };

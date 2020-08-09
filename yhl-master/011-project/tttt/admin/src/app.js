@@ -41,7 +41,7 @@ class App extends Component {
             />
         )
         return (
-            <Router>
+            <Router forceRefresh={true}>
                 <div>
                     <Switch>              
                         <TodolistRoute exact path="/" component={Home} />

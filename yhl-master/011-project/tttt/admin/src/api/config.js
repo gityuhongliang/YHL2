@@ -22,6 +22,14 @@ export const API_CONFIG  = {
 	updateIsShow:             ['/categories/isShow','put'],
 
 	//新增商品
-	addProducts:              ['/aproducts','post'],
+	addProducts:              ['/products','post'],
+	getProductsList:          ['/products/list','get'],
+	updateProductsIsShow:     ['/Products/isShow','put'],
+	updateProductsIsHot:      ['/Products/isHot','put'],
+	updateProductsOrder:      ['/Products/order','put'],
+	updateProductsStatus:     ['/Products/status','put'],
+	getProductsDetail:     	  ['/Products/detail','get'],
 
+	//编辑商品
+	updateProducts:           ['/products','put'],
 }

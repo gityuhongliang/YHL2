@@ -20,6 +20,10 @@ import AdminLayout from 'common/layout/index.js'
 
 //调用this必须用constructor
 class Categorylist extends Component {
+  constructor(props){
+    super(props)
+    
+  }
     componentDidMount(){
     this.props.handlePage(1)
   }
