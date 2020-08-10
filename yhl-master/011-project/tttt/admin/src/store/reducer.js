@@ -8,6 +8,7 @@ import {reducer as homeReducer} from 'pages/home/store/index.js'
 import {reducer as userReducer} from 'pages/user/store/index.js'
 import {reducer as categoryReducer} from 'pages/Category/store/index.js'
 import {reducer as productReducer} from 'pages/product/store/index.js'
+import {reducer as advertReducer} from 'pages/advert/store/index.js'
 
 
 export default combineReducers ({
@@ -16,6 +17,7 @@ export default combineReducers ({
 	home:homeReducer,
 	user:userReducer,
 	category:categoryReducer,
-	product:productReducer
+	product:productReducer,
+    advert:advertReducer
 
 })
