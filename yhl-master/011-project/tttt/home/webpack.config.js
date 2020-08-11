@@ -8,6 +8,15 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 //css文件单独打包
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+
+const getHtmlConfig = (name,title)=>({
+  template:'./src/views/'+name+'.html',//模板文件
+  title:title,
+    filename:name+'.html',//输出的文件名
+    hash:true,//给生成的js/css文件添加一个唯一的hash
+    chunks:[name,'common']
+})
 module.exports = {
 	//配置开发环境
   	mode:'development',// "productio(生产环境)" | "development" | "none"
@@ -17,9 +26,10 @@ module.exports = {
   	//多入口写法
   	entry: {
   	//chunk名称:入口文件路径
-  		index: "./src/pages/index/index.js",
+  		  index: "./src/pages/index/index.js",
         list: "./src/pages/list/index.js",
         common: "./src/pages/common/index.js",
+        'user-login':"./src/pages/user-login/index.js",
 
   		
 	},
@@ -37,7 +47,7 @@ module.exports = {
       
 
       //静态资源路径配置
-      publicPath:'./'
+      publicPath:'/'
   	},
      //配置别名
       resolve:{
@@ -79,7 +89,7 @@ module.exports = {
 			    			  loader: 'url-loader',
 			    				 options: {
 			      				 limit: 10,
-                                 name:'img/[name].[ext]'
+                     name:'img/[name].[ext]'
 			    			    }
 			  			    }
 					    ]
@@ -100,20 +110,10 @@ module.exports = {
         ]
     },
   		plugins:[
-    		new htmlWebpackPlugin({
-        	template:'./src/views/index.html',//模板文件
-       		filename:'index.html',//输出的文件名
-       		inject:'true',//脚本写在那个标签里,默认是true(在body结束后)
-        	hash:true,//给生成的js/css文件添加一个唯一的hash
-            chunks:['index','common']
-   		 }),
-            new htmlWebpackPlugin({
-            template:'./src/views/list.html',//模板文件
-            filename:'list.html',//输出的文件名
-            inject:'true',//脚本写在那个标签里,默认是true(在body结束后)
-            hash:true,//给生成的js/css文件添加一个唯一的hash
-            chunks:['list','common']
-         }),
+    		 new htmlWebpackPlugin(getHtmlConfig('index','首页')),
+         new htmlWebpackPlugin(getHtmlConfig('list','列表页')),
+         new htmlWebpackPlugin(getHtmlConfig('user-login','登录页')),
+           
     		//清理输出文件夹
     		new CleanWebpackPlugin(),
             // css文件单独打包

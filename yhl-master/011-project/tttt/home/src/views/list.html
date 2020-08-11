@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <%= require('html-loader!./common/meta.html') %>
-    <title>list</title>
+    <title> <%= htmlWebpackPlugin.options.title %> </title>
+    
 </head>
 <body>
-    <p>哈哈哈</p>
+    <%= require('html-loader!./common/footer.html') %>
 </body>
-<%= require('html-loader!./common/footer.html') %>
+
 </html>

@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <%= require('html-loader!./common/meta.html') %>
-    <title>kmall</title>
+    <title> <%= htmlWebpackPlugin.options.title %> </title>
 </head>
 <body>
-    <p> 哈哈哈</p>
-    <i class="fa fa-user"></i>
+    <%= require('html-loader!./common/nav.html') %>
+	<%= require('html-loader!./common/footer.html') %>
+   
 </body>
-<%= require('html-loader!./common/footer.html') %>
 </html>

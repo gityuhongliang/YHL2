@@ -1,12 +1,13 @@
 {
-  "name": "kmall",
+  "name": "Kmall",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack --progress --display-modules --display-reasons --watch",
     "start": "webpack-dev-server --open"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -29,8 +30,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/preset-env": "^7.11.0",
     "axios": "^0.19.2",
     "font-awesome": "^4.7.0",
     "html-loader": "^1.1.0",

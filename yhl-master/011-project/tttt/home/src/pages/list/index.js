@@ -1,2 +1,3 @@
-require('pages/common/footer/index.js')
+require('pages/common/footer')
+require('pages/common/nav')
 require('./index.css')
