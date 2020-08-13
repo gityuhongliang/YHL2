@@ -30,6 +30,9 @@ module.exports = {
         list: "./src/pages/list/index.js",
         common: "./src/pages/common/index.js",
         'user-login':"./src/pages/user-login/index.js",
+        'user-register':"./src/pages/user-register/index.js",
+        'result':"./src/pages/result/index.js",
+        'user-center':"./src/pages/user-center/index.js",
 
   		
 	},
@@ -54,6 +57,8 @@ module.exports = {
           alias:{
               pages:path.resolve(__dirname,'./src/pages'),
               node_modules:path.resolve(__dirname,'./node_modules'),
+              util:path.resolve(__dirname,'./src/util'),
+              api:path.resolve(__dirname,'./src/api'),
 
           }
       },
@@ -106,6 +111,13 @@ module.exports = {
                     }
                 }               
             },
+            //配置tpl
+            {
+              test: /\.tpl$/,
+              use: {
+              loader: 'html-loader',
+            }
+          },
          
         ]
     },
@@ -113,6 +125,9 @@ module.exports = {
     		 new htmlWebpackPlugin(getHtmlConfig('index','首页')),
          new htmlWebpackPlugin(getHtmlConfig('list','列表页')),
          new htmlWebpackPlugin(getHtmlConfig('user-login','登录页')),
+         new htmlWebpackPlugin(getHtmlConfig('user-register','注册页')),
+         new htmlWebpackPlugin(getHtmlConfig('result','提示页面')),
+         new htmlWebpackPlugin(getHtmlConfig('user-center','个人中心')),
            
     		//清理输出文件夹
     		new CleanWebpackPlugin(),
@@ -124,7 +139,11 @@ module.exports = {
         devServer:{
             contentBase: './dist',//内容的目录
             port:3002,//服务运行的端口
-            historyApiFallback:true,//h5路由刷新页面不向后台请求数据
+             proxy: [{
+                    context: ["/sessions","/users"],
+                    //请求地址是以context内部的值开头的路由全部代理到target提供的地址下
+                    target: "http://127.0.0.1:3000",
+                }]
         }
 };
 

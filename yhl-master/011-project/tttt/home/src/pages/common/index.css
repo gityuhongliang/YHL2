@@ -86,6 +86,7 @@ body{
 .form-box .error-msg{
     display: inline-block;
     margin-left: 10px;
+    font-size: 14px;
 }
 .form-box .form-item{
     border: 1px solid #bdbdbd;
