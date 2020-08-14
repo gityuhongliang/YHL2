@@ -12,7 +12,7 @@ import moment from 'moment'
 
 import AdminLayout from 'common/layout'
 
-import UploadImages from 'common/upload-img'
+import UploadImages from 'common/upload-image'
 
 import RichEditor from 'common/rich-editor'
 

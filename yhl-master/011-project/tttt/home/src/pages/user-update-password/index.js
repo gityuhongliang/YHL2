@@ -1,11 +1,13 @@
+require('pages/common/nav')
+require('pages/common/search')
+var _side = require('pages/common/side')
 require('pages/common/footer')
-require('pages/common/logo')
-require('./index.css')
+require('./index.css');
 
-
-var _util = require('util')
-
+var _util = require('util');
 var api = require('api');
+var tpl = require('./index.tpl');
+
 
 //错误提示封装
 var formDataMsg = {
@@ -22,11 +24,22 @@ var formDataMsg = {
 		.text('')
 	}
 }
+
 var page = {
 	init:function(){
-		
+		//侧边栏选中状态
+		this.renderSide()
+		//获取登录用户信息
+		// this.loadUserInfo()
+
 		this.bingdEvent();
 
+
+		//获取登录用户信息判断用户是否登陆
+		this.loadUserInfo()
+	},
+	renderSide:function(){
+		_side.render('user-update-password')
 	},
 	bingdEvent:function(){
 		//把this(page)存下来
@@ -42,13 +55,18 @@ var page = {
 			}
 		})
 	},
-	//把提交表单的方法抽取出去
+	//发送获取用户信息
+	loadUserInfo:function(){
+		api.getUserInfo({
+			
+		})
+	},
 	submint:function(){
 		//1.获取数据
 		//存到一个对象里面
 		var formData = {
-			username:$.trim($('[name="username"]').val()),
 			password:$.trim($('[name="password"]').val()),
+			repassword:$.trim($('[name="repassword"]').val()),
 		}
 		//2.验证数据合法性
 		var validateFormData = this.validate(formData)
@@ -58,36 +76,19 @@ var page = {
 			formDataMsg.hide()
 			
 			//发送ajax请求
-			api.login({
-				data:formData,
+			api.updatePassword({
+				data:{
+					password:formData.password
+				},
 				success:function(data){
-					//从登录成功跳转到首页 改造成 登录成功返回到上一页点击需要登录的地址
-					window.location.href = _util.getParamsFromUrl('redirect') || '/'
+					// window.location.href ='/result.html?type=updatePassword'
+					_util.goResult('updatePassword')
 				},
 				error:function(msg){
 					formDataMsg.show(msg);
 				}
 			})
-			/*
-			$.ajax({
-				url:'/sessions/users',
-				method:'post',
-				dataType:'json',
-				data:formData,
-				success:function(data){
-					// console.log(data)
-					if(data.code == 0){
-						window.location.href = '/'
-					}else{
-						formDataMsg.show(data.message);
-					}
-					
-				},
-				error:function(err){
-					formDataMsg.show('网络错误,请稍后再试!!');
-				}
-
-			})*/
+			
 		}else{
 			formDataMsg.show(validateFormData.msg);
 			
@@ -98,16 +99,7 @@ var page = {
 			status:false,
 			msg:''
 		}
-		//用户名非空判断
-		if (!_util.validate(formData.username,'required')) {
-			result.msg = '请输入用户名'
-			return result
-		}
-		//用户名合法性验证
-		if (!_util.validate(formData.username,'username')) {
-			result.msg = '用户名是以字母开始的3-6位字符'
-			return result
-		}
+		
 		//密码非空判断
 		if (!_util.validate(formData.password,'required')) {
 			result.msg = '请输入密码'
@@ -118,13 +110,27 @@ var page = {
 			result.msg = '密码是以字母开始的3-6位字符'
 			return result
 		}
+		//两次密码输入一致验证
+		if (formData.password != formData.repassword) {
+			result.msg = '两次密码输入不一致'
+			return result
+		}
 		result.status = true
 		return result
 	}
+	/*
+	loadUserInfo:function(){
+		api.getUserInfo({
+			success:function(data){
+				var html = _util.render(tpl,data)
+				console.log(tpl)
+				$('.side-content').html(html)
+			}
+		})
+	}
+	*/
 }
 
-
-//调用上面定义的方法 方便管理
 $(function(){
 	page.init();
 })

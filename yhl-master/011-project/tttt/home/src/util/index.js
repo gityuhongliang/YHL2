@@ -33,6 +33,9 @@ module.exports = {
         //共通未登录返回登录界面  同时在后面返回上一页地址的参数
         window.location.href = '/user-login.html?redirect='+window.location.href
     },
+    goResult:function(type){
+         window.location.href ='/result.html?type='+type
+    },
     getParamsFromUrl:function(keyword){
         //获取地址栏参数信息
         var query = window.location.search.substr(1)

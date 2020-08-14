@@ -9,6 +9,9 @@ const API_CONFIG = {
     checkUsername:              ['/users/checkUsername','get'],
     getUserInfo:                ['/sessions/users','get'],
     updatePassword:             ['/users','put'],
+
+    //首页加载数据
+    getHomeCategories:          ['/categories/homeCategories','get']
 }
 module.exports = {
     API_CONFIG
