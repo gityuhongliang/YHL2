@@ -11,7 +11,11 @@ const API_CONFIG = {
     updatePassword:             ['/users','put'],
 
     //首页加载数据
-    getHomeCategories:          ['/categories/homeCategories','get']
+    getHomeCategories:          ['/categories/homeCategories','get'],
+    getHomeAds:                 ['/ads/positionAds','get'],
+    getHomeFloors:              ['/floors','get'],
+    //列表页
+    getProductsList:             ['/products/list','get'],
 }
 module.exports = {
     API_CONFIG

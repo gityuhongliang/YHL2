@@ -28,7 +28,7 @@ export const getLoginAction = (data)=>{
 		//首先发送请求再生成action对象
 		apiObj.login(data)
 		.then(result=>{
-			// console.log(result)
+			console.log(result)
 			//派发action
 			const data = result.data;
 			if(data.code == 0){

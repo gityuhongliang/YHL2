@@ -157,7 +157,7 @@ class ProductSave extends Component {
                                     {getFieldDecorator('stock', {
                                         rules: [{ required: true, message: '请添加商品库存' }],
                                         initialValue:stock
-                                    })(<InputNumber min={8} style= {{width:80}} />)}
+                                    })(<InputNumber min={0} style= {{width:80}} />)}
                                 </Form.Item>
                                 <Form.Item 
                                     label="商品封面"
@@ -182,7 +182,7 @@ class ProductSave extends Component {
                                 >
                                     <UploadImages 
                                     action = {UPLOAD_IMAGES}
-                                    max={3}
+                                    max={8}
                                     getFileList= {(fileList)=>{
                                         handleImages(fileList)
                                     }}

@@ -133,7 +133,7 @@ module.exports = {
            
     		//清理输出文件夹
     		new CleanWebpackPlugin(),
-            // css文件单独打包
+            // css文件单独打包 
             new MiniCssExtractPlugin({
                 filename:'css/[name]-[hash]-bundle.css'
             })
@@ -142,7 +142,14 @@ module.exports = {
             contentBase: './dist',//内容的目录
             port:3002,//服务运行的端口
              proxy: [{
-                    context: ["/sessions","/users","/categories"],
+                    context: [
+                        "/sessions",
+                        "/users",
+                        "/categories",
+                        "/ads",
+                        "/floors",
+                        "/products"
+                    ],
                     //请求地址是以context内部的值开头的路由全部代理到target提供的地址下
                     target: "http://127.0.0.1:3000",
                 }]
