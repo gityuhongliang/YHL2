@@ -29,10 +29,21 @@ var page = {
 		this.initPagination()
 	},
 	initPagination:function(){
+		var _this = this
+		console.log(this.productsListParams.page)
 		//初始化
 		this.paginationBox.pagination()
+		//监听自定义事件获取最新页码
+		this.paginationBox.on('page-change',function(ev,page){
+			//让this本来获取的页码等于监听来的最新页码
+			_this.productsListParams.page=page
+			//调用方法构建页面和分页器
+			_this.loadProductsList()
+
+		})
 	},
 	loadProductsList:function(){
+		var _this= this
 		api.getProductsList({
 			data:this.productsListParams,
 			success:function(products){
@@ -44,7 +55,11 @@ var page = {
 					$('.product-list-box').html('<p class= "empty-message">您查看的商品不存在</p>')
 				}
 				//构建分页器结构
-				_this.paginationBox.pagination()
+				_this.paginationBox.pagination('render',{
+					current:products.current,
+					pageSize:products.pageSize,
+					total:products.total,
+				});
 					
 			}
 		})

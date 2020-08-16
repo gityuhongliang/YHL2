@@ -34,6 +34,8 @@ module.exports = {
         'result':"./src/pages/result/index.js",
         'user-center':"./src/pages/user-center/index.js",
         'user-update-password':"./src/pages/user-update-password/index.js",
+        'detail':"./src/pages/detail/index.js",
+        'cart':"./src/pages/cart/index.js",
 
   		
 	},
@@ -130,6 +132,8 @@ module.exports = {
          new htmlWebpackPlugin(getHtmlConfig('result','提示页面')),
          new htmlWebpackPlugin(getHtmlConfig('user-center','个人中心')),
          new htmlWebpackPlugin(getHtmlConfig('user-update-password','修改密码')),
+         new htmlWebpackPlugin(getHtmlConfig('detail','商品详情页')),
+         new htmlWebpackPlugin(getHtmlConfig('cart','购物车')),
            
     		//清理输出文件夹
     		new CleanWebpackPlugin(),
@@ -148,7 +152,8 @@ module.exports = {
                         "/categories",
                         "/ads",
                         "/floors",
-                        "/products"
+                        "/products",
+                        "/carts"
                     ],
                     //请求地址是以context内部的值开头的路由全部代理到target提供的地址下
                     target: "http://127.0.0.1:3000",

@@ -2,6 +2,7 @@ const API_CONFIG = {
     //登录注册
     login:                      ['/sessions/users','post'],
     getUsername:                ['/sessions/username','get'],
+    //退出
     logout:                     ['/sessions/users','delete'],
     register:                   ['/users','post'],
 
@@ -15,7 +16,16 @@ const API_CONFIG = {
     getHomeAds:                 ['/ads/positionAds','get'],
     getHomeFloors:              ['/floors','get'],
     //列表页
-    getProductsList:             ['/products/list','get'],
+    getProductsList:            ['/products/list','get'],
+    // 详情页
+    getProductsDetail:          ['/products/detail','get'],
+    //添加购物车
+    addCarts:                   ['/carts','post'],
+    //获取购物车数量
+    getCartsCount:              ['/carts/count','get'],
+    //获取购物车信息
+    getCarts:                   ['/carts','get'],
+
 }
 module.exports = {
     API_CONFIG

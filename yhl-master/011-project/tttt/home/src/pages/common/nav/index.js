@@ -9,6 +9,19 @@ var page ={
         this.loadUsername()
         //绑定退出事件
         this.bindEventg()
+        //加载购物车数量
+        this.loadCarts()
+    },
+    loadCarts:function(){
+        var $cartNum = $('.cart-num')
+        api.getCartsCount({
+            success:function(count){
+                $cartNum.text(count || 0)
+            },
+            error:function(){
+                $cartNum.text(0)
+            }
+        })
     },
     bindEventg:function(){
         $('#logout').on('click',function(){
