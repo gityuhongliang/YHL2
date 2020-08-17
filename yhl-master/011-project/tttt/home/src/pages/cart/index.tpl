@@ -25,7 +25,7 @@
     </li>
 </ul>
 {{#cartList}}
-<ul class="product-item" data-product-id="{{_id}}">
+<ul class="product-item" data-product-id="{{product._id}}">
     <li class="product-select">
         {{#checked}}
             <input type="checkbox" class="select-one" checked />
@@ -36,7 +36,7 @@
     </li>
     <li class="product-info text-ellipsis">
         <a href="./detail.html?productId={{product._id}}" class="link" target="_blank">
-            <img src="{{mainImage}}" alt="{{product.name}}">
+            <img src="{{product.mainImage}}" alt="{{product.name}}">
             <span>{{product.name}}</span>
         </a>
     </li>
@@ -44,7 +44,9 @@
         ￥{{product.price}}
     </li>
     <li class="product-count">
-        <span class="count-btn minus">-</span><input type="text" value="{{count}}" data-stock="{{product.stock}}" class="count-input" /><span class="count-btn plus">+</span>
+        <span class="count-btn minus">-</span>
+        <input type="text" value="{{count}}" data-stock="{{product.stock}}" class="count-input" />
+        <span class="count-btn plus">+</span>
     </li>
     <li class="product-totalPrice">
         ￥{{totalPrice}}

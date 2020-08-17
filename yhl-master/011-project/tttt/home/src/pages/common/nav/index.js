@@ -11,6 +11,7 @@ var page ={
         this.bindEventg()
         //加载购物车数量
         this.loadCarts()
+        return this
     },
     loadCarts:function(){
         var $cartNum = $('.cart-num')
@@ -66,3 +67,6 @@ var page ={
 $(function(){
     page.init()
 })
+
+
+module.exports = page

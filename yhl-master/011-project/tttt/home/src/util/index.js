@@ -23,16 +23,23 @@ module.exports = {
             return /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value)
         }
     },
+    //封装的显示成功信息方法
     showSuccessMsg:function(msg){
         alert(msg)
     },
+    //封装的显示失败信息方法
     showErrMsg:function(msg){
         alert(msg)
+    },
+    //封装弹出确认信息方法
+    showConfirmMsg:function(msg){
+        return window.confirm(msg)
     },
     goLogin:function(){
         //共通未登录返回登录界面  同时在后面返回上一页地址的参数
         window.location.href = '/user-login.html?redirect='+window.location.href
     },
+    //封装用于获取类型参数方法
     goResult:function(type){
          window.location.href ='/result.html?type='+type
     },
@@ -47,6 +54,7 @@ module.exports = {
         var result = query.match(reg);
         return result ? decodeURIComponent(result[2]) : null  //解码
     },
+    //封装生成html模板方法
     render:function(tpl,data){
         var template = Hogan.compile(tpl)
         var html = template.render(data);

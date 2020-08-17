@@ -25,6 +25,15 @@ const API_CONFIG = {
     getCartsCount:              ['/carts/count','get'],
     //获取购物车信息
     getCarts:                   ['/carts','get'],
+    //更新购物车选中状态
+    updateCartsChoice:          ['/carts/choices','put'],
+    //删除购物车单个商品
+    deleteCarts:                ['/carts','delete'],
+    //更新购物车商品数量
+    updateCartsCounts:          ['/carts/counts','put'],
+    //订单确认页面
+    //商品清单
+    getOrdersList:              ['/orders/products','get'],
 
 }
 module.exports = {
