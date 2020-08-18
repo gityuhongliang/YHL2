@@ -27,13 +27,13 @@ var page = {
 	init:function(){
 		var _this = this
 		$('#btn-submit').on('click',function(){
-			_this.submint()
+			_this.submit()
 		})
 		//监听键盘事件提交表单
 
 		$('input').on('keydown',function(ev){
 			if(ev.keyCode == 13){ 
-				_this.submint()
+				_this.submit()
 			}
 		})
 		//监听用户名事件当失去焦点时验证用户名
@@ -64,7 +64,7 @@ var page = {
 		})
 	},
 	//把提交表单的方法抽取出去
-	submint:function(){
+	submit:function(){
 		//1.获取数据
 		//存到一个对象里面
 		var formData = {

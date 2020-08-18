@@ -157,7 +157,8 @@ module.exports = {
                         "/floors",
                         "/products",
                         "/carts",
-                        "/orders"
+                        "/orders",
+                        "/shippings"
                     ],
                     //请求地址是以context内部的值开头的路由全部代理到target提供的地址下
                     target: "http://127.0.0.1:3000",

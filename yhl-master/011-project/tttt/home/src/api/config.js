@@ -34,6 +34,11 @@ const API_CONFIG = {
     //订单确认页面
     //商品清单
     getOrdersList:              ['/orders/products','get'],
+    //新增地址
+    addShippings:               ['/shippings','post'],
+    //获取地址列表
+    getShippingsList:           ['/shippings/list','get'],
+
 
 }
 module.exports = {

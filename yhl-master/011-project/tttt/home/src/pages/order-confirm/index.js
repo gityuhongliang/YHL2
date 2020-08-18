@@ -22,16 +22,37 @@ var page = {
 		//3.绑定事件
 		this.bindEvent()
 	},
+	renderShippings:function(shippings){
+		var html = _util.render(shippingTpl,{
+			shippings:shippings
+		})
+		this.shippingBox.html(html)
+	},
 	bindEvent:function(){
+		var _this =this
+		//监听自定义事件处理新增地址成功后获取最新的地址信息
+		this.shippingBox.on('get-shippings',function(ev,shippings){
+			_this.renderShippings(shippings)
+		})
 		//1.点击新增地址弹出新增地址输入框
 		this.shippingBox.on('click','.shipping-add',function(){
 			_modal.show()
 		})
 	},
 	loadShippingList:function(){
-		var html = _util.render(shippingTpl)
-		this.shippingBox.html(html)
-
+		var _this =this
+		api.getShippingsList({
+			success:function(data){
+				/*
+				var html = _util.render(shippingTpl,{
+					shippings:data
+				})
+				_this.shippingBox.html(html)
+				*/
+				_this.renderShippings(data)
+			}
+					
+		})
 	},
 	loadProductList:function(){
 		var _this = this
