@@ -20,7 +20,9 @@ var formDataMsg = {
 
 
 module.exports = {
-    show:function(){
+    show:function(shipping){
+        //缓存编辑地址需要回填的数据
+        this.shipping = shipping
         //事件代理
         this.modalBox = $('.modal-box');
         //加载新增地址弹出输入框
@@ -47,6 +49,14 @@ module.exports = {
         var provincesSelect= this.modalBox.find('.province-select')
         //给父元素生成html
         provincesSelect.html(provincesgetSelectOptions)
+
+        //处理编辑地址省份回填
+        if (this.shipping) {
+        //如果你有回填的数据那么val等于回填获取到的数据里的省份
+            provincesSelect.val(this.shipping.province)
+        // 调用loadcites方法加载城市信息
+            this.loadCities(this.shipping.province)
+        }
     },
     loadCities:function(province){
         //加载市级信息
@@ -57,9 +67,14 @@ module.exports = {
         var citiesSelect= this.modalBox.find('.city-select')
         //给父元素生成html
         citiesSelect.html(citiesgetSelectOptions)
+
+        //处理编辑地址城市回填
+        if (this.shipping) {//如果你有回填的数据那么val等于回填获取到的数据里的城市
+            citiesSelect.val(this.shipping.city)
+        }
     },
     loadModal:function(data){
-        var html = _util.render(modalTpl)
+        var html = _util.render(modalTpl,this.shipping)
         this.modalBox.html(html)
     },
     bindEvent:function(){
@@ -113,9 +128,16 @@ module.exports = {
         if (validateFormData.status) {
             //隐藏错误提示
             formDataMsg.hide()
-            
             //发送ajax请求
-            api.addShippings({
+            
+            var action = '新增'
+            var request = api.addShippings
+            if (_this.shipping) {
+                request = api.updateShippingsDetail
+                formData.id = _this.shipping._id
+                action = '编辑'
+            }
+            request({
                 data:formData,
                 success:function(data){
                     //1.关闭新增地址输入框
@@ -124,7 +146,7 @@ module.exports = {
                     //自定义事件
                     $('.shipping-box').trigger('get-shippings',[data])
                     //3.新增地址成功提示
-                    _util.showSuccessMsg('新增地址成功')               
+                    _util.showSuccessMsg(action+'地址成功')               
                 },
                 error:function(msg){
                     formDataMsg.show('新增地址失败，请稍后再试');

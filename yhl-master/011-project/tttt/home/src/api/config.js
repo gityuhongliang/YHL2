@@ -38,6 +38,20 @@ const API_CONFIG = {
     addShippings:               ['/shippings','post'],
     //获取地址列表
     getShippingsList:           ['/shippings/list','get'],
+    //删除地址
+    deleteShippings:            ['/shippings','delete'],
+    //编辑地址
+    getShippingsDetail:         ['/shippings/detail','get'],
+    //更新编辑新增的地址
+    updateShippingsDetail:      ['/shippings','put'],
+    //创建订单
+    addOrders:                  ['/orders','post'],
+    //支付
+    getPayments:                ['/payments','get'],
+    //监听订单支付状态
+    getPaymentStatus:           ['/payments/status','get'],
+    
+    
 
 
 }

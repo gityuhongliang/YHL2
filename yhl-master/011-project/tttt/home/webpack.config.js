@@ -37,6 +37,7 @@ module.exports = {
         'detail':"./src/pages/detail/index.js",
         'cart':"./src/pages/cart/index.js",
         'order-confirm':"./src/pages/order-confirm/index.js",
+        'payment':"./src/pages/payment/index.js",
 
 
   		
@@ -137,6 +138,7 @@ module.exports = {
          new htmlWebpackPlugin(getHtmlConfig('detail','商品详情页')),
          new htmlWebpackPlugin(getHtmlConfig('cart','购物车')),
          new htmlWebpackPlugin(getHtmlConfig('order-confirm','订单页')),
+         new htmlWebpackPlugin(getHtmlConfig('payment','支付页')),
            
     		//清理输出文件夹
     		new CleanWebpackPlugin(),
@@ -158,7 +160,8 @@ module.exports = {
                         "/products",
                         "/carts",
                         "/orders",
-                        "/shippings"
+                        "/shippings",
+                        "/payments"
                     ],
                     //请求地址是以context内部的值开头的路由全部代理到target提供的地址下
                     target: "http://127.0.0.1:3000",
