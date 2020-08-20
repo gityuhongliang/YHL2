@@ -39,7 +39,7 @@ module.exports = {
         //共通未登录返回登录界面  同时在后面返回上一页地址的参数
         window.location.href = '/user-login.html?redirect='+window.location.href
     },
-    //封装用于获取类型参数方法
+    //封装用于获取类型参数方法 只能携带一个参数
     goResult:function(type){
          window.location.href ='/result.html?type='+type
     },
