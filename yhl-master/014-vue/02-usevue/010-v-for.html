@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<table>
+				<tr>
+					<th>姓名</th>
+					<th>年龄</th>
+					<th>分数</th>
+					<th>是否及格</th>
+				</tr>
+				<!-- 根据一组数组的选项列表进行渲染 -->
+				<!-- v-for 指令需要使用 item in items 形式的特殊语法 -->
+				<tr v-for="student in students">
+					<td >{{student.name}}</td>
+					<td >{{student.age}}</td>
+					<td >{{student.score}}</td>
+					<td v-if="student.score < 60">不及格</td>
+					<td v-else="student.score">及格</td>
+				
+				</tr>
+			</table>
+		</div>
+	</body>
+	<script src="vue/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				students:[
+					{name:'tom',age:15,score:55},
+					{name:'leo',age:18,score:66},
+					{name:'acs',age:20,score:77},
+				]
+			}
+		})
+	</script>
+</html>
