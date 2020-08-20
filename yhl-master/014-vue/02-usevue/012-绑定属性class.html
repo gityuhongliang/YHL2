@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.active{
+				background-color: red;
+			}
+			.error{
+				color: #0000FF;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- v-bind:class -->
+		<div id="app">
+			<h2><p class="active error">class1</p></h2>
+			<h2><p :class="{active:true,error:false}"> :class="{active:true,error:false}"</p></h2>
+			
+			<h2><p :class="{active:isActive,error:isError}"> 对象语法:class="{active:isActive,error:isError}"</p></h2>
+			
+			<h2><p :class="objClass"> 绑定的数据对象不必内联定义在模板里：:class="objClass"</p></h2>
+			
+			<h2><p :class="['active', 'error']"> 数组语法:class=['active', 'error']</p></h2>
+			<h2><p :class="arrClass"> 绑定的数据对象不必内联定义在模板里 :class="arrClass"</p></h2>
+			
+		</div>
+	</body>
+	<script src="vue/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				isActive:false,
+				isError:true,
+				objClass:{active:true,error:false},
+				arrClass:['active','error']
+			}
+		})
+	</script>
+</html>
