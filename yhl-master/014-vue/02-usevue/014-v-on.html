@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<input v-on:click='count++' type="button" value="按钮"> v-on:click 点击我{{count}}次</input><br>
+			<input @click='count++' type="button" value="按钮"> @click 点击我{{count}}次</input><br>
+			<input @click='addcount' type="button" value="按钮">addcount点击我{{count}}次</input><br>
+			<input @click='addcount()' type="button" value="按钮">addcount()点击我{{count}}次</input><br>
+			<input @click='say' type="button" value="按钮">say点击我{{count}}次</input><br>
+			<input @click='say("name")' type="button" value="按钮">say("name")点击我{{count}}次</input><br>
+		</div>
+	</body>
+	<script src="vue/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				count:'0'
+			},
+			methods:{
+				addcount:function(){
+					this.count++
+				},
+				say:function(name){
+					console.log(name + "点击你" )
+				}
+			}
+		})
+	</script>
+</html>

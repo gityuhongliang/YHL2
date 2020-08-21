@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!-- v-bind:style -->
+		<div id="app">
+			<p style="color: blue;background-color: #FF0000;">正常 style="color: blue;background-color: #FF0000;"</p>
+			
+			<p :style="{color:'#FF0000',backgroundColor:'blue'}">对象语法 :style="{color:'#FF0000',backgroundColor:'blue'}"</p>
+			<p :style="{color:bg,backgroundColor:cl}">对象语法 :style="{color:bg,backgroundColor:cl}"</p>
+			<p :style="styleObject">对象语法 绑定的数据对象不必内联定义在模板里 :style="styleObject"</p>
+			
+			<p :style="[{color:bg},{backgroundColor:cl}]">数组语法:style="[{color:bg},{backgroundColor:cl}]"</p>
+			<p :style="styleArr">数组语法 绑定的数据对象不必内联定义在模板里  :style="styleArr"</p>
+		</div>
+	</body>
+	<script src="vue/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				bg:'pink',
+				cl:'red',
+				styleObject:{
+					color:'blue',
+					backgroundColor:'yellow'
+				},
+				styleArr:[
+					{color:'blue'},{backgroundColor:'pink'}
+				]
+			}
+		})
+	</script>
+</html>

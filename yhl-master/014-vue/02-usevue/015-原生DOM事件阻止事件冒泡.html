@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box1{
+				width: 500px;
+				height: 500px;
+				background-color: #0000FF;
+				margin: 100px auto;
+				overflow: hidden;
+			}
+			#box2{
+				width: 400px;
+				height: 400px;
+				background-color: #FF0000;
+				margin: 50px auto;
+				overflow: hidden;
+			}
+			#box3{
+				width: 300px;
+				height: 300px;
+				background-color: aqua;
+				margin: 50px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="box1" @click="box1">box1
+				<div id="box2" @click="box2">box2
+					<div id="box3" @click="box3('tom',$event)"><!-- 动态事件缩写 -->
+						box3
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="vue/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				
+			},
+			methods:{
+				box1:function(){
+					console.log('this is box1')
+				},
+				box2:function(){
+					console.log('this is box2')
+				},
+				box3:function(name,ev){  //原生js第一个参数必须是ev，vue可以随意
+					event.stopPropagation()
+					console.log('this is box3，阻止事件冒泡')
+				}
+			}
+			
+		})
+	</script>
+</html>

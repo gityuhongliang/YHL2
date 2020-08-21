@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p> left:{{l}}</p>
+			<p> right:{{r}}</p>
+			<p>lr:{{lr()}}</p>
+			<p>lr:{{yq}}</p>
+		</div>
+	</body>
+	<script src="vue/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				l:'0-',
+				r:'-0'
+			},
+			methods:{
+				lr:function(){
+					return this.l+this.r
+				}
+			},
+			computed:{
+				yq:function(){
+					return this.l+this.r
+				}
+			}
+		})
+	</script>
+</html>
+ 

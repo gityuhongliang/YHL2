@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app"> 
+			<a @click='df($event)'href="http://www.baidu.com">百度</a>
+			
+		</div>
+	</body>
+	<script src="vue/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				
+			},
+			methods:{
+				df:function(ev){
+					ev.preventDefault()
+					console.log('go baidu ，阻止默认行为')
+				}
+			}
+		})
+	</script>
+</html>
