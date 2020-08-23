@@ -6,23 +6,29 @@
 	</head>
 	<body>
 		<div id="app1">
-			<button-counter></button-counter>
-			<button-counter></button-counter>
+			<todo-item
+			v-for="(item,index) in items"
+			:task="item.task"
+			:dateline="item.dateline"
+			:key="item.index"
+			>
+			</todo-item>
 		</div>
 		<template id="todo-item">
+			<!-- template只能包含一个dom节点 -->
 			<div>
-				<task></task>
-				<dateline></dateline>
+				<task :task ="task"></task>
+				<dateline :dateline="dateline"></dateline>
 			</div>
 		</template>
 		<template id="task">
 			<div>
-				<span>吃饭</span>
+				<span>{{task}}:</span>
 			</div>
 		</template>
 		<template id="dateline">
 			<div>
-				<span>睡觉</span>
+				<span>{{dateline}}</span>
 			</div>
 		</template>
 	</body>
@@ -33,12 +39,11 @@
 				// 组件的data选项必须是一个函数
 				data: function () {
 					return {
-						count: 0
 					}
 				},
 				props: {
-					task: String
-					
+					task:String,
+					dateline:String
 				},
 				template: '#todo-item'
 			})
@@ -46,12 +51,10 @@
 				// 组件的data选项必须是一个函数
 				data: function () {
 					return {
-						count: 0
 					}
 				},
 				props: {
-					task: String
-					
+					task:String
 				},
 				template: '#task'
 			})
@@ -59,12 +62,10 @@
 					// 组件的data选项必须是一个函数
 					data: function () {
 						return {
-							count: 0
 						}
 					},
 					props: {
-						task: String
-
+						dateline:String
 					},
 					template: '#dateline'
 				})
@@ -75,7 +76,16 @@
 		var vm1 = new Vue({
 			el:'#app1',
 			data:{
-				
+				items:[
+					{
+						task:'上午',
+						dateline:'去上课'
+					},
+					{
+						task:'下午',
+						dateline:'回家'
+					}
+				]
 			}
 		})
 		

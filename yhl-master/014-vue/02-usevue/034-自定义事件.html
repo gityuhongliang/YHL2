@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app1">
+			<!-- 自定义事件 -->
+			<button-counter @total-count='totalCounts()'></button-counter>
+			<button-counter @total-count='totalCounts()'></button-counter>
+			<p>你总共点击了{{counts}}次</p>
+		</div>
+		
+		
+		<!--模板必须定义在 Vue 所属的 DOM 元素外-->
+		<!-- template标签创建模版 -->
+		<!-- 在<template> 元素中，并为其添加一个 id,在组件注册时通过id选择器引用 -->
+		<template id="button-counter">
+			<button v-on:click="addCount()">你点击了我 {{ count }} 次</button>
+		</template>
+		
+		
+		
+		<div id="app2">
+			<!-- <button-counter></button-counter>
+			<button-counter></button-counter> -->
+		</div>
+	</body>
+	<script src="vue/vue.js"></script>
+	<script>
+		//注册局部组件
+		var vm1 = new Vue({
+			el:'#app1',
+			data:{
+				counts:0
+			},
+			methods:{
+				totalCounts:function(){
+					this.counts++
+				}
+			},
+			components:{
+				'button-counter':{
+					data:function(){
+						return {
+							count:0
+						}
+					},
+					methods:{
+						addCount:function(){
+							this.count++
+							//触发自定义事件
+							this.$emit('total-count')
+							
+						}
+					},
+					template:"#button-counter"
+				}
+			}
+		})
+		
+		
+	</script>
+</html>

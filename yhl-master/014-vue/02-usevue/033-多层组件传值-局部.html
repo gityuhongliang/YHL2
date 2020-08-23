@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app1">
+			<todo-item
+			v-for="(item,index) in items"
+			:task="item.task"
+			:dateline="item.dateline"
+			:key="item.index"
+			>
+			</todo-item>
+		</div>
+		<template id="todo-item">
+			<!-- template只能包含一个dom节点 -->
+			<div>
+				<task :task ="task"></task>
+				<dateline :dateline="dateline"></dateline>
+			</div>
+		</template>
+		<template id="task">
+			<div>
+				<span>{{task}}:</span>
+			</div>
+		</template>
+		<template id="dateline">
+			<div>
+				<span>{{dateline}}</span>
+			</div>
+		</template>
+	</body>
+	<script src="vue/vue.js"></script>
+	<script>
+		//局部组件定义分离方法要写在父组件定义分离前面
+		var Task = Vue.extend({
+				// 组件的data选项必须是一个函数
+				data: function () {
+					return {
+					}
+				},
+				props: {
+					task:String
+				},
+				template: '#task'
+			})
+		var DateLine = Vue.extend({
+				// 组件的data选项必须是一个函数
+				data: function () {
+					return {
+					}
+				},
+				props: {
+					dateline:String
+				},
+				template: '#dateline'
+		})
+		//定义组件
+		var TodoItem = Vue.extend({
+			// 组件的data选项必须是一个函数
+			data: function () {
+				return {
+				}
+			},
+			props: {
+				task:String,
+				dateline:String
+			},
+			template: '#todo-item',
+			//定义分离方法注册局部组件
+			components:{
+				'task':Task,
+				'dateline':DateLine
+			}
+		})
+			
+		 // 注册全局组件
+			Vue.component('todo-item', TodoItem)
+			// Vue.component('task', Task) 
+			// Vue.component('dateline', DateLine)
+		var vm1 = new Vue({
+			el:'#app1',
+			data:{
+				items:[
+					{
+						task:'上午',
+						dateline:'去上课'
+					},
+					{
+						task:'下午',
+						dateline:'回家'
+					}
+				]
+			}
+		})
+		
+	</script>
+</html>

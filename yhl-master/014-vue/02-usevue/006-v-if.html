@@ -8,7 +8,8 @@
 		<div id="app">
 			<p>你的成绩是   {{score}}</p>
 			<input type="text" v-model="score" >
-			<p v-if="score >= 60 ">及格</p>
+			<p v-if="score >= 60 ">及格</p> 
+			<!-- 根据表达式的值的真假条件渲染元素 -->
 			<p v-if="score < 60 ">不及格</p>
 		</div>
 	</body>

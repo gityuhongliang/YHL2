@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            position: fixed;
+            top: 100px;
+            left: 50%;
+        }
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click = 'isShow= !isShow'>切换</button>
+        <transition name="fade" appear> <!-- 可以通过 appear attribute 设置节点在初始渲染的过渡 -->
+            <!-- <span v-if = 'isShow'>文字</span> --> 
+            <span v-if="isShow">文字</span>
+        </transition>
+        
+    </div>
+</body>
+<script src="vue/vue.js"></script>
+<script>
+    var vm   = new Vue({
+        el:'#app',
+        data:{
+            isShow:true
+        }
+    })
+</script>
+</html>
