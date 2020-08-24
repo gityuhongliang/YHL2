@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <!-- 使用 router-link 组件来导航. -->
+            <!-- 通过传入 `to` 属性指定链接. -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+            <router-link to="/home">Go to home</router-link>
+            <router-link to="/admin/1234">Go to admin</router-link>
+            <router-link to="/sever">Go to sever</router-link>
+        </p>
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+        
+    </div>
+    <template id="home">
+        <!-- template只能包含一个dom节点 -->
+        <div>
+            <span>this is home </span>
+        </div>
+    </template>
+    <template id="admin">
+        <div>
+            <span>this is admin {{$route.params.id}}</span><br>
+            <router-link to="/admin/login/5678">Go to login  {{$route.params.id}}</router-link>
+            <router-link to="/admin/save">Go to save</router-link>
+            <!-- 路由出口 -->
+            <!-- 路由匹配到的组件将渲染在这里 -->
+            <router-view></router-view>
+
+        </div>
+    </template>
+    <template id="login">
+        <div>
+            <span>this is login </span>
+        </div>
+    </template>
+    <template id="save">
+        <div>
+            <span>this is save </span>
+        </div>
+    </template>
+    <template id="sever">
+        <div>
+            <span>this is sever</span>
+        </div>
+    </template>
+</body>
+<script src="vue/vue.js"></script>
+<script src="vue/vue-router.js"></script>
+<script>
+    //定义分离组件
+    var Home = Vue.extend({
+        template: '#home'
+    })
+    var Admin = Vue.extend({
+        template: '#admin'
+    })
+    var Sever = Vue.extend({
+        template: '#sever'
+    })
+    var Login = Vue.extend({
+        template: '#login'
+    })
+    var Save = Vue.extend({
+        template: '#save'
+    })
+    // 2. 定义路由
+    // 每个路由应该映射一个组件。 其中"component" 可以是
+    // 通过 Vue.extend() 创建的组件构造器，
+    // 或者，只是一个组件配置对象。
+    
+    const routes = [
+        { path: '/home', component: Home },
+        { 
+            path: '/admin/:id',
+            component: Admin,
+            children: [
+                // UserHome 会被渲染在 User 的 <router-view> 中
+                { path: 'login/:id', component: Login},
+                { path: 'save', component: Save },
+
+            ]
+
+        },
+        { path: '/sever', component: Sever }
+    ]
+
+    // 3. 创建 router 实例，然后传 `routes` 配置
+    // 你还可以传别的配置参数, 不过先这么简单着吧。
+    const router = new VueRouter({
+        routes // (缩写) 相当于 routes: routes
+    })
+    // 4. 创建和挂载根实例。
+    // 记得要通过 router 配置参数注入路由，
+    // 从而让整个应用都有路由功能
+    var vm = new Vue({
+        el:'#app',
+        router,
+        data:{
+
+        }
+    })
+</script>
+</html>

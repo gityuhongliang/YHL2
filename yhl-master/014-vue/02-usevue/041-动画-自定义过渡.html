@@ -14,13 +14,11 @@
             top: 100px;
             left: 50%;
         }
-        .fade-enter-active, .fade-leave-active {
-            transition: opacity .5s;
-        }
-        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-            opacity: 0;
+        h1{
+            font-size: 50px;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
 </head>
 <body>
     <!-- 使需要过渡的元素具有显示隐藏特性,如用v-if/v-show
@@ -28,9 +26,13 @@
     给对应的类名添加过渡样式,默认类名的前缀使v-,可以在<transition>元素中添加name属性来改变 -->
     <div id="app">
         <button @click = 'isShow= !isShow'>切换</button>
-        <transition name="fade" appear> <!-- 可以通过 appear attribute 设置节点在初始渲染的过渡 -->
-            <!-- <span v-if = 'isShow'>文字</span> --> 
-            <span v-if="isShow">文字</span>
+        <transition name="fade"
+            enter-active-class="animate__animated animate__rotateIn"
+            leave-active-class="animate__animated animate__hinge"
+            appear
+        > <!-- 可以通过 appear attribute 设置节点在初始渲染的过渡 -->
+            <!-- <p v-if = 'isShow'>文字</p> --> 
+            <h1 v-if="isShow">文字</h1>
         </transition>
         
     </div>

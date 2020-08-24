@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width: 500px;
+            height: 500px;
+            margin: 200px auto;
+        }
+        input{
+            width: 80%;
+            height: 50px;
+            box-sizing: border-box;
+        }
+        button{
+            width: 20%;
+            height: 50px;
+            box-sizing: border-box;
+        }
+        li{
+            border: 1px dashed red;
+            line-height: 50px;
+            list-style: none;
+            padding-left: 10px;
+            margin-top: 20px;
+        }
+        .list-item {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .list-enter-active, .list-leave-active {
+            transition: all 1s;
+        }
+        .list-enter, .list-leave-to
+        /* .list-leave-active for below version 2.1.8 */ {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text"  v-model='task'><button @click='handleAdd()'>添加</button>
+        <transition-group name="list" tag="ul" appear>
+        <li
+            v-for="(item, index) in items" 
+            @click='handleDel(index)'
+            :key="''+index"
+        >
+            {{item}}
+        </li>
+        </transition-group>
+    </div>
+</body>
+<script src="vue/vue.js"></script>
+<script>
+    var vm  = new Vue({
+        el:'#app',
+        data:{
+            task:'',
+            items:['吃饭','睡觉']
+        },
+        methods: {
+            handleAdd:function(){
+                this.items.push(this.task)
+                this.task=''
+                
+            },
+            handleDel:function(index){
+                this.items.splice(index,1)
+            }
+        },
+    })
+</script>
+</html>

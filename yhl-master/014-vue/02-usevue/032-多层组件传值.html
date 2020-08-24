@@ -35,40 +35,40 @@
 	<script src="vue/vue.js"></script>
 	<script>
 		//定义组件
-			var TodoItem = Vue.extend({
-				// 组件的data选项必须是一个函数
-				data: function () {
-					return {
-					}
-				},
-				props: {
-					task:String,
-					dateline:String
-				},
-				template: '#todo-item'
-			})
-			var Task = Vue.extend({
-				// 组件的data选项必须是一个函数
-				data: function () {
-					return {
-					}
-				},
-				props: {
-					task:String
-				},
-				template: '#task'
-			})
-			var DateLine = Vue.extend({
-					// 组件的data选项必须是一个函数
-					data: function () {
-						return {
-						}
-					},
-					props: {
-						dateline:String
-					},
-					template: '#dateline'
-				})
+		var TodoItem = Vue.extend({
+			// 组件的data选项必须是一个函数
+			data: function () {
+				return {
+				}
+			},
+			props: {
+				task:String,
+				dateline:String
+			},
+			template: '#todo-item'
+		})
+		var Task = Vue.extend({
+			// 组件的data选项必须是一个函数
+			data: function () {
+				return {
+				}
+			},
+			props: {
+				task:String
+			},
+			template: '#task'
+		})
+		var DateLine = Vue.extend({
+			// 组件的data选项必须是一个函数
+			data: function () {
+				return {
+				}
+			},
+			props: {
+				dateline:String
+			},
+			template: '#dateline'
+		})
 		 // 注册全局组件
 			Vue.component('todo-item', TodoItem)
 			Vue.component('task', Task) 

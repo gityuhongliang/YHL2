@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app1">
+        <p>价格：：{{price | priceFormat}}</p>
+    </div>
+</body>
+<script src="vue/vue.js"></script>
+<script>
+    //注册全局过滤器
+    Vue.filter('priceFormat',function(price){
+        return '￥' + price.toFixed(2)
+    })
+    var vm = new Vue({
+        el:'#app1',
+        data:{
+            price:10
+        }
+    })
+</script>
+</html>

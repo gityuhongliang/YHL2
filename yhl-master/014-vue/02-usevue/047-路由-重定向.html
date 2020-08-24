@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <!-- 使用 router-link 组件来导航. -->
+            <!-- 通过传入 `to` 属性指定链接. -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+            <router-link to="/home">Go to home</router-link>
+            <router-link to="/admin">Go to admin</router-link>
+            <router-link to="/sever">Go to sever</router-link>
+        </p>
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view>
+            
+        </router-view>
+        
+    </div>
+    <template id="home">
+        <!-- template只能包含一个dom节点 -->
+        <div>
+            <span>this is home </span>
+        </div>
+    </template>
+    <template id="admin">
+        <div>
+            <span>this is admin </span>
+        </div>
+    </template>
+    <template id="sever">
+        <div>
+            <span>this is sever</span>
+        </div>
+    </template>
+</body>
+<script src="vue/vue.js"></script>
+<script src="vue/vue-router.js"></script>
+<script>
+    var Home = Vue.extend({
+            // 组件的data选项必须是一个函数
+            data: function () {
+                return {
+                }
+            },
+            
+            template: '#home'
+        })
+    var Admin = Vue.extend({
+        // 组件的data选项必须是一个函数
+        data: function () {
+            return {
+            }
+        },
+        
+        template: '#admin'
+    })
+    var Sever = Vue.extend({
+        // 组件的data选项必须是一个函数
+        data: function () {
+            return {
+            }
+        },
+        
+        template: '#sever'
+    })
+    // 2. 定义路由
+    // 每个路由应该映射一个组件。 其中"component" 可以是
+    // 通过 Vue.extend() 创建的组件构造器，
+    // 或者，只是一个组件配置对象。
+    
+    const routes = [
+        { path: '/home', component: Home },
+        { path: '/admin', component: Admin },
+        { path: '/sever', component: Sever },
+        //重定向
+        { path: '/', redirect: '/home' }
+        
+    ]
+
+    // 3. 创建 router 实例，然后传 `routes` 配置
+    // 你还可以传别的配置参数, 不过先这么简单着吧。
+    const router = new VueRouter({
+        routes // (缩写) 相当于 routes: routes
+    })
+    // 4. 创建和挂载根实例。
+    // 记得要通过 router 配置参数注入路由，
+    // 从而让整个应用都有路由功能
+    var vm = new Vue({
+        el:'#app',
+        router,
+        data:{
+
+        }
+    })
+</script>
+</html>
