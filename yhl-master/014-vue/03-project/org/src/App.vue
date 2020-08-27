@@ -1,28 +1,26 @@
+<!-- 结构 -->
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="App">
+    <Logo />
+    <Message task='Tom'/>
+    <p> this is app</p>
   </div>
 </template>
-
+<!-- 样式 -->
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  //1.引入组件
+  import Logo from './pages/Logo.vue'
+  import Message from './pages/Message.vue'
+  export default {
+    name:'App',
+    //2.注册组件
+    components:{
+      Logo,
+      Message
+    }
   }
-}
 </script>
-
+<!-- 逻辑 -->
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
