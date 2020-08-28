@@ -5,8 +5,9 @@
             :key="index"
             :todo='todo'
             :index='index'
-            :delTodo='delTodo'
          />
+            <!-- :delTodo='delTodo' -->
+
     </div>
 </template>
 <script>
@@ -17,8 +18,8 @@ export default {
         Item
     },
     props:{
-        todos:Array,
-        delTodo:Function
+        // todos:Array,
+        // delTodo:Function
     }
 }
 </script>

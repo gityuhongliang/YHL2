@@ -1,13 +1,16 @@
 <!-- 结构 -->
 <template>
     <div id="App">
-        <Header :addTodo ='addTodo'/>
-        <List :todos='todos' :delTodo='delTodo'/>
+        <Header/>
+         <!-- :addTodo ='addTodo' -->
+        <List />
+        <!-- :todos='todos' :delTodo='delTodo' -->
         <Footer 
-        :todos ='todos' 
-        :selectAllTodo='selectAllTodo'
-        :deleteSelectTodo='deleteSelectTodo'
+        
         />
+        <!-- :todos ='todos' 
+        :selectAllTodo='selectAllTodo'
+        :deleteSelectTodo='deleteSelectTodo' -->
     </div>
 </template>
 <!-- 样式 -->
@@ -26,6 +29,7 @@
         },
         data(){
             return{
+                /*
                 todos:[
                     {
                         task:'吃饭',
@@ -36,9 +40,11 @@
                         tag:true
                     }
                 ]
+                */
             }
       
         },
+       /*
         methods:{
             addTodo(todo){//插入前面
                 this.todos.unshift(todo)
@@ -57,6 +63,7 @@
                 )
             }
         }
+        */
     }
 </script>
 <!-- 逻辑 -->
