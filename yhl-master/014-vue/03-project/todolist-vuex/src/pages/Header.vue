@@ -22,7 +22,7 @@ export default {
     },
     methods:{
         handleAdd:function(){
-
+            
             // 1.验证数据
 			var task = this.task.trim()//自动过滤用户输入的首尾空白字符
             if(!task){

@@ -2,16 +2,13 @@
     <div 
     id="Footer"
     v-show="isShow"
-    @total-count='totalCounts()'
     >
         <input type="checkbox" v-model="allTodo">
         <span>{{selectTodo}}/{{total}}</span>
         <button 
         @click='handleSelectTodo()' 
         >删除选中</button>
-        <button @click='add()'>
-            ttt
-        </button>
+        
     </div>
 
 
@@ -73,23 +70,15 @@ export default {
     },
     */
     methods:{
-        add(){
-            if (this.$store.getters.total == 0) {
-                console.log(122)
-                this.$emit('total-count')
-            }
-        },
         handleSelectTodo(){
             if(window.confirm('您确定要删除选中的任务吗')){
-                console.log(33)
+                console.log(this)          
                 // this.deleteSelectTodo()
                 this.$store.dispatch(DELETE_ALL_TODO)
+            } 
+            if(this.$store.getters.total <=0){
+                this.isShow = false
             }
-            
-        },
-        totalCounts(isShow){
-            console.log(111)
-            this.isShow = !isShow
         }
     }
 }
