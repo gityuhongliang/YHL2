@@ -5,7 +5,49 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        /*
+        text:'txt',
+        array: [
+            {
+                message: 'leo',
+            }, 
+            {
+                message: 'Tom'
+            }
+        ],
+        */
+        articles:[
+            {
+                author:'Tom',
+                avatar:'../images/avatar/1.jpg',
+                time:'1天前',
+                title:'文章1',
+                mainImage:'../images/article/a1.jpg',
+                desc:'文章描述',
+                star:'20',
+                view:'30'
+            },
+            {
+                author:'age',
+                avatar:'../images/avatar/2.jpg',
+                time:'2天前',
+                title:'文章2',
+                mainImage:'../images/article/a2.jpg',
+                desc:'文章描述',
+                star:'20',
+                view:'30'
+            },
+            {
+                author:'tes',
+                avatar:'../images/avatar/3.jpg',
+                time:'2天前',
+                title:'文章3',
+                mainImage:'../images/article/a3.jpg',
+                desc:'文章描述',
+                star:'20',
+                view:'30'
+            },
+        ]
     },
 
     /**
@@ -62,5 +104,17 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    onPageScroll: function() {
+      // 页面滚动时执行
+    },
+    onResize: function() {
+      // 页面尺寸变化时执行
+    },
+    onTabItemTap(item) {
+      // tab 点击时执行
+      console.log(item.index)
+      console.log(item.pagePath)
+      console.log(item.text)
     }
 })

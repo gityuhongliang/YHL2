@@ -1,48 +1,56 @@
 <!--pages/article/article.wxml-->
-<view>
+
+    <!-- 数据绑定使用 Mustache 语法（双大括号）将变量包起来 -->
+        <!-- {{text}} -->
+
+    <!-- 在组件上使用 wx:for 控制属性绑定一个数组，即可使用数组中各项的数据重复渲染该组件。
+    默认数组的当前项的下标变量名默认为 index，数组当前项的变量名默认为 item -->
+    <!-- <view wx:for="{{array}}">
+        {{index}}: {{item.message}}
+    </view> -->
+
+    <!-- 使用 wx:for-item 可以指定数组当前元素的变量名，
+    使用 wx:for-index 可以指定数组当前下标的变量名： -->
+    <!-- <view wx:for="{{array}}" wx:for-index="idx" wx:for-item="itemName">
+        {{idx}}: {{itemName.message}}
+    </view> -->
+
+    <!-- block wx:for
+    类似 block wx:if，也可以将 wx:for 用在<block/>标签上，以渲染一个包含多节点的结构块。 -->
+
+    <view>
     <swiper indicator-dots="true"
         autoplay="true" interval="3000" duration="500">
         <swiper-item>
-            <image class="sw-img" src="../image/swiper/1.jpg@880w_388h_1c_95q"></image>
+            <image class="sw-img" src="../images/swiper/1.jpg@880w_388h_1c_95q"></image>
         </swiper-item>
         <swiper-item>
-            <image class="sw-img" src="../image/swiper/2.jpg@880w_388h_1c_95q"></image>
+            <image class="sw-img" src="../images/swiper/2.jpg@880w_388h_1c_95q"></image>
         </swiper-item>
         <swiper-item>
-            <image class="sw-img" src="../image/swiper/3.jpg@880w_388h_1c_95q"></image>
+            <image class="sw-img" src="../images/swiper/3.jpg@880w_388h_1c_95q"></image>
         </swiper-item>
     </swiper>
+    
     <view class='article-wrap'>
+    <block wx:for="{{articles}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
         <view class='article-item'>
             <view class='article-head'>
-                <image class='article-head-avatar' src='/images/avatar/u1.jpg'></image>
-                <text class='article-head-date'>2019-05-06</text>
+                <image class='article-head-avatar' src='{{itemName.avatar}}'></image>
+                <text class='article-head-date'>{{itemName.time}}</text>
             </view>
-            <text class='article-title'>我是文章标题</text>
-            <image class='article-img' src='/images/article/a1.jpg'></image>
-            <text class='article-desc'>我是描述</text>
+            <text class='article-title'>{{itemName.title}}</text>
+            <image class='article-img' src='{{itemName.mainImage}}'></image>
+            <text class='article-desc'>{{itemName.desc}}</text>
             <view class='article-footer'>
-                <image class='article-footer-icon' src='/images/icon/star.png'></image>
-                <text class='article-footer-text'>20</text>
-                <image class='article-footer-icon' src='/images/icon/view.png'></image>
-                <text class='article-footer-text'>33</text> 
+                <image class='article-footer-icon' src='../images/icon/pl.jpg'></image>
+                <text class='article-footer-text'>{{itemName.star}}</text>
+                <image class='article-footer-icon' src='../images/icon/sc.jpg'></image>
+                <text class='article-footer-text'>{{itemName.view}}</text> 
             </view>
         </view>
-        <view class='article-item'>
-            <view class='article-head'>
-                <image class='article-head-avatar' src='/images/avatar/u1.jpg'></image>
-                <text class='article-head-date'>2019-05-06</text>
-            </view>
-            <text class='article-title'>我是文章标题</text>
-            <image class='article-img' src='/images/article/a1.jpg'></image>
-            <text class='article-desc'>我是描述</text>
-            <view class='article-footer'>
-                <image class='article-footer-icon' src='/images/icon/star.png'></image>
-                <text class='article-footer-text'>20</text>
-                <image class='article-footer-icon' src='/images/icon/view.png'></image>
-                <text class='article-footer-text'>33</text>        
-            </view>
-        </view>
+    </block>
+        
     </view>
 </view>
 
