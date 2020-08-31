@@ -1,4 +1,7 @@
 // pages/article/article.js
+
+const { articles } = require('../../db/index.js')
+
 Page({
 
     /**
@@ -17,44 +20,19 @@ Page({
         ],
         */
         articles:[
-            {
-                author:'Tom',
-                avatar:'../images/avatar/1.jpg',
-                time:'1天前',
-                title:'文章1',
-                mainImage:'../images/article/a1.jpg',
-                desc:'文章描述',
-                star:'20',
-                view:'30'
-            },
-            {
-                author:'age',
-                avatar:'../images/avatar/2.jpg',
-                time:'2天前',
-                title:'文章2',
-                mainImage:'../images/article/a2.jpg',
-                desc:'文章描述',
-                star:'20',
-                view:'30'
-            },
-            {
-                author:'tes',
-                avatar:'../images/avatar/3.jpg',
-                time:'2天前',
-                title:'文章3',
-                mainImage:'../images/article/a3.jpg',
-                desc:'文章描述',
-                star:'20',
-                view:'30'
-            },
+            
         ]
     },
 
-    /**
+    /**require
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+       //初始化data数据模块化后require引进来
+        this.setData({articles:articles},function(){
+            // console.log('2:',this.data)
+        })
+        // console.log('1:',this.data)
     },
 
     /**
@@ -116,5 +94,14 @@ Page({
       console.log(item.index)
       console.log(item.pagePath)
       console.log(item.text)
+    },
+    //点击文章跳转到文章详情
+    tapArticleDetail:function(ev){
+        // console.log(ev)
+        // console.log(ev.currentTarget.dataset.articleId)
+        var articleId = ev.currentTarget.dataset.articleId
+        wx.navigateTo({
+          url: '/pages/article/article-detail/article-detail?articleId=' + articleId,
+        })
     }
 })

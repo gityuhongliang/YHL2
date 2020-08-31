@@ -1,5 +1,5 @@
 <!--pages/article/article.wxml-->
-
+<import src="./articles-item-template/articles-item-template.wxml"/>
     <!-- 数据绑定使用 Mustache 语法（双大括号）将变量包起来 -->
         <!-- {{text}} -->
 
@@ -22,35 +22,22 @@
     <swiper indicator-dots="true"
         autoplay="true" interval="3000" duration="500">
         <swiper-item>
-            <image class="sw-img" src="../images/swiper/1.jpg@880w_388h_1c_95q"></image>
+            <image class="sw-img" src="/images/swiper/1.jpg@880w_388h_1c_95q"></image>
         </swiper-item>
         <swiper-item>
-            <image class="sw-img" src="../images/swiper/2.jpg@880w_388h_1c_95q"></image>
+            <image class="sw-img" src="/images/swiper/2.jpg@880w_388h_1c_95q"></image>
         </swiper-item>
         <swiper-item>
-            <image class="sw-img" src="../images/swiper/3.jpg@880w_388h_1c_95q"></image>
+            <image class="sw-img" src="/images/swiper/3.jpg@880w_388h_1c_95q"></image>
         </swiper-item>
     </swiper>
     
     <view class='article-wrap'>
     <block wx:for="{{articles}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
-        <view class='article-item'>
-            <view class='article-head'>
-                <image class='article-head-avatar' src='{{itemName.avatar}}'></image>
-                <text class='article-head-date'>{{itemName.time}}</text>
-            </view>
-            <text class='article-title'>{{itemName.title}}</text>
-            <image class='article-img' src='{{itemName.mainImage}}'></image>
-            <text class='article-desc'>{{itemName.desc}}</text>
-            <view class='article-footer'>
-                <image class='article-footer-icon' src='../images/icon/pl.jpg'></image>
-                <text class='article-footer-text'>{{itemName.star}}</text>
-                <image class='article-footer-icon' src='../images/icon/sc.jpg'></image>
-                <text class='article-footer-text'>{{itemName.view}}</text> 
-            </view>
+        <view bindtap="tapArticleDetail" data-article-id="{{itemName.id}}">
+            <template is="articlesItem" data="{{itemName}}"/>
         </view>
     </block>
-        
     </view>
 </view>
 
