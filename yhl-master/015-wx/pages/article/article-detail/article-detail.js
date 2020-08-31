@@ -8,6 +8,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        isPlaying:false
     },
 
     /**
@@ -24,12 +25,13 @@ Page({
         var isCollected = false;
 
 
-         // 获取文章收藏状态
+        // 获取所有文章收藏状态
         var articles_collections = wx.getStorageSync('articles_collections')
         console.log(articles_collections)
         if(articles_collections){
-            //有文章状态
+            //有文章状态  赋值
             isCollected = !!articles_collections[articleId]
+            console.log(isCollected)
         }else{
             //没有,则初始化
             /*
@@ -43,14 +45,25 @@ Page({
 
             }
             data[articleId] = false
+            //设置storage
             wx.setStorageSync('articles_collections',data)
         }
 
-        this.setData({...article,isCollected:isCollected})
+        this.setData({...article,isCollected})
 
 
 
-       
+       //处理音乐同步
+       // 获取背景音乐实例
+        var backgroundAudioManager = wx.getBackgroundAudioManager()
+            //监听背景音频播放事件
+            backgroundAudioManager.onPlay(function(){
+                this.setData({ isPlaying: true })
+            }.bind(this))
+            //监听背景音频暂停事件
+            backgroundAudioManager.onPause(function(){
+                this.setData({ isPlaying: false })
+            }.bind(this))
 
 
 
@@ -110,8 +123,25 @@ Page({
         // wx.setStorageSync('key1', 'value')
         // var value = wx.getStorageSync('key1')
         // console.log(value)
-    
-    
+
+        // 获取所有文章收藏状态
+        var articles_collections = wx.getStorageSync('articles_collections')
+        console.log('11',articles_collections)
+        // 获取当前文章收藏状态      
+        var currentCollection = articles_collections[this.data.id]
+        console.log(currentCollection)
+        //改变当前文章收藏状态
+        articles_collections[this.data.id] = !currentCollection
+        // 设置storage
+        wx.setStorageSync('articles_collections', articles_collections)
+        console.log(articles_collections)
+        // 同步改变收藏图标
+        this.setData({isCollected:!currentCollection},function(){
+            wx.showToast({
+                title:currentCollection ? '取消成功' : '收藏成功' ,
+                duration: 2000
+            })
+        })
     },
     /**
    * 点击处理分享
@@ -122,10 +152,10 @@ Page({
         itemList: itemList,
         success:function(res){
             wx.showToast({
-            title: itemList[res.tapIndex]+'成功' ,
-            duration: 2000
-            })
-        }
+                title: itemList[res.tapIndex]+'成功' ,
+                duration: 2000
+                })
+            }
         })
     },
     /**
@@ -134,18 +164,22 @@ Page({
   tapMusic:function(){
     // 获取背景音乐实例
     var backgroundAudioManager = wx.getBackgroundAudioManager()
+    
     if(this.data.isPlaying){//正在播放
       backgroundAudioManager.pause()
       //改变音乐状态
-       this.setData({ isPlaying: false })
+        //this.setData({ isPlaying: false })
     }else{//没有播放音乐
-    
+    /*
       backgroundAudioManager.src = 'http://mp.111ttt.cn/mp3music/352595.mp3';
       backgroundAudioManager.title = "曹操";
       backgroundAudioManager.coverImgUrl = 'http://qukufile2.qianqian.com/data2/pic/75483d9e5dc2aaaa2808fe01361231e8/674195259/674195259.jpg@s_1,w_224,h_224';
-     
+    */
+    backgroundAudioManager.src = this.data.music.src;
+    backgroundAudioManager.title = this.data.music.title;
+    backgroundAudioManager.coverImgUrl = this.data.music.coverImgUrl;
       //改变音乐状态
-       this.setData({isPlaying:true})
+        //this.setData({isPlaying:true})
     }
   }
 })

@@ -9,7 +9,12 @@ var articles = [
         desc:'文章描述',
         star:'20',
         view:'30',
-        content:'文章内容1'
+        content:'文章内容1',
+        music:{
+            src:'http://mp.111ttt.cn/mp3music/352595.mp3',
+            title:'曹操',
+            coverImgUrl:'http://qukufile2.qianqian.com/data2/pic/75483d9e5dc2aaaa2808fe01361231e8/674195259/674195259.jpg@s_1,w_224,h_224'
+        }
     },
     {
         id:1,
@@ -21,7 +26,12 @@ var articles = [
         desc:'文章描述',
         star:'20',
         view:'30',
-        content:'文章内容2'
+        content:'文章内容2',
+        music:{
+            src:'http://mp.111ttt.cn/mp3music/65439742.mp3',
+            title:'辞九门回忆',
+            coverImgUrl:'http://qukufile2.qianqian.com/data2/pic/75483d9e5dc2aaaa2808fe01361231e8/674195259/674195259.jpg@s_1,w_224,h_224'
+        }
 
     },
     {
@@ -34,7 +44,12 @@ var articles = [
         desc:'文章描述',
         star:'20',
         view:'30',
-        content:'文章内容3'
+        content:'文章内容3',
+        music:{
+            src:'http://mp.111ttt.cn/mp3music/14257672.mp3',
+            title:'穿越时空的思念',
+            coverImgUrl:'http://qukufile2.qianqian.com/data2/pic/75483d9e5dc2aaaa2808fe01361231e8/674195259/674195259.jpg@s_1,w_224,h_224'
+        }
 
     },
 ];
