@@ -91,9 +91,9 @@ Page({
     },
     onTabItemTap(item) {
       // tab 点击时执行
-      console.log(item.index)
-      console.log(item.pagePath)
-      console.log(item.text)
+      // console.log(item.index)
+      // console.log(item.pagePath)
+      // console.log(item.text)
     },
     //点击文章跳转到文章详情
     tapArticleDetail:function(ev){

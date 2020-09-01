@@ -1,11 +1,10 @@
 {
   "pages":[
+    "pages/movie/movie",
+    "pages/index/index",
     "pages/article/article",
     "pages/article/article-detail/article-detail",
-    "pages/index/index",
     "pages/logs/logs"
-    
-    
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -13,6 +12,23 @@
     "navigationBarTitleText": "yhl",
     "navigationBarTextStyle":"black",
     "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "color":"black",
+    "selectedColor":"#000",
+    "list": [{
+      "pagePath": "pages/article/article",
+      "text": "文章",
+      "position":"bottom",
+      "iconPath":"/images/icon/reading-none.png",
+      "selectedIconPath":"/images/icon/reading.png"
+    }, {
+      "pagePath": "pages/movie/movie",
+      "text": "电影",
+      "position":"bottom",
+      "iconPath":"/images/icon/movie-none.png",
+      "selectedIconPath":"/images/icon/movie.png"
+    }]
   },
   "requiredBackgroundModes": ["audio", "location"],
   "style": "v2",

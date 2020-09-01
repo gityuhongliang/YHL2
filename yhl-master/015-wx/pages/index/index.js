@@ -53,8 +53,14 @@ Page({
   },  
   //点击开始
   tapview:function(){
+    /*
     wx.navigateTo({
       url: '/pages/article/article',
     })
+    */
+   wx.switchTab({
+     url:'/pages/article/article'
+   })
+
   }
 })
