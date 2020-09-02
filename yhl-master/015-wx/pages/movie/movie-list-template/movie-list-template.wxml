@@ -6,13 +6,14 @@
       <text 
         catchtap='tapMore' 
         class='more'
+        data-type="{{type}}"
       >更多></text>
+        <!-- 通过上一层模板设置type再在挂载事件的地方设置data-type值 -->
     </view>
     <view class='list' >
       <block wx:for="{{movies}}" wx:key="index">
         <template is="movieItem" data="{{...item}}" />
       </block>
-    
     </view>
   </view>
 </template>

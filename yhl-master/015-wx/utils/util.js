@@ -15,9 +15,26 @@ function formatMovieList(data){
         title:item.title,
         coverImage:item.images.large,
         score:item.rating.average,
-        stars:item.rating.stars
+        stars:coverStarToArray(item.rating.stars)
     }
   })
+}
+
+function coverStarToArray(stars){
+/**
+ * 3 [1,1,1,0,0]
+ * 4 [1,1,1,1,0]
+ */
+  var arr = []
+  var num = parseInt(stars.substring(0,1))//转换为数字再截取第一位
+  for (var i = 1; i <= 5; i++){
+    if(i <= num){
+      arr.push(1)
+    }else{
+      arr.push(0)
+    }
+  }
+  return arr
 }
 
 module.exports = {

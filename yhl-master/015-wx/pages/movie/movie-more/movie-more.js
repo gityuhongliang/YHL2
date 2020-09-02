@@ -1,7 +1,5 @@
-// pages/movie/movie.js
-
-const { getMovieList } = require ('../../utils/util.js')
-
+// pages/movie/movie-more/movie-more.js
+const { getMovieList } = require ('../../../utils/util.js')
 var app = getApp()
 Page({
 
@@ -16,21 +14,24 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var _this=this
+        var _this = this 
+        //拿到传过来的type
+        var type = options.type
+        //获取请求地址，数据
         var baseUrl=app.GLOBAL_DATA.baseUrl
-        var inTheatersUrl= baseUrl + 'in_theaters?count=3&start=9'
-        var comingSoonUrl = baseUrl + 'coming_soon?count=3&start=19'
-        var top250Url = baseUrl + 'top250?count=3&start=6'
-        
+        var requestUrl = ''
+        if(type == 'inTheaters'){
+            requestUrl = baseUrl + 'in_theaters'
+        }
+        else if(type == 'comingSoon'){
+            requestUrl = baseUrl + 'coming_soon'
+        }
+        else if(type == 'top250'){
+            requestUrl = baseUrl + 'top250'
+        }
         // 发送请求获取电影列表
-        getMovieList(inTheatersUrl,function(data){
-            _this.setData({inTheaters:data})
-        })
-        getMovieList(comingSoonUrl,function(data){
-            _this.setData({comingSoon:data})
-        })
-        getMovieList(top250Url,function(data){
-            _this.setData({top250:data})
+        getMovieList(requestUrl,function(data){
+            _this.setData({movies:data})
         })
     },
 
@@ -81,13 +82,5 @@ Page({
      */
     onShareAppMessage: function () {
 
-    },
-    tapMore:function(ev){
-        var type = ev.currentTarget.dataset.type
-        console.log(type)
-        wx.navigateTo({
-            url:"/pages/movie/movie-more/movie-more?type="+type,
-        })
-       
     }
 })
