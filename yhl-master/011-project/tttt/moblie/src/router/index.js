@@ -13,7 +13,10 @@ Vue.use(VueRouter)
 
 //4.导出路由对象
 export default new VueRouter({
-	routes:[
-		{path:"/home",component:Home},
-		{path:"/cart",component:Cart},
-		{path:"/me",component:Me},
+	routes: [
+		{ path: "/home", component: Home },
+		{ path: "/cart", component: Cart },
+		{ path: "/me", component: Me },
+		{ path: "/", redirect: "/home" }
+	]
+})
