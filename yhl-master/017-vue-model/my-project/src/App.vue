@@ -9,7 +9,6 @@
 
 <script>
 //1.引入组件
-
   import TabBar from './components/tab-bar'
 
 export default {
