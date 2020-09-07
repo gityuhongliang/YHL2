@@ -16,7 +16,7 @@ module.exports = {
             ]
         }
     },
-    //别名配置
+  //别名配置
     chainWebpack:config =>{
         config.resolve.alias
         .set('pages',path.resolve(__dirname,'./src/pages'))
@@ -30,7 +30,7 @@ module.exports = {
               modifyVars: {
                 // 直接覆盖变量
                 'text-color': '#ee0a24',
-                'search-action-text-color':'#000',
+                'search-action-text-color':'#ee0a24',
                 'search-content-background-color':'#969799',
               },
             },

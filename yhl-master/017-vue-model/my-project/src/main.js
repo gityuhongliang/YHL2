@@ -5,7 +5,8 @@ Vue.config.productionTip = false
 
 //加载公共css样式
 import './assets/css/common.css'
-
+//加载全局image组件
+import './plugins/image'
 //加载全局vant组件
 import './plugins/vant'
 
