@@ -1,10 +1,10 @@
 <template>
     <div id="Search">
-        <van-search 
-            class="search" 
-            v-model="value" 
-            placeholder="T恤"
-            shape="round"
+    <van-search
+        class="search"
+        v-model="value"
+        placeholder="T恤"
+        shape="round"
         />
     </div>
 </template>
@@ -14,16 +14,11 @@ export default {
     data() {
         return {
             value:''
-        };
+            };
     },
-    components:{
-       
-    },
-    props:{
-        
+
     }
-}
 </script>
 <style scoped>
-    
+
 </style>

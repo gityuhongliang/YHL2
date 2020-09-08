@@ -9,7 +9,12 @@ import './assets/css/common.css'
 import './plugins/image'
 //加载全局vant组件
 import './plugins/vant'
-
+//加载全局grid宫格组件
+import './plugins/gird'
+//加载全局tag标签组件
+import './plugins/tag'
+//加载全局sticky粘性布局组件
+import './plugins/sticky'
 //加载全局icon组件
 import './plugins/icon'
 

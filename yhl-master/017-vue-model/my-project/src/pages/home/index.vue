@@ -59,10 +59,10 @@
         </van-grid>
         <!-- 商品内容展示 -->
         <ul class="Secondary">
-            <li>
+            <li v-for="(floor,floorIndex) in homeFloors" :key="floorIndex">
                 <van-row type="flex" justify="center">
                     <div class="Secondary-title">
-                        <h2>手机通讯</h2>
+                        <h2>{{floor.title}}</h2>
                     </div>
                 </van-row>
                 <ul>
@@ -71,40 +71,22 @@
                         type="flex"
                         justify="space-between"
                         align="center"
-                        gutter="10"
+                        gutter="15"
                     >
-                    <li class="Secondary-list">
-                        
-                            <div class="content">
-                                <a href="">
-                                    <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg" alt="">
-                                    <div>
-                                        <p>
-                                             宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）
-                                        </p>
-                                    </div>
-                                    
-                                </a>
-                            </div>
-                        
-                    </li>
-                    <li class="Secondary-list">
-                        
-                            <div class="content">
-                            </div>
-                        
-                    </li>
-                    <li class="Secondary-list">
-                        
-                            <div class="content">
-                            </div>
-                        
-                    </li>
-                    <li class="Secondary-list">
-                        
-                            <div class="content">
-                            </div>
-                        
+                    <li class="Secondary-list"  v-for="(product,productIndex) in floor.products" :key="productIndex">
+                        <div class="content">
+                            <a href="">
+                                <img :src="product.mainImage" alt="">
+                                <div class="content-title">
+                                   {{product.name}}
+                                </div>
+                                <div class="price">
+                                    <span class="flag">￥</span>
+                                    <span class="show-price">{{product.price}}</span>
+                                    <van-tag plain type="danger">满减</van-tag>
+                                </div>
+                            </a>
+                        </div>
                     </li>
                     </van-row>
                 </ul>
@@ -115,13 +97,12 @@
 </template>
 <script>
 import Vue from 'vue';
-import { Swipe, SwipeItem ,Lazyload,Sticky,Grid, GridItem} from 'vant';
+import { mapGetters } from 'vuex'
+import { Swipe, SwipeItem ,Lazyload} from 'vant';
 Vue.use(Lazyload);
 Vue.use(Swipe);
 Vue.use(SwipeItem);
-Vue.use(Sticky);
-Vue.use(Grid);
-Vue.use(GridItem);
+import { GET_ADS,GET_FLOORS } from './store/types.js'
 import Search from '../../components/search/index.vue'
 export default {
     name:'Home',
@@ -134,14 +115,22 @@ export default {
                 ],
         }
     },
-    components:{
-       Search
+    mounted(){
+        //获取广告数据
+        this.$store.dispatch(GET_ADS)
+        //获取楼层数据
+        this.$store.dispatch(GET_FLOORS)
     },
-    methods:{
-    },
-    props:{
-        
+    computed:{
+        Search,
+        // 使用对象展开运算符将 getter 混入 computed 对象中
+        ...mapGetters([
+            'homeAds',
+            'homeFloors',
+        ])
     }
+
+
 }
 </script>
 <style lang="less" >
@@ -162,8 +151,9 @@ export default {
     .Secondary{
         display: block;
         
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-bottom: 50px;
         .Secondary-list{
             box-sizing: border-box;
             margin-bottom: 10px;
@@ -186,34 +176,60 @@ export default {
             max-height: 100%;  
         }
     }
+    .van-grid-item__content{
+    }
     .van-top-row{
         flex-wrap: wrap;
     
-
         .content{
             margin:auto;
-            width: 200px;
-            height: 250px;
+            width: 190px;
+            height: 270px;
             background-color: #fff;
+            position: relative;
+            
             img{
                 width: 100%;
                 height: 200px;
             }
-            div{
-                width: 100%;
-               
-                p{  
-                    height: 100%;
-                    font-size: 14px;
-                    color: black;
-                    white-space:nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;  
-                }
-                
+            .content-title{
+                position: absolute;
+                font-size: 15px;
+                color: black;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+                top: 205px;
+                font-weight: 700;
             }
+            .price{
+                position: absolute;
+                top: 228px;
+                left: 5px;
+                width: 100%;
+                height: 20px;
+                
+                .flag{
+                    font-size: 15px;
+                    height: 20px;
+                    color: red;
+                    font-weight:700;
+                }
+                .show-price{
+                    color: red;
+                    font-size: 15px;
+                    font-weight: 700;
+                }
+                .van-tag{
+                    position: absolute;
+                    top: 22px;
+                    left: 56px;
+                    line-height: 18px;
+                }
+            } 
         }
+    }
     
-  }
 </style>
     
