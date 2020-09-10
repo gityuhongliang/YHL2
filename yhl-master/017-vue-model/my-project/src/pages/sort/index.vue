@@ -39,7 +39,7 @@ import { mapGetters } from 'vuex'
 import { Sidebar, SidebarItem,} from 'vant';
 Vue.use(Sidebar);
 Vue.use(SidebarItem);
-import { GET_CATEGORIESARR,GET_SORT_CATEGORIESARR } from './store/types.js'
+import { GET_HOME_CATEGORIESARR,GET_SORT_CATEGORIESARR } from './store/types.js'
 import Search from '../../components/search/index.vue'
 export default {
     name:'Sort',
@@ -53,7 +53,7 @@ export default {
     },
     mounted(){
         //获取数据
-        this.$store.dispatch(GET_CATEGORIESARR)
+        this.$store.dispatch(GET_HOME_CATEGORIESARR)
     },
     methods:{
       handleShow(pid){

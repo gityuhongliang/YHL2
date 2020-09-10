@@ -6,6 +6,7 @@ import sort from 'pages/sort/store'
 import cart from 'pages/cart/store'
 import me from 'pages/me/store'
 import searchson from 'pages/searchson/store'
+import list from 'pages/list/store'
 
 
 Vue.use(Vuex);
@@ -17,6 +18,7 @@ export default new Vuex.Store({
         cart: cart,
         me: me,
         searchson: searchson,
+        list:list
 
     }
 }) 

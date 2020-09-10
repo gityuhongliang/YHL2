@@ -10,7 +10,7 @@
             <!-- 搜索框 -->
             <van-sticky>
                 <van-row id="top">
-                    <Search />
+                    <Search/>
                 </van-row>
             </van-sticky>
                 
@@ -32,7 +32,7 @@
             center
             v-for="(arr, index) in homeArr" :key="index"
             >
-                <van-grid-item :icon="arr.icon" :text="arr.name" />
+                <van-grid-item :icon="arr.icon" :text="arr.name" :to="'/list/'+arr._id"/>
             </van-grid>
         </div>
         <!-- 商品内容展示 -->

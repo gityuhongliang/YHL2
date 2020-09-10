@@ -1,13 +1,13 @@
 //组件中用由this.$store.dispatch方法来派发action,
 //action中用commit来提交mutation
 //action中可以包含异步操作
-import { GET_CATEGORIESARR,GET_SORT_CATEGORIESARR } from './types.js'
+import { GET_HOME_CATEGORIESARR,GET_SORT_CATEGORIESARR } from './types.js'
 import api from 'api'
 export default {
-    async [GET_CATEGORIESARR]({ commit }) {
+    async [GET_HOME_CATEGORIESARR]({ commit }) {
         const result = await api.getHomeCategories()
         if (result.data.code == 0) {
-            commit(GET_CATEGORIESARR, { sorthomeArr: result.data.data })
+            commit(GET_HOME_CATEGORIESARR, { sorthomeArr: result.data.data })
         }
     },
     async [GET_SORT_CATEGORIESARR]({ commit } ) {

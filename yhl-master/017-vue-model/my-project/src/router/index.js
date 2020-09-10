@@ -8,6 +8,7 @@ import Cart from 'pages/cart'
 import Me from 'pages/me'
 import Sort from 'pages/sort'
 import SearchSon from 'pages/searchson'
+import List from 'pages/list'
 
 
 //3.声明使用
@@ -21,6 +22,7 @@ export default new VueRouter({
         { path: "/sort", component: Sort },
         { path: "/cart", component: Cart },
         { path: "/me", component: Me },
+        { path: "/list/:id", component: List },
         { path: "/searchson", component: SearchSon },
         { path: "/", redirect: "/home" },
     ]
