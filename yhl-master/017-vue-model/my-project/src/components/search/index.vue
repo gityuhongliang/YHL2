@@ -5,6 +5,7 @@
         v-model="value"
         placeholder="T恤"
         shape="round"
+        @focus="handleFocus()"
         />
     </div>
 </template>
@@ -16,7 +17,11 @@ export default {
             value:''
             };
     },
-
+    methods:{
+        handleFocus(){
+           this.$router.push({ path: 'searchson' })
+        }
+    },
     }
 </script>
 <style scoped>

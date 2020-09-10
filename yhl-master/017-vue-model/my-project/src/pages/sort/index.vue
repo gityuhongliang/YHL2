@@ -11,23 +11,20 @@
         <van-row type="flex" justify="space-between">
             <div>
                 <van-sidebar v-model="activeKey">
-                    <van-sidebar-item title="标签名称" />
-                    <van-sidebar-item title="标签名称" />
-                    <van-sidebar-item title="标签名称" />
-                    <van-sidebar-item title="标签名称" />
-                    <van-sidebar-item title="标签名称" />
-                    <van-sidebar-item title="标签名称" />
-                    <van-sidebar-item title="标签名称" />
-                    <van-sidebar-item title="标签名称" />
-                    <van-sidebar-item title="标签名称" />
-                    <van-sidebar-item title="标签名称" />
-                    <van-sidebar-item title="标签名称" />
+                    <van-sidebar-item 
+                    v-for="(arr,arrindex) in sorthomeArr" :key="arrindex"
+                    :title="arr.name"
+
+                    :pid="arr._id"
+                    @click="handleShow(arr._id)"
+                     />
                 </van-sidebar>
             </div>
             
                     <van-col span="24">
                         <van-grid :column-num="3"  :icon-size="72"  :border="false" center default>
-                            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595386719634.jpg" text="华为Mate" />
+                            <van-grid-item 
+                             />
                         </van-grid>
                     </van-col>
                     
@@ -38,27 +35,43 @@
 </template>
 <script>
 import Vue from 'vue';
+import { mapGetters } from 'vuex'
 import { Sidebar, SidebarItem,} from 'vant';
 Vue.use(Sidebar);
 Vue.use(SidebarItem);
+import { GET_CATEGORIESARR,GET_SORT_CATEGORIESARR } from './store/types.js'
 import Search from '../../components/search/index.vue'
 export default {
     name:'Sort',
     data(){
         return{
-            activeKey: 0,
-            
+            activeKey: 1,
         }
     },
     components:{
        Search
     },
-    props:{
-        
+    mounted(){
+        //获取数据
+        this.$store.dispatch(GET_CATEGORIESARR)
+    },
+    methods:{
+      handleShow(pid){
+          this.$store.dispatch(GET_SORT_CATEGORIESARR,pid)
+      }
+    },
+    computed:{
+        // 使用对象展开运算符将 getter 混入 computed 对象中
+        ...mapGetters([
+            'sorthomeArr',
+            'sortArr'
+        ])
     }
+    
 }
 </script>
 <style lang="less" scoped>
+    
     .van-sidebar{
         width: 100px;
         text-align: center;

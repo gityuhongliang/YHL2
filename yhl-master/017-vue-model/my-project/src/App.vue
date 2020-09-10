@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+      
       <!-- 路由出口 -->
       <!-- 路由匹配到的组件将渲染在这里 -->
       <router-view></router-view>
@@ -15,7 +16,7 @@ export default {
   name: 'App',
   //2.注册组件
   components: {
-    TabBar
+    TabBar,
   }
 }
 </script>
