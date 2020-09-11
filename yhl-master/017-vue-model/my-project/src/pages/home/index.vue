@@ -10,7 +10,7 @@
             <!-- 搜索框 -->
             <van-sticky>
                 <van-row id="top">
-                    <Search />
+                    <Search/>
                 </van-row>
             </van-sticky>
                 
@@ -21,7 +21,7 @@
                 <van-swipe-item v-for="(image, index) in homeAds" :key="index">
                     <img v-lazy="image.image" />
                 </van-swipe-item>
-                </van-swipe>
+            </van-swipe>
         </van-row>
         <!-- 宫格 -->
         <div class="grid-father">
@@ -32,7 +32,7 @@
             center
             v-for="(arr, index) in homeArr" :key="index"
             >
-                <van-grid-item :icon="arr.icon" :text="arr.name" />
+                <van-grid-item :icon="arr.icon" :text="arr.name" :to="'/list?categoryId='+arr._id"/>
             </van-grid>
         </div>
         <!-- 商品内容展示 -->
@@ -74,12 +74,7 @@
     </div>
 </template>
 <script>
-import Vue from 'vue';
 import { mapGetters } from 'vuex'
-import { Swipe, SwipeItem ,Lazyload} from 'vant';
-Vue.use(Lazyload);
-Vue.use(Swipe);
-Vue.use(SwipeItem);
 import { GET_ADS,GET_FLOORS,GET_CATEGORIESARR } from './store/types.js'
 import Search from '../../components/search/index.vue'
 export default {
@@ -113,7 +108,6 @@ export default {
 }
 </script>
 <style lang="less" >
-
     #header{
         background-color: #fff;
         #top{

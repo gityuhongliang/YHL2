@@ -19,11 +19,14 @@
                     @click="handleShow(arr._id)"
                      />
                 </van-sidebar>
+                
             </div>
             
                     <van-col span="24">
-                        <van-grid :column-num="3"  :icon-size="72"  :border="false" center default>
-                            <van-grid-item 
+                        <van-grid :column-num="3"  :icon-size="72"  :border="false" center default
+                        v-for="(arr, index) in sortArr" :key="index"
+                        >
+                            <van-grid-item  :icon="arr.icon" :text="arr.name"
                              />
                         </van-grid>
                     </van-col>
@@ -39,7 +42,7 @@ import { mapGetters } from 'vuex'
 import { Sidebar, SidebarItem,} from 'vant';
 Vue.use(Sidebar);
 Vue.use(SidebarItem);
-import { GET_CATEGORIESARR,GET_SORT_CATEGORIESARR } from './store/types.js'
+import { GET_HOME_CATEGORIESARR,GET_SORT_CATEGORIESARR } from './store/types.js'
 import Search from '../../components/search/index.vue'
 export default {
     name:'Sort',
@@ -53,7 +56,7 @@ export default {
     },
     mounted(){
         //获取数据
-        this.$store.dispatch(GET_CATEGORIESARR)
+        this.$store.dispatch(GET_HOME_CATEGORIESARR)
     },
     methods:{
       handleShow(pid){

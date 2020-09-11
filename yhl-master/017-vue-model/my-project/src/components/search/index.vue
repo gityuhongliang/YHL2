@@ -19,10 +19,11 @@ export default {
     },
     methods:{
         handleFocus(){
+            
            this.$router.push({ path: 'searchson' })
         }
     },
-    }
+}
 </script>
 <style scoped>
 

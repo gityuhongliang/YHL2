@@ -12,7 +12,6 @@ export default {
     },
     async [GET_CATEGORIESARR]({ commit }) {
         const result = await api.getHomeCategories()
-        console.log(result)
         if (result.data.code == 0) {
             commit(GET_CATEGORIESARR, { homeArr: result.data.data })
         }

@@ -3,6 +3,8 @@ var API_CONFIG = {
     getHomeFloors: ['/floors', 'get'],
     getHomeCategories: ['/categories/arrayCategories', 'get'],
     getSortCategories: ['/categories/childArrayCategories/', 'get'],
+    getProductsList: ['/products/list/', 'get'],
+    getProductsDetail: ['/products/detail', 'get'],
 }
 
 module.exports = {
