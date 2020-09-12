@@ -14,7 +14,7 @@
                     <van-sidebar-item 
                     v-for="(arr,arrindex) in sorthomeArr" :key="arrindex"
                     :title="arr.name"
-
+                    
                     :pid="arr._id"
                     @click="handleShow(arr._id)"
                      />
@@ -48,15 +48,20 @@ export default {
     name:'Sort',
     data(){
         return{
-            activeKey: 1,
+            activeKey: 0,
+            
         }
     },
     components:{
        Search
     },
     mounted(){
-        //获取数据
+        var _this = this
         this.$store.dispatch(GET_HOME_CATEGORIESARR)
+        .then(()=>{
+            // console.log(_this.$store.state.sort.hrr[0]._id)
+            _this.$store.dispatch(GET_SORT_CATEGORIESARR,_this.$store.state.sort.hrr[0]._id)
+        })
     },
     methods:{
       handleShow(pid){
@@ -69,7 +74,8 @@ export default {
             'sorthomeArr',
             'sortArr'
         ])
-    }
+    },
+   
     
 }
 </script>

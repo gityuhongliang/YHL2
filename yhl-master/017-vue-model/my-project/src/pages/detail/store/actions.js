@@ -10,7 +10,10 @@ export default {
             id:id
         })
         if (result.data.code == 0) {
-            commit(GET_PRODUCTS_DETAIL, { detail: result.data.data,id })
+            var detail = result.data.data
+            detail.images = detail.images.split(',')
+            // console.log(detail);
+            commit(GET_PRODUCTS_DETAIL, detail)
         }
     },
     

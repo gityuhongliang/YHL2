@@ -13,21 +13,21 @@
 		<!-- 轮播图 -->
         <van-row>
             <van-swipe :autoplay="3000">
-                <van-swipe-item v-for="(image, index) in detail" :key="index">
-                    <img v-lazy="image.mainImage" />
+                <van-swipe-item v-for="(image, index) in detail.images" :key="index">
+                    <img v-lazy="image" />
                 </van-swipe-item>
                 </van-swipe>
         </van-row>
 		<van-row>
-			<van-grid :column-num="1" center :border="false" v-for="(text, index) in detail" :key="index">
-				<van-grid-item :text="text.description" />
-				<van-grid-item :text="text.name" />
+			<van-grid :column-num="1" center :border="false" >
+				<van-grid-item :text="detail.description" />
+				<van-grid-item :text="detail.name" />
 			</van-grid>
 		</van-row>
 		<van-row>
 			<van-collapse v-model="activeNames">
 			<van-collapse-item title="查看商品详情" name="1">
-                <img src="https://api.mall.kuazhu.com/product-images/1595243913501.jpg" />
+                <img :src="detail.mainImage" />
 			</van-collapse-item>
 			</van-collapse>
 		</van-row>

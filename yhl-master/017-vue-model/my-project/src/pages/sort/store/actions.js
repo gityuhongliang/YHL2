@@ -17,7 +17,7 @@ export default {
         })
         console.log(result)
         if (result.data.code == 0) {
-            commit(GET_SORT_CATEGORIESARR, { sortArr: result.data.data,pid })
+            commit(GET_SORT_CATEGORIESARR, { sortArr: result.data.data})
         }
     },
 

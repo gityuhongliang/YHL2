@@ -5,6 +5,7 @@ var API_CONFIG = {
     getSortCategories: ['/categories/childArrayCategories/', 'get'],
     getProductsList: ['/products/list/', 'get'],
     getProductsDetail: ['/products/detail', 'get'],
+    getUserCaptcha: ['/users/captcha', 'get'],
 }
 
 module.exports = {
