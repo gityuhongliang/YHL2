@@ -40,8 +40,8 @@
 </template>
 <script>
 import Vue from 'vue';
-import { Tab, Tabs,Form,Field,Button } from 'vant';
-
+import { Tab, Tabs,Form,Field,Button,NumberKeyboard  } from 'vant';
+Vue.use(NumberKeyboard);
 Vue.use(Form);
 Vue.use(Button);
 Vue.use(Field);
