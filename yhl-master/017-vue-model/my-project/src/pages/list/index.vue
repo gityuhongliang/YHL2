@@ -81,7 +81,7 @@ export default {
 
 		handleDetail(id){
 			this.$router.push({ 
-				path: 'detail',
+				path: '/detail',
 				query: { id: id }
 			})
 		},

@@ -2,5 +2,9 @@
 export default {
     captcha(state) {
         return state.captcha
-    }
+    },
+    login(state) {
+        return state.login
+    },
+   
 }

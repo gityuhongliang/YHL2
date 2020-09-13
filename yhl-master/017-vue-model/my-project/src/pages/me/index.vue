@@ -6,33 +6,50 @@
             <van-tab title="密码登录" name="a">
                 <van-row>
                     <van-form
+                    validate-first
                     class="loginFrom"
                     ref="loginFromRef"
                     v-model="loginForm" 
                     @submit="onSubmit1" 
-                    
                     >
                     <van-field
                         v-model="loginForm.username"
-                        name="用户名"
+                        name="username"
                         label="用户名"
+                        :center="true"
                         placeholder="请输入用户名"
-                        :rules="[{ usernameRegular,required: true, message: '请输入正确的用户名', trigger:'onChange'}]"
+                        right-icon="smile-o"
+                        :rules="[
+                        { required: true},
+                        //正则
+                        { pattern: /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/, message: '请输入正确的用户名'}
+                        ]"
                     />
                     <van-field
                         v-model="loginForm.password"
+                        :center="true"
                         type="password"
-                        name="密码"
+                        name="password"
                         label="密码"
                         placeholder="请输入密码"
-                        :rules="[{ passwordRegular,required: true,message: '请输入正确的密码' }]"
+                        :rules="[
+                        { required: true},
+                        //正则
+                        { pattern: /^[a-zA-Z]\w{5,17}$/, message: '请输入正确的密码'}
+                        ]"
                     />
                     <!-- 允许输入正整数，调起纯数字键盘 -->
                     <van-field 
-                        v-model="loginForm.digit"  
-                        name="验证码" 
+                        v-model="loginForm.digit"
+                        :center="true"
+                        name="captchaCode" 
                         label="验证码" 
                         placeholder="请输入验证码"
+                        :rules="[
+                        { required: true},
+                        //正则
+                        { pattern: /^[a-zA-Z][a-zA-Z0-9_]{3,15}$/, message: '请输入正确的验证码'}
+                        ]"
                     />
                     <div class="captcha" v-html="captcha" @click="handleCaptcha"></div>
                     <div style="margin: 16px;">
@@ -51,22 +68,32 @@
                     <van-form v-model="validationForm" @submit="onSubmit2">
                         <!-- 输入手机号，调起手机号键盘 -->
                         <van-field 
+                        :center="true"
                         type="tel" 
                         placeholder="请输入手机号"
                         name="手机号"
                         label="手机号"
                         :value="validationForm.valueOne"
                         @touchstart.native.stop="show = true"
-                        :rules="[{ phoneRegular,required: true,message: '请输入正确的手机号' }]"
+                        :rules="[
+                        { required: true},
+                        //正则
+                        { pattern: /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/, message: '请输入正确的手机号'}
+                        ]"
                         />
                         <van-field
                         v-model="validationForm.sms"
-                        center
+                        :center="true"
                         clearable
                         name="短信验证码"
                         label="短信验证码"
                         placeholder="请输入收到的验证码"
                         class="short-term"
+                        :rules="[
+                        { required: true},
+                        //正则
+                        { pattern: /^\d{4}$/, message: '请输入正确的验证码'}
+                        ]"
                         >
                         <template #button>
                             <van-button size="small" type="primary">发送验证码</van-button>
@@ -88,20 +115,34 @@
                         <!-- 输入手机号，调起手机号键盘 -->
                         <van-field 
                         type="tel"
+                        :center="true"
                         name="手机号"
                         label="手机号"
                         placeholder="请输入手机号"
+
+                        
                         :value="registerForm.valueTwo"
                         @touchstart.native.stop="show = true"
+                         :rules="[
+                        { required: true},
+                        //正则
+                        { pattern: /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/, message: '请输入正确的手机号'}
+                        ]"
                          />
                         <van-field
                         v-model="registerForm.sms"
-                        center
+                        :center="true"
                         name="短信验证码"
                         clearable
+                        
                         label="短信验证码"
                         placeholder="请输入收到的验证码"
                         class="short-term"
+                        :rules="[
+                        { required: true},
+                        //正则
+                        { pattern: /^\d{4}$/, message: '请输入正确的验证码'}
+                        ]"
                         >
                         <template #button>
                             <van-button size="small" type="primary">发送验证码</van-button>
@@ -112,13 +153,19 @@
                         v-model="registerForm.PasswordOne" 
                         type="password"
                         label="密码" 
+                        :center="true"
                         placeholder="请输入密码"
-                        :rules="[{ passwordRegular,required: true,message: '请填写密码' }]"
+                        :rules="[
+                        { required: true},
+                        //正则
+                        { pattern: /^[a-zA-Z]\w{5,17}$/, message: '请填写正确的密码'}
+                        ]"
                         />
                         <!-- 输入密码 -->
                         <van-field 
                         v-model="registerForm.PasswordTwo" 
                         type="password"
+                        :center="true"
                         label="密码" 
                         name="密码"
                         placeholder="请输入密码"
@@ -163,7 +210,7 @@ Vue.use(Tab);
 Vue.use(Tabs);
 Vue.use(NumberKeyboard);
 import { mapGetters } from 'vuex'
-import { GET_CAPTCHA } from './store/types.js'
+import { GET_CAPTCHA,LOGIN_START_ACTION } from './store/types.js'
 export default {
     name:'Me',
     components:{
@@ -193,6 +240,7 @@ export default {
             show: false,
         };
     },
+    
     mounted(){
         //获取数据
         this.$store.dispatch(GET_CAPTCHA)
@@ -204,8 +252,13 @@ export default {
             console.log('1')
         },
         onSubmit1(values) {
-            //  this.$refs.loginFromRef.validate(()=>{})
-            console.log('submit1', values);
+            this.$store.dispatch(LOGIN_START_ACTION,values)
+            console.log(this.$store.getters.login)
+            if(this.$store.getters.login == 200){
+this.$router.push({ 
+path: '/cart',
+})
+            }
         },
         onSubmit2(values) {
             console.log('submit2', values);
@@ -228,26 +281,13 @@ export default {
         getContainerTwo() {
             return document.querySelector('#registerTel');
         },
-        // 正则校验
-        usernameRegular(val) {
-            // 帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)
-            return /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/.test(val);
-        },
-        passwordRegular(val) {
-            //密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)
-            return /^[a-zA-Z]\w{5,17}$/.test(val);
-        },
-        phoneRegular(val) {
-            //手机号码
-            return /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(val);
-        },
+        
         repeatRegular(val) {
             console.log(val)
             if(this.registerPasswordOne == this.registerPasswordTwo){
                return  val 
             }
-            //密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)
-           
+            
         },
         handleCaptcha(){
             this.$store.dispatch(GET_CAPTCHA)
@@ -260,6 +300,7 @@ export default {
         // 使用对象展开运算符将 getter 混入 computed 对象中
        ...mapGetters([
             'captcha',
+            'login'
         ])
     }
 
@@ -283,13 +324,16 @@ export default {
         .captcha{
             position: absolute;
             right: 25px;
-            bottom: 120px;
+            bottom: 30px;
         }
     }
     .van-form{
         padding: 80px 10px 0px 0px;
         width: 100%;
         height: 300px;
+        .van-field{
+            height: 80px;
+        }
         .van-button{
             margin-top: 50px;
         }

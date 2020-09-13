@@ -17,22 +17,16 @@ import './plugins/tag'
 import './plugins/sticky'
 //加载全局icon组件
 import './plugins/icon'
-
 //加载全局Collapse组件
 import './plugins/collapse'
-
 //加载全局Search组件
 import './plugins/search'
-
 //加载全局swipe组件
 import './plugins/swipe'
-
 //加载全局goodsaction组件
 import './plugins/goodsaction'
-
 //加载全局layout组件
 import './plugins/layout'
-
 //共享store组件信息
 import store from './store/index.js'
 
