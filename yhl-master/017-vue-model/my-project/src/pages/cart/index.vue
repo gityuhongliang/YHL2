@@ -1,6 +1,11 @@
 <template>
     <div id="Cart">
-       this is cart
+        <van-nav-bar
+        title="购物车"
+        left-text="返回"
+        left-arrow
+        @click-left="onClickLeft"
+        />
     </div>
 </template>
 <script>
@@ -9,11 +14,15 @@ export default {
     components:{
        
     },
-    props:{
-        
+     methods:{
+        onClickLeft(){
+            this.$router.back()
+        }
     }
 }
 </script>
-<style scoped>
-    
+<style lang="less" scoped>
+    .van-nav-bar{
+        height: 50px;
+    }
 </style>

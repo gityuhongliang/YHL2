@@ -6,6 +6,7 @@ import VueRouter from "vue-router"
 import Home from 'pages/home'
 import Cart from 'pages/cart'
 import Me from 'pages/me'
+import Login from 'pages/login'
 import Sort from 'pages/sort'
 import SearchSon from 'pages/searchson'
 import List from 'pages/list'
@@ -49,6 +50,7 @@ export default new VueRouter({
         },
         { path: "/list", component: List },
         { path: "/detail", component: Detail },
+        { path: "/login", component: Login },
         { path: "/searchson", component: SearchSon },
         { path: "/", redirect: "/home" },
     ]

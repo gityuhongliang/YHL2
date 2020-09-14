@@ -41,11 +41,8 @@
     </div>
 </template>
 <script>
-import Vue from 'vue';
-import { List,Cell } from 'vant';
+
 import { mapGetters } from 'vuex'
-Vue.use(List);
-Vue.use(Cell);
 import { GET_PRODUCTS_LIST } from './store/types.js'
 export default {
     name:'List',

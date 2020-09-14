@@ -32,20 +32,29 @@
 			</van-collapse>
 		</van-row>
 		<van-row>
-		<van-goods-action>
-			<van-goods-action-icon icon="chat-o" text="客服" dot />
-			<van-goods-action-icon icon="cart-o" text="购物车" badge="5" />
-			<van-goods-action-icon icon="shop-o" text="店铺" badge="12" />
-			<van-goods-action-button type="warning" text="加入购物车" />
-			<van-goods-action-button type="danger" text="立即购买" />
-		</van-goods-action>
+			<van-goods-action>
+				<van-goods-action-icon icon="chat-o" text="客服" dot />
+				<van-goods-action-icon icon="cart-o" text="购物车" badge="5" />
+				<van-goods-action-icon icon="shop-o" text="店铺" badge="12" />
+				<van-goods-action-button type="warning" class="gocart" @click="show = true" text="加入购物车" />
+				<van-goods-action-button type="danger" text="立即购买" />
+			</van-goods-action>
 		</van-row>
+		<van-sku
+			v-model="show"
+			:goods-id="goodsId"
+			:quota="quota"
+			:quota-used="quotaUsed"
+			:hide-stock="sku.hide_stock"
+			:message-config="messageConfig"
+			@buy-clicked="onBuyClicked"
+			@add-cart="onAddCartClicked"
+			:get-container="getContainer"
+			/>
 	</div>
 </template>
 <script>
-import Vue from 'vue';
-import { NavBar } from 'vant';
-Vue.use(NavBar);
+
 import { mapGetters } from 'vuex'
 
 import { GET_PRODUCTS_DETAIL } from './store/types.js'
@@ -58,6 +67,16 @@ export default {
 		return {
 			id:this.$route.query.id,
 			activeNames: ['1'],
+			show: false,
+			sku: {
+				// 数据结构见下方文档
+			},
+			goods: {
+				// 数据结构见下方文档
+			},
+			messageConfig: {
+				// 数据结构见下方文档
+			},
 		};
 	},
 	mounted(){
@@ -70,6 +89,10 @@ export default {
 			// 后退一步记录，等同于 history.back()
 			this.$router.go(-1)
 		},
+		// 返回一个特定的 DOM 节点，作为挂载的父节点
+        getContainer() {
+            return document.querySelectorAll('.gocart');
+        },
 			
 	},
 	computed:{

@@ -52,8 +52,7 @@
                         gutter="15"
                     >
                     <li class="Secondary-list"  v-for="(product,productIndex) in floor.products" :key="productIndex">
-                        <div class="content">
-                            <a href="">
+                        <div class="content" @click="handleDetail(product._id)">
                                 <img :src="product.mainImage" alt="">
                                 <div class="content-title">
                                    {{product.name}}
@@ -63,7 +62,7 @@
                                     <span class="show-price">{{product.price}}</span>
                                     <van-tag plain type="danger">满减</van-tag>
                                 </div>
-                            </a>
+                            
                         </div>
                     </li>
                     </van-row>
@@ -102,6 +101,14 @@ export default {
             'homeFloors',
             'homeArr'
         ])
+    },
+    methods:{
+        handleDetail(id){
+			this.$router.push({ 
+				path: '/detail',
+				query: { id: id }
+			})
+		},
     }
 
 

@@ -8,6 +8,7 @@ import me from 'pages/me/store'
 import searchson from 'pages/searchson/store'
 import list from 'pages/list/store'
 import detail from 'pages/detail/store'
+import login from 'pages/login/store'
 
 
 Vue.use(Vuex);
@@ -20,7 +21,8 @@ export default new Vuex.Store({
         me: me,
         searchson: searchson,
         list: list,
-        detail: detail
+        detail: detail,
+        login: login
 
     }
 }) 

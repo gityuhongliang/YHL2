@@ -1,6 +1,5 @@
 import { API_CONFIG } from './config.js'
 import axios from 'axios'
-import { removeUsername } from './util'
 const getApiObj = (API_CONFIG) => {
     const apiObj = {}
     for (let key in API_CONFIG) { //循环遍历拿到API_CONFIG上对象上的方法
@@ -40,7 +39,7 @@ const request = (url, method, data) => {
                 //需要重新登录前后台状态要保持一致
                 if (result.data.code == 10) {//等于后台清掉了或者未登录
                     //1.清除前台用户状态
-                removeUsername()
+                    // removeUsername()
                     //2.返回登录页面
                     window.location.href = '/login'
                     reject('请求失败,没有权限')

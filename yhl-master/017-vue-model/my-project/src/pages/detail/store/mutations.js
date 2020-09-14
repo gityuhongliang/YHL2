@@ -3,7 +3,6 @@
 import { GET_PRODUCTS_DETAIL } from './types.js'
 export default {
     [GET_PRODUCTS_DETAIL](state, payload) {
-        console.log(payload)
         state.item = payload
     },
     
