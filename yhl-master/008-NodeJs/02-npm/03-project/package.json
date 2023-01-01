@@ -11,7 +11,7 @@
   //参数--save-dev: 
   // 依赖会加在package.json的devDependencies中,一般是辅助开发的依赖,不会打包上线的 
   "devDependencies": {
-    "webpack": "^4.43.0"
+    "webpack": "^5.75.0"
   },
   "dependencies": {
     "jquery": "^3.5.1"
