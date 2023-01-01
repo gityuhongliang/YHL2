@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^4.43.0"
+    "webpack": "^5.75.0"
   }
 }
 // npm install 会安装 package.json中的所有依赖
